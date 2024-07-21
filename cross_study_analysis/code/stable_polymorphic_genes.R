@@ -1,0 +1,207 @@
+## Grouping genes according to their differential expression across studies
+## In order for this code to work, all variation files should be run in their respective study_data directories.
+## Date: Jul 20 2024
+
+## Load in summary data
+library(tidyverse)
+library(AnnotationDbi)
+library(hgu133plus2.db)
+library(EnsDb.Hsapiens.v86)
+library(illuminaHumanv3.db)
+library(biomaRt)
+library(VennDiagram)
+library(cowplot)
+
+## INPUT: github directory where all files are stored.
+input_dir <- "~/Desktop/work_repo/github/"
+## OUTPUT: cross-study analysis output folder. We will output CSV files for the genes.
+output_dir <- "~/Desktop/work_repo/github/cross_study_analysis/output/"
+
+# load in all statistics ----
+
+## Adjust the symbols columns to facilitate cross-study analysis
+gomez <- read_csv(file = paste(input_dir, "Gomez_study_data/output/Gomez_variation.csv", sep = ""))
+gomez$Symbol <- mapIds(x = EnsDb.Hsapiens.v86, keys = gomez$...1, column = "SYMBOL", keytype = "GENEID")
+gosch <- read_csv(file = paste(input_dir, "Gosch_study_data/output/Gosch_variation.csv", sep = ""))
+meaburn1 <- read_csv(file = paste(input_dir, "Meaburn_study_data/output/Meaburn_day1_variation.csv", sep = ""))
+meaburn1$Symbol <- mapIds(x = hgu133plus2.db, keys = meaburn1$...1, column = "SYMBOL", keytype = "PROBEID")
+meaburn2 <- read_csv(file = paste(input_dir, "Meaburn_study_data/output/Meaburn_day2_variation.csv", sep = ""))
+meaburn2$Symbol <- mapIds(x = hgu133plus2.db, keys = meaburn2$...1, column = "SYMBOL", keytype = "PROBEID")
+obermoser1 <- read_csv(file = paste(input_dir, "Obermoser_study_data/output/Obermoser_p1v_variation.csv", sep = ""))
+obermoser1$Symbol <- mapIds(x = illuminaHumanv3.db, keys = obermoser1$...1, column = "SYMBOL", keytype = "PROBEID")
+obermoser2 <- read_csv(file = paste(input_dir, "Obermoser_study_data/output/Obermoser_p1f_variation.csv", sep = ""))
+obermoser2$Symbol <- mapIds(x = illuminaHumanv3.db, keys = obermoser2$...1, column = "SYMBOL", keytype = "PROBEID")
+obermoser3 <- read_csv(file = paste(input_dir, "Obermoser_study_data/output/Obermoser_p2v_variation.csv", sep = ""))
+obermoser3$Symbol <- mapIds(x = illuminaHumanv3.db, keys = obermoser3$...1, column = "SYMBOL", keytype = "PROBEID")
+obermoser4 <- read_csv(file = paste(input_dir, "Obermoser_study_data/output/Obermoser_p2f_variation.csv", sep = ""))
+obermoser4$Symbol <- mapIds(x = illuminaHumanv3.db, keys = obermoser4$...1, column = "SYMBOL", keytype = "PROBEID")
+dusek <- read_csv(file = paste(input_dir, "Dusek_study_data/output/Dusek_variation.csv", sep = ""))
+dusek$Symbol <- mapIds(x = hgu133plus2.db, keys = dusek$...1, column = "SYMBOL", keytype = "PROBEID")
+rusch <- read_csv(file = paste(input_dir, "Rusch_study_data/output/Rusch_variation.csv", sep = ""))
+rusch$Symbol <- mapIds(x = hgu133plus2.db, keys = rusch$...1, column = "SYMBOL", keytype = "PROBEID")
+larocca <- read_csv(file = paste(input_dir, "LaRocca_study_data/output/LaRocca_variation.csv", sep = ""))
+
+data <- list(gomez, gosch, meaburn1, meaburn2, obermoser1, obermoser2, obermoser3, obermoser4,
+             dusek, rusch, larocca)
+names(data) <- c("gomez", "gosch", "meaburn1", "meaburn2", "obermoser1", "obermoser2", "obermoser3", "obermoser4", 
+                 "dusek", "rusch", "larocca")
+
+# THRESHOLDS ----
+## by SD ----
+
+sd <- lapply(data, function (x) {
+  x %>% 
+    dplyr::filter(`Within Variation (SD)` <= quantile(x[["Within Variation (SD)"]], p = 0.25)) %>% 
+    dplyr::filter(`Total Variation (SD)` >= quantile(x[["Total Variation (SD)"]], p = 0.75)) %>% 
+    dplyr::select(`Symbol`) %>% 
+    as.list() %>% unlist() %>% unname()
+})
+
+## by varianceParition ----
+
+vp <- lapply(data, function (x) {
+  x %>% 
+    dplyr::filter(time <= quantile(x[["time"]], p = 0.25)) %>% 
+    dplyr::filter(subject >= quantile(x[["subject"]], p = 0.75)) %>% 
+    dplyr::select(`Symbol`) %>% 
+    as.list() %>% unlist() %>% unname()
+})
+
+## by repeatability & gen.variance ----
+
+rp <- lapply(data, function (x) {
+  x %>% 
+    dplyr::filter(repeatability >= quantile(x[["repeatability"]], p = 0.75)) %>% 
+    dplyr::filter(gen.variance >= quantile(x[["gen.variance"]], p = 0.75)) %>% 
+    dplyr::select(`Symbol`) %>% 
+    as.list() %>% unlist() %>% unname()
+})
+
+# Stable-polymorphic genes across studies ----
+## reformat so gene symbols are similar ----
+### Replaces all '.' with '-' unless they are the final . proceeded by a number (which come about
+# as a consequence of make.names(gene_symbols, unique = T)). Then, removes the . at the end.
+sd <- lapply(sd, function(x) {str_replace_all(x, "\\.(?!\\d$)", "-") %>% str_remove_all(pattern = "\\..")})
+vp <- lapply(vp, function(x) {str_replace_all(x, "\\.(?!\\d$)", "-") %>% str_remove_all(pattern = "\\..")})
+rp <- lapply(rp, function(x) {str_replace_all(x, "\\.(?!\\d$)", "-") %>% str_remove_all(pattern = "\\..")})
+## use symbols only once ----
+sd <- lapply(sd, unique)
+vp <- lapply(vp, unique)
+rp <- lapply(rp, unique)
+
+names(sd) <- paste(names(sd), "sd", sep = ".")
+names(vp) <- paste(names(vp), "vp", sep = ".")
+names(rp) <- paste(names(rp), "rp", sep = ".")
+
+all_filters <- c(sd, vp, rp)
+towrite <- lapply(all_filters, as.data.frame)
+writexl::write_xlsx(towrite, path = paste(output_dir, "stable_polymorphic_thresholds.xlsx", sep = ""))
+
+## How many unique filters are there?
+length(all_filters)
+# [1] 33
+
+## Get results ----
+## Create pool of genes
+symbol_find <- function(x) {
+  index <- grep("Symbol", names(x))
+  return(x[,index])
+}
+all_symbols <- unname(unlist(lapply(data, symbol_find)))
+all_symbols <- all_symbols %>% str_replace_all("\\.(?!\\d$)", "-") %>% str_remove_all(pattern = "\\..") %>% unique()
+length(unlist(all_symbols))
+# 28913
+
+## Test run the counting algorithm
+stable_results <- data.frame(Symbol = all_symbols, Score = 0, Filters = 0)
+all_symbols[1] # [1] "TSPAN6"
+sum(unlist(lapply(all_filters, function(x) {all_symbols[1] %in% x})))
+# [1] 3
+paste(na.omit(names(unlist(lapply(all_filters, function(x) {all_symbols[1] %in% x})))[unlist(lapply(all_filters, function(x) {all_symbols[1] %in% x}))]), collapse = " ")
+# "meaburn2.vp gosch.rp meaburn2.rp"
+
+### Run ----
+for (i in 1:nrow(stable_results)) {
+  stable_results[i,2] <- sum(unlist(lapply(all_filters, function(x) {stable_results$Symbol[i] %in% x})))
+  stable_results[i,3] <- paste(na.omit(names(unlist(lapply(all_filters, function(x) {stable_results$Symbol[i] %in% x})))[unlist(lapply(all_filters, function(x) {stable_results$Symbol[i] %in% x}))]), collapse = " ")
+}
+
+### Studies the gene passed ----
+studs <- c("gomez", "meaburn", "gosch", "obermoser", "dusek", "rusch", "larocca")
+stable_results[,4:10] <- 0
+names(stable_results)[4:10] <- studs
+for (i in 1:nrow(stable_results)) {
+  for (j in 4:10) {
+    stable_results[i,j] <- sum(grepl(names(stable_results)[j], unlist(str_split(stable_results[i,3], pattern = " "))))
+  }
+}
+stable_results <- stable_results %>% 
+  mutate(Study_counts = (gomez > 0) + (meaburn > 0) + (gosch > 0) + (obermoser > 0) +
+           (dusek > 0) + (rusch > 0) + (larocca > 0))
+
+### Save results -----
+write.csv(stable_results, file = paste(output_dir, "stable_polymorphic_scores.csv", sep = ""))
+
+## Median statistic function
+summarize_statistics <- function(gene) {
+  stats <- vector(mode = "numeric", length = 8)
+  names(stats) <- c("Within Variation (SD)", "Total Variation (SD)", "Rs", "subject", "time", "repeatability", "gen.variance", "Average Expression")
+  n <- 11
+  for (i in data) {
+    if (nrow(i[which(i$Symbol == gene),]) > 0) {
+      stats <- stats + colMeans(i[which(i$Symbol == gene), c("Within Variation (SD)", "Total Variation (SD)", "Rs", "subject", "time", "repeatability", "gen.variance", "Average Expression")])
+    } else {
+      n <- n - 1
+    }
+  }
+  return((unlist(stats / n)))
+}
+# Test
+summarize_statistics("ERAP2")
+# Within Variation (SD)  Total Variation (SD)                    Rs 
+# 0.208644817           0.703534926           0.394272705 
+# subject                  time         repeatability 
+# 0.627376081           0.002903051           0.702216666 
+# gen.variance    Average Expression 
+# 0.541465398           7.649865449 
+summarize_statistics("HLA-DRB1")
+# Within Variation (SD)  Total Variation (SD)                    Rs 
+# 0.305415549           1.308490324           0.314372372 
+# subject                  time         repeatability 
+# 0.713203974           0.000194058           0.776463795 
+# gen.variance    Average Expression 
+# 1.832569116           8.786361896 
+
+
+## Initialize data frame
+gene_summaries <- data.frame(`Within Variation (SD)` = 0, 
+                             `Total Variation (SD)` = 0,
+                             Rs = 0,
+                             subject = 0,
+                             time = 0,
+                             repeatability = 0,
+                             gen.variance = 0,
+                             `Average Expression` = 0)
+## Summarize each gene from the list of all genes ----
+for (i in 1:length(stable_results$Symbol)) {
+  gene_summaries[i,] <- summarize_statistics(stable_results$Symbol[i])
+}
+head(gene_summaries)
+gene_summaries$Symbol <- stable_results$Symbol
+
+## Save results ----
+write.csv(gene_summaries, file = paste(output_dir, "median_stability_statistics.csv", sep = ""))
+
+# COMMON SYMBOLS ----
+# Genes found in all datasets
+symbols <- lapply(data, symbol_find)
+symbols <- lapply(symbols, function(x) {
+  x %>% unlist() %>% unname() %>% str_replace_all(pattern = "\\.(?!\\d$)", replacement =  "-") %>% str_remove_all(pattern = "\\..")
+})
+common_symbols <- intersect(symbols[[1]], symbols[[2]])
+for (i in symbols) {
+  common_symbols <- intersect(common_symbols, i)
+}
+length(common_symbols)
+# [1] 9474
+write.table(common_symbols, file = paste(output_dir, "common_symbols9474.txt", sep = ""))
