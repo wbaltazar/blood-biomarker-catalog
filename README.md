@@ -69,15 +69,46 @@ perform analysis on the data.
     -   Contains all outputs from the R code. PDFs, CSVs, PNGs, and TXT
         files.
 
+### misc
+
+-   Affy_control_probe_check.R contains functions for assessing
+    Affymetrix array control probe statistics
+
+-   building_eqtl_table.R contains code used to format the eQTL search
+    table utilized by the eQTL variant search tab in the RShiny
+    application
+
+-   biomaRt_all_transcripts.R contains code used to download gene
+    information data used for the gene search tab in the RShiny
+    application
+    
+-   formatting_expr_for_app.R contains code used to create RDS files 
+    used for RShiny app spaghetti plots. It matches gene names to Probe
+    IDs and Gene IDs for the Gene Info application function.
+
+-   for_common_symbols_in_app.R contains code used to create RDS files 
+    used in RShiny app spaghetti plots as well. It filters the genes in
+    the RDS files so that only the 9474 common symbols are used in the
+    analysis.
+
 ### RShiny-application
 
 -   Contains all code and files needed to reproduce the current version
-    of our RShiny applications.
+    of our RShiny application
+    (<https://wcaar.shinyapps.io/blood-biomarker-catalog/>), but
+    does not contain data files used due to storage issues
+
+    -   Files can be downloaded directly from our application on the
+        Download tab
+
+    -   Alternatively, the code in the misc directory and study_data
+        folders can be used to produce the necessary data and results
+        used in the application
 
 -   As of July 21, 2024, this code is out of date and will be updated
     soon.
 
-## Session Info
+## Session Info (and all packages used)
 
 R version 4.4.1 (2024-06-14) Platform: x86_64-apple-darwin20 Running
 under: macOS Sonoma 14.5

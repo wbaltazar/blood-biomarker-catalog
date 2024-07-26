@@ -70,7 +70,7 @@ table(p1$sex, p1$id)
 # Male         0       0       0       0       0       0       2       1       0       0
 
 
-## varianceParitition ----
+## varianceParitition 1 ----
 names(p1)
 # [1] "title"         "geo_accession" "sex"           "time"          "id"    
 names(p1)[5] <- "subject"
@@ -165,7 +165,7 @@ table(p2$sex, p2$id)
 # Female       1       2       2       1       2       2       0       0       2       2
 # Male         0       0       0       0       0       0       2       1       0       0
 
-## varianceParitition ----
+## varianceParitition 2 ----
 names(p2)
 # [1] "title"         "geo_accession" "sex"           "time"          "id"    
 names(p2)[5] <- "subject"

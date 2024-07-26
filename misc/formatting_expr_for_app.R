@@ -1,58 +1,54 @@
+## Date: Jul 24 2024
+# This code writes RDS files which can be read by the Rshiny-application app.R application and data.R source code.
+# This code works after all other study_data has been generated.
+
+sourcePartial <- function(fn, startTag='#from here', endTag='#to here') {
+  lines <- scan(fn, what = character(), sep = "\n", quiet = TRUE)
+  st <- grep(startTag, lines, fixed = T)
+  en <- grep(endTag, lines, fixed = T)
+  tc <- textConnection(lines[(st+1):(en-1)])
+  source(tc)
+  close(tc)
+}
+
 ## Gomez
 ## Load in norm_expr from Gomez_variation.R
-print(norm_expr)
-old <- readRDS("~/Desktop/work_repo/Box organization/1results/shiny-data-new/data/expr/gomez.rds")
-print(old)
-old_names <- rownames(old)
+sourcePartial("~/Desktop/work_repo/github/Gomez_study_data/code/Gomez_variation.R",
+              startTag = "## Load libraries ----", 
+              endTag = "# Variation analysis ----")
 library(EnsDb.Hsapiens.v86)
 new_names <- mapIds(EnsDb.Hsapiens.v86, keys = rownames(norm_expr), column = "SYMBOL", keytype = "GENEID")
-length(old_names)
 length(new_names)
+# [1] 15416
 length(na.omit(new_names))
 # [1] 15180
-new_names <- na.omit(new_names)
-anyDuplicated(new_names)
-print(new_names[570])
-# ENSG00000143248
-# "RGS5"
-rownames(old)[which(rownames(old) == "RGS5")]
-## Rownames of old matrix is a named list?
-rownames(norm_expr)
-new_names <- mapIds(EnsDb.Hsapiens.v86, keys = rownames(norm_expr), column = "SYMBOL", keytype = "GENEID")
 rownames(norm_expr) <- new_names
 head(norm_expr)
-## Write to new application folder
-write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data/expr/gomez.rds")
+str(norm_expr)
+# num [1:15416, 1:28] 4.52 3.32 3.38 4.46 2.05 ...
+# - attr(*, "dimnames")=List of 2
+# ..$ : Named chr [1:15416] "TNFRSF4" "TNFRSF18" "ATAD3B" "THAP3" ...
+# .. ..- attr(*, "names")= chr [1:15416] "ENSG00000186827" "ENSG00000186891" "ENSG00000160072" "ENSG00000041988" ...
+# ..$ : chr [1:28] "GSM7662572" "GSM7662571" "GSM7662575" "GSM7662576" ...
+## Write to RShiny application folder
+write_rds(norm_expr, file = "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/gomez.rds")
 
 ## Meaburn
 ## Load in norm_expr files from Meaburn variationm DAY 1
-old <- readRDS("./Box organization/1results/shiny-data-new/data/expr/meaburn.rds")
-head(old)
-## The rownames are the symbols: the probe is a separate column. The gene_graph_p function utilizes this.
+## Note that the rownames are the symbols: the probe is a separate column. The gene_graph_p function utilizes this.
+## Load in norm_expr from Meaburn_variation.R, day 1
+sourcePartial("~/Desktop/work_repo/github/Meaburn_study_data/code/Meaburn_variation.R",
+              startTag = "## Load libraries ----", 
+              endTag = "## varianceParitition 1 ----")
 head(norm_expr)
 colnames(norm_expr) <- str_replace(colnames(norm_expr), pattern = "\\.CEL.gz", replacement = "")
 probes <- unlist(rownames(norm_expr))
 class(probes)
+# [1] "character"
 class(norm_expr)
+# [1] "matrix" "array" 
 norm_expr <- as.data.frame(norm_expr)
 norm_expr$Probe <- probes
-old_names <- rownames(old)
-head(old_names, 100)
-# [1] "DDR1"       "RFC2"       "HSPA6"      "PAX8"       "GUCA1A"     "UBA7"       "THRA"       "PTPN21"    
-# [9] "CCL5"       "CYP2E1"     "EPHB3"      "ESRRA"      "CYP2A6"     "SCARB1"     "TTLL12"     "NA."       
-# [17] "WFDC2"      "MAPK1"      "MAPK1.1"    "ADAM32"     "SPATA17"    "PRR22"      "PRR22.1"    "PXK"       
-# [25] "PXK.1"      "VPS18"      "MSANTD3"    "SLC46A1"    "SLC46A1.1"  "TIMD4"      "SLC39A5"    "ZDHHC11"   
-# [33] "ATP6V1E2"   "AFG3L1P"    "CILP2"      "CILP2.1"    "PIGX"       "TMEM196"    "SLC39A13"   "BEST4"     
-# [41] "AK9"        "CORO6"      "TMEM106A"   "TMEM106A.1" "ALG10"      "ALG10.1"    "TTC39C"     "NEXN"      
-# [49] "C15orf40"   "RAX2"       "MFAP3"      "EYA3"       "GIMAP1"     "GIMAP1.1"   "GIMAP1.2"   "KLK8"      
-# [57] "CCDC65"     "CCDC65.1"   "PABIR3"     "PABIR3.1"   "CFAP53"     "CFAP53.1"   "ARMCX4"     "RBBP6"     
-# [65] "CENPBD1P"   "TRIOBP"     "TRIOBP.1"   "CATSPER1"   "HOXD4"      "GSC"        "SP7"        "PDE7A"     
-# [73] "CNOT7"      "CRYZL1"     "PRSS33"     "PRSS33.1"   "CBARP"      "CBARP.1"    "MCMDC2"     "TIRAP"     
-# [81] "LEAP2"      "MSI2"       "SCIN"       "SCIN.1"     "CTCFL"      "C4orf33"    "C4orf33.1"  "C4orf33.2" 
-# [89] "ZNF333"     "TVP23C"     "RDH10"      "RDH10.1"    "SRSF12"     "GARIN4"     "GARIN4.1"   "GAPT"      
-# [97] "SCUBE1"     "ERICH5"     "ERICH5.1"   "CCDC185"  
-length(grep("^NA", old_names))
-# [1] 10214
 new_names <- mapIds(x = hgu133plus2.db, keys = probes, column = "SYMBOL", keytype = "PROBEID")
 head(unname(new_names), 100)
 # [1] "DDR1"     "RFC2"     "HSPA6"    "PAX8"     "GUCA1A"   "UBA7"     "THRA"     "PTPN21"   "CCL5"    
@@ -78,17 +74,18 @@ for (i in 1:length(new_names)) {
 }
 sum(is.na(new_names))
 # [1] 0
-grep("^\\d", new_names)
-# many
+length(grep("^\\d", new_names))
+# [1] 9973
 new_names <- make.names(new_names, unique = T)
 rownames(norm_expr) <- new_names
 write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data/expr/Meaburn1.rds")
 
 ## DAY 2
+sourcePartial("~/Desktop/work_repo/github/Meaburn_study_data/code/Meaburn_variation.R",
+              startTag = "# Analysis of day 2 data ----", 
+              endTag = "## varianceParitition 2 ----")
 colnames(norm_expr) <- str_replace(colnames(norm_expr), pattern = "\\.CEL.gz", replacement = "")
 probes <- unlist(rownames(norm_expr))
-class(probes)
-class(norm_expr)
 norm_expr <- as.data.frame(norm_expr)
 norm_expr$Probe <- probes
 new_names <- mapIds(x = hgu133plus2.db, keys = probes, column = "SYMBOL", keytype = "PROBEID")
@@ -102,20 +99,14 @@ for (i in 1:length(new_names)) {
 }
 sum(is.na(new_names))
 # [1] 0
-grep("^\\d", new_names)
 new_names <- make.names(new_names, unique = T)
 rownames(norm_expr) <- new_names
 write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data/expr/Meaburn2.rds")
 
 ## Gosch
-old <- readRDS("./Box organization/1results/shiny-data-new/data/expr/gosch.rds")
-old[1:5,1:5]
-#              GSM6965575 GSM6965576 GSM6965577 GSM6965578 GSM6965579
-# DDX11L1      -3.4684370 -1.9183553 -1.8157963 -0.6944219  -1.618335
-# WASH7P        3.2273713  2.8169700  2.5256720  2.9325824   4.150867
-# MIR6859.1     0.4384536  0.9620631  0.6555094  1.9288106   1.957349
-# LOC101927589  0.1560539  1.2515697  1.2005055  0.3286617   1.758041
-# LOC729737     5.9571286  6.6274868  6.3699802  5.8326767   7.464019
+sourcePartial("~/Desktop/work_repo/github/Gosch_study_data/code/Gosch_variation.R",
+              startTag = "## Load libraries ----", 
+              endTag = "# Variation analysis ----")
 norm_expr[1:5,1:5]
 # Blood, ParticipantA, 08.00h Blood, ParticipantB, 08.00h Blood, ParticipantC, 08.00h
 # DDX11L1                       -3.4947730                   -1.790080                  -1.8193774
@@ -133,19 +124,13 @@ identical(colnames(norm_expr), pheno_data$title)
 # [1] TRUE
 colnames(norm_expr) <- pheno_data$geo_accession
 write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data/expr/gosch.rds")
+## We added ENSG IDs to the row names at the bottom of the script
 
 ## Obermoser
 ## C1
-old <- readRDS("./Box organization/1results/shiny-data-new/data/expr/obermoser.rds")
-old[1:5,1:5]
-#           GSM744835 GSM744836 GSM744837 GSM744838 GSM744839
-# ATP4A      4.481638  4.525867  4.510462  4.732031  4.571580
-# RRN3       6.433098  6.350373  5.234039  7.160030  6.368260
-# CDKN2C     4.973508  4.603080  4.753782  4.839487  4.606624
-# LINC00273  5.184856  4.757480  5.822481  4.850829  5.259615
-# DAPK3      5.365804  4.830513  5.307994  5.406890  4.854150
-old$Probe[1:5]
-# "ILMN_2209417" "ILMN_1765401" "ILMN_1652171" "ILMN_1652170" "ILMN_1792710"
+sourcePartial("~/Desktop/work_repo/github/Obermoser_study_data/code/Obermoser_variation.R",
+              startTag = "# across cohorts measures different time intervals, including an hour-by-hour measurement.", 
+              endTag = "## varianceParitition 1 ----")
 norm_expr[1:5,1:5]
 # X4835507041_F.AVG_Signal X4835507052_A.AVG_Signal X4835507049_K.AVG_Signal X4853887047_C.AVG_Signal
 # ILMN_2209417                 4.480964                 4.525181                 4.509781                 4.731090
@@ -173,6 +158,7 @@ for (i in 1:length(newnames)) {
 sum(is.na(newnames))
 # [1] 0
 class(norm_expr)
+# [1] "matrix" "array" 
 norm_expr <- as.data.frame(norm_expr)
 norm_expr$Probe <- rownames(norm_expr)
 rownames(norm_expr) <- make.names(newnames, unique = T)
@@ -185,9 +171,12 @@ norm_expr[1:5, 1:5]
 # DAPK3      5.362644  4.829314  5.304991  5.403610  4.852865
 head(norm_expr$Probe)
 # [1] "ILMN_2209417" "ILMN_1765401" "ILMN_1652171" "ILMN_1652170" "ILMN_1792710" "ILMN_1703558"
-write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data/expr/obermoser1.rds")
+write_rds(norm_expr, file = "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/obermoser1.rds")
 
 ## C2
+sourcePartial("~/Desktop/work_repo/github/Obermoser_study_data/code/Obermoser_variation.R",
+              startTag = "# Analysis 2: Test Set Finger (p1f) ----", 
+              endTag = "## varianceParitition 2 ----")
 head(colnames(norm_expr))
 # X5447320035_B.AVG_Signal" "X5447320035_G.AVG_Signal" "X5447320036_A.AVG_Signal" "X5447320036_B.AVG_Signal"
 # [5] "X5447320036_C.AVG_Signal" "X5447320036_J.AVG_Signal"
@@ -211,10 +200,15 @@ norm_expr[1:5, 1:5]
 head(norm_expr$Probe)
 dim(norm_expr)
 # [1] 22413    50 (same as Obermoser_variation.R, but one more column for Probe)
-write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data/expr/obermoser2.rds")
+write_rds(norm_expr, file = "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/obermoser2.rds")
 
 ## C3
+sourcePartial("~/Desktop/work_repo/github/Obermoser_study_data/code/Obermoser_variation.R",
+              startTag = "# Analysis 3: Test Set Vein (p2v) ----", 
+              endTag = "## varianceParitition 3 ----")
 head(colnames(norm_expr))
+# [1] "X5356583035_D.AVG_Signal" "X5356583041_E.AVG_Signal" "X5356583031_A.AVG_Signal" "X5356583049_D.AVG_Signal" "X5356583040_D.AVG_Signal"
+# [6] "X5356583038_G.AVG_Signal"
 identical(substr(p2v$array, start = 1, stop = 10), str_extract(colnames(norm_expr), "\\d+"))
 # [1] TRUE
 colnames(norm_expr) <- p2v$geo_accession
@@ -234,11 +228,16 @@ rownames(norm_expr) <- make.names(newnames, unique = T)
 norm_expr[1:5, 1:5]
 head(norm_expr$Probe)
 dim(norm_expr)
-# [1] 27431   140 (same as Obermoser_variation.R, but one more column for Probe)
-write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data/expr/obermoser3.rds")
+# [1] 27431   144
+write_rds(norm_expr, file = "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/obermoser3.rds")
 
 ## C4
+sourcePartial("~/Desktop/work_repo/github/Obermoser_study_data/code/Obermoser_variation.R",
+              startTag = "# Analysis 4: Training Set Finger (p2f) ----", 
+              endTag = "## varianceParitition 4 ----")
 head(colnames(norm_expr))
+# [1] "X5307141014_E.AVG_Signal" "X5307141024_E.AVG_Signal" "X5307141024_K.AVG_Signal" "X5307141024_F.AVG_Signal" "X5322244022_H.AVG_Signal"
+# [6] "X5307141024_J.AVG_Signal"
 identical(substr(p2f$array, start = 1, stop = 10), str_extract(colnames(norm_expr), "\\d+"))
 # [1] TRUE
 colnames(norm_expr) <- p2f$geo_accession
@@ -259,19 +258,12 @@ norm_expr[1:5, 1:5]
 head(norm_expr$Probe)
 dim(norm_expr)
 # [1] 23484   186 (same as Obermoser_variation.R, but one more column for Probe)
-write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data/expr/obermoser4.rds")
+write_rds(norm_expr, file = "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/obermoser4.rds")
 
 ## Dusek
-old <- readRDS("./Box organization/1results/shiny-data-new/data/expr/bhasin.rds")
-old[1:5,1:5]
-# GSM253663 GSM253664 GSM253665 GSM253666 GSM253668
-# DDR1    6.909879  6.944320  7.055973  7.381506  7.059420
-# RFC2    6.023353  5.955863  6.220316  6.332936  5.713215
-# HSPA6   8.432983  8.243785  8.843591  8.209773  8.324805
-# PAX8    8.504396  8.805405  8.452344  8.546908  8.463327
-# GUCA1A  3.345014  3.643303  3.358237  3.425642  3.520712
-head(old$Probe)
-# [1] "1007_s_at" "1053_at"   "117_at"    "121_at"    "1255_g_at" "1294_at"  
+sourcePartial("~/Desktop/work_repo/github/Dusek_study_data/code/Dusek_variation.R",
+              startTag = "## Load libraries ----", 
+              endTag = "## varianceParitition ----")
 norm_expr[1:5,1:5]
 # GSM253663 GSM253664 GSM253665 GSM253666 GSM253668
 # 1007_s_at  6.893945  6.933046  7.038875  7.360868  7.033034
@@ -297,10 +289,18 @@ head(norm_expr$Probe)
 write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data/expr/dusek.rds")
 
 ## Rusch
-old <- readRDS("./Box organization/1results/shiny-data-new/data/expr/rusch.rds")
-old[1:5,1:5]
-head(old$Probe)
+sourcePartial("~/Desktop/work_repo/github/Rusch_study_data/code/Rusch_variation.R",
+              startTag = "## Load libraries ----", 
+              endTag = "## varianceParitition ----")
+dim(norm_expr)
+# [1] 54675    38
 norm_expr[1:5,1:5]
+# GSM2175170 GSM2175171 GSM2175182 GSM2175183 GSM2175185
+# 1007_s_at   6.723975   6.796586   7.164297   6.610909   6.818922
+# 1053_at     6.599784   6.712995   6.859752   7.145761   6.817535
+# 117_at      9.007288   8.805269   8.375141   9.490100   9.197723
+# 121_at      8.227604   8.331777   8.171151   8.175178   8.197186
+# 1255_g_at   3.011893   2.993132   2.910271   2.848268   2.735265
 newnames <- mapIds(x = hgu133plus2.db, keys = rownames(norm_expr), column = "SYMBOL", keytype = "PROBEID")
 for (i in 1:length(newnames)) {
   if (is.na(newnames[i])) {
@@ -315,21 +315,20 @@ norm_expr <- as.data.frame(norm_expr)
 norm_expr$Probe <- rownames(norm_expr)
 rownames(norm_expr) <- make.names(newnames, unique = T)
 norm_expr[1:5, 1:5]
+# GSM2175170 GSM2175171 GSM2175182 GSM2175183 GSM2175185
+# DDR1     6.723975   6.796586   7.164297   6.610909   6.818922
+# RFC2     6.599784   6.712995   6.859752   7.145761   6.817535
+# HSPA6    9.007288   8.805269   8.375141   9.490100   9.197723
+# PAX8     8.227604   8.331777   8.171151   8.175178   8.197186
+# GUCA1A   3.011893   2.993132   2.910271   2.848268   2.735265
 head(norm_expr$Probe)
-write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data/expr/rusch.rds")
+# [1] "1007_s_at" "1053_at"   "117_at"    "121_at"    "1255_g_at" "1294_at"  
+write_rds(norm_expr, file = "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/rusch.rds")
 
 ## LaRocca
-old <- readRDS("./Box organization/1results/shiny-data-new/data/expr/larocca.rds")
-old[1:5,1:5]
-# GSM6255519 GSM6255520 GSM6255521 GSM6255522 GSM6255523
-# A1BG      0.99875224  1.8045462  1.1688350  1.2111409  1.3580736
-# A1BG-AS1  1.02004702  1.2703975  1.2096687  0.8344699  1.3028441
-# A2M       0.02532196 -0.6907135 -0.5612442  0.5342963 -0.2268889
-# A2M-AS1  -1.00662093 -1.4904148 -1.1122594 -0.8840163 -1.5186550
-# AAAS      3.84689812  4.5054047  4.0567333  3.7215642  4.0548616
-colnames(old)
-dim(old)
-# [1] 15553    58
+sourcePartial("~/Desktop/work_repo/github/LaRocca_study_data/code/LaRocca_variation.R",
+              startTag = "## Load libraries ----", 
+              endTag = "## varianceParitition ----")
 norm_expr[1:5,1:5]
 # GSM6255519 GSM6255520 GSM6255521 GSM6255522 GSM6255523
 # A1BG      0.98359095  1.7893584  1.1537217  1.1959563  1.3428967
@@ -341,30 +340,19 @@ dim(norm_expr)
 # [1] 15555    59
 write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data/expr/larocca.rds")
 
-## From Rshiny-application
-class(e1) # Gosch
-class(e2) # Meaburn
-class(e4) # Gosch
-class(e5) # Obermoser
-class(e9) # Dusek
-class(e11) # LaRocca
-## Since all RNA-seq datasets are matrices, we can replace their rownames with named lists of ENSEMBL IDs
+## Since all RNA-seq data sets are matrices, we can replace their row names with named lists that include ENSEMBL IDs
+e11 <- read_rds("~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/larocca.rds")
 new_names <- mapIds(x = EnsDb.Hsapiens.v86, keys = str_replace(rownames(e11), "\\.", "-"), column = "GENEID", keytype = "SYMBOL")
 names(rownames(e11)) <- unname(new_names)
 head(rownames(e11))
-# ENSG00000121410            <NA> ENSG00000175899            <NA> ENSG00000094914 ENSG00000081760 
-# "A1BG"      "A1BG.AS1"           "A2M"       "A2M.AS1"          "AAAS"          "AACS" 
-
 # ENSG00000121410 ENSG00000268895 ENSG00000175899 ENSG00000245105 ENSG00000094914 ENSG00000081760 
 # "A1BG"      "A1BG.AS1"           "A2M"       "A2M.AS1"          "AAAS"          "AACS"
-## replacing all . with -
+write_rds(e11, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/larocca.rds")
 
-
+e4 <- read_rds("~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/gosch.rds")
 new_names <- mapIds(x = EnsDb.Hsapiens.v86, keys = str_replace(rownames(e4), "\\.", "-"), column = "GENEID", keytype = "SYMBOL")
 names(rownames(e4)) <- unname(new_names)
 head(rownames(e4))
 # ENSG00000223972 ENSG00000226210 ENSG00000278267            <NA>            <NA>            <NA> 
   # "DDX11L1"        "WASH7P"     "MIR6859.1"  "LOC101927589"     "LOC729737"  "LOC100996442"
-
-write_rds(e4, "./data/expr/gosch.rds")
-write_rds(e11, "./data/expr/larocca.rds")
+write_rds(e4, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/gosch.rds")

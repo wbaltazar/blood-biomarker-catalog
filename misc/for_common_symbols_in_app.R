@@ -2,13 +2,15 @@
 ## For the application, we decided to use only the gene symbols which we are confident were captured across
 ## all seven datasets. For us, those are the 9474 symbols that I found in my eQTl enrichment analysis. So,
 ## we will use that to filter all the rds files and annotation files to reduce space and speed up computation.
+## formatting_expr_for_app.R should be run prior to this code
+## biomaRt_all_transcripts.R should be run prior to this code
 
-setwd("~/Desktop/work_repo/Box organization/1results/")
-symbols <- read.table("./Symbols_common_to_all_datasets.txt")
+## input: RDS files generated from study_data files + common symbols file
+symbols <- read.table("~/Desktop/work_repo/github/cross_study_analysis/output/common_symbols9474.txt")
 symbols <- symbols$x
 length(symbols)
 # [1] 9474
-setwd("./RShiny-application/")
+setwd("~/Desktop/work_repo/Box organization/1results/RShiny-application/")
 e1 <- read_rds("./data/expr/gomez.rds")
 e2 <- read_rds("./data/expr/Meaburn1.rds")
 e3 <- read_rds("./data/expr/Meaburn2.rds")
@@ -36,16 +38,16 @@ write_rds(e1, "./data/expr/gomez.rds")
 find <- str_replace_all(rownames(e2), "\\.(?!\\d$)", "-") %>% str_remove_all(pattern = "\\..")
 length(unique(find)) # [1] 31390
 index <- which(find %in% symbols)
-length(index) # [1] 23607
+length(index) # [1] 23610
 ## This makes sure we include all probes that represent our common set of genes.
 e2 <- e2[index,]
 dim(e2)
-# [1] 23607   20
+# [1] 23610   20
 rownames(e2) <-  str_replace_all(rownames(e2), "\\.(?!\\d$)", "-")
 write_rds(e2, "./data/expr/Meaburn1.rds")
 e3 <- e3[index,]
 dim(e3)
-# [1] 23607    18
+# [1] 23610    18
 rownames(e3) <- str_replace_all(rownames(e3), "\\.(?!\\d$)", "-")
 write_rds(e3, "./data/expr/Meaburn2.rds")
 
@@ -65,13 +67,13 @@ write_rds(e4, "./data/expr/gosch.rds")
 ## Similar to what we did for Meaburn
 affy_index <- index # save for Dusek and Rusch
 find <- str_replace_all(rownames(e5), "\\.(?!\\d$)", "-") %>% str_remove_all(pattern = "\\..")
-length(unique(find)) # [1] 23987
+length(unique(find)) # [1] 23992
 index <- which(find %in% symbols)
 length(index)
-# [1] 14881
+# [1] 14882
 e5 <- e5[index,]
 dim(e5)
-# [1] 14881   161
+# [1] 14882   162
 rownames(e5) <- str_replace_all(rownames(e5), "\\.(?!\\d$)", "-")
 sum(rownames(e5) %in% symbols)
 # [1] 9474
@@ -98,10 +100,10 @@ find <- str_replace_all(rownames(e7), "\\.(?!\\d$)", "-") %>% str_remove_all(pat
 length(unique(find)) # [1] 20958
 index <- which(find %in% symbols)
 length(index) 
-# [1] 14678
+# [1] 14685
 e7 <- e7[index,]
 dim(e7)
-# [1] 14678   140
+# [1] 14685   140
 rownames(e7) <- str_replace_all(rownames(e7), "\\.(?!\\d$)", "-")
 sum(rownames(e7) %in% symbols)
 # [1] 9474
@@ -127,7 +129,7 @@ write_rds(e8, "./data/expr/obermoser4.rds")
 # Dusek ----
 e9 <- e9[affy_index,]
 dim(e9)
-# [1] 23607    45
+# [1] 23610    45
 rownames(e9) <- str_replace_all(rownames(e9), "\\.(?!\\d$)", "-")
 sum(rownames(e9) %in% symbols)
 # [1] 9474
@@ -136,7 +138,7 @@ write_rds(e9, "./data/expr/dusek.rds")
 # Rusch ----
 e10 <- e10[affy_index,]
 dim(e10)
-# [1] 23607    38
+# [1] 23610    38
 rownames(e10) <- str_replace_all(rownames(e10), "\\.(?!\\d$)", "-")
 sum(rownames(e10) %in% symbols)
 # [1] 9474
@@ -259,4 +261,3 @@ dim(larocca_extra)
 # [1] 1 9
 larocca <- rbind(larocca[,-1], larocca_extra)
 write.csv(larocca, "./data/annotate/larocca.csv")
-## Now that I think about it, all these files are the same, right? Anyways. App still works!

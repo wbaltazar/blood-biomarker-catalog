@@ -1,5 +1,11 @@
+## Date: Jul 24 2024
+
 ## Building a tool for querying your rsIDs!
-setwd("~/Desktop/work_repo/")
+## Set input directory to where GTEx variants and rsID lookup table are
+input_dir <- "~/Desktop/work_repo/data/"
+setwd(input_dir)
+## Output to the RShiny application directory (not on Github)
+output_dir <- "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/eqtls/"
 
 library(tidyverse)
 library(AnnotationDbi)
@@ -12,18 +18,19 @@ variant_ids <- gtex$variant_id
 length(variant_ids)
 # [1] 2414653
 
-# library(data.table)
-# id_table <- fread(input = "./GTEx_Analysis_2017-06-05_v8_WholeGenomeSeq_838Indiv_Analysis_Freeze.lookup_table.txt.gz",
-#       select = c("variant_id", "rs_id_dbSNP151_GRCh38p7"))
-# 
-# id_table <- id_table %>% 
-#   dplyr::filter(variant_id %in% variant_ids)
-# 
-# # Save the results for later!!
-# write.table(id_table, "./filtered_rsIDs.txt")
-id_table <- read.table("./filtered_rsIDs.txt")
-head(id_table)
+## Get the rsIDs for the eQTLs so that they can be matched with GWAS traits.
+library(data.table)
+id_table <- fread(input = "./GTEx_Analysis_2017-06-05_v8_WholeGenomeSeq_838Indiv_Analysis_Freeze.lookup_table.txt.gz",
+      select = c("variant_id", "rs_id_dbSNP151_GRCh38p7"))
+
+id_table <- id_table %>%
+  dplyr::filter(variant_id %in% variant_ids)
+
+# Save the results for later!!
+write.table(id_table, "./filtered_rsIDs.txt")
+
 dim(id_table)
+# [1] 1277338       2
 length(unique(gtex$variant_id))
 # [1] 1277338
 
@@ -46,7 +53,6 @@ head(gtex)
 # 5            0.000246184      1.54726e-08 5.63557e-05  SASS6    1              rs11801439
 # 6            0.000104450      1.61451e-06 5.01701e-03   RBP7    1             rs141577932
 
-# Nice!
 
 # Next, get the associated traits for the rsIDs.
 associations <- read_tsv("./gwas_catalog_v1.0-associations_e111_r2024-04-22.tsv")
@@ -95,30 +101,34 @@ colnames(gtex)
 gtex <- gtex[,c("Symbol", "gene_id", "rs_id_dbSNP151_GRCh38p7", "variant_id", "maf", "slope", 
                 "pval_nominal", "pval_beta",
                 "DISEASE/TRAIT", "MAPPED_GENE", "REPORTED GENE(S)", "OR or BETA", "P-VALUE", "CONTEXT",
-                "INTERGENIC")] # 15 columns
+                "INTERGENIC")] # Re-orders the columns
 colnames(gtex) <- c("Symbol of blood RNA", "Ensembl ID", "rsID of eQTL", "GTEx variant ID","MAF in GTEx WB",
                     "eQTL slope", "eQTL nominal p_val", "eQTL beta p_value",
                     "GWAS Trait", "GWAS Catalog Mapping", "Reported Mapping", "OR or BETA", "GWAS p_value",
-                    "Genomic Context","Intergenic?")
-stable <- read.csv("./Box organization/1results/RShiny-application/data/stable_gene_filter_count.csv")
-dynamic <- read.csv("./Box organization/1results/RShiny-application/data/deg_counts.csv")
-house <- read.csv("./Box organization/1results/RShiny-application/data/housekeeping_scores.csv")
-stable <- stable %>% dplyr::select(Symbol, Total)
-colnames(stable) <- c("Symbol of blood RNA","Stable-polymorphic score")
-dynamic <- dynamic %>% dplyr::select(Symbol, Count)
-colnames(dynamic) <- c("Symbol of blood RNA","Flexibility score")
-house <- house %>% dplyr::select(Symbol, Total)
-colnames(house) <- c("Symbol of blood RNA","Housekeeping score")
+                    "Genomic Context","Intergenic?") # Re-names the columns
+
+## Attach stable_polymorphic, flexible, and housekeeping gene study statistics
+stable <- read.csv("~/Desktop/work_repo/github/cross_study_analysis/output/stable_polymorphic_scores.csv")
+dynamic <- read.csv("~/Desktop/work_repo/github/cross_study_analysis/output/flexible_gene_scores.csv")
+house <- read.csv("~/Desktop/work_repo/github/cross_study_analysis/output/housekeeping_scores.csv")
+stable <- stable %>% dplyr::select(Symbol, Study_counts)
+colnames(stable) <- c("Symbol of blood RNA","Stable-polymorphic 4+ filter studies")
+dynamic <- dynamic %>% dplyr::select(Symbol, P_value_study_count)
+colnames(dynamic) <- c("Symbol of blood RNA","Studies below 0.05 p_value")
+house <- house %>% dplyr::select(Symbol, Studies)
+colnames(house) <- c("Symbol of blood RNA","Housekeeping 4+ filter studies")
 
 gtex <- merge(gtex, stable, all.x = T, by = "Symbol of blood RNA", sort = F)
 gtex <- merge(gtex, dynamic, all.x = T, by = "Symbol of blood RNA", sort = F)
 gtex <- merge(gtex, house, all.x = T, by = "Symbol of blood RNA", sort = F)
 dim(gtex)
 # [1] 2653785      18
-symbols <- read.table("./Box organization/1results/Symbols_common_to_all_datasets.txt")
+
+## Filter out by common symbols. Common symbols file is in cross_study_analysis repo
+symbols <- read.table("~/Desktop/work_repo/github/cross_study_analysis/output/common_symbols9474.txt")
 symbols <- symbols$x
 gtex <- gtex[gtex$`Symbol of blood RNA` %in% symbols,]
 dim(gtex)
-# [1] 1352617      18
+# [1] 1352592      18
 
-write_rds(gtex, "./Box organization/1results/RShiny-application/data/eqtls/gtex_variants_and_phenotypes_whole_blood_28062024.rds")
+write_rds(gtex, paste(output_dir, "gtex_variants_and_phenotypes_whole_blood.rds", sep = ""))

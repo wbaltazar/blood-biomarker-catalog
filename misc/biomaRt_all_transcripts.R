@@ -1,3 +1,11 @@
+## Date: Jul 24 2024
+
+# This code uses the rds files generated from formatting_expr_for_app.R and for_common_symbols_in_app.R.
+# This code pulls the gene information for the searchable symbols in the RShiny app.
+
+# All files will be output to a folder in our Rshiny application in /data/annotate/
+setwd("~/Desktop/work_repo/Box organization/1results/RShiny-application/")
+
 ## Repository of gene names
 library(biomaRt)
 mart <- useDataset(dataset = "hsapiens_gene_ensembl", mart = useMart("ENSEMBL_MART_ENSEMBL"))

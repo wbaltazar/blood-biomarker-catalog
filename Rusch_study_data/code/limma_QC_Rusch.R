@@ -152,9 +152,8 @@ files <- files[grep("GSM2175214", files)]
 file.remove(paste(input_dir, files, sep = ""))
 
 ## IF YOU HAVE RUN THIS FILE BEFORE, START HERE AFTER RUNNING LIBRARIES AND getGEO. ----
-## Change column names to include only GEO sample ID and exlude pheno_data rows that don't include colnames(df).
-### colnames(normalized_expression) <- str_extract(colnames(normalized_expression), pattern = "GSM\\d+")
-### pheno_data <- pheno_data[pheno_data$geo_accession %in% colnames(df),]
+## Change column names to include only GEO sample ID and exclude pheno_data rows that don't include colnames(df).
+
 data <- ReadAffy(celfile.path = input_dir)
 data <- affy::rma(data)
 normalized_expression <- exprs(data)
@@ -162,6 +161,8 @@ dim(normalized_expression)
 # [1] 54675    38
 colnames(normalized_expression) <- str_extract(colnames(normalized_expression), pattern = "GSM\\d+")
 pheno_data <- pheno_data[pheno_data$geo_accession %in% colnames(normalized_expression),]
+dim(pheno_data)
+# [1] 38  9
 p <-  pca(normalized_expression, metadata = pheno_data, center = T, scale = T)
 pdf(file = paste(output_dir, "post_qc_pca.pdf", sep = ""))
 biplot(p, 

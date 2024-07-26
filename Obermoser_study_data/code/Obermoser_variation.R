@@ -96,7 +96,7 @@ dim(data_norm$E)
 # [1] 31003   161
 norm_expr <- data_norm$E
 
-## varianceParitition ----
+## varianceParitition 1 ----
 formula <- ~ as.numeric(age) + (1|subject) + (1|time) + (1|sex) + (1|race) + (1|treat) + (1|time:treat) + (1|time:sex) + (1|time:race) + time:as.numeric(age)
 param <- SnowParam(4, "SOCK", progressbar = TRUE)
 varPart <- fitExtractVarPartModel(exprObj = norm_expr, formula = formula, data = p1v, BPPARAM = param)
@@ -208,7 +208,7 @@ dim(data_norm$E)
 # [1] 22413    49
 norm_expr <- data_norm$E
 
-## varianceParitition ----
+## varianceParitition 2 ----
 formula <- ~ as.numeric(age) + (1|subject) + (1|time) + (1|sex) + (1|race) + (1|treat) + (1|time:treat) + (1|time:sex) + (1|time:race) + time:as.numeric(age)
 param <- SnowParam(4, "SOCK", progressbar = TRUE)
 varPart <- fitExtractVarPartModel(exprObj = norm_expr, formula = formula, data = p1f, BPPARAM = param)
@@ -320,7 +320,7 @@ dim(data_norm$E)
 # [1] 27431   143
 norm_expr <- data_norm$E
 
-## varianceParitition ----
+## varianceParitition 3 ----
 formula <- ~ as.numeric(age) + (1|subject) + (1|time) + (1|sex) + (1|race) + (1|treat) + (1|time:treat) + (1|time:sex) + (1|time:race) + time:as.numeric(age)
 param <- SnowParam(4, "SOCK", progressbar = TRUE)
 varPart <- fitExtractVarPartModel(exprObj = norm_expr, formula = formula, data = p2v, BPPARAM = param)
@@ -432,7 +432,7 @@ dim(data_norm$E)
 # [1] 23484   185
 norm_expr <- data_norm$E
 
-## varianceParitition ----
+## varianceParitition 4 ----
 formula <- ~ as.numeric(age) + (1|subject) + (1|time) + (1|sex) + (1|race) + (1|treat) + (1|time:treat) + (1|time:sex) + (1|time:race) + time:as.numeric(age)
 param <- SnowParam(4, "SOCK", progressbar = TRUE)
 varPart <- fitExtractVarPartModel(exprObj = norm_expr, formula = formula, data = p2f, BPPARAM = param)
