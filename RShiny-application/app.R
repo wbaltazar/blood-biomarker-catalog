@@ -267,7 +267,7 @@ Nucleic Acids Res. 2022 Nov 9:gkac1010. doi: 10.1093/nar/gkac1010. Epub ahead of
                                                           choices = NULL),
                                            sliderInput(inputId = "stableTableSlider",
                                                        label = "Stable-polymorphic score?",
-                                                       min = -1, max = 22, value = -1),
+                                                       min = -1, max = 7, value = -1),
                                            radioButtons(inputId = "stableInequality", label = "only show studies...",
                                                         choiceNames = c("=","<=",">="), 
                                                         choiceValues = c("equal","less","more")),
@@ -279,7 +279,7 @@ Nucleic Acids Res. 2022 Nov 9:gkac1010. doi: 10.1093/nar/gkac1010. Epub ahead of
                                                         choiceValues = c("equal","less","more")),
                                            sliderInput(inputId = "houseSlider",
                                                        label = "Housekeeping score?",
-                                                       min = -1, max = 39, value = -1),
+                                                       min = -1, max = 6, value = -1),
                                            radioButtons(inputId = "houseInequality", label = "only show studies...",
                                                         choiceNames = c("=","<=",">="), 
                                                         choiceValues = c("equal","less","more")),
@@ -365,36 +365,36 @@ Nucleic Acids Res. 2022 Nov 9:gkac1010. doi: 10.1093/nar/gkac1010. Epub ahead of
                                    nav_panel(title = span("Stat Boxplot", uiOutput("noStatSelected2", inline = TRUE)),
                                              plotOutput(outputId = "statBoxplot")),
                                    nav_panel(title = span(
-                                     "Stable-polymorphic score",
+                                     "Stable-polymorphic studies",
                                      tooltip(
                                        icon("circle-question"),
-                                       "The stable-polymorphic score is a measure of how stable a gene is within an individual over time and variable between individuals. It has a maximum value of 22 (ERAP2 is the only gene with this score)",
+                                       "The stable-polymorphic number is the number of studies in which a gene was found to be stable within an individual over time but variable between individuals. It has a maximum value of 7",
                                        placement = "right"
                                      )
                                    ),
                                    plotOutput("stablePolyScorePlot"),
-                                   tags$b(tags$p("Number of stable-polymorphic thresholds passed:")),
+                                   tags$b(tags$p("Number of studies where the stable-polymorphic threshold was passed:")),
                                    tags$p(textOutput("stableNum")), 
                                    tags$i(textOutput("stableStudies")),
                                    ),
                                    nav_panel(title = span(
-                                     "Flexibility score",
+                                     "Flexibility studies",
                                      tooltip(
                                        icon("circle-question"),
-                                       "The flexibility score is how many studies in which a gene was called differentially expressed with time. The maximum score is a 6.",
+                                       "The flexibility number is how many studies in which a gene was called differentially expressed with time (p < 0.05). It has a maximum value of 6",
                                        placement = "right"
                                      )
                                    ),
                                    plotOutput("flexibilityScorePlot"),
-                                   tags$b(tags$p("Number of studies where this gene was called differntially expressed over time:")),
+                                   tags$b(tags$p("Number of studies where this gene was called differentially expressed over time:")),
                                    tags$p(textOutput("dynamicNum")), 
                                    tags$i(textOutput("dynamicStudies")),
                                    ),
                                    nav_panel(title = span(
-                                     "Housekeeping score",
+                                     "Housekeeping studies",
                                      tooltip(
                                        icon("circle-question"),
-                                       "The housekeeping score is a measure of how stable a gene is within an individual, the same across individuals, and highly expressed. It has a maximum value of 39 (RANBP3 is the only gene with this score)",
+                                       "The housekeeping number is how many studies in which a gene is stable within an individual, with simliar expression levels across different individuals, and is robustly expressed. It has a maximum value of 6",
                                        placement = "right"
                                      )
                                    ),
@@ -420,20 +420,21 @@ Nucleic Acids Res. 2022 Nov 9:gkac1010. doi: 10.1093/nar/gkac1010. Epub ahead of
                sidebarPanel = sidebarPanel(
                  tags$h3("Download data"),
                  selectInput(inputId = "downloadSelectInput", label = "Choose CSV file", 
-                             choices = c("Gomez 50 minute transcript statistics (3.4 MB)" = "gomez",
-                                         "Meaburn 4 hour transcript statistics, day 1 (9.7 MB)" = "m1",
-                                         "Meaburn 4 hour transcript statistics, day 2 (10.2 MB)" = "m2",
-                                         "Gosch 24 hour transcript statistics (3.2 MB)" = "gosch",
-                                         "Obermoser C1, vein 5 week transcript statistics (5.1 MB)" = "o1",
-                                         "Obermoser C2, finger 2 week transcript statistics (5.9 MB)" = "o2",
-                                         "Obermoser C2, vein 5 week transcript statistics (6.5 MB)" = "o3",
-                                         "Obermoser C2, finger 9 day transcript statistics (5.2 MB)" = "o4",
-                                         "Dusek 8 week transcript statistics (10.5 MB)" = "dusek",
-                                         "Rusch 12 week transcript statistics (12.3 MB)" = "rusch",
-                                         "LaRocca 16 week transcript statistics (2.8 MB)" = "larocca",
-                                         "Stable-polymorphic scores (1.3 MB)" = "stable",
-                                         "Flexibility scores (4.6 MB)" = "flex",
-                                         "Housekeeping scores (3.4 MB)" = "house"), selected = ""),
+                             choices = c("Gomez 50 minute transcript statistics (4.2 MB)" = "gomez",
+                                         "Meaburn 4 hour transcript statistics, day 1 (10.7 MB)" = "m1",
+                                         "Meaburn 4 hour transcript statistics, day 2 (11.4 MB)" = "m2",
+                                         "Gosch 24 hour transcript statistics (6.2 MB)" = "gosch",
+                                         "Obermoser C1, vein 5 week transcript statistics (14.1 MB)" = "o1",
+                                         "Obermoser C2, finger 2 week transcript statistics (6.7 MB)" = "o2",
+                                         "Obermoser C2, vein 5 week transcript statistics (11.4 MB)" = "o3",
+                                         "Obermoser C2, finger 9 day transcript statistics (11.5 MB)" = "o4",
+                                         "Dusek 8 week transcript statistics (11.6 MB)" = "dusek",
+                                         "Rusch 12 week transcript statistics (14 MB)" = "rusch",
+                                         "LaRocca 16 week transcript statistics (3.4 MB)" = "larocca",
+                                         "Stable-polymorphic scores (2.2 MB)" = "stable",
+                                         "Flexibility scores (2.9 MB)" = "flex",
+                                         "Housekeeping scores (1.5 MB)" = "house",
+                                         "Median gene statistics (4.3 MB)" = "median"), selected = ""),
                  downloadButton("downloadData", "Download")
                ),
                mainPanel = mainPanel(
@@ -442,7 +443,7 @@ Nucleic Acids Res. 2022 Nov 9:gkac1010. doi: 10.1093/nar/gkac1010. Epub ahead of
              )
     ),
     tags$script(HTML("var header = $('.navbar > .container-fluid');
-header.append('<div style=\"float:right\"><img src=\"Logo.png\" alt=\"alt\" style=\"float:right;width:50px;height:50px;padding-top:0px;\"> </a></div>');
+header.append('<div style=\"float:right\"><img src=\"logo.jpg\" alt=\"alt\" style=\"float:right;width:50px;height:50px;padding-top:0px;\"> </a></div>');
     console.log(header)")
     )
   )
@@ -617,39 +618,39 @@ server <- function(input, output, session) {
   output$stableNum <- renderText({
     stable %>%
       dplyr::filter(Symbol == input$geneName) %>%
-      dplyr::select(`Total`) %>%
-      paste(.data, "thresholds", sep = " ")
+      dplyr::select(`Study_counts`) %>%
+      paste(.data, "studies", sep = " ")
   })
   output$stableStudies <- renderText({
     stable %>%
       dplyr::filter(Symbol == input$geneName) %>%
-      dplyr::select(Thresholds) %>%
+      dplyr::select(Filters) %>%
       paste()
   })
   
   output$dynamicNum <- renderText({
     dynamic %>%
       dplyr::filter(Symbol == input$geneName) %>%
-      dplyr::select(Count) %>%
+      dplyr::select(P_value_study_count) %>%
       paste(.data, "studies", sep = " ")
   })
   output$dynamicStudies <- renderText({
     dynamic %>%
       dplyr::filter(Symbol == input$geneName) %>%
-      dplyr::select(Studies) %>%
+      dplyr::select(P_study_names) %>%
       paste()
   })
   
   output$houseNum <- renderText({
     housekeeping %>%
       dplyr::filter(Symbol == input$geneName) %>%
-      dplyr::select(Total) %>%
-      paste(.data, "thresholds", sep = " ")
+      dplyr::select(Studies) %>%
+      paste(.data, "studies", sep = " ")
   })
   output$houseStudies <- renderText({
-    housekeeping %>%
-      dplyr::filter(Symbol == input$geneName) %>%
-      dplyr::select(Thresholds) %>%
+    hold <- housekeeping %>%
+      dplyr::filter(Symbol == input$geneName) %>% 
+      dplyr::select(Filters) %>%
       paste()
   })
   
@@ -679,12 +680,12 @@ server <- function(input, output, session) {
   output$stablePolyScorePlot <- renderPlot({
     stnum <- stable %>%
       dplyr::filter(Symbol == input$geneName) %>%
-      dplyr::select(Total) %>%
+      dplyr::select(Study_counts) %>%
       as.numeric()
-    ggplot(stable, aes(x = Total)) +
+    ggplot(stable, aes(x = Study_counts)) +
       geom_histogram(fill = "lightblue", binwidth = 1) +
       geom_vline(xintercept = stnum, color = "royalblue") +
-      annotate(geom = "text", label = paste(input$geneName), x = stnum + 2, y = 5800) +
+      annotate(geom = "text", label = paste(input$geneName), x = stnum + 0.75, y = 5800) +
       theme_minimal_hgrid() +
       labs(x = "Stable-polymorphic score", y = "All genes")
   })
@@ -692,12 +693,12 @@ server <- function(input, output, session) {
   output$flexibilityScorePlot <- renderPlot({
     dynum <- dynamic %>%
       dplyr::filter(Symbol == input$geneName) %>%
-      dplyr::select(Count) %>%
+      dplyr::select(P_value_study_count) %>%
       as.numeric()
-    ggplot(dynamic, aes(x = Count)) +
+    ggplot(dynamic, aes(x = P_value_study_count)) +
       geom_histogram(fill = "lightpink1", binwidth = 1) +
       geom_vline(xintercept = dynum, color = "tomato") +
-      annotate(geom = "text", label = paste(input$geneName), x = dynum + 0.75, y = 5000) +
+      annotate(geom = "text", label = paste(input$geneName), x = dynum + 0.75, y = 5200) +
       theme_minimal_hgrid() +
       labs(x = "Number of studies called DE", y = "All genes")
   })
@@ -705,12 +706,12 @@ server <- function(input, output, session) {
   output$housekeepingScorePlot <- renderPlot({
     hsnum <- housekeeping %>%
       dplyr::filter(Symbol == input$geneName) %>%
-      dplyr::select(Total) %>%
+      dplyr::select(Studies) %>%
       as.numeric()
-    ggplot(housekeeping, aes(x = Total)) +
+    ggplot(housekeeping, aes(x = Studies)) +
       geom_histogram(fill = "palegreen1", binwidth = 1) +
       geom_vline(xintercept = hsnum, color = "green4") +
-      annotate(geom = "text", label = paste(input$geneName), x = hsnum + 4, y = 1500) +
+      annotate(geom = "text", label = paste(input$geneName), x = hsnum + 0.75, y = 11000) +
       theme_minimal_hgrid() +
       labs(x = "Houskeeping score", y = "All genes")
   })
@@ -831,13 +832,16 @@ server <- function(input, output, session) {
       ## If disease filter is selected, present all options that meet slider criteria and the trait of interest.
       if (input$gtexFilter == "Disease/Trait") {
         result <- gtex %>% 
-          dplyr::filter(`GWAS Trait` == input$eqtlChoiceTrait, `Stable-polymorphic score` %in% stableSliderOption, `Flexibility score` %in% dynamicSliderOption, `Housekeeping score` %in% houseSliderOption)
+          dplyr::filter(`GWAS Trait` == input$eqtlChoiceTrait, `Stable-polymorphic 4+ filter studies` %in% stableSliderOption,
+                        `Studies below 0.05 p_value` %in% dynamicSliderOption, `Housekeeping 4+ filter studies` %in% houseSliderOption)
       }
       
       ## If no filter is selected, present all options that meet slider criteria.
       if (input$gtexFilter == "No filter") {
         result <- gtex %>% 
-          dplyr::filter(`Stable-polymorphic score` %in% stableSliderOption, `Flexibility score` %in% dynamicSliderOption, `Housekeeping score` %in% houseSliderOption)
+          dplyr::filter(`Stable-polymorphic 4+ filter studies` %in% stableSliderOption, 
+                        `Studies below 0.05 p_value` %in% dynamicSliderOption, 
+                        `Housekeeping 4+ filter studies` %in% houseSliderOption)
       }
       ## Return gtex table with updated column names
       return(datatable(result, colnames = gtexColumnNames, escape = FALSE,
@@ -889,7 +893,8 @@ server <- function(input, output, session) {
            "larocca" = variation_tables[[11]],
            "stable" = stable,
            "flex" = dynamic,
-           "house" = housekeeping)
+           "house" = housekeeping,
+           "median" = read.csv("./data/median_stability_statistics.csv"))
   })
   
   fn <- reactive({
@@ -907,7 +912,8 @@ server <- function(input, output, session) {
            "larocca" = "larocca_variation",
            "stable" = "stablepolymorphic_genes",
            "flex" = "flexible_genes",
-           "house" = "housekeeping_genes")
+           "house" = "housekeeping_genes",
+           "median" = "median_stability_statistics")
   })
   
   ### Preview ----

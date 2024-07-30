@@ -16,43 +16,51 @@ for (i in 1:length(files)) {
   names(variation_tables)[i] <- study_names[i]
 }
 names(variation_tables[[1]]) <- c("Ensembl ID", "Within Variation", "Total Variation", "Rs", "Average Expression",
-                                  "Subject VP", "Age VP", "Sex VP", "Time VP", "Residual VP", "Repeatability",
-                                  "Genetic Variance", "Residual Variance", "Symbol")
+                                  "Subject VP", "Age-sex VP", "Age VP", "Age-time VP", "Sex VP", "Sex-time VP", "Time VP",
+                                  "Residual VP", "Repeatability", "Genetic Variance", "Residual Variance", "Symbol")
 names(variation_tables[[2]]) <- c("Probe ID", "Within Variation", "Total Variation", "Rs", "Average Expression",
-                                  "Subject VP", "Sex VP", "Time VP", "Residual VP", "Repeatability",
+                                  "Subject VP", "Sex VP", "Time VP", "Time-sex VP", "Residual VP", "Repeatability",
                                   "Genetic Variance", "Residual Variance", "Symbol")
 names(variation_tables[[3]]) <- c("Probe ID", "Within Variation", "Total Variation", "Rs", "Average Expression",
-                                  "Subject VP", "Sex VP", "Time VP", "Residual VP", "Repeatability",
+                                  "Subject VP", "Sex VP", "Time VP", "Time-sex VP", "Residual VP", "Repeatability",
                                   "Genetic Variance", "Residual Variance", "Symbol")
-names(variation_tables[[4]]) <- c("Symbol", "Within Variation", "Total Variation", "Rs", "Average Expression",
-                                  "Subject VP", "Age VP", "Sex VP", "Time VP", "Residual VP", "Repeatability",
-                                  "Genetic Variance", "Residual Variance", "Symbol2")
+names(variation_tables[[4]]) <- c("Probe ID", "Within Variation", "Total Variation", "Rs", "Average Expression", 
+                                  "Subject VP", "Age VP", "Age-male VP", "Age-11h VP", "Age-14h VP", "Age-17h VP", "Age-8h VP",
+                                  "Age-20h VP", "Age-23h VP", "Age-5h VP", "Sex VP VP", "Sex-time VP", "Time VP", "Residual VP", 
+                                  "Repeatability", "Genetic Variance", "Residual Variance", "Symbol2")
 names(variation_tables[[5]]) <- c("Probe ID", "Within Variation", "Total Variation", "Rs", "Average Expression",
-                                  "Treatment VP", "Subject VP", "Age VP", "Time VP", "Sex VP", "Race VP",
-                                  "Residual VP", "Repeatability","Genetic Variance", "Residual Variance", "Symbol")
+                                  "Subject VP", "Treatment VP", "Age VP", "Age-8d VP", "Age-14d VP", "Age-17d VP", "Age-28d VP", 
+                                  "Age-35d VP", "Age-21d VP", "Age-3d VP", "Age-7d VP", "Sex VP", "Time-treatment VP", 
+                                  "Race VP", "Time VP", "Time-race VP", "Time-sex VP", "Residual VP", "Repeatability",
+                                  "Genetic Variance", "Residiual Variance", "Symbol")
 names(variation_tables[[6]]) <- c("Probe ID", "Within Variation", "Total Variation", "Rs", "Average Expression",
-                                  "Treatment VP", "Subject VP", "Age VP", "Time VP", "Sex VP", "Race VP",
-                                  "Residual VP", "Repeatability","Genetic Variance", "Residual Variance", "Symbol")
+                                  "Subject VP", "Age VP", "Age-14d VP", "Age-7d VP", "Race VP", "Time-sex VP", "Sex VP", "Time VP",
+                                  "Time-race VP", "Time-treatment VP", "Treatment VP", "Residual VP", "Repeatability",
+                                  "Genetic Variance", "Residual Variance", "Symbol")
 names(variation_tables[[7]]) <- c("Probe ID", "Within Variation", "Total Variation", "Rs", "Average Expression",
-                                  "Treatment VP", "Subject VP", "Age VP", "Time VP", "Sex VP", "Race VP",
-                                  "Residual VP", "Repeatability","Genetic Variance", "Residual Variance", "Symbol")
+                                  "Subject VP", "Age VP", "Age-14d VP", "Age-7.5d VP", "Age-17d VP", "Age-35d VP", "Age-10d VP",
+                                  "Age-7d VP", "Age-8d VP", "Race VP", "Time-sex VP", "Sex VP", "Time VP", "Time-race VP", 
+                                  "Time-treatment VP", "Treatment VP", "Residual VP", "Repeatability","Genetic Variance",
+                                  "Residual Variance", "Symbol")
 names(variation_tables[[8]]) <- c("Probe ID", "Within Variation", "Total Variation", "Rs", "Average Expression",
-                                  "Treatment VP", "Subject VP", "Age VP", "Time VP", "Sex VP", "Race VP",
-                                  "Residual VP", "Repeatability","Genetic Variance", "Residual Variance", "Symbol")
+                                  "Subject VP", "Age VP", "Age-7d15h VP", "Age-7d12h VP", "Age-7d9h VP", "Age-8.5d VP", "Age-7d6h",
+                                  "Age-9d VP", "Age7d1.5h VP", "Age-9d VP", "Age7d3h VP", "Age-7d VP", "Time-treatment VP", "Sex VP",
+                                  "Race VP", "Time VP", "Time-race VP", "Time-sex VP", "Treatment VP", "Residual VP", "Repeatability",
+                                  "Genetic Variance", "Residual Variance", "Symbol")
 names(variation_tables[[9]]) <- c("Probe ID", "Within Variation", "Total Variation", "Rs", "Average Expression",
-                                   "Subject VP", "Sex VP", "Time VP", 
-                                   "Residual VP", "Repeatability","Genetic Variance", "Residual Variance", "Symbol")
+                                  "Subject VP", "Sex VP", "Time VP", "Time-sex VP",
+                                  "Residual VP", "Repeatability","Genetic Variance", "Residual Variance", "Symbol")
 names(variation_tables[[10]]) <- c("Probe ID", "Within Variation", "Total Variation", "Rs", "Average Expression",
-                                   "Subject VP", "Age VP", "Time VP", "Ethnicity VP", "Race VP","Residual VP",
-                                   "Repeatability","Genetic Variance", "Residual Variance", "Symbol")
+                                   "Subject VP", "Age VP", "Time-race VP", "Time-ethnicity VP", "Time VP", "Race VP", "Ethnicity VP",
+                                   "Residual VP", "Repeatability","Genetic Variance", "Residual Variance", "Symbol")
 names(variation_tables[[11]]) <- c("Symbol", "Within Variation", "Total Variation", "Rs", "Average Expression",
-                                   "Subject VP", "Time VP", "Residual VP", "Repeatability", "Genetic Variance",
-                                   "Residual Variance", "Symbol2")
+                                   "Subject VP", "Response VP", "Time-response VP", "Time VP", "Residual VP", "Repeatability", 
+                                   "Genetic Variance", "Residual Variance", "Symbol2")
 
 
 ## Stability and dynamic data
-stable <- read.csv("./data/stable_gene_filter_count.csv")
-dynamic <-  read.csv("./data/deg_counts.csv")
+stable <- read.csv("./data/stable_polymorphic_scores.csv")
+dynamic <-  read.csv("./data/flexible_gene_scores.csv")
 housekeeping <- read.csv("./data/housekeeping_scores.csv")
 
 ## Phenotype data
@@ -62,9 +70,14 @@ for (i in 1:length(files)) {
   pheno_data[[i]] <- read.csv(file = paste("./data/phenotypes/", files[i], sep = ""))
   names(pheno_data)[i] <- study_names[i]
 }
+for (i in 1:length(pheno_data)) {
+  if ("participant" %in% colnames(pheno_data[[i]]) | "id" %in% colnames(pheno_data[[i]])) {
+    colnames(pheno_data[[i]])[grep("participant|id", colnames(pheno_data[[i]]))] <- "subject"
+  }
+}
 
 ## eQTL data
-gtex <- read_rds("./data/eqtls/gtex_variants_and_phenotypes_whole_blood_28062024.rds")
+gtex <- read_rds("./data/eqtls/gtex_variants_and_phenotypes_whole_blood.rds")
 gtex$`Stable-polymorphic score` <- replace_na(gtex$`Stable-polymorphic score`, 0)
 gtex$`Flexibility score` <- replace_na(gtex$`Flexibility score`, 0)
 gtex$`Housekeeping score` <- replace_na(gtex$`Housekeeping score`, 0)
@@ -84,9 +97,9 @@ gtexColumnNames <- c(
   '<span title="Reported p-value for strongest SNP risk allele (linked to dbGaP Association Browser). Note that p-values are rounded to 1 significant digit (for example, a published p-value of 4.8 x 10-7 is rounded to 5 x 10-7)">GWAS p_value</span>',
   '<span title="Provides information on a variant’s predicted most severe functional effect from Ensembl">Genomic Context</span>',
   '<span title="Denotes whether SNP is in intergenic region (0 = no; 1 = yes)">Intergenic?</span>',
-  '<span title="A score ranging from 1-22. Genes that score higher are generally expressed stably over time for an individual, but expression levels vary between individuals.">Stable-polymorphic score</span>',
-  '<span title="A score ranging from 1-6. Genes that score higher were called differentially expressed over time in more studies, indicating varying expression levels over time.">Flexibility score</span>',
-  '<span title="A score ranging from 1-39. Genes that score higher show little variation across time or across individuals.">Housekeeping score</span>'
+  '<span title="A score ranging from 0-7. Genes that score higher are generally expressed stably over time for an individual, but expression levels vary between individuals.">Stable-polymorphic 4+ filter studies</span>',
+  '<span title="A score ranging from 0-6. Genes that score higher were called differentially expressed over time in more studies, indicating varying expression levels over time.">Studies below 0.05 p_value</span>',
+  '<span title="A score ranging from 0-6. Genes that score higher show little variation across time or across individuals.">Housekeeping 4+ filter studies</span>'
 )
 
 gtexplot <- as_tibble(as.data.frame(table(gtex$`Symbol of blood RNA`)))

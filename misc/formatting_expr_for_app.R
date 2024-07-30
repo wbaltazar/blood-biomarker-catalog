@@ -32,6 +32,8 @@ str(norm_expr)
 # ..$ : chr [1:28] "GSM7662572" "GSM7662571" "GSM7662575" "GSM7662576" ...
 ## Write to RShiny application folder
 write_rds(norm_expr, file = "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/gomez.rds")
+## Write phenotype data to application folder
+write.csv(pheno_data, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/1Gomez_pheno.csv")
 
 ## Meaburn
 ## Load in norm_expr files from Meaburn variationm DAY 1
@@ -79,6 +81,8 @@ length(grep("^\\d", new_names))
 new_names <- make.names(new_names, unique = T)
 rownames(norm_expr) <- new_names
 write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data/expr/Meaburn1.rds")
+## Write phenotype data to application folder
+write.csv(p1, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/2Meaburn1_pheno.csv")
 
 ## DAY 2
 sourcePartial("~/Desktop/work_repo/github/Meaburn_study_data/code/Meaburn_variation.R",
@@ -102,6 +106,8 @@ sum(is.na(new_names))
 new_names <- make.names(new_names, unique = T)
 rownames(norm_expr) <- new_names
 write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data/expr/Meaburn2.rds")
+## Write phenotype data to application folder
+write.csv(p2, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/2Meaburn2_pheno.csv")
 
 ## Gosch
 sourcePartial("~/Desktop/work_repo/github/Gosch_study_data/code/Gosch_variation.R",
@@ -125,6 +131,8 @@ identical(colnames(norm_expr), pheno_data$title)
 colnames(norm_expr) <- pheno_data$geo_accession
 write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data/expr/gosch.rds")
 ## We added ENSG IDs to the row names at the bottom of the script
+## Write phenotype data to application folder
+write.csv(pheno_data, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/3Gosch_pheno.csv")
 
 ## Obermoser
 ## C1
@@ -172,6 +180,8 @@ norm_expr[1:5, 1:5]
 head(norm_expr$Probe)
 # [1] "ILMN_2209417" "ILMN_1765401" "ILMN_1652171" "ILMN_1652170" "ILMN_1792710" "ILMN_1703558"
 write_rds(norm_expr, file = "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/obermoser1.rds")
+## Write phenotype data to application folder
+write.csv(p1v, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/4obermoser1_pheno.csv")
 
 ## C2
 sourcePartial("~/Desktop/work_repo/github/Obermoser_study_data/code/Obermoser_variation.R",
@@ -201,6 +211,8 @@ head(norm_expr$Probe)
 dim(norm_expr)
 # [1] 22413    50 (same as Obermoser_variation.R, but one more column for Probe)
 write_rds(norm_expr, file = "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/obermoser2.rds")
+## Write phenotype data to application folder
+write.csv(p1f, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/4obermoser2_pheno.csv")
 
 ## C3
 sourcePartial("~/Desktop/work_repo/github/Obermoser_study_data/code/Obermoser_variation.R",
@@ -230,6 +242,8 @@ head(norm_expr$Probe)
 dim(norm_expr)
 # [1] 27431   144
 write_rds(norm_expr, file = "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/obermoser3.rds")
+## Write phenotype data to application folder
+write.csv(p2v, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/4obermoser3_pheno.csv")
 
 ## C4
 sourcePartial("~/Desktop/work_repo/github/Obermoser_study_data/code/Obermoser_variation.R",
@@ -259,6 +273,8 @@ head(norm_expr$Probe)
 dim(norm_expr)
 # [1] 23484   186 (same as Obermoser_variation.R, but one more column for Probe)
 write_rds(norm_expr, file = "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/obermoser4.rds")
+## Write phenotype data to application folder
+write.csv(p2f, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/4obermoser4_pheno.csv")
 
 ## Dusek
 sourcePartial("~/Desktop/work_repo/github/Dusek_study_data/code/Dusek_variation.R",
@@ -287,6 +303,8 @@ rownames(norm_expr) <- make.names(newnames, unique = T)
 norm_expr[1:5, 1:5]
 head(norm_expr$Probe)
 write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data/expr/dusek.rds")
+## Write phenotype data to application folder
+write.csv(pheno_data, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/5Dusek_pheno.csv")
 
 ## Rusch
 sourcePartial("~/Desktop/work_repo/github/Rusch_study_data/code/Rusch_variation.R",
@@ -324,6 +342,8 @@ norm_expr[1:5, 1:5]
 head(norm_expr$Probe)
 # [1] "1007_s_at" "1053_at"   "117_at"    "121_at"    "1255_g_at" "1294_at"  
 write_rds(norm_expr, file = "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/rusch.rds")
+## Write phenotype data to application folder
+write.csv(pheno_data, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/6Rusch_pheno.csv")
 
 ## LaRocca
 sourcePartial("~/Desktop/work_repo/github/LaRocca_study_data/code/LaRocca_variation.R",
@@ -356,3 +376,5 @@ head(rownames(e4))
 # ENSG00000223972 ENSG00000226210 ENSG00000278267            <NA>            <NA>            <NA> 
   # "DDX11L1"        "WASH7P"     "MIR6859.1"  "LOC101927589"     "LOC729737"  "LOC100996442"
 write_rds(e4, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/gosch.rds")
+## Write phenotype data to application folder
+write.csv(pheno_data, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/7LaRocca_pheno.csv")
