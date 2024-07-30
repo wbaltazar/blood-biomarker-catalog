@@ -1,9 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # Code and result repository for The Healthy Whole Blood Transcriptome Project
 
 Below is a description of what each directory contains.
