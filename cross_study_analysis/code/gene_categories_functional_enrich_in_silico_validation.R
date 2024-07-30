@@ -161,13 +161,14 @@ venn.diagram(x = list(dynamic_enrich2, intersect(deboever, symbols)),
              filename = paste(output_dir, "in_silico_validation/flexible_deboever_validation.png", sep = ""))
 
 ## Stable-polymorphic and GTEx eQTL enrichment ----
-gtex <- read_tsv(paste(input_dir, "GTEx_Analysis_v8_eQTL/Whole_Blood.v8.egenes.txt.gz", sep = ""))
+gtex <- read_tsv("~/Desktop/work_repo/data/GTEx_Analysis_v8_eQTL/Whole_Blood.v8.egenes.txt.gz")
 gtex <- gtex %>% 
   dplyr::filter(qval < 0.01)
 length(gtex$gene_name)
 # [1] 10071
 length(intersect(gtex$gene_name, symbols))
 # [1] 5333
+## lintersect
 lintersect <- function(x,y) {
   length(intersect(unique(x),unique(y)))
 }
@@ -191,32 +192,50 @@ venn.diagram(x = list(stable_enrich2, intersect(gtex$gene_name, symbols)),
 ## Lower tail is false because we don't expect enrichment in any particular direction
 ## You can see expected values at https://systems.crump.ucla.edu/hypergeometric/index.php 
 ## Stable-polymorphic with Eisenberg
-phyper(q = lintersect(stable_enrich2, eisenberg$V1), m = lintersect(eisenberg$V1, symbols),
-       n = length(setdiff(symbols, eisenberg$V1)), k = length(stable_enrich2), lower.tail = T) # Lower and upper tails
+phyper(q = lintersect(stable_enrich2, eisenberg$V1), #608
+       m = lintersect(eisenberg$V1, symbols), #3175
+       n = length(setdiff(symbols, eisenberg$V1)), #6299
+       k = length(stable_enrich2), #2688
+       lower.tail = T) # Lower and upper tails
 # [1] 1.889889e-47, under-enriched
 ## Stable-polymorphic with De Boever
-phyper(q = lintersect(stable_enrich2, deboever), m = lintersect(deboever, symbols),
-       n = length(setdiff(symbols, deboever)), k = length(stable_enrich2), lower.tail = T)
+phyper(q = lintersect(stable_enrich2, deboever), #259
+       m = lintersect(deboever, symbols), #1019
+       n = length(setdiff(symbols, deboever)), #8455
+       k = length(stable_enrich2), #2688
+       lower.tail = T)
 # [1] 0.01407925
 ## Dynamic with GTEx
-phyper(q = lintersect(dynamic_enrich2, gtex$gene_name), m = lintersect(gtex$gene_name, symbols),
-       n = length(setdiff(symbols, gtex$gene_name)), k = length(dynamic_enrich2), lower.tail = T)
+phyper(q = lintersect(dynamic_enrich2, gtex$gene_name), #545
+       m = lintersect(gtex$gene_name, symbols), #5333
+       n = length(setdiff(symbols, gtex$gene_name)), #4141
+       k = length(dynamic_enrich2), #1179
+       lower.tail = T)
 # [1] 7.702749e-14
 ## Dynamic with Eisenberg
-phyper(q = lintersect(dynamic_enrich2, eisenberg$V1), m = lintersect(eisenberg$V1, symbols),
-       n = length(setdiff(symbols, eisenberg$V1)), k = length(dynamic_enrich2), lower.tail = T)
+phyper(q = lintersect(dynamic_enrich2, eisenberg$V1), #440
+       m = lintersect(eisenberg$V1, symbols), #3175
+       n = length(setdiff(symbols, eisenberg$V1)), #6299
+       k = length(dynamic_enrich2), #1179
+       lower.tail = T)
 # [1] 0.9985237
 phyper(q = lintersect(dynamic_enrich2, eisenberg$V1), m = lintersect(eisenberg$V1, symbols),
        n = length(setdiff(symbols, eisenberg$V1)), k = length(dynamic_enrich2), lower.tail = F)
 # [1] 0.001476319
 ## Housekeeping with GTEx
-phyper(q = lintersect(house_enrich2, gtex$gene_name), m = lintersect(gtex$gene_name, symbols),
-       n = length(setdiff(symbols, gtex$gene_name)), k = length(house_enrich2), lower.tail = T)
+phyper(q = lintersect(house_enrich2, gtex$gene_name), #83
+       m = lintersect(gtex$gene_name, symbols), #5333
+       n = length(setdiff(symbols, gtex$gene_name)), #4141
+       k = length(house_enrich2), #175
+       lower.tail = T)
 # [1] 0.01072431
 ## Housekeeping with De Boever
-phyper(q = lintersect(house_enrich2, deboever), m = lintersect(deboever, symbols),
-       n = length(setdiff(symbols, deboever)), k = length(house_enrich2), lower.tail = T)
-# [1] 0.9796551
+phyper(q = lintersect(house_enrich2, deboever), #27
+       m = lintersect(deboever, symbols), #1019
+       n = length(setdiff(symbols, deboever)), #8455
+       k = length(house_enrich2), #175
+       lower.tail = T)
+
 
 # Functional enrichment analysis ----
 ## Get entrez IDs for enrichKEGG
