@@ -76,10 +76,10 @@ length(house_enrich)
 ## Create the Venn Diagram before removing intersections ----
 venn.diagram(x = list(stable_enrich, dynamic_enrich, house_enrich), 
              category.names = c("Stable-polymorphic", "Flexible", "Housekeeping"),
-             fill = c("lightblue", "pink", "lightgreen"), col = "black",
-             main = "Gene categories", imagetype = "png", 
-             main.fontfamily = "Arial", main.fontface = "bold", fontfamily = "Arial",
-             cat.fontfamily = "Arial", cat.dist = c(-0.075,-0.05, -0.05),
+             fill = c("#00b7ec", "#00a076", "#fba200"), col = "black", alpha = c(0.8,0.8,0.8),
+             main = "Gene categories", imagetype = "png", cex = 1.5,
+             main.fontfamily = "Arial", main.fontface = "bold", main.cex = 1.5, fontfamily = "Arial",
+             cat.fontfamily = "Arial", cat.dist = c(-0.075,-0.05, -0.05), cat.cex = c(1.1,1.2,1.2),
              disable.logging = T,
              filename = paste(output_dir, "venn_diagram_overlap.png", sep = ""))
 
@@ -94,14 +94,14 @@ write.table(stable_enrich2, paste(output_dir, "stable_polymorphic_gene_list.txt"
 write.table(dynamic_enrich2, paste(output_dir, "flexible_gene_list.txt", sep = ""))
 write.table(house_enrich2, paste(output_dir, "housekeeping_gene_list.txt", sep = ""))
 
-venn.diagram(x = list(stable_enrich2, dynamic_enrich2, house_enrich2), 
-             category.names = c("Stable-polymorphic", "Flexible", "Housekeeping"),
-             fill = c("lightblue", "pink", "lightgreen"), col = "black",
-             main = "Functional enrichment categories", imagetype = "png", 
-             main.fontfamily = "Arial", main.fontface = "bold", fontfamily = "Arial",
-             cat.fontfamily = "Arial", cat.dist = c(-0.1, -0.06, 0.017),
-             disable.logging = T,
-             filename = paste(output_dir, "genes_used_for_func_enrich.png", sep = ""))
+# venn.diagram(x = list(stable_enrich2, dynamic_enrich2, house_enrich2), 
+#              category.names = c("Stable-polymorphic", "Flexible", "Housekeeping"),
+#              fill = c("lightblue", "pink", "lightgreen"), col = "black",
+#              main = "Functional enrichment categories", imagetype = "png", 
+#              main.fontfamily = "Arial", main.fontface = "bold", fontfamily = "Arial",
+#              cat.fontfamily = "Arial", cat.dist = c(-0.1, -0.06, 0.017),
+#              disable.logging = T,
+#              filename = paste(output_dir, "genes_used_for_func_enrich.png", sep = ""))
 
 # In silico validation of gene sets ----
 ### The Eisenberg et al. study identified over 3800 gene symbols they classified as housekeeping genes in 16 human
@@ -119,20 +119,21 @@ head(eisenberg)
 dir.create(paste(output_dir, "in_silico_validation", sep= ""))
 write.table(eisenberg, file = paste(input_dir, "in_silico_validation/eisenberg_housekeeping_genes_July_21_2024.txt", sep = ""))
 # Over-enrichment test
-phyper(q = length(intersect(house_enrich2, eisenberg$V1)) - 1,
+phyper(q = length(intersect(house_enrich2, eisenberg$V1)) - 1, # Number of genes - 1, exclusive greater than
        m = length(intersect(eisenberg$V1, symbols)),
        n = length(setdiff(symbols, eisenberg$V1)),
        k = length(house_enrich2),
        lower.tail = F)
 # [1] 6.52438e-18
-### Figure for paper
+### Figure for paper (crop title)
 venn.diagram(x = list(house_enrich2, intersect(eisenberg$V1, symbols)), 
              category.names = c("Housekeeping set", "Eisenberg et al."),
-             fill = c("grey80", "grey50"), col = "black",
-             main = "Previously identified housekeeping", imagetype = "png", 
+             fill = c("#fba200", "#ffdfbf"), col = "black", alpha = c(0.9, 0.9),
+             main = "Previously identified housekeeping", imagetype = "png", cex = 1.3,
              main.fontfamily = "Arial", main.fontface = "bold", fontfamily = "Arial",
-             cat.fontfamily = "Arial", cat.dist = c(0.015,-0.08), cat.pos = c(0, 90),
-             disable.logging = T, hyper.test = T, lower.tail = F, total.population = length(symbols), force.unique = T,
+             cat.fontfamily = "Arial", cat.dist = c(0.1,-0.08), cat.pos = c(-90, 170), cat.cex = c(1.15,1.17),
+             ext.dist = c(0.0005,0.008), ext.length = c(0.9,0.8), margin = 0.16,
+             disable.logging = T, force.unique = T,
              filename = paste(output_dir, "in_silico_validation/housekeeping_eisenberg_validation.png", sep = ""))
 
 ## Dynamic and DeBoever seasonal gene enrichment ----
@@ -153,11 +154,11 @@ phyper(q = length(intersect(dynamic_enrich2, unique(deboever))) - 1,
 # [1] 2.054972e-06
 venn.diagram(x = list(dynamic_enrich2, intersect(deboever, symbols)), 
              category.names = c("Flexible set", "DeBoever et al."),
-             fill = c("grey80", "grey50"), col = "black",
+             fill = c("#00a076", "#c3fde0"), col = "black", cex = 1.4, alpha = c(0.8,0.8),
              main = "Previously identified flexible genes", imagetype = "png", 
              main.fontfamily = "Arial", main.fontface = "bold", fontfamily = "Arial",
-             cat.fontfamily = "Arial", cat.dist = c(-0.05,-0.07),
-             disable.logging = T, hyper.test = T, lower.tail = F, total.population = 9474, force.unique = T,
+             cat.fontfamily = "Arial", cat.dist = c(-0.056,-0.07), cat.cex = c(1.2,1.2),
+             disable.logging = T, force.unique = T,
              filename = paste(output_dir, "in_silico_validation/flexible_deboever_validation.png", sep = ""))
 
 ## Stable-polymorphic and GTEx eQTL enrichment ----
@@ -180,23 +181,23 @@ phyper(q = lintersect(stable_enrich2, gtex$gene_name) - 1,
 # [1] 1.970359e-39
 venn.diagram(x = list(stable_enrich2, intersect(gtex$gene_name, symbols)), 
              category.names = c("Stable-polymorphic", "GTEx eGenes (q < 0.01)"),
-             fill = c("grey80", "grey50"), col = "black",
+             fill = c("#00b7ec", "#afeeee"), col = "black", cex = 1.4, alpha = c(0.8,0.8),
              main = "Previously identified GTEx eQTLs", imagetype = "png", 
              main.fontfamily = "Arial", main.fontface = "bold", fontfamily = "Arial",
-             cat.fontfamily = "Arial", cat.dist = c(0.03,-0.075), cat.pos = c(200,45),
-             disable.logging = T, hyper.test = T, lower.tail = F, total.population = 9474, force.unique = T,
+             cat.fontfamily = "Arial", cat.dist = c(0.035,-0.08), cat.pos = c(200,45), cat.cex = c(1.3, 1.2),
+             disable.logging = T, force.unique = T,
              filename = paste(output_dir, "in_silico_validation/stable_poly_GTEx_validation.png", sep = ""))
 
 
-## Checking for unexpected enrichment ----
-## Lower tail is false because we don't expect enrichment in any particular direction
+## Checking for under-enrichment ----
+## Lower tail is true
 ## You can see expected values at https://systems.crump.ucla.edu/hypergeometric/index.php 
 ## Stable-polymorphic with Eisenberg
-phyper(q = lintersect(stable_enrich2, eisenberg$V1), #608
+phyper(q = lintersect(stable_enrich2, eisenberg$V1), #608, inclusive less than
        m = lintersect(eisenberg$V1, symbols), #3175
        n = length(setdiff(symbols, eisenberg$V1)), #6299
        k = length(stable_enrich2), #2688
-       lower.tail = T) # Lower and upper tails
+       lower.tail = T) 
 # [1] 1.889889e-47, under-enriched
 ## Stable-polymorphic with De Boever
 phyper(q = lintersect(stable_enrich2, deboever), #259
@@ -218,10 +219,7 @@ phyper(q = lintersect(dynamic_enrich2, eisenberg$V1), #440
        n = length(setdiff(symbols, eisenberg$V1)), #6299
        k = length(dynamic_enrich2), #1179
        lower.tail = T)
-# [1] 0.9985237
-phyper(q = lintersect(dynamic_enrich2, eisenberg$V1), m = lintersect(eisenberg$V1, symbols),
-       n = length(setdiff(symbols, eisenberg$V1)), k = length(dynamic_enrich2), lower.tail = F)
-# [1] 0.001476319
+# [1] 0.9985237 
 ## Housekeeping with GTEx
 phyper(q = lintersect(house_enrich2, gtex$gene_name), #83
        m = lintersect(gtex$gene_name, symbols), #5333
@@ -235,7 +233,7 @@ phyper(q = lintersect(house_enrich2, deboever), #27
        n = length(setdiff(symbols, deboever)), #8455
        k = length(house_enrich2), #175
        lower.tail = T)
-
+# [1] 0.9796551
 
 # Functional enrichment analysis ----
 ## Get entrez IDs for enrichKEGG
@@ -331,50 +329,51 @@ resultsKEGG[[3]]$Description[2]
 resultsKEGG[[3]]$Description[2] <- "GPI-anchor biosynthesis"
 
 ## Generate plots
+colors <- list(sp = c("FALSE" = "#afeeee", "TRUE" = "#00b7ec"), fl = c("FALSE" = "#c3fde0", "TRUE" = "#00a076"), ho = c("FALSE" = "#ffdfbf", "TRUE" = "#fba200"))
 for (i in 1:3) {
   lims <- c(0,max(max(-log10(resultsGO[[i]]$pvalue)),
                   max(-log10(resultsKEGG[[i]]$pvalue)))
   )
   ## GO_BP
-  go_bp[[i]] <- ggplot(na.omit(head(resultsGO[[i]][which(resultsGO[[i]]$ONTOLOGY == "BP"),],10)), aes(x = factor(Description, levels = rev(Description)), y = -log10(pvalue), fill = as.character(passed))) +
+  go_bp[[i]] <- ggplot(na.omit(head(resultsGO[[i]][which(resultsGO[[i]]$ONTOLOGY == "BP"),],10)), aes(x = factor(Description, levels = rev(Description)), y = -log10(pvalue), fill = passed)) +
     geom_col(color = "black", width = 0.5, show.legend = F) +
-    scale_fill_manual(values = c("FALSE" = "grey80" , "TRUE" = "grey45")) +
-    theme_cowplot() +
-    coord_flip() +
-    labs(y = "", x = "",
-         title =  "") +
-    ylim(lims)
-  theme(axis.text.y = element_text(size = 12), title = element_text(size = 12))
-  ## GO_CC
-  go_cc[[i]] <- ggplot(na.omit(head(resultsGO[[i]][which(resultsGO[[i]]$ONTOLOGY == "CC"),],10)), aes(x = factor(Description, levels = rev(Description)), y = -log10(pvalue), fill = as.character(passed))) +
-    geom_col(color = "black", width = 0.5, show.legend = F) +
-    scale_fill_manual(values = c("FALSE" = "grey80" , "TRUE" = "grey45")) +
+    scale_fill_manual(values = colors[[i]]) +
     theme_cowplot() +
     coord_flip() +
     labs(y = "", x = "",
          title =  "") +
     ylim(lims) +
-    theme(axis.text.y = element_text(size = 12), title = element_text(size = 12))
-  ## GO_MF
-  go_mf[[i]] <- ggplot(na.omit(head(resultsGO[[i]][which(resultsGO[[i]]$ONTOLOGY == "MF"),],10)), aes(x = factor(Description, levels = rev(Description)), y = -log10(pvalue), fill = as.character(passed))) +
+    theme(axis.text.y = element_text(size = 16), axis.text.x = element_text(size = 16))
+  ## GO_CC
+  go_cc[[i]] <- ggplot(na.omit(head(resultsGO[[i]][which(resultsGO[[i]]$ONTOLOGY == "CC"),],10)), aes(x = factor(Description, levels = rev(Description)), y = -log10(pvalue), fill = passed)) +
     geom_col(color = "black", width = 0.5, show.legend = F) +
-    scale_fill_manual(values = c("FALSE" = "grey80" , "TRUE" = "grey45")) +
+    scale_fill_manual(values = colors[[i]]) +
+    theme_cowplot() +
+    coord_flip() +
+    labs(y = "", x = "",
+         title =  "") +
+    ylim(lims) +
+    theme(axis.text.y = element_text(size = 16), axis.text.x = element_text(size = 16))
+  ## GO_MF
+  go_mf[[i]] <- ggplot(na.omit(head(resultsGO[[i]][which(resultsGO[[i]]$ONTOLOGY == "MF"),],10)), aes(x = factor(Description, levels = rev(Description)), y = -log10(pvalue), fill = passed)) +
+    geom_col(color = "black", width = 0.5, show.legend = F) +
+    scale_fill_manual(values = colors[[i]]) +
     theme_cowplot() +
     coord_flip() +
     labs(y = "", x = "",
          title = "") +
     ylim(lims) +
-    theme(axis.text.y = element_text(size = 12), title = element_text(size = 12))
+    theme(axis.text.y = element_text(size = 16), axis.text.x = element_text(size = 16))
   ## KEGG
   kegg[[i]] <- ggplot(na.omit(head(resultsKEGG[[i]], 10)), aes(x = factor(Description, levels = rev(Description)), y = -log10(pvalue), fill = passed)) +
     geom_col(color = "black", width = 0.5, show.legend = F) +
-    scale_fill_manual(values = c("FALSE" = "grey80" , "TRUE" = "grey45")) +
+    scale_fill_manual(values = colors[[i]]) +
     theme_cowplot() +
     coord_flip() +
     labs(y = "-log10(p-value)", x = "",
          title =  "") +
     ylim(lims) +
-    theme(axis.text.y = element_text(size = 12), title = element_text(size = 12))
+    theme(axis.text.y = element_text(size = 16), axis.text.x = element_text(size = 16))
   
 }
 
@@ -385,7 +384,7 @@ b <- plot_grid(go_bp[[2]], go_cc[[2]], go_mf[[2]], kegg[[2]], ncol = 1, align = 
 ## Housekeeping function
 c <- plot_grid(go_bp[[3]], go_cc[[3]], go_mf[[3]], kegg[[3]], ncol = 1, align = 'v')
 
-pdf(file = paste(output_dir, "functional_enrichment/functional_enrichment_figure.pdf", sep = ""), height = 12, width = 20)
+pdf(file = paste(output_dir, "functional_enrichment/functional_enrichment_figure.pdf", sep = ""), height = 12, width = 23)
 plot_grid(a, b, c, ncol = 3, nrow = 1, labels = c('A. Stable-polymorphic genes', 'B. Flexible genes', 'C. Housekeeping genes'),
           align = 'hv')
 dev.off()

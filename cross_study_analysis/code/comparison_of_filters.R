@@ -77,10 +77,10 @@ length(rp_symbols)
 # [1] 1320
 
 venn.diagram(x = list(sd_symbols, vp_symbols, rp_symbols), 
-             category.names = c(".sd", ".vp", ".rp"),
-             fill = c("lightblue", "royalblue3", "grey75"), col = "black",
+             category.names = c("Standard deviation", "variancePartition", "Repeatability"),
+             fill = c("orange1", "royalblue3", "darkviolet"), col = "black",
              main = "Stable-polymorphic filters (>= 4 studies)", imagetype = "png", 
-             main.fontfamily = "Arial", main.fontface = "bold", fontfamily = "Arial",
-             cat.fontfamily = "Arial", cat.dist = c(-0.05,-0.05, -0.05),
+             main.fontfamily = "Arial", main.fontface = "bold", fontfamily = "Arial", cat.cex = c(1.078,1.13,1.23),
+             cat.fontfamily = "Arial", cat.dist = c(-0.078,-0.09, -0.09),
              disable.logging = T,
              filename = paste(output, "comparison_of_filters.png", sep = ""))

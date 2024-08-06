@@ -78,9 +78,6 @@ for (i in 1:length(pheno_data)) {
 
 ## eQTL data
 gtex <- read_rds("./data/eqtls/gtex_variants_and_phenotypes_whole_blood.rds")
-gtex$`Stable-polymorphic score` <- replace_na(gtex$`Stable-polymorphic score`, 0)
-gtex$`Flexibility score` <- replace_na(gtex$`Flexibility score`, 0)
-gtex$`Housekeeping score` <- replace_na(gtex$`Housekeeping score`, 0)
 gtexColumnNames <- c(
   '<span title="GENCODE gene name for blood RNA">Symbol of blood RNA</span>',
   '<span title="GENCODE/Ensembl gene ID for blood RNA">Ensembl ID</span>',
@@ -97,9 +94,9 @@ gtexColumnNames <- c(
   '<span title="Reported p-value for strongest SNP risk allele (linked to dbGaP Association Browser). Note that p-values are rounded to 1 significant digit (for example, a published p-value of 4.8 x 10-7 is rounded to 5 x 10-7)">GWAS p_value</span>',
   '<span title="Provides information on a variant’s predicted most severe functional effect from Ensembl">Genomic Context</span>',
   '<span title="Denotes whether SNP is in intergenic region (0 = no; 1 = yes)">Intergenic?</span>',
-  '<span title="A score ranging from 0-7. Genes that score higher are generally expressed stably over time for an individual, but expression levels vary between individuals.">Stable-polymorphic 4+ filter studies</span>',
-  '<span title="A score ranging from 0-6. Genes that score higher were called differentially expressed over time in more studies, indicating varying expression levels over time.">Studies below 0.05 p_value</span>',
-  '<span title="A score ranging from 0-6. Genes that score higher show little variation across time or across individuals.">Housekeeping 4+ filter studies</span>'
+  '<span title="A score ranging from 0-7. Genes that score higher are generally expressed stably over time for an individual, but expression levels vary between individuals.">Stable-polymorphic no. studies</span>',
+  '<span title="A score ranging from 0-6. Genes that score higher were called differentially expressed over time in more studies (p < 0.05 using limma comparing baseline and follow-up gene expression), indicating varying expression levels over time.">Flexible no. studies</span>',
+  '<span title="A score ranging from 0-6. Genes that score higher show little variation across time or across individuals.">Housekeeping no. studies</span>'
 )
 
 gtexplot <- as_tibble(as.data.frame(table(gtex$`Symbol of blood RNA`)))

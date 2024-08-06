@@ -627,6 +627,40 @@ pdf(file = paste(output_dir, "training_vein_limma/volcanos.pdf", sep = ""), widt
 plot_grid(plotlist = volcanos[grep("^Base", names(volcanos))], align = 'hv', nrow = 2)
 dev.off()
 
+#### Supplementary figure S1
+dir.create(paste(output_dir, "figure_s1", sep = ""))
+
+flu <- tables[grep("^Flu", names(tables))]
+flu <- lapply(flu, function(x) {
+  x %>% filter(adj.P.Val < 0.05) %>% nrow() %>% return()
+})
+flu <- unlist(flu)
+
+pne <- tables[grep("^Pneu", names(tables))]
+pne <- lapply(pne, function(x) {
+  x %>% filter(adj.P.Val < 0.05) %>% nrow() %>% return()
+})
+pne <- unlist(pne)
+pne <- tables[grep("^Pneu", names(tables))]
+pne <- lapply(pne, function(x) {
+  x %>% filter(adj.P.Val < 0.05) %>% nrow() %>% return()
+})
+pne <- unlist(pne)
+
+sal <- tables[grep("^Saline", names(tables))]
+sal <- lapply(sal, function(x) {
+  x %>% filter(adj.P.Val < 0.05) %>% nrow() %>% return()
+})
+sal <- unlist(sal)
+time <- factor(c(7, 8, 10, 14, 17, 21, 28, 35), levels = c(7, 8, 10, 14, 17, 21, 28, 35), ordered = T)
+
+figures1 <- tibble(time, sal, flu, pne)
+figures1 <- figures1 %>% pivot_longer(cols = c(sal, flu, pne), names_to = "treatment")
+figureS1 <- figures1 %>% ggplot(aes(x = time, y = value, fill = treatment)) +
+  geom_col(position = "dodge", color = "black") +
+  labs(title = 'Cohort 1 Vein', subtitle = 'DEGs (adjusted p < 0.05), shot administered at time = 7',
+       x = 'Time from baseline', y = 'DEGs')
+
 # Analysis 2: Test_Set_Finger (p1f) ----
 ## Step 1: Read in raw expression data ----
 p1f[1:5,1:5]
@@ -1313,9 +1347,61 @@ tables <- list()
 for (i in 1:63) {
   tables[[i]] <- topTable(x, coef = i, number = Inf, adjust.method = "fdr")
   tables[[i]]$Symbol <- mapIds(x = illuminaHumanv3.db, keys = row.names(tables[[i]]), column = "SYMBOL", keytype = "PROBEID")
+  names(tables)[[i]] <- names(y)[i]
   write.csv(tables[[i]], file = paste(output_dir, "test_vein_limma/",
                                       names(y)[i],".csv",sep = ""), row.names = TRUE)
 }
+
+flu <- tables[grep("^FLU", names(tables))]
+flu <- lapply(flu, function(x) {
+  x %>% filter(adj.P.Val < 0.05) %>% nrow() %>% return()
+})
+flu <- unlist(flu)
+
+pne <- tables[grep("^PNEU", names(tables))]
+pne <- lapply(pne, function(x) {
+  x %>% filter(adj.P.Val < 0.05) %>% nrow() %>% return()
+})
+pne <- unlist(pne)
+
+sal <- tables[grep("^Saline", names(tables))]
+sal <- lapply(sal, function(x) {
+  x %>% filter(adj.P.Val < 0.05) %>% nrow() %>% return()
+})
+sal <- unlist(sal)
+time <- factor(c(7, 7.5, 8, 10, 14, 17, 35), levels = c(7, 7.5, 8, 10, 14, 17, 35), ordered = T)
+
+figures12 <- tibble(time, sal, flu, pne)
+figures12 <- figures12 %>% pivot_longer(cols = c(sal, flu, pne), names_to = "treatment")
+figures12 %>% ggplot(aes(x = time, y = value, fill = treatment)) +
+  geom_col(position = "dodge", color = "black") +
+  labs(title = 'Cohort 2 Vein', subtitle = 'DEGs (adjusted p < 0.05), shot administered at time = 7',
+       x = 'Time from baseline', y = 'DEGs')
+
+tables <- tables[which(grepl("^FLU|^PNEUM|^Saline", names(tables)))]
+names(tables)
+saline <- list()
+for (i in 1:7) {
+  saline[[i]] <- EnhancedVolcano(toptable = tables[[i]], lab = tables[[i]]$Symbol, x = 'logFC', y = 'P.Value', FCcutoff = 1, pCutoff = 0.01,
+                                 title = names(tables)[i], caption = "", subtitle = "", titleLabSize = 6)
+}
+top <- plot_grid(plotlist = saline, nrow = 1, align = 'h')
+pneumo <- list()
+for (i in 8:14) {
+  pneumo[[i-7]] <- EnhancedVolcano(toptable = tables[[i]], lab = tables[[i]]$Symbol, x = 'logFC', y = 'P.Value', FCcutoff = 1, pCutoff = 0.01,
+                              title = names(tables)[i], caption = "", subtitle = "", titleLabSize = 6)
+}
+mid <- plot_grid(plotlist = pneumo, nrow = 1, align = 'h')
+flu <- list()
+for (i in 15:21) {
+  flu[[i-14]] <- EnhancedVolcano(toptable = tables[[i]], lab = tables[[i]]$Symbol, x = 'logFC', y = 'P.Value', FCcutoff = 1, pCutoff = 0.01,
+                                 title = names(tables)[i], caption = "", subtitle = "", titleLabSize = 6)
+}
+bot <- plot_grid(plotlist = flu, nrow = 1, align = 'h')
+pdf(file = "~/Desktop/show laura/volcano_version.pdf", height = 12, width = 24)
+plot_grid(top, mid, bot, nrow = 3, align = 'v')
+dev.off()
+
 
 ### Plot p-value histograms ----
 histlist <- list()

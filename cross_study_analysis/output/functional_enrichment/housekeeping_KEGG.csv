@@ -1,142 +1,143 @@
 "","category","subcategory","ID","Description","GeneRatio","BgRatio","pvalue","p.adjust","qvalue","geneID","Count"
-"hsa03040","Genetic Information Processing","Transcription","hsa03040","Spliceosome","7/84","121/4607",0.00615797057492571,0.47008944830059,0.47008944830059,"4686/22938/9343/10084/9128/10713/9129",7
-"hsa00563","Metabolism","Glycan biosynthesis and metabolism","hsa00563","Glycosylphosphatidylinositol (GPI)-anchor biosynthesis","3/84","22/4607",0.00701209085911269,0.47008944830059,0.47008944830059,"51604/8733/94005",3
-"hsa05132","Human Diseases","Infectious disease: bacterial","hsa05132","Salmonella infection","9/84","200/4607",0.0100019031553317,0.47008944830059,0.47008944830059,"55823/10120/64601/3551/23265/57617/23339/10540/9266",9
-"hsa04140","Cellular Processes","Transport and catabolism","hsa04140","Autophagy - animal","7/84","141/4607",0.0137703612057472,0.48540523250259,0.48540523250259,"55054/55823/64601/57617/23339/53349/26003",7
-"hsa00770","Metabolism","Metabolism of cofactors and vitamins","hsa00770","Pantothenate and CoA biosynthesis","2/84","15/4607",0.0295755740915923,0.705309323181767,0.705309323181767,"80347/79717",2
-"hsa05222","Human Diseases","Cancer: specific types","hsa05222","Small cell lung cancer","4/84","65/4607",0.0300131626885858,0.705309323181767,0.705309323181767,"3551/6257/7709/842",4
-"hsa04148","Cellular Processes","Transport and catabolism","hsa04148","Efferocytosis","5/84","114/4607",0.0559713938310057,0.877576020946183,0.877576020946183,"55823/64601/57617/23339/405",5
-"hsa04144","Cellular Processes","Transport and catabolism","hsa04144","Endocytosis","7/84","194/4607",0.062241552067555,0.877576020946183,0.877576020946183,"29934/9798/112936/381/9266/84364/832",7
-"hsa00760","Metabolism","Metabolism of cofactors and vitamins","hsa00760","Nicotinate and nicotinamide metabolism","2/84","23/4607",0.064911363045695,0.877576020946183,0.877576020946183,"51547/55191",2
-"hsa04919","Organismal Systems","Endocrine system","hsa04919","Thyroid hormone signaling pathway","4/84","86/4607",0.0708841996628296,0.877576020946183,0.877576020946183,"6257/3065/8841/842",4
-"hsa05014","Human Diseases","Neurodegenerative disease","hsa05014","Amyotrophic lateral sclerosis","8/84","243/4607",0.0736165064544239,0.877576020946183,0.877576020946183,"10120/4686/79139/2733/8480/10540/3181/842",8
-"hsa04623","Organismal Systems","Immune system","hsa04623","Cytosolic DNA-sensing pathway","3/84","54/4607",0.07468732093159,0.877576020946183,0.877576020946183,"171568/3551/9641",3
-"hsa04150","Environmental Information Processing","Signal transduction","hsa04150","mTOR signaling pathway","4/84","109/4607",0.136696352992533,0.912329745389064,0.912329745389064,"79109/79726/3551/92335",4
-"hsa03015","Genetic Information Processing","Translation","hsa03015","mRNA surveillance pathway","3/84","77/4607",0.164845876641954,0.912329745389064,0.912329745389064,"4686/26528/2733",3
-"hsa03082","Genetic Information Processing","Chromosome","hsa03082","ATP-dependent chromatin remodeling","3/84","77/4607",0.164845876641954,0.912329745389064,0.912329745389064,"3065/6603/65980",3
-"hsa03410","Genetic Information Processing","Replication and repair","hsa03410","Base excision repair","2/84","41/4607",0.171219796879031,0.912329745389064,0.912329745389064,"3980/4968",2
-"hsa05169","Human Diseases","Infectious disease: viral","hsa05169","Epstein-Barr virus infection","5/84","163/4607",0.175279009342174,0.912329745389064,0.912329745389064,"22938/3551/3065/9641/842",5
-"hsa04213","Organismal Systems","Aging","hsa04213","Longevity regulating pathway - multiple species","2/84","42/4607",0.177765191548407,0.912329745389064,0.912329745389064,"1979/3065",2
-"hsa04120","Genetic Information Processing","Folding, sorting and degradation","hsa04120","Ubiquitin mediated proteolysis","4/84","122/4607",0.181898958330822,0.912329745389064,0.912329745389064,"7319/51588/51434/7428",4
-"hsa05164","Human Diseases","Infectious disease: viral","hsa05164","Influenza A","4/84","122/4607",0.181898958330822,0.912329745389064,0.912329745389064,"3551/8480/9641/842",4
-"hsa04622","Organismal Systems","Immune system","hsa04622","RIG-I-like receptor signaling pathway","2/84","44/4607",0.190970042358407,0.912329745389064,0.912329745389064,"3551/9641",2
-"hsa04330","Environmental Information Processing","Signal transduction","hsa04330","Notch signaling pathway","2/84","45/4607",0.197622518210872,0.912329745389064,0.912329745389064,"22938/3065",2
-"hsa03013","Genetic Information Processing","Translation","hsa03013","Nucleocytoplasmic transport","3/84","86/4607",0.206278868720634,0.912329745389064,0.912329745389064,"4686/2733/8480",3
-"hsa05418","Human Diseases","Cardiovascular disease","hsa05418","Fluid shear stress and atherosclerosis","3/84","89/4607",0.220598263995316,0.912329745389064,0.912329745389064,"3551/51588/9181",3
-"hsa05130","Human Diseases","Infectious disease: bacterial","hsa05130","Pathogenic Escherichia coli infection","4/84","135/4607",0.231360906837182,0.912329745389064,0.912329745389064,"3551/9266/9181/842",4
-"hsa04814","Cellular Processes","Cell motility","hsa04814","Motor proteins","3/84","92/4607",0.235118396757924,0.912329745389064,0.912329745389064,"10120/10540/832",3
-"hsa04920","Organismal Systems","Endocrine system","hsa04920","Adipocytokine signaling pathway","2/84","51/4607",0.238035353574731,0.912329745389064,0.912329745389064,"3551/6257",2
-"hsa04657","Organismal Systems","Immune system","hsa04657","IL-17 signaling pathway","2/84","53/4607",0.251625534353009,0.912329745389064,0.912329745389064,"3551/9641",2
-"hsa05211","Human Diseases","Cancer: specific types","hsa05211","Renal cell carcinoma","2/84","55/4607",0.265239691362949,0.912329745389064,0.912329745389064,"405/7428",2
-"hsa01240","Metabolism","Global and overview maps","hsa01240","Biosynthesis of cofactors","3/84","100/4607",0.274589126722754,0.912329745389064,0.912329745389064,"80347/55191/79717",3
-"hsa05016","Human Diseases","Neurodegenerative disease","hsa05016","Huntington disease","5/84","193/4607",0.275207900447116,0.912329745389064,0.912329745389064,"10120/10540/3065/4899/842",5
-"hsa04146","Cellular Processes","Transport and catabolism","hsa04146","Peroxisome","2/84","57/4607",0.278858584887489,0.912329745389064,0.912329745389064,"9409/5824",2
-"hsa05223","Human Diseases","Cancer: specific types","hsa05223","Non-small cell lung cancer","2/84","57/4607",0.278858584887489,0.912329745389064,0.912329745389064,"6257/842",2
-"hsa05417","Human Diseases","Cardiovascular disease","hsa05417","Lipid and atherosclerosis","4/84","148/4607",0.28376614312437,0.912329745389064,0.912329745389064,"3551/6257/9641/842",4
-"hsa05207","Human Diseases","Cancer: overview","hsa05207","Chemical carcinogenesis - receptor activation","3/84","102/4607",0.284580799595171,0.912329745389064,0.912329745389064,"6257/405/9641",3
-"hsa05034","Human Diseases","Substance dependence","hsa05034","Alcoholism","2/84","58/4607",0.285664160321769,0.912329745389064,0.912329745389064,"3065/8841",2
-"hsa05162","Human Diseases","Infectious disease: viral","hsa05162","Measles","3/84","106/4607",0.304656034741275,0.912329745389064,0.912329745389064,"3551/9641/842",3
-"hsa05212","Human Diseases","Cancer: specific types","hsa05212","Pancreatic cancer","2/84","63/4607",0.319570789479999,0.912329745389064,0.912329745389064,"3551/842",2
-"hsa00900","Metabolism","Metabolism of terpenoids and polyketides","hsa00900","Terpenoid backbone biosynthesis","1/84","21/4607",0.321097937770023,0.912329745389064,0.912329745389064,"79947",1
-"hsa00970","Genetic Information Processing","Translation","hsa00970","Aminoacyl-tRNA biosynthesis","1/84","21/4607",0.321097937770023,0.912329745389064,0.912329745389064,"23438",1
-"hsa05220","Human Diseases","Cancer: specific types","hsa05220","Chronic myeloid leukemia","2/84","64/4607",0.326314584020104,0.912329745389064,0.912329745389064,"3551/3065",2
-"hsa04210","Cellular Processes","Cell growth and death","hsa04210","Apoptosis","3/84","112/4607",0.334885360884285,0.912329745389064,0.912329745389064,"3551/835/842",3
-"hsa05202","Human Diseases","Cancer: overview","hsa05202","Transcriptional misregulation in cancer","3/84","112/4607",0.334885360884285,0.912329745389064,0.912329745389064,"6257/3065/7709",3
-"hsa05160","Human Diseases","Infectious disease: viral","hsa05160","Hepatitis C","3/84","114/4607",0.34496433360666,0.912329745389064,0.912329745389064,"3551/9641/842",3
-"hsa05200","Human Diseases","Cancer: overview","hsa05200","Pathways in cancer","7/84","317/4607",0.35659837235089,0.912329745389064,0.912329745389064,"3551/6257/3065/405/7709/7428/842",7
-"hsa01523","Human Diseases","Drug resistance: antineoplastic","hsa01523","Antifolate resistance","1/84","24/4607",0.357732204975797,0.912329745389064,0.912329745389064,"3551",1
-"hsa04215","Cellular Processes","Cell growth and death","hsa04215","Apoptosis - multiple species","1/84","24/4607",0.357732204975797,0.912329745389064,0.912329745389064,"842",1
-"hsa04930","Human Diseases","Endocrine and metabolic disease","hsa04930","Type II diabetes mellitus","1/84","25/4607",0.369504078155381,0.912329745389064,0.912329745389064,"3551",1
-"hsa03083","Genetic Information Processing","Chromosome","hsa03083","Polycomb repressive complex","2/84","71/4607",0.372969382876912,0.912329745389064,0.912329745389064,"8314/3065",2
-"hsa05215","Human Diseases","Cancer: specific types","hsa05215","Prostate cancer","2/84","72/4607",0.379538224099248,0.912329745389064,0.912329745389064,"3551/842",2
-"hsa03020","Genetic Information Processing","Transcription","hsa03020","RNA polymerase","1/84","26/4607",0.381062711379944,0.912329745389064,0.912329745389064,"171568",1
-"hsa05161","Human Diseases","Infectious disease: viral","hsa05161","Hepatitis B","3/84","122/4607",0.385118792905446,0.912329745389064,0.912329745389064,"3551/9641/842",3
-"hsa04620","Organismal Systems","Immune system","hsa04620","Toll-like receptor signaling pathway","2/84","73/4607",0.386079136245282,0.912329745389064,0.912329745389064,"3551/9641",2
-"hsa00514","Metabolism","Glycan biosynthesis and metabolism","hsa00514","Other types of O-glycan biosynthesis","1/84","28/4607",0.403555458457514,0.912329745389064,0.912329745389064,"23275",1
-"hsa03440","Genetic Information Processing","Replication and repair","hsa03440","Homologous recombination","1/84","28/4607",0.403555458457514,0.912329745389064,0.912329745389064,"7156",1
-"hsa04136","Cellular Processes","Transport and catabolism","hsa04136","Autophagy - other","1/84","28/4607",0.403555458457514,0.912329745389064,0.912329745389064,"55054",1
-"hsa04110","Cellular Processes","Cell growth and death","hsa04110","Cell cycle","3/84","126/4607",0.405016214940325,0.912329745389064,0.912329745389064,"3065/51434/7709",3
-"hsa04064","Environmental Information Processing","Signal transduction","hsa04064","NF-kappa B signaling pathway","2/84","77/4607",0.411940963289696,0.912329745389064,0.912329745389064,"3551/51588",2
-"hsa04066","Environmental Information Processing","Signal transduction","hsa04066","HIF-1 signaling pathway","2/84","77/4607",0.411940963289696,0.912329745389064,0.912329745389064,"405/7428",2
-"hsa04625","Organismal Systems","Immune system","hsa04625","C-type lectin receptor signaling pathway","2/84","77/4607",0.411940963289696,0.912329745389064,0.912329745389064,"3551/9641",2
-"hsa04130","Genetic Information Processing","Folding, sorting and degradation","hsa04130","SNARE interactions in vesicular transport","1/84","29/4607",0.414497004971943,0.912329745389064,0.912329745389064,"9570",1
-"hsa05216","Human Diseases","Cancer: specific types","hsa05216","Thyroid cancer","1/84","29/4607",0.414497004971943,0.912329745389064,0.912329745389064,"6257",1
-"hsa05131","Human Diseases","Infectious disease: bacterial","hsa05131","Shigellosis","4/84","182/4607",0.425706562638675,0.912329745389064,0.912329745389064,"55054/3551/9266/9181",4
-"hsa05145","Human Diseases","Infectious disease: parasitic","hsa05145","Toxoplasmosis","2/84","82/4607",0.443514529534435,0.912329745389064,0.912329745389064,"3551/842",2
-"hsa04962","Organismal Systems","Excretory system","hsa04962","Vasopressin-regulated water reabsorption","1/84","32/4607",0.446145563730284,0.912329745389064,0.912329745389064,"10540",1
-"hsa05031","Human Diseases","Substance dependence","hsa05031","Amphetamine addiction","1/84","32/4607",0.446145563730284,0.912329745389064,0.912329745389064,"3065",1
-"hsa04659","Organismal Systems","Immune system","hsa04659","Th17 cell differentiation","2/84","83/4607",0.449720026492241,0.912329745389064,0.912329745389064,"3551/6257",2
-"hsa00600","Metabolism","Lipid metabolism","hsa00600","Sphingolipid metabolism","1/84","33/4607",0.456314694363433,0.912329745389064,0.912329745389064,"91012",1
-"hsa04621","Organismal Systems","Immune system","hsa04621","NOD-like receptor signaling pathway","3/84","137/4607",0.458705947221096,0.912329745389064,0.912329745389064,"55054/3551/9641",3
-"hsa04141","Genetic Information Processing","Folding, sorting and degradation","hsa04141","Protein processing in endoplasmic reticulum","3/84","138/4607",0.463494055547351,0.912329745389064,0.912329745389064,"79139/55741/111089941",3
-"hsa03460","Genetic Information Processing","Replication and repair","hsa03460","Fanconi anemia pathway","1/84","35/4607",0.476102676049185,0.912329745389064,0.912329745389064,"7156",1
-"hsa05167","Human Diseases","Infectious disease: viral","hsa05167","Kaposi sarcoma-associated herpesvirus infection","3/84","142/4607",0.482465512675494,0.912329745389064,0.912329745389064,"3551/9641/842",3
-"hsa05203","Human Diseases","Cancer: overview","hsa05203","Viral carcinogenesis","3/84","142/4607",0.482465512675494,0.912329745389064,0.912329745389064,"22938/3065/8841",3
-"hsa04613","Organismal Systems","Immune system","hsa04613","Neutrophil extracellular trap formation","2/84","89/4607",0.486128842553246,0.912329745389064,0.912329745389064,"3065/8841",2
-"hsa04936","Human Diseases","Endocrine and metabolic disease","hsa04936","Alcoholic liver disease","2/84","93/4607",0.509574935286671,0.912329745389064,0.912329745389064,"3551/9641",2
-"hsa03320","Organismal Systems","Endocrine system","hsa03320","PPAR signaling pathway","1/84","40/4607",0.522513032969161,0.912329745389064,0.912329745389064,"6257",1
-"hsa00310","Metabolism","Amino acid metabolism","hsa00310","Lysine degradation","1/84","41/4607",0.531295363871414,0.912329745389064,0.912329745389064,"10919",1
-"hsa00240","Metabolism","Nucleotide metabolism","hsa00240","Pyrimidine metabolism","1/84","42/4607",0.539918051001243,0.912329745389064,0.912329745389064,"1841",1
-"hsa04370","Environmental Information Processing","Signal transduction","hsa04370","VEGF signaling pathway","1/84","42/4607",0.539918051001243,0.912329745389064,0.912329745389064,"842",1
-"hsa04910","Organismal Systems","Endocrine system","hsa04910","Insulin signaling pathway","2/84","101/4607",0.554363080672823,0.912329745389064,0.912329745389064,"3551/23265",2
-"hsa05134","Human Diseases","Infectious disease: bacterial","hsa05134","Legionellosis","1/84","47/4607",0.580735434910624,0.912329745389064,0.912329745389064,"842",1
-"hsa05213","Human Diseases","Cancer: specific types","hsa05213","Endometrial cancer","1/84","47/4607",0.580735434910624,0.912329745389064,0.912329745389064,"842",1
-"hsa05416","Human Diseases","Cardiovascular disease","hsa05416","Viral myocarditis","1/84","47/4607",0.580735434910624,0.912329745389064,0.912329745389064,"842",1
-"hsa05120","Human Diseases","Infectious disease: bacterial","hsa05120","Epithelial cell signaling in Helicobacter pylori infection","1/84","50/4607",0.603486023323062,0.912329745389064,0.912329745389064,"3551",1
-"hsa05022","Human Diseases","Neurodegenerative disease","hsa05022","Pathways of neurodegeneration - multiple diseases","5/84","292/4607",0.623468852736685,0.912329745389064,0.912329745389064,"10120/79139/10540/53349/842",5
-"hsa04142","Cellular Processes","Transport and catabolism","hsa04142","Lysosome","2/84","115/4607",0.625704426568144,0.912329745389064,0.912329745389064,"26985/84572",2
-"hsa05166","Human Diseases","Infectious disease: viral","hsa05166","Human T-cell leukemia virus 1 infection","3/84","176/4607",0.629160793087824,0.912329745389064,0.912329745389064,"8498/3551/51434",3
-"hsa05206","Human Diseases","Cancer: overview","hsa05206","MicroRNAs in cancer","2/84","116/4607",0.630453041267884,0.912329745389064,0.912329745389064,"3551/3065",2
-"hsa00562","Metabolism","Carbohydrate metabolism","hsa00562","Inositol phosphate metabolism","1/84","57/4607",0.651935310501611,0.912329745389064,0.912329745389064,"5298",1
-"hsa00564","Metabolism","Lipid metabolism","hsa00564","Glycerophospholipid metabolism","1/84","57/4607",0.651935310501611,0.912329745389064,0.912329745389064,"11313",1
-"hsa04115","Cellular Processes","Cell growth and death","hsa04115","p53 signaling pathway","1/84","57/4607",0.651935310501611,0.912329745389064,0.912329745389064,"842",1
-"hsa04350","Environmental Information Processing","Signal transduction","hsa04350","TGF-beta signaling pathway","1/84","57/4607",0.651935310501611,0.912329745389064,0.912329745389064,"3065",1
-"hsa01524","Human Diseases","Drug resistance: antineoplastic","hsa01524","Platinum drug resistance","1/84","58/4607",0.658361120153889,0.912329745389064,0.912329745389064,"842",1
-"hsa05221","Human Diseases","Cancer: specific types","hsa05221","Acute myeloid leukemia","1/84","58/4607",0.658361120153889,0.912329745389064,0.912329745389064,"3551",1
-"hsa01232","Metabolism","Global and overview maps","hsa01232","Nucleotide metabolism","1/84","60/4607",0.67086312185125,0.912329745389064,0.912329745389064,"1841",1
-"hsa04914","Organismal Systems","Endocrine system","hsa04914","Progesterone-mediated oocyte maturation","1/84","60/4607",0.67086312185125,0.912329745389064,0.912329745389064,"51434",1
-"hsa03008","Genetic Information Processing","Translation","hsa03008","Ribosome biogenesis in eukaryotes","1/84","61/4607",0.676943504029499,0.912329745389064,0.912329745389064,"57455",1
-"hsa04211","Organismal Systems","Aging","hsa04211","Longevity regulating pathway","1/84","61/4607",0.676943504029499,0.912329745389064,0.912329745389064,"10919",1
-"hsa03018","Genetic Information Processing","Folding, sorting and degradation","hsa03018","RNA degradation","1/84","62/4607",0.682912871750907,0.912329745389064,0.912329745389064,"80153",1
-"hsa04070","Environmental Information Processing","Signal transduction","hsa04070","Phosphatidylinositol signaling system","1/84","67/4607",0.711163358560909,0.912329745389064,0.912329745389064,"5298",1
-"hsa04928","Organismal Systems","Endocrine system","hsa04928","Parathyroid hormone synthesis, secretion and action","1/84","67/4607",0.711163358560909,0.912329745389064,0.912329745389064,"6257",1
-"hsa05210","Human Diseases","Cancer: specific types","hsa05210","Colorectal cancer","1/84","67/4607",0.711163358560909,0.912329745389064,0.912329745389064,"842",1
-"hsa04658","Organismal Systems","Immune system","hsa04658","Th1 and Th2 cell differentiation","1/84","68/4607",0.716507472631589,0.912329745389064,0.912329745389064,"3551",1
-"hsa05142","Human Diseases","Infectious disease: parasitic","hsa05142","Chagas disease","1/84","70/4607",0.726904299713214,0.912329745389064,0.912329745389064,"3551",1
-"hsa05165","Human Diseases","Infectious disease: viral","hsa05165","Human papillomavirus infection","3/84","207/4607",0.736209495388025,0.912329745389064,0.912329745389064,"3551/3065/9641",3
-"hsa05208","Human Diseases","Cancer: overview","hsa05208","Chemical carcinogenesis - reactive oxygen species","2/84","143/4607",0.741697321479847,0.912329745389064,0.912329745389064,"3551/405",2
-"hsa04662","Organismal Systems","Immune system","hsa04662","B cell receptor signaling pathway","1/84","75/4607",0.751276756277756,0.912329745389064,0.912329745389064,"3551",1
-"hsa04931","Human Diseases","Endocrine and metabolic disease","hsa04931","Insulin resistance","1/84","75/4607",0.751276756277756,0.912329745389064,0.912329745389064,"3551",1
-"hsa04714","Organismal Systems","Environmental adaptation","hsa04714","Thermogenesis","2/84","146/4607",0.752133600283406,0.912329745389064,0.912329745389064,"6603/23028",2
-"hsa05235","Human Diseases","Cancer: overview","hsa05235","PD-L1 expression and PD-1 checkpoint pathway in cancer","1/84","76/4607",0.755886807573578,0.912329745389064,0.912329745389064,"3551",1
-"hsa05226","Human Diseases","Cancer: specific types","hsa05226","Gastric cancer","1/84","77/4607",0.76041241078784,0.912329745389064,0.912329745389064,"6257",1
-"hsa05170","Human Diseases","Infectious disease: viral","hsa05170","Human immunodeficiency virus 1 infection","2/84","151/4607",0.768732827265191,0.912329745389064,0.912329745389064,"3551/842",2
-"hsa05163","Human Diseases","Infectious disease: viral","hsa05163","Human cytomegalovirus infection","2/84","155/4607",0.781318509726615,0.912329745389064,0.912329745389064,"3551/842",2
-"hsa04934","Human Diseases","Endocrine and metabolic disease","hsa04934","Cushing syndrome","1/84","82/4607",0.781826261270252,0.912329745389064,0.912329745389064,"405",1
-"hsa04114","Cellular Processes","Cell growth and death","hsa04114","Oocyte meiosis","1/84","84/4607",0.789852108229518,0.912329745389064,0.912329745389064,"51434",1
-"hsa05171","Human Diseases","Infectious disease: viral","hsa05171","Coronavirus disease - COVID-19","2/84","158/4607",0.790365932458689,0.912329745389064,0.912329745389064,"3551/9641",2
-"hsa04371","Environmental Information Processing","Signal transduction","hsa04371","Apelin signaling pathway","1/84","85/4607",0.793754921165339,0.912329745389064,0.912329745389064,"4899",1
-"hsa04152","Environmental Information Processing","Signal transduction","hsa04152","AMPK signaling pathway","1/84","87/4607",0.801346941320117,0.912329745389064,0.912329745389064,"92335",1
-"hsa04630","Environmental Information Processing","Signal transduction","hsa04630","JAK-STAT signaling pathway","1/84","88/4607",0.805038723826557,0.912329745389064,0.912329745389064,"51588",1
-"hsa04668","Environmental Information Processing","Signal transduction","hsa04668","TNF signaling pathway","1/84","88/4607",0.805038723826557,0.912329745389064,0.912329745389064,"3551",1
-"hsa04137","Cellular Processes","Transport and catabolism","hsa04137","Mitophagy - animal","1/84","89/4607",0.808662699750117,0.912329745389064,0.912329745389064,"89941",1
-"hsa04722","Organismal Systems","Nervous system","hsa04722","Neurotrophin signaling pathway","1/84","91/4607",0.815712132435879,0.912329745389064,0.912329745389064,"3551",1
-"hsa04068","Environmental Information Processing","Signal transduction","hsa04068","FoxO signaling pathway","1/84","93/4607",0.822504822204953,0.912329745389064,0.912329745389064,"3551",1
-"hsa04071","Environmental Information Processing","Signal transduction","hsa04071","Sphingolipid signaling pathway","1/84","93/4607",0.822504822204953,0.912329745389064,0.912329745389064,"91012",1
-"hsa04072","Environmental Information Processing","Signal transduction","hsa04072","Phospholipase D signaling pathway","1/84","93/4607",0.822504822204953,0.912329745389064,0.912329745389064,"9266",1
-"hsa04660","Organismal Systems","Immune system","hsa04660","T cell receptor signaling pathway","1/84","97/4607",0.83535661252331,0.912329745389064,0.912329745389064,"3551",1
-"hsa05168","Human Diseases","Infectious disease: viral","hsa05168","Herpes simplex virus 1 infection","4/84","316/4607",0.838447813709348,0.912329745389064,0.912329745389064,"8893/3551/9641/842",4
-"hsa04530","Cellular Processes","Cellular community - eukaryotes","hsa04530","Tight junction","1/84","100/4607",0.844387882900164,0.912329745389064,0.912329745389064,"9181",1
-"hsa04820",NA,NA,"hsa04820","Cytoskeleton in muscle cells","1/84","101/4607",0.847288130922437,0.912329745389064,0.912329745389064,"832",1
-"hsa04010","Environmental Information Processing","Signal transduction","hsa04010","MAPK signaling pathway","2/84","183/4607",0.853869929938988,0.912329745389064,0.912329745389064,"5871/3551",2
-"hsa04380","Organismal Systems","Development and regeneration","hsa04380","Osteoclast differentiation","1/84","104/4607",0.855672213664026,0.912329745389064,0.912329745389064,"3551",1
-"hsa05135","Human Diseases","Infectious disease: bacterial","hsa05135","Yersinia infection","1/84","109/4607",0.868646430823472,0.912329745389064,0.912329745389064,"3551",1
-"hsa05225","Human Diseases","Cancer: specific types","hsa05225","Hepatocellular carcinoma","1/84","109/4607",0.868646430823472,0.912329745389064,0.912329745389064,"6603",1
-"hsa04151","Environmental Information Processing","Signal transduction","hsa04151","PI3K-Akt signaling pathway","2/84","192/4607",0.872121701404937,0.912329745389064,0.912329745389064,"3551/842",2
-"hsa04932","Human Diseases","Endocrine and metabolic disease","hsa04932","Non-alcoholic fatty liver disease","1/84","111/4607",0.873507203032082,0.912329745389064,0.912329745389064,"3551",1
-"hsa04062","Organismal Systems","Immune system","hsa04062","Chemokine signaling pathway","1/84","116/4607",0.884895209575243,0.91742812169198,0.917428121691979,"3551",1
-"hsa04014","Environmental Information Processing","Signal transduction","hsa04014","Ras signaling pathway","1/84","122/4607",0.897230155357717,0.923426656244074,0.923426656244074,"3551",1
-"hsa05152","Human Diseases","Infectious disease: bacterial","hsa05152","Tuberculosis","1/84","128/4607",0.908257307643542,0.92800203172275,0.92800203172275,"842",1
-"hsa05010","Human Diseases","Neurodegenerative disease","hsa05010","Alzheimer disease","2/84","241/4607",0.939822800107024,0.953345430324391,0.953345430324391,"3551/842",2
-"hsa05020","Human Diseases","Neurodegenerative disease","hsa05020","Prion disease","1/84","174/4607",0.961768637318107,0.962493075501117,0.962493075501117,"842",1
-"hsa05012","Human Diseases","Neurodegenerative disease","hsa05012","Parkinson disease","1/84","175/4607",0.962493075501117,0.962493075501117,0.962493075501117,"842",1
+"hsa03040","Genetic Information Processing","Transcription","hsa03040","Spliceosome","7/85","121/4608",0.00656010340554145,0.509476968078752,0.509476968078752,"4686/22938/9343/10084/9128/10713/9129",7
+"hsa00563","Metabolism","Glycan biosynthesis and metabolism","hsa00563","Glycosylphosphatidylinositol (GPI)-anchor biosynthesis","3/85","22/4608",0.00724189508680423,0.509476968078752,0.509476968078752,"51604/8733/94005",3
+"hsa05132","Human Diseases","Infectious disease: bacterial","hsa05132","Salmonella infection","9/85","200/4608",0.0107635979171567,0.509476968078752,0.509476968078752,"55823/10120/64601/3551/23265/57617/23339/10540/9266",9
+"hsa04140","Cellular Processes","Transport and catabolism","hsa04140","Autophagy - animal","7/85","141/4608",0.0146171720778137,0.518909608762385,0.518909608762385,"55054/55823/64601/57617/23339/53349/26003",7
+"hsa00770","Metabolism","Metabolism of cofactors and vitamins","hsa00770","Pantothenate and CoA biosynthesis","2/85","15/4608",0.0302195168902456,0.737185611419384,0.737185611419384,"80347/79717",2
+"hsa05222","Human Diseases","Cancer: specific types","hsa05222","Small cell lung cancer","4/85","65/4608",0.0311486878064529,0.737185611419384,0.737185611419384,"3551/6257/7709/842",4
+"hsa04148","Cellular Processes","Transport and catabolism","hsa04148","Efferocytosis","5/85","114/4608",0.0582994439221373,0.915225740191306,0.915225740191306,"55823/64601/57617/23339/405",5
+"hsa04144","Cellular Processes","Transport and catabolism","hsa04144","Endocytosis","7/85","194/4608",0.065463041684099,0.915225740191306,0.915225740191306,"29934/9798/112936/381/9266/84364/832",7
+"hsa00760","Metabolism","Metabolism of cofactors and vitamins","hsa00760","Nicotinate and nicotinamide metabolism","2/85","23/4608",0.0662521400743349,0.915225740191306,0.915225740191306,"51547/55191",2
+"hsa04919","Organismal Systems","Endocrine system","hsa04919","Thyroid hormone signaling pathway","4/85","86/4608",0.0733229491271955,0.915225740191306,0.915225740191306,"6257/3065/8841/842",4
+"hsa04623","Organismal Systems","Immune system","hsa04623","Cytosolic DNA-sensing pathway","3/85","54/4608",0.0767608156201224,0.915225740191306,0.915225740191306,"171568/3551/9641",3
+"hsa05014","Human Diseases","Neurodegenerative disease","hsa05014","Amyotrophic lateral sclerosis","8/85","243/4608",0.0776764844636519,0.915225740191306,0.915225740191306,"10120/4686/79139/2733/8480/10540/3181/842",8
+"hsa04150","Environmental Information Processing","Signal transduction","hsa04150","mTOR signaling pathway","4/85","109/4608",0.140907516581444,0.915225740191306,0.915225740191306,"79109/79726/3551/92335",4
+"hsa03015","Genetic Information Processing","Translation","hsa03015","mRNA surveillance pathway","3/85","77/4608",0.168867606567862,0.915225740191306,0.915225740191306,"4686/26528/2733",3
+"hsa03082","Genetic Information Processing","Chromosome","hsa03082","ATP-dependent chromatin remodeling","3/85","77/4608",0.168867606567862,0.915225740191306,0.915225740191306,"3065/6603/65980",3
+"hsa03410","Genetic Information Processing","Replication and repair","hsa03410","Base excision repair","2/85","41/4608",0.174345452842507,0.915225740191306,0.915225740191306,"3980/4968",2
+"hsa04213","Organismal Systems","Aging","hsa04213","Longevity regulating pathway - multiple species","2/85","42/4608",0.180987471764893,0.915225740191306,0.915225740191306,"1979/3065",2
+"hsa05169","Human Diseases","Infectious disease: viral","hsa05169","Epstein-Barr virus infection","5/85","163/4608",0.181177258363189,0.915225740191306,0.915225740191306,"22938/3551/3065/9641/842",5
+"hsa04120","Genetic Information Processing","Folding, sorting and degradation","hsa04120","Ubiquitin mediated proteolysis","4/85","122/4608",0.187147039996268,0.915225740191306,0.915225740191306,"7319/51588/51434/7428",4
+"hsa05164","Human Diseases","Infectious disease: viral","hsa05164","Influenza A","4/85","122/4608",0.187147039996268,0.915225740191306,0.915225740191306,"3551/8480/9641/842",4
+"hsa04622","Organismal Systems","Immune system","hsa04622","RIG-I-like receptor signaling pathway","2/85","44/4608",0.194382848882776,0.915225740191306,0.915225740191306,"3551/9641",2
+"hsa04330","Environmental Information Processing","Signal transduction","hsa04330","Notch signaling pathway","2/85","45/4608",0.201129094337925,0.915225740191306,0.915225740191306,"22938/3065",2
+"hsa03013","Genetic Information Processing","Translation","hsa03013","Nucleocytoplasmic transport","3/85","86/4608",0.211051737199234,0.915225740191306,0.915225740191306,"4686/2733/8480",3
+"hsa05418","Human Diseases","Cardiovascular disease","hsa05418","Fluid shear stress and atherosclerosis","3/85","89/4608",0.225611536637361,0.915225740191306,0.915225740191306,"3551/51588/9181",3
+"hsa05130","Human Diseases","Infectious disease: bacterial","hsa05130","Pathogenic Escherichia coli infection","4/85","135/4608",0.237597614037948,0.915225740191306,0.915225740191306,"3551/9266/9181/842",4
+"hsa04814","Cellular Processes","Cell motility","hsa04814","Motor proteins","3/85","92/4608",0.240365646340405,0.915225740191306,0.915225740191306,"10120/10540/832",3
+"hsa04920","Organismal Systems","Endocrine system","hsa04920","Adipocytokine signaling pathway","2/85","51/4608",0.242080054997727,0.915225740191306,0.915225740191306,"3551/6257",2
+"hsa04657","Organismal Systems","Immune system","hsa04657","IL-17 signaling pathway","2/85","53/4608",0.25583914203332,0.915225740191306,0.915225740191306,"3551/9641",2
+"hsa05211","Human Diseases","Cancer: specific types","hsa05211","Renal cell carcinoma","2/85","55/4608",0.269616452539623,0.915225740191306,0.915225740191306,"405/7428",2
+"hsa01240","Metabolism","Global and overview maps","hsa01240","Biosynthesis of cofactors","3/85","100/4608",0.280423459553269,0.915225740191306,0.915225740191306,"80347/55191/79717",3
+"hsa05016","Human Diseases","Neurodegenerative disease","hsa05016","Huntington disease","5/85","193/4608",0.283230641294802,0.915225740191306,0.915225740191306,"10120/10540/3065/4899/842",5
+"hsa04146","Cellular Processes","Transport and catabolism","hsa04146","Peroxisome","2/85","57/4608",0.283392503427938,0.915225740191306,0.915225740191306,"9409/5824",2
+"hsa05223","Human Diseases","Cancer: specific types","hsa05223","Non-small cell lung cancer","2/85","57/4608",0.283392503427938,0.915225740191306,0.915225740191306,"6257/842",2
+"hsa05034","Human Diseases","Substance dependence","hsa05034","Alcoholism","2/85","58/4608",0.290274344069692,0.915225740191306,0.915225740191306,"3065/8841",2
+"hsa05207","Human Diseases","Cancer: overview","hsa05207","Chemical carcinogenesis - receptor activation","3/85","102/4608",0.290552542796109,0.915225740191306,0.915225740191306,"6257/405/9641",3
+"hsa05417","Human Diseases","Cardiovascular disease","hsa05417","Lipid and atherosclerosis","4/85","148/4608",0.290895534841044,0.915225740191306,0.915225740191306,"3551/6257/9641/842",4
+"hsa05162","Human Diseases","Infectious disease: viral","hsa05162","Measles","3/85","106/4608",0.31089030935967,0.915225740191306,0.915225740191306,"3551/9641/842",3
+"hsa00900","Metabolism","Metabolism of terpenoids and polyketides","hsa00900","Terpenoid backbone biosynthesis","1/85","21/4608",0.324191892480706,0.915225740191306,0.915225740191306,"79947",1
+"hsa00970","Genetic Information Processing","Translation","hsa00970","Aminoacyl-tRNA biosynthesis","1/85","21/4608",0.324191892480706,0.915225740191306,0.915225740191306,"23438",1
+"hsa05212","Human Diseases","Cancer: specific types","hsa05212","Pancreatic cancer","2/85","63/4608",0.324538357011046,0.915225740191306,0.915225740191306,"3551/842",2
+"hsa05220","Human Diseases","Cancer: specific types","hsa05220","Chronic myeloid leukemia","2/85","64/4608",0.331348731851999,0.915225740191306,0.915225740191306,"3551/3065",2
+"hsa04210","Cellular Processes","Cell growth and death","hsa04210","Apoptosis","3/85","112/4608",0.341480958686616,0.915225740191306,0.915225740191306,"3551/835/842",3
+"hsa05202","Human Diseases","Cancer: overview","hsa05202","Transcriptional misregulation in cancer","3/85","112/4608",0.341480958686616,0.915225740191306,0.915225740191306,"6257/3065/7709",3
+"hsa05160","Human Diseases","Infectious disease: viral","hsa05160","Hepatitis C","3/85","114/4608",0.351671336019294,0.915225740191306,0.915225740191306,"3551/9641/842",3
+"hsa01523","Human Diseases","Drug resistance: antineoplastic","hsa01523","Antifolate resistance","1/85","24/4608",0.361077349741548,0.915225740191306,0.915225740191306,"3551",1
+"hsa04215","Cellular Processes","Cell growth and death","hsa04215","Apoptosis - multiple species","1/85","24/4608",0.361077349741548,0.915225740191306,0.915225740191306,"842",1
+"hsa05200","Human Diseases","Cancer: overview","hsa05200","Pathways in cancer","7/85","317/4608",0.367903692219158,0.915225740191306,0.915225740191306,"3551/6257/3065/405/7709/7428/842",7
+"hsa04930","Human Diseases","Endocrine and metabolic disease","hsa04930","Type II diabetes mellitus","1/85","25/4608",0.372924737453583,0.915225740191306,0.915225740191306,"3551",1
+"hsa03083","Genetic Information Processing","Chromosome","hsa03083","Polycomb repressive complex","2/85","71/4608",0.378422807159762,0.915225740191306,0.915225740191306,"8314/3065",2
+"hsa03020","Genetic Information Processing","Transcription","hsa03020","RNA polymerase","1/85","26/4608",0.38455497906747,0.915225740191306,0.915225740191306,"171568",1
+"hsa05215","Human Diseases","Cancer: specific types","hsa05215","Prostate cancer","2/85","72/4608",0.385044822360367,0.915225740191306,0.915225740191306,"3551/842",2
+"hsa04620","Organismal Systems","Immune system","hsa04620","Toll-like receptor signaling pathway","2/85","73/4608",0.391637228729312,0.915225740191306,0.915225740191306,"3551/9641",2
+"hsa05161","Human Diseases","Infectious disease: viral","hsa05161","Hepatitis B","3/85","122/4608",0.39222451692306,0.915225740191306,0.915225740191306,"3551/9641/842",3
+"hsa00514","Metabolism","Glycan biosynthesis and metabolism","hsa00514","Other types of O-glycan biosynthesis","1/85","28/4608",0.407179687442581,0.915225740191306,0.915225740191306,"23275",1
+"hsa03440","Genetic Information Processing","Replication and repair","hsa03440","Homologous recombination","1/85","28/4608",0.407179687442581,0.915225740191306,0.915225740191306,"7156",1
+"hsa04136","Cellular Processes","Transport and catabolism","hsa04136","Autophagy - other","1/85","28/4608",0.407179687442581,0.915225740191306,0.915225740191306,"55054",1
+"hsa04110","Cellular Processes","Cell growth and death","hsa04110","Cell cycle","3/85","126/4608",0.412292643308198,0.915225740191306,0.915225740191306,"3065/51434/7709",3
+"hsa04064","Environmental Information Processing","Signal transduction","hsa04064","NF-kappa B signaling pathway","2/85","77/4608",0.417688322232806,0.915225740191306,0.915225740191306,"3551/51588",2
+"hsa04066","Environmental Information Processing","Signal transduction","hsa04066","HIF-1 signaling pathway","2/85","77/4608",0.417688322232806,0.915225740191306,0.915225740191306,"405/7428",2
+"hsa04625","Organismal Systems","Immune system","hsa04625","C-type lectin receptor signaling pathway","2/85","77/4608",0.417688322232806,0.915225740191306,0.915225740191306,"3551/9641",2
+"hsa04130","Genetic Information Processing","Folding, sorting and degradation","hsa04130","SNARE interactions in vesicular transport","1/85","29/4608",0.418181811147249,0.915225740191306,0.915225740191306,"9570",1
+"hsa05216","Human Diseases","Cancer: specific types","hsa05216","Thyroid cancer","1/85","29/4608",0.418181811147249,0.915225740191306,0.915225740191306,"6257",1
+"hsa05131","Human Diseases","Infectious disease: bacterial","hsa05131","Shigellosis","4/85","182/4608",0.434495041035881,0.915225740191306,0.915225740191306,"55054/3551/9266/9181",4
+"hsa05145","Human Diseases","Infectious disease: parasitic","hsa05145","Toxoplasmosis","2/85","82/4608",0.449461415443853,0.915225740191306,0.915225740191306,"3551/842",2
+"hsa04962","Organismal Systems","Excretory system","hsa04962","Vasopressin-regulated water reabsorption","1/85","32/4608",0.449991775093268,0.915225740191306,0.915225740191306,"10540",1
+"hsa05031","Human Diseases","Substance dependence","hsa05031","Amphetamine addiction","1/85","32/4608",0.449991775093268,0.915225740191306,0.915225740191306,"3065",1
+"hsa04659","Organismal Systems","Immune system","hsa04659","Th17 cell differentiation","2/85","83/4608",0.455701974731515,0.915225740191306,0.915225740191306,"3551/6257",2
+"hsa00600","Metabolism","Lipid metabolism","hsa00600","Sphingolipid metabolism","1/85","33/4608",0.460208274026195,0.915225740191306,0.915225740191306,"91012",1
+"hsa04621","Organismal Systems","Immune system","hsa04621","NOD-like receptor signaling pathway","3/85","137/4608",0.466352733217556,0.915225740191306,0.915225740191306,"55054/3551/9641",3
+"hsa04141","Genetic Information Processing","Folding, sorting and degradation","hsa04141","Protein processing in endoplasmic reticulum","3/85","138/4608",0.471167376252365,0.915225740191306,0.915225740191306,"79139/55741/111089941",3
+"hsa03460","Genetic Information Processing","Replication and repair","hsa03460","Fanconi anemia pathway","1/85","35/4608",0.480081930896902,0.915225740191306,0.915225740191306,"7156",1
+"hsa05167","Human Diseases","Infectious disease: viral","hsa05167","Kaposi sarcoma-associated herpesvirus infection","3/85","142/4608",0.490233320905089,0.915225740191306,0.915225740191306,"3551/9641/842",3
+"hsa05203","Human Diseases","Cancer: overview","hsa05203","Viral carcinogenesis","3/85","142/4608",0.490233320905089,0.915225740191306,0.915225740191306,"22938/3065/8841",3
+"hsa04613","Organismal Systems","Immune system","hsa04613","Neutrophil extracellular trap formation","2/85","89/4608",0.492288343298325,0.915225740191306,0.915225740191306,"3065/8841",2
+"hsa04936","Human Diseases","Endocrine and metabolic disease","hsa04936","Alcoholic liver disease","2/85","93/4608",0.515822667403963,0.915225740191306,0.915225740191306,"3551/9641",2
+"hsa03320","Organismal Systems","Endocrine system","hsa03320","PPAR signaling pathway","1/85","40/4608",0.526657885113526,0.915225740191306,0.915225740191306,"6257",1
+"hsa00310","Metabolism","Amino acid metabolism","hsa00310","Lysine degradation","1/85","41/4608",0.535465695920301,0.915225740191306,0.915225740191306,"10919",1
+"hsa00240","Metabolism","Nucleotide metabolism","hsa00240","Pyrimidine metabolism","1/85","42/4608",0.544111506265555,0.915225740191306,0.915225740191306,"1841",1
+"hsa04370","Environmental Information Processing","Signal transduction","hsa04370","VEGF signaling pathway","1/85","42/4608",0.544111506265555,0.915225740191306,0.915225740191306,"842",1
+"hsa04724","Organismal Systems","Nervous system","hsa04724","Glutamatergic synapse","1/85","43/4608",0.552598260967138,0.915225740191306,0.915225740191306,"23154",1
+"hsa04910","Organismal Systems","Endocrine system","hsa04910","Insulin signaling pathway","2/85","101/4608",0.560719961103587,0.915225740191306,0.915225740191306,"3551/23265",2
+"hsa05134","Human Diseases","Infectious disease: bacterial","hsa05134","Legionellosis","1/85","47/4608",0.585011787896562,0.915225740191306,0.915225740191306,"842",1
+"hsa05213","Human Diseases","Cancer: specific types","hsa05213","Endometrial cancer","1/85","47/4608",0.585011787896562,0.915225740191306,0.915225740191306,"842",1
+"hsa05416","Human Diseases","Cardiovascular disease","hsa05416","Viral myocarditis","1/85","47/4608",0.585011787896562,0.915225740191306,0.915225740191306,"842",1
+"hsa05120","Human Diseases","Infectious disease: bacterial","hsa05120","Epithelial cell signaling in Helicobacter pylori infection","1/85","50/4608",0.607788475326935,0.915225740191306,0.915225740191306,"3551",1
+"hsa04142","Cellular Processes","Transport and catabolism","hsa04142","Lysosome","2/85","115/4608",0.632062433084732,0.915225740191306,0.915225740191306,"26985/84572",2
+"hsa05022","Human Diseases","Neurodegenerative disease","hsa05022","Pathways of neurodegeneration - multiple diseases","5/85","292/4608",0.633840222928711,0.915225740191306,0.915225740191306,"10120/79139/10540/53349/842",5
+"hsa05206","Human Diseases","Cancer: overview","hsa05206","MicroRNAs in cancer","2/85","116/4608",0.63680305197868,0.915225740191306,0.915225740191306,"3551/3065",2
+"hsa05166","Human Diseases","Infectious disease: viral","hsa05166","Human T-cell leukemia virus 1 infection","3/85","176/4608",0.637050069491483,0.915225740191306,0.915225740191306,"8498/3551/51434",3
+"hsa00562","Metabolism","Carbohydrate metabolism","hsa00562","Inositol phosphate metabolism","1/85","57/4608",0.656240798197229,0.915225740191306,0.915225740191306,"5298",1
+"hsa00564","Metabolism","Lipid metabolism","hsa00564","Glycerophospholipid metabolism","1/85","57/4608",0.656240798197229,0.915225740191306,0.915225740191306,"11313",1
+"hsa04115","Cellular Processes","Cell growth and death","hsa04115","p53 signaling pathway","1/85","57/4608",0.656240798197229,0.915225740191306,0.915225740191306,"842",1
+"hsa04350","Environmental Information Processing","Signal transduction","hsa04350","TGF-beta signaling pathway","1/85","57/4608",0.656240798197229,0.915225740191306,0.915225740191306,"3065",1
+"hsa01524","Human Diseases","Drug resistance: antineoplastic","hsa01524","Platinum drug resistance","1/85","58/4608",0.66266126230473,0.915225740191306,0.915225740191306,"842",1
+"hsa05221","Human Diseases","Cancer: specific types","hsa05221","Acute myeloid leukemia","1/85","58/4608",0.66266126230473,0.915225740191306,0.915225740191306,"3551",1
+"hsa01232","Metabolism","Global and overview maps","hsa01232","Nucleotide metabolism","1/85","60/4608",0.675148758285479,0.915225740191306,0.915225740191306,"1841",1
+"hsa04914","Organismal Systems","Endocrine system","hsa04914","Progesterone-mediated oocyte maturation","1/85","60/4608",0.675148758285479,0.915225740191306,0.915225740191306,"51434",1
+"hsa03008","Genetic Information Processing","Translation","hsa03008","Ribosome biogenesis in eukaryotes","1/85","61/4608",0.681220076567302,0.915225740191306,0.915225740191306,"57455",1
+"hsa04211","Organismal Systems","Aging","hsa04211","Longevity regulating pathway","1/85","61/4608",0.681220076567302,0.915225740191306,0.915225740191306,"10919",1
+"hsa03018","Genetic Information Processing","Folding, sorting and degradation","hsa03018","RNA degradation","1/85","62/4608",0.687179235021619,0.915225740191306,0.915225740191306,"80153",1
+"hsa04070","Environmental Information Processing","Signal transduction","hsa04070","Phosphatidylinositol signaling system","1/85","67/4608",0.715363023269334,0.915225740191306,0.915225740191306,"5298",1
+"hsa04928","Organismal Systems","Endocrine system","hsa04928","Parathyroid hormone synthesis, secretion and action","1/85","67/4608",0.715363023269334,0.915225740191306,0.915225740191306,"6257",1
+"hsa05210","Human Diseases","Cancer: specific types","hsa05210","Colorectal cancer","1/85","67/4608",0.715363023269334,0.915225740191306,0.915225740191306,"842",1
+"hsa04658","Organismal Systems","Immune system","hsa04658","Th1 and Th2 cell differentiation","1/85","68/4608",0.720690956108379,0.915225740191306,0.915225740191306,"3551",1
+"hsa05142","Human Diseases","Infectious disease: parasitic","hsa05142","Chagas disease","1/85","70/4608",0.731052888910278,0.915225740191306,0.915225740191306,"3551",1
+"hsa05165","Human Diseases","Infectious disease: viral","hsa05165","Human papillomavirus infection","3/85","207/4608",0.74340701222311,0.915225740191306,0.915225740191306,"3551/3065/9641",3
+"hsa05208","Human Diseases","Cancer: overview","hsa05208","Chemical carcinogenesis - reactive oxygen species","2/85","143/4608",0.747529914426375,0.915225740191306,0.915225740191306,"3551/405",2
+"hsa04662","Organismal Systems","Immune system","hsa04662","B cell receptor signaling pathway","1/85","75/4608",0.755324986156047,0.915225740191306,0.915225740191306,"3551",1
+"hsa04931","Human Diseases","Endocrine and metabolic disease","hsa04931","Insulin resistance","1/85","75/4608",0.755324986156047,0.915225740191306,0.915225740191306,"3551",1
+"hsa04714","Organismal Systems","Environmental adaptation","hsa04714","Thermogenesis","2/85","146/4608",0.757881376018682,0.915225740191306,0.915225740191306,"6603/23028",2
+"hsa05235","Human Diseases","Cancer: overview","hsa05235","PD-L1 expression and PD-1 checkpoint pathway in cancer","1/85","76/4608",0.759912980018111,0.915225740191306,0.915225740191306,"3551",1
+"hsa05226","Human Diseases","Cancer: specific types","hsa05226","Gastric cancer","1/85","77/4608",0.764415936041602,0.915225740191306,0.915225740191306,"6257",1
+"hsa05170","Human Diseases","Infectious disease: viral","hsa05170","Human immunodeficiency virus 1 infection","2/85","151/4608",0.774331000888481,0.915225740191306,0.915225740191306,"3551/842",2
+"hsa04934","Human Diseases","Endocrine and metabolic disease","hsa04934","Cushing syndrome","1/85","82/4608",0.785708693252856,0.915225740191306,0.915225740191306,"405",1
+"hsa05163","Human Diseases","Infectious disease: viral","hsa05163","Human cytomegalovirus infection","2/85","155/4608",0.786790642823475,0.915225740191306,0.915225740191306,"3551/842",2
+"hsa04114","Cellular Processes","Cell growth and death","hsa04114","Oocyte meiosis","1/85","84/4608",0.793682929173251,0.915225740191306,0.915225740191306,"51434",1
+"hsa05171","Human Diseases","Infectious disease: viral","hsa05171","Coronavirus disease - COVID-19","2/85","158/4608",0.795740407839142,0.915225740191306,0.915225740191306,"3551/9641",2
+"hsa04371","Environmental Information Processing","Signal transduction","hsa04371","Apelin signaling pathway","1/85","85/4608",0.797559355128218,0.915225740191306,0.915225740191306,"4899",1
+"hsa04152","Environmental Information Processing","Signal transduction","hsa04152","AMPK signaling pathway","1/85","87/4608",0.805097552454046,0.915225740191306,0.915225740191306,"92335",1
+"hsa04630","Environmental Information Processing","Signal transduction","hsa04630","JAK-STAT signaling pathway","1/85","88/4608",0.808761942642369,0.915225740191306,0.915225740191306,"51588",1
+"hsa04668","Environmental Information Processing","Signal transduction","hsa04668","TNF signaling pathway","1/85","88/4608",0.808761942642369,0.915225740191306,0.915225740191306,"3551",1
+"hsa04137","Cellular Processes","Transport and catabolism","hsa04137","Mitophagy - animal","1/85","89/4608",0.812358233544006,0.915225740191306,0.915225740191306,"89941",1
+"hsa04722","Organismal Systems","Nervous system","hsa04722","Neurotrophin signaling pathway","1/85","91/4608",0.819351497876056,0.915225740191306,0.915225740191306,"3551",1
+"hsa04068","Environmental Information Processing","Signal transduction","hsa04068","FoxO signaling pathway","1/85","93/4608",0.826087081652639,0.915225740191306,0.915225740191306,"3551",1
+"hsa04071","Environmental Information Processing","Signal transduction","hsa04071","Sphingolipid signaling pathway","1/85","93/4608",0.826087081652639,0.915225740191306,0.915225740191306,"91012",1
+"hsa04072","Environmental Information Processing","Signal transduction","hsa04072","Phospholipase D signaling pathway","1/85","93/4608",0.826087081652639,0.915225740191306,0.915225740191306,"9266",1
+"hsa04660","Organismal Systems","Immune system","hsa04660","T cell receptor signaling pathway","1/85","97/4608",0.838822412997537,0.915225740191306,0.915225740191306,"3551",1
+"hsa05168","Human Diseases","Infectious disease: viral","hsa05168","Herpes simplex virus 1 infection","4/85","316/4608",0.845005035549295,0.915225740191306,0.915225740191306,"8893/3551/9641/842",4
+"hsa04530","Cellular Processes","Cellular community - eukaryotes","hsa04530","Tight junction","1/85","100/4608",0.847764881969171,0.915225740191306,0.915225740191306,"9181",1
+"hsa04820",NA,NA,"hsa04820","Cytoskeleton in muscle cells","1/85","101/4608",0.850635331177826,0.915225740191306,0.915225740191306,"832",1
+"hsa04010","Environmental Information Processing","Signal transduction","hsa04010","MAPK signaling pathway","2/85","183/4608",0.858370589507199,0.915225740191306,0.915225740191306,"5871/3551",2
+"hsa04380","Organismal Systems","Development and regeneration","hsa04380","Osteoclast differentiation","1/85","104/4608",0.858929611619525,0.915225740191306,0.915225740191306,"3551",1
+"hsa05135","Human Diseases","Infectious disease: bacterial","hsa05135","Yersinia infection","1/85","109/4608",0.871753535649914,0.915225740191306,0.915225740191306,"3551",1
+"hsa05225","Human Diseases","Cancer: specific types","hsa05225","Hepatocellular carcinoma","1/85","109/4608",0.871753535649914,0.915225740191306,0.915225740191306,"6603",1
+"hsa04151","Environmental Information Processing","Signal transduction","hsa04151","PI3K-Akt signaling pathway","2/85","192/4608",0.876299934181613,0.915225740191306,0.915225740191306,"3551/842",2
+"hsa04932","Human Diseases","Endocrine and metabolic disease","hsa04932","Non-alcoholic fatty liver disease","1/85","111/4608",0.876554230042377,0.915225740191306,0.915225740191306,"3551",1
+"hsa04062","Organismal Systems","Immune system","hsa04062","Chemokine signaling pathway","1/85","116/4608",0.887792812806421,0.920194010354101,0.920194010354101,"3551",1
+"hsa04014","Environmental Information Processing","Signal transduction","hsa04014","Ras signaling pathway","1/85","122/4608",0.899951058362569,0.926036596286122,0.926036596286122,"3551",1
+"hsa05152","Human Diseases","Infectious disease: bacterial","hsa05152","Tuberculosis","1/85","128/4608",0.910805715764555,0.930463393083215,0.930463393083215,"842",1
+"hsa05010","Human Diseases","Neurodegenerative disease","hsa05010","Alzheimer disease","2/85","241/4608",0.942409717999027,0.955872713970441,0.955872713970441,"3551/842",2
+"hsa05020","Human Diseases","Neurodegenerative disease","hsa05020","Prion disease","1/85","174/4608",0.96321226950271,0.963917492121625,0.963917492121625,"842",1
+"hsa05012","Human Diseases","Neurodegenerative disease","hsa05012","Parkinson disease","1/85","175/4608",0.963917492121625,0.963917492121625,0.963917492121625,"842",1

@@ -99,8 +99,7 @@ perform analysis on the data.
         folders can be used to produce the necessary data and results
         used in the application
 
--   As of July 21, 2024, this code is out of date and will be updated
-    soon.
+-   As of August 5, 2024, this RShiny code is up to date.
 
 ## Session Info
 
