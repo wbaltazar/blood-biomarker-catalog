@@ -394,12 +394,42 @@ pdf(file = paste(output_dir, "time_sex_volcanos.pdf", sep = ""), width = 12, hei
 plot_grid(toprow, botrow, nrow = 2)
 dev.off()
 
+### Supplementary Figure S3-A ----
+volcanos <- list()
+for (i in 1:7) {
+  volcanos[[i]] <- EnhancedVolcano(toptable = tables[[i]], 
+                                   lab = "", 
+                                   x = "logFC",
+                                   y = "P.Value",
+                                   title = "",
+                                   subtitle = "",
+                                   caption = "", legendPosition = 'none',
+                                   labSize = (4.0),
+                                   colAlpha = 1,
+                                   pointSize = 1.0, 
+                                   pCutoff = 1e-2,
+                                   xlim = c(-4,4),
+                                   ylim = c(0,25),
+                                   boxedLabels = FALSE)
+}
+toprow <- plot_grid(volcanos[[1]], volcanos[[2]], volcanos[[3]], volcanos[[4]], nrow = 1)
+botrow <-  plot_grid(plotlist = list(volcanos[[5]], volcanos[[6]], volcanos[[7]], NULL), nrow = 1)
+pdf(file = paste(output_dir, "figureS3A.pdf", sep = ""), width = 12, height = 10)
+plot_grid(toprow, botrow, nrow = 2, align = 'hv')
+dev.off()
+
+### Supplementary Figure S3-B ----
 tables <- tables[1:7]
 degs <- lapply(tables, function(x){
-  x %>% filter(adj.P.Val < 0.05) %>% nrow() %>% return()
+  x %>% filter(P.Value < 0.05) %>% nrow() %>% return()
 })
 degstb <- tibble(time = factor(c(3,6,9,12,15,18,21), levels = c(3,6,9,12,15,18,21), ordered = T), nums = unlist(degs))
+pdf(file = paste(output_dir, "figureS3B.pdf", sep = ""), width = 8, height = 8)
 ggplot(degstb, aes(x = time, y = nums)) + 
-  geom_col(fill = "powderblue", color = "black") +
-  labs(title = "Gosch et al. 24 hour study", subtitle = "DEGs (p < 0.05)",
-       x = "hours from baseline", y = "DEGs")
+  geom_col(fill = "black", color = "black") +
+  labs(title = "", subtitle = "",
+       x = "hours from baseline", y = "DEGs (p < 0.05)") +
+  theme_minimal() +
+  theme(axis.title.x = element_text(size = 14), axis.title.y = element_text(size = 14),
+        axis.text.x = element_text(size = 15), axis.text.y = element_text(size = 15))
+dev.off()

@@ -205,3 +205,9 @@ for (i in symbols) {
 length(common_symbols)
 # [1] 9474
 write.table(common_symbols, file = paste(output_dir, "common_symbols9474.txt", sep = ""))
+
+## Supplementary Table 1
+stable_results <- read.csv(file = paste(output_dir, "stable_polymorphic_scores.csv", sep = ""))
+stable_results <- stable_results %>% filter(Study_counts == 7)
+dim(stable_results)
+write.csv(stable_results, file = paste(output_dir, "supplementary_table_1.csv", sep = ""))

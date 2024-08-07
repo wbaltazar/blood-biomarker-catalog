@@ -1352,53 +1352,28 @@ for (i in 1:63) {
                                       names(y)[i],".csv",sep = ""), row.names = TRUE)
 }
 
-flu <- tables[grep("^FLU", names(tables))]
-flu <- lapply(flu, function(x) {
-  x %>% filter(adj.P.Val < 0.05) %>% nrow() %>% return()
-})
-flu <- unlist(flu)
-
-pne <- tables[grep("^PNEU", names(tables))]
-pne <- lapply(pne, function(x) {
-  x %>% filter(adj.P.Val < 0.05) %>% nrow() %>% return()
-})
-pne <- unlist(pne)
-
-sal <- tables[grep("^Saline", names(tables))]
-sal <- lapply(sal, function(x) {
-  x %>% filter(adj.P.Val < 0.05) %>% nrow() %>% return()
-})
-sal <- unlist(sal)
-time <- factor(c(7, 7.5, 8, 10, 14, 17, 35), levels = c(7, 7.5, 8, 10, 14, 17, 35), ordered = T)
-
-figures12 <- tibble(time, sal, flu, pne)
-figures12 <- figures12 %>% pivot_longer(cols = c(sal, flu, pne), names_to = "treatment")
-figures12 %>% ggplot(aes(x = time, y = value, fill = treatment)) +
-  geom_col(position = "dodge", color = "black") +
-  labs(title = 'Cohort 2 Vein', subtitle = 'DEGs (adjusted p < 0.05), shot administered at time = 7',
-       x = 'Time from baseline', y = 'DEGs')
-
+### Figure S1 ----
 tables <- tables[which(grepl("^FLU|^PNEUM|^Saline", names(tables)))]
 names(tables)
 saline <- list()
 for (i in 1:7) {
-  saline[[i]] <- EnhancedVolcano(toptable = tables[[i]], lab = tables[[i]]$Symbol, x = 'logFC', y = 'P.Value', FCcutoff = 1, pCutoff = 0.01,
-                                 title = names(tables)[i], caption = "", subtitle = "", titleLabSize = 6)
+  saline[[i]] <- EnhancedVolcano(toptable = tables[[i]], lab = "", x = 'logFC', y = 'P.Value', FCcutoff = 1, pCutoff = 0.01,
+                                 title = "", caption = "", subtitle = "", legendPosition = 'none', xlim = c(-3,3), ylim = c(0,18))
 }
 top <- plot_grid(plotlist = saline, nrow = 1, align = 'h')
 pneumo <- list()
 for (i in 8:14) {
-  pneumo[[i-7]] <- EnhancedVolcano(toptable = tables[[i]], lab = tables[[i]]$Symbol, x = 'logFC', y = 'P.Value', FCcutoff = 1, pCutoff = 0.01,
-                              title = names(tables)[i], caption = "", subtitle = "", titleLabSize = 6)
+  pneumo[[i-7]] <- EnhancedVolcano(toptable = tables[[i]], lab = "", x = 'logFC', y = 'P.Value', FCcutoff = 1, pCutoff = 0.01,
+                                   title = "", caption = "", subtitle = "", legendPosition = 'none', xlim = c(-3,3), ylim = c(0,18))
 }
 mid <- plot_grid(plotlist = pneumo, nrow = 1, align = 'h')
 flu <- list()
 for (i in 15:21) {
-  flu[[i-14]] <- EnhancedVolcano(toptable = tables[[i]], lab = tables[[i]]$Symbol, x = 'logFC', y = 'P.Value', FCcutoff = 1, pCutoff = 0.01,
-                                 title = names(tables)[i], caption = "", subtitle = "", titleLabSize = 6)
+  flu[[i-14]] <- EnhancedVolcano(toptable = tables[[i]], lab = "", x = 'logFC', y = 'P.Value', FCcutoff = 1, pCutoff = 0.01,
+                                 title = "", caption = "", subtitle = "", legendPosition = 'none', xlim = c(-3,3), ylim = c(0,18))
 }
 bot <- plot_grid(plotlist = flu, nrow = 1, align = 'h')
-pdf(file = "~/Desktop/show laura/volcano_version.pdf", height = 12, width = 24)
+pdf(file = paste(output_dir, "figureS1.pdf"), height = 12, width = 24)
 plot_grid(top, mid, bot, nrow = 3, align = 'v')
 dev.off()
 
@@ -1897,6 +1872,7 @@ tables <- list()
 for (i in 1:90) {
   tables[[i]] <- topTable(x, coef = i, number = Inf, adjust.method = "fdr")
   tables[[i]]$Symbol <- mapIds(x = illuminaHumanv3.db, keys = row.names(tables[[i]]), column = "SYMBOL", keytype = "PROBEID")
+  names(tables)[i] <- names(y)[i]
   write.csv(tables[[i]], file = paste(output_dir, "training_finger_limma/",
                                       names(y)[i],".csv",sep = ""), row.names = TRUE)
 }
@@ -1949,4 +1925,29 @@ for (i in 1:10) {
 }
 pdf(file = paste(output_dir, "training_finger_limma/volcanos.pdf", sep = ""), height = 10, width = 14)
 plot_grid(plotlist = volcanos, align = 'h', nrow = 2)
+dev.off()
+
+### Figure S2 ----
+tables <- tables[which(grepl("^FLU|^PNEUM|^Saline", names(tables)))]
+names(tables)
+saline <- list()
+for (i in 1:10) {
+  saline[[i]] <- EnhancedVolcano(toptable = tables[[i]], lab = "", x = 'logFC', y = 'P.Value', FCcutoff = 1, pCutoff = 0.01,
+                                 title = "", caption = "", subtitle = "", legendPosition = 'none', xlim = c(-3,3), ylim = c(0,18))
+}
+top <- plot_grid(plotlist = saline, nrow = 1, align = 'h')
+pneumo <- list()
+for (i in 11:20) {
+  pneumo[[i-10]] <- EnhancedVolcano(toptable = tables[[i]], lab = "", x = 'logFC', y = 'P.Value', FCcutoff = 1, pCutoff = 0.01,
+                                   title = "", caption = "", subtitle = "", legendPosition = 'none', xlim = c(-3,3), ylim = c(0,18))
+}
+mid <- plot_grid(plotlist = pneumo, nrow = 1, align = 'h')
+flu <- list()
+for (i in 21:30) {
+  flu[[i-20]] <- EnhancedVolcano(toptable = tables[[i]], lab = "", x = 'logFC', y = 'P.Value', FCcutoff = 1, pCutoff = 0.01,
+                                 title = "", caption = "", subtitle = "", legendPosition = 'none', xlim = c(-3,3), ylim = c(0,18))
+}
+bot <- plot_grid(plotlist = flu, nrow = 1, align = 'h')
+pdf(file = paste(output_dir, "figureS2.pdf"), height = 12, width = 26)
+plot_grid(top, mid, bot, nrow = 3, align = 'v')
 dev.off()
