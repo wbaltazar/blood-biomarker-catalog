@@ -139,7 +139,7 @@ venn.diagram(x = list(house_enrich2, intersect(eisenberg$V1, symbols)),
 ## Dynamic and DeBoever seasonal gene enrichment ----
 ### DeBoever et al. performed a similar analysis to us. They created a list of genes 'differentially expressed' with
 ### time 'within-season' and 'between-season', or short and long-term. 
-## Download online at https://doi.org/10.1016/j.ygeno.2013.11.006 Supp. Table 3 and Supp. Table 5
+## Download online at https://doi.org/10.1016/j.ygeno.2013.11.006 Supp. Table 3 and Supp. Table 4
 input_dir <- "~/Desktop/work_repo/data/"
 deboever_within <- readxl::read_xlsx(paste(input_dir, "DeBoever short-term.xlsx", sep = "")) ## Table S3
 deboever_between <- readxl::read_xlsx(paste(input_dir, "DeBoever long-term.xlsx", sep = "")) ## Table S5
@@ -388,3 +388,30 @@ pdf(file = paste(output_dir, "functional_enrichment/functional_enrichment_figure
 plot_grid(a, b, c, ncol = 3, nrow = 1, labels = c('A. Stable-polymorphic genes', 'B. Flexible genes', 'C. Housekeeping genes'),
           align = 'hv')
 dev.off()
+
+# Supplementary data file 2 ----
+sp <- read.table(paste(input_dir, "stable_polymorphic_gene_list.txt", sep = ""))
+fl <- read.table(paste(input_dir, "flexible_gene_list.txt", sep = ""))
+hk <- read.table(paste(input_dir, "housekeeping_gene_list.txt", sep = ""))
+sdf4 <- list(sp, fl, hk)
+names(sdf4) <- c("characteristic", "flexible", "housekeeping")
+dataset <- useDataset(dataset = 'hsapiens_gene_ensembl', mart = useMart('ENSEMBL_MART_ENSEMBL'))
+gene_names <- c()
+sdf4 <- lapply(sdf4, function(x) {
+  gene_names <- getBM(attributes = c('hgnc_symbol','description'),
+                      filters = 'hgnc_symbol',
+                      values = x[[1]], 
+                      mart = dataset)
+  x <- gene_names
+})
+lapply(sdf4, head)
+## First list
+# $characteristic
+# hgnc_symbol                                                                description
+# 1        AAK1                AP2 associated kinase 1 [Source:HGNC Symbol;Acc:HGNC:19679]
+# 2        AATK      apoptosis associated tyrosine kinase [Source:HGNC Symbol;Acc:HGNC:21]
+# 3        ABAT          4-aminobutyrate aminotransferase [Source:HGNC Symbol;Acc:HGNC:23]
+# 4       ABCA1 ATP binding cassette subfamily A member 1 [Source:HGNC Symbol;Acc:HGNC:29]
+# 5       ABCA2 ATP binding cassette subfamily A member 2 [Source:HGNC Symbol;Acc:HGNC:32]
+# 6       ABCA5 ATP binding cassette subfamily A member 5 [Source:HGNC Symbol;Acc:HGNC:35]
+writexl::write_xlsx(x = sdf4, path = paste(output_dir, "supplementary_data_4.xlsx", sep = ""))
