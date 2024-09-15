@@ -54,7 +54,7 @@ data <- affy::rma(data)
 norm_expr <- exprs(data)
 colnames(norm_expr) <- str_extract(colnames(norm_expr), "GSM\\d+")
 identical(rownames(pheno_data), colnames(norm_expr)) # [1] TRUE
-source("~/Desktop/work_repo/github/scratch code/Affy control probe check.R")
+source("~/Desktop/work_repo/github/misc/Affy_control_probe_check.R")
 a <- polyA_check(norm_expr, pheno_data, "time")[[1]]
 b <- hybrid_check(norm_expr, pheno_data, "time")[[1]]
 c <- positive_check(norm_expr, pheno_data, "time")
@@ -121,14 +121,6 @@ quantile(normalized_expression)
 # 0%       25%       50%       75%      100% 
 # 1.737961  3.620242  5.105667  6.898987 14.629243
 
-## Check control probe expression between groups----
-source("~/Desktop/work_repo/github/scratch code/Affy control probe check.R")
-a <- polyA_check(df, p1, "time")[[1]]
-b <- hybrid_check(df, p1, "time")[[1]]
-c <- positive_check(df, p1, "time")
-pdf(file = paste(output_dir, "day_one_control_probes.pdf"), height = 7, width = 12)
-plot_grid(a,b,c, nrow = 1)
-dev.off()
 
 # What are the highly expressed RNAs?
 avg_gene_exp <- rowMeans(x = normalized_expression, na.rm = T)
@@ -378,15 +370,6 @@ dev.off()
 quantile(normalized_expression)
 # 0%       25%       50%       75%      100% 
 # 1.825471  3.417146  4.934040  6.917551 14.721409 
-
-## Check control probe expression between groups----
-source("~/Desktop/work_repo/github/scratch code/Affy_control_probe_check.R")
-a <- polyA_check(df, p2, "time")[[1]]
-b <- hybrid_check(df, p2, "time")[[1]]
-c <- positive_check(df, p2, "time")
-pdf(file = paste(output_dir, "day_two_control_probes.pdf"), height = 7, width = 12)
-plot_grid(a,b,c, nrow = 1)
-dev.off()
 
 # What are the highly expressed RNAs?
 avg_gene_exp <- rowMeans(x = normalized_expression, na.rm = T)

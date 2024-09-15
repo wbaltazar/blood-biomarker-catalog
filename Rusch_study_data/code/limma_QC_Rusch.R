@@ -231,18 +231,6 @@ mapIds(x = hgu133plus2.db, keys = head(names(avg_gene_exp)), keytype = "PROBEID"
 # 214414_x_at 211696_x_at 211699_x_at 204018_x_at 217414_x_at 211745_x_at 
 # "HBA1"       "HBB"      "HBA1"      "HBA1"      "HBA2"      "HBA1" 
 
-## Control probe plots
-source("~/Desktop/work_repo/github/scratch code/Affy_control_probe_check.R")
-a <- polyA_check(df, pheno_data, "time")[[1]]
-b <- hybrid_check(df, pheno_data, "time")[[1]]
-c <- positive_check(df, pheno_data, "time")
-d <- polyA_check(df, pheno_data, "title")[[1]]
-e <- hybrid_check(df, pheno_data, "title")[[1]]
-f <- positive_check(df, pheno_data, "title")
-pdf(file = paste(output_dir, "control_probes.pdf", sep = ""), height = 12, width = 12)
-plot_grid(a,b,c,d,e,f, nrow = 3)
-dev.off()
-
 # PCA and MDS plots ----
 library(PCAtools)
 p <- pca(df, metadata = pheno_data, center = T, scale = T)

@@ -40,11 +40,15 @@ dusek$Symbol <- mapIds(x = hgu133plus2.db, keys = dusek$...1, column = "SYMBOL",
 rusch <- read_csv(file = paste(input_dir, "Rusch_study_data/output/Rusch_variation.csv", sep = ""))
 rusch$Symbol <- mapIds(x = hgu133plus2.db, keys = rusch$...1, column = "SYMBOL", keytype = "PROBEID")
 larocca <- read_csv(file = paste(input_dir, "LaRocca_study_data/output/LaRocca_variation.csv", sep = ""))
+karlovich1 <- read_csv(file = paste(input_dir, "Karlovich_study_data/output/Karlovich_batch1_variation.csv", sep = ""))
+karlovich1$Symbol <- mapIds(x = hgu133plus2.db, keys = karlovich1$...1, column = "SYMBOL", keytype = "PROBEID")
+karlovich2 <- read_csv(file = paste(input_dir, "Karlovich_study_data/output/Karlovich_batch2_variation.csv", sep = ""))
+karlovich2$Symbol <- mapIds(x = hgu133plus2.db, keys = karlovich2$...1, column = "SYMBOL", keytype = "PROBEID")
 
 data <- list(gomez, gosch, meaburn1, meaburn2, obermoser1, obermoser2, obermoser3, obermoser4,
-             dusek, rusch, larocca)
+             dusek, rusch, larocca, karlovich1, karlovich2)
 names(data) <- c("gomez", "gosch", "meaburn1", "meaburn2", "obermoser1", "obermoser2", "obermoser3", "obermoser4", 
-                 "dusek", "rusch", "larocca")
+                 "dusek", "rusch", "larocca", "karlovich1", "karlovich2")
 
 # THRESHOLDS ----
 ## by SD ----
@@ -95,11 +99,11 @@ names(rp) <- paste(names(rp), "rp", sep = ".")
 
 all_filters <- c(sd, vp, rp)
 towrite <- lapply(all_filters, as.data.frame)
-writexl::write_xlsx(towrite, path = paste(output_dir, "stable_polymorphic_thresholds.xlsx", sep = ""))
+writexl::write_xlsx(towrite, path = paste(output_dir, "characteristic_thresholds.xlsx", sep = ""))
 
 ## How many unique filters are there?
 length(all_filters)
-# [1] 33
+# [1] 39
 
 ## Get results ----
 ## Create pool of genes
@@ -110,7 +114,7 @@ symbol_find <- function(x) {
 all_symbols <- unname(unlist(lapply(data, symbol_find)))
 all_symbols <- all_symbols %>% str_replace_all("\\.(?!\\d$)", "-") %>% str_remove_all(pattern = "\\..") %>% unique()
 length(unlist(all_symbols))
-# 28913
+# [1] 28913
 
 ## Test run the counting algorithm
 stable_results <- data.frame(Symbol = all_symbols, Score = 0, Filters = 0)
@@ -127,20 +131,20 @@ for (i in 1:nrow(stable_results)) {
 }
 
 ### Studies the gene passed ----
-studs <- c("gomez", "meaburn", "gosch", "obermoser", "dusek", "rusch", "larocca")
-stable_results[,4:10] <- 0
-names(stable_results)[4:10] <- studs
+studs <- c("gomez", "meaburn", "gosch", "obermoser", "dusek", "rusch", "larocca", "karlovich")
+stable_results[,4:11] <- 0
+names(stable_results)[4:11] <- studs
 for (i in 1:nrow(stable_results)) {
-  for (j in 4:10) {
+  for (j in 4:11) {
     stable_results[i,j] <- sum(grepl(names(stable_results)[j], unlist(str_split(stable_results[i,3], pattern = " "))))
   }
 }
 stable_results <- stable_results %>% 
   mutate(Study_counts = (gomez > 0) + (meaburn > 0) + (gosch > 0) + (obermoser > 0) +
-           (dusek > 0) + (rusch > 0) + (larocca > 0))
+           (dusek > 0) + (rusch > 0) + (larocca > 0) + (karlovich > 0))
 
 ### Save results -----
-write.csv(stable_results, file = paste(output_dir, "stable_polymorphic_scores.csv", sep = ""))
+write.csv(stable_results, file = paste(output_dir, "characteristic_scores.csv", sep = ""))
 
 ## Median statistic function
 summarize_statistics <- function(gene) {
@@ -158,19 +162,15 @@ summarize_statistics <- function(gene) {
 }
 # Test
 summarize_statistics("ERAP2")
-# Within Variation (SD)  Total Variation (SD)                    Rs 
-# 0.208644817           0.703534926           0.394272705 
-# subject                  time         repeatability 
-# 0.627376081           0.002903051           0.702216666 
-# gen.variance    Average Expression 
-# 0.541465398           7.649865449 
+# Within Variation (SD)  Total Variation (SD)                    Rs               subject                  time 
+#           0.243375086           0.837949763           0.476238127           0.722390000           0.002903051 
+#         repeatability          gen.variance    Average Expression 
+#           0.808984241           0.690101007           8.475465801 
 summarize_statistics("HLA-DRB1")
-# Within Variation (SD)  Total Variation (SD)                    Rs 
-# 0.305415549           1.308490324           0.314372372 
-# subject                  time         repeatability 
-# 0.713203974           0.000194058           0.776463795 
-# gen.variance    Average Expression 
-# 1.832569116           8.786361896 
+# Within Variation (SD)  Total Variation (SD)                    Rs               subject                  time 
+#           0.343135156           1.411587928           0.396895700           0.833871321           0.000194058 
+#         repeatability          gen.variance    Average Expression 
+#           0.952265816           1.871664785          10.647466662 
 
 
 ## Initialize data frame
@@ -190,7 +190,7 @@ head(gene_summaries)
 gene_summaries$Symbol <- stable_results$Symbol
 
 ## Save results ----
-write.csv(gene_summaries, file = paste(output_dir, "median_stability_statistics.csv", sep = ""))
+write.csv(gene_summaries, file = paste(output_dir, "median_stability_statistics_all.csv", sep = ""))
 
 # COMMON SYMBOLS ----
 # Genes found in all datasets
@@ -206,8 +206,16 @@ length(common_symbols)
 # [1] 9474
 write.table(common_symbols, file = paste(output_dir, "common_symbols9474.txt", sep = ""))
 
-## Supplementary Table 1
-stable_results <- read.csv(file = paste(output_dir, "stable_polymorphic_scores.csv", sep = ""))
-stable_results <- stable_results %>% filter(Study_counts == 7)
+## Supplementary Table 1 ----
+stable_results <- read.csv(file = paste(output_dir, "characteristic_scores.csv", sep = ""))
+stable_results <- stable_results %>% dplyr::filter(Study_counts == 8)
 dim(stable_results)
-write.csv(stable_results, file = paste(output_dir, "supplementary_table_1.csv", sep = ""))
+# [1] 309  13
+supp_table <- stable_results$Symbol
+library(biomaRt)
+mart <- useDataset(dataset = "hsapiens_gene_ensembl", mart = useMart("ENSEMBL_MART_ENSEMBL"))
+supp_table <- getBM(attributes = c("hgnc_symbol","description"),
+                    filters = "hgnc_symbol",
+                    values = supp_table,
+                    mart = mart)
+write.csv(supp_table, file = paste(output_dir, "supplementary_table_1.csv", sep = ""))

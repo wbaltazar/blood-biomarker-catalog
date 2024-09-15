@@ -11,7 +11,7 @@ sourcePartial <- function(fn, startTag='#from here', endTag='#to here') {
   close(tc)
 }
 
-## Gomez
+## Gomez ----
 ## Load in norm_expr from Gomez_variation.R
 sourcePartial("~/Desktop/work_repo/github/Gomez_study_data/code/Gomez_variation.R",
               startTag = "## Load libraries ----", 
@@ -35,7 +35,7 @@ write_rds(norm_expr, file = "~/Desktop/work_repo/Box organization/1results/RShin
 ## Write phenotype data to application folder
 write.csv(pheno_data, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/1Gomez_pheno.csv")
 
-## Meaburn
+## Meaburn ----
 ## Load in norm_expr files from Meaburn variationm DAY 1
 ## Note that the rownames are the symbols: the probe is a separate column. The gene_graph_p function utilizes this.
 ## Load in norm_expr from Meaburn_variation.R, day 1
@@ -109,7 +109,7 @@ write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data
 ## Write phenotype data to application folder
 write.csv(p2, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/2Meaburn2_pheno.csv")
 
-## Gosch
+## Gosch ----
 sourcePartial("~/Desktop/work_repo/github/Gosch_study_data/code/Gosch_variation.R",
               startTag = "## Load libraries ----", 
               endTag = "# Variation analysis ----")
@@ -134,7 +134,7 @@ write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data
 ## Write phenotype data to application folder
 write.csv(pheno_data, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/3Gosch_pheno.csv")
 
-## Obermoser
+## Obermoser ----
 ## C1
 sourcePartial("~/Desktop/work_repo/github/Obermoser_study_data/code/Obermoser_variation.R",
               startTag = "# across cohorts measures different time intervals, including an hour-by-hour measurement.", 
@@ -276,7 +276,7 @@ write_rds(norm_expr, file = "~/Desktop/work_repo/Box organization/1results/RShin
 ## Write phenotype data to application folder
 write.csv(p2f, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/4obermoser4_pheno.csv")
 
-## Dusek
+## Dusek ----
 sourcePartial("~/Desktop/work_repo/github/Dusek_study_data/code/Dusek_variation.R",
               startTag = "## Load libraries ----", 
               endTag = "## varianceParitition ----")
@@ -306,7 +306,7 @@ write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data
 ## Write phenotype data to application folder
 write.csv(pheno_data, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/5Dusek_pheno.csv")
 
-## Rusch
+## Rusch ----
 sourcePartial("~/Desktop/work_repo/github/Rusch_study_data/code/Rusch_variation.R",
               startTag = "## Load libraries ----", 
               endTag = "## varianceParitition ----")
@@ -345,7 +345,7 @@ write_rds(norm_expr, file = "~/Desktop/work_repo/Box organization/1results/RShin
 ## Write phenotype data to application folder
 write.csv(pheno_data, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/6Rusch_pheno.csv")
 
-## LaRocca
+## LaRocca ----
 sourcePartial("~/Desktop/work_repo/github/LaRocca_study_data/code/LaRocca_variation.R",
               startTag = "## Load libraries ----", 
               endTag = "## varianceParitition ----")
@@ -378,3 +378,77 @@ head(rownames(e4))
 write_rds(e4, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/gosch.rds")
 ## Write phenotype data to application folder
 write.csv(pheno_data, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/7LaRocca_pheno.csv")
+
+## Karlovich ----
+## Load in norm_expr files from Karlovich variation batch 1
+## Note that the rownames are the symbols: the probe is a separate column. The gene_graph_p function utilizes this.
+## Load in norm_expr from Meaburn_variation.R, day 1
+sourcePartial("~/Desktop/work_repo/github/Karlovich_study_data/code/Karlovich_variation.R",
+              startTag = "## Load libraries ----", 
+              endTag = "## varianceParitition 1 ----")
+head(norm_expr)
+colnames(norm_expr) <- str_replace(colnames(norm_expr), pattern = "\\.CEL.gz", replacement = "")
+probes <- unlist(rownames(norm_expr))
+class(probes)
+# [1] "character"
+class(norm_expr)
+# [1] "matrix" "array" 
+norm_expr <- as.data.frame(norm_expr)
+norm_expr$Probe <- probes
+new_names <- mapIds(x = hgu133plus2.db, keys = probes, column = "SYMBOL", keytype = "PROBEID")
+head(unname(new_names), 100)
+# [1] "DDR1"     "RFC2"     "HSPA6"    "PAX8"     "GUCA1A"   "UBA7"     "THRA"     "PTPN21"   "CCL5"    
+# [10] "CYP2E1"   "EPHB3"    "ESRRA"    "CYP2A6"   "SCARB1"   "TTLL12"   NA         "WFDC2"    "MAPK1"   
+# [19] "MAPK1"    "ADAM32"   "SPATA17"  "PRR22"    "PRR22"    "PXK"      "PXK"      "VPS18"    "MSANTD3" 
+# [28] "SLC46A1"  "SLC46A1"  "TIMD4"    "SLC39A5"  "ZDHHC11"  "ATP6V1E2" "AFG3L1P"  "CILP2"    "CILP2"   
+# [37] "PIGX"     "TMEM196"  "SLC39A13" "BEST4"    "AK9"      "CORO6"    "TMEM106A" "TMEM106A" "ALG10"   
+# [46] "ALG10"    "TTC39C"   "NEXN"     "C15orf40" "RAX2"     "MFAP3"    "EYA3"     "GIMAP1"   "GIMAP1"  
+# [55] "GIMAP1"   "KLK8"     "CCDC65"   "CCDC65"   "PABIR3"   "PABIR3"   "CFAP53"   "CFAP53"   "ARMCX4"  
+# [64] "RBBP6"    "CENPBD1P" "TRIOBP"   "TRIOBP"   "CATSPER1" "HOXD4"    "GSC"      "SP7"      "PDE7A"   
+# [73] "CNOT7"    "CRYZL1"   "PRSS33"   "PRSS33"   "CBARP"    "CBARP"    "MCMDC2"   "TIRAP"    "LEAP2"   
+# [82] "MSI2"     "SCIN"     "SCIN"     "CTCFL"    "C4orf33"  "C4orf33"  "C4orf33"  "ZNF333"   "TVP23C"  
+# [91] "RDH10"    "RDH10"    "SRSF12"   "GARIN4"   "GARIN4"   "GAPT"     "SCUBE1"   "ERICH5"   "ERICH5"  
+# [100] "CCDC185" 
+sum(is.na(new_names))
+# [1] 10025
+for (i in 1:length(new_names)) {
+  if (is.na(new_names[i])) {
+    new_names[i] <- names(new_names)[i]
+  } else {
+    next
+  }
+}
+sum(is.na(new_names))
+# [1] 0
+length(grep("^\\d", new_names))
+# [1] 9973
+new_names <- make.names(new_names, unique = T)
+rownames(norm_expr) <- new_names
+write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data/expr/Karlovich1.rds")
+## Write phenotype data to application folder
+write.csv(p1, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/8Karlovich1_pheno.csv")
+
+## DAY 2
+sourcePartial("~/Desktop/work_repo/github/Karlovich_study_data/code/Karlovich_variation.R",
+              startTag = "# Analysis of batch 2 data ----", 
+              endTag = "## varianceParitition 2 ----")
+colnames(norm_expr) <- str_replace(colnames(norm_expr), pattern = "\\.CEL.gz", replacement = "")
+probes <- unlist(rownames(norm_expr))
+norm_expr <- as.data.frame(norm_expr)
+norm_expr$Probe <- probes
+new_names <- mapIds(x = hgu133plus2.db, keys = probes, column = "SYMBOL", keytype = "PROBEID")
+head(unname(new_names), 100)
+for (i in 1:length(new_names)) {
+  if (is.na(new_names[i])) {
+    new_names[i] <- names(new_names)[i]
+  } else {
+    next
+  }
+}
+sum(is.na(new_names))
+# [1] 0
+new_names <- make.names(new_names, unique = T)
+rownames(norm_expr) <- new_names
+write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data/expr/Karlovich2.rds")
+## Write phenotype data to application folder
+write.csv(p2, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/8Karlovich2_pheno.csv")

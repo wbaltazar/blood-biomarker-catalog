@@ -1,322 +1,310 @@
-"","X","Symbol","Score","Filters","gomez","meaburn","gosch","obermoser","dusek","rusch","larocca","Study_counts"
-"1",11,"NIPAL3",15,"gomez.vp meaburn1.vp obermoser2.vp obermoser3.vp dusek.vp rusch.vp larocca.vp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp dusek.rp rusch.rp",1,3,1,5,2,2,1,7
-"2",21,"AOC1",18,"gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,2,7,2,1,1,7
-"3",26,"TMEM176A",21,"meaburn2.sd gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,4,2,8,2,2,2,7
-"4",61,"SKAP2",21,"meaburn2.sd gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp",1,5,2,8,2,2,1,7
-"5",97,"GDE1",17,"obermoser2.sd gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp rusch.vp larocca.vp gosch.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp",1,1,2,9,1,2,1,7
-"6",103,"SPATA20",18,"gomez.vp gosch.vp meaburn1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,1,7,2,1,2,7
-"7",134,"CD79B",18,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,1,8,2,1,2,7
-"8",146,"E2F2",17,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,2,6,2,2,2,7
-"9",187,"ETV7",16,"gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp dusek.rp rusch.rp larocca.rp",2,4,2,2,2,2,2,7
-"10",194,"CD9",18,"gomez.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser2.vp obermoser3.vp dusek.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",3,4,1,6,2,1,1,7
-"11",240,"CD22",17,"meaburn2.sd gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser4.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,2,5,1,2,1,7
-"12",263,"DDX11",21,"gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,2,8,2,1,2,7
-"13",349,"KCNG1",10,"gosch.vp obermoser1.vp gomez.rp gosch.rp meaburn2.rp obermoser1.rp obermoser3.rp dusek.rp rusch.rp larocca.rp",1,1,2,3,1,1,1,7
-"14",367,"ANK1",17,"meaburn1.sd gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp dusek.rp rusch.rp larocca.rp",1,5,2,4,2,2,1,7
-"15",408,"STAP1",13,"meaburn1.sd gomez.vp gosch.vp obermoser1.vp obermoser3.vp dusek.vp gomez.rp meaburn1.rp obermoser1.rp obermoser3.rp obermoser4.rp rusch.rp larocca.rp",2,2,1,5,1,1,1,7
-"16",413,"MYOM2",21,"gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,2,8,2,2,1,7
-"17",429,"VCAN",14,"gosch.vp obermoser1.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,1,2,5,2,2,1,7
-"18",459,"ADAM28",14,"obermoser1.vp obermoser2.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,2,1,5,2,2,1,7
-"19",483,"XK",17,"gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,2,6,1,1,2,7
-"20",506,"COL9A2",14,"gomez.vp gosch.vp meaburn2.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser3.rp obermoser4.rp dusek.rp larocca.rp",2,3,2,3,2,1,1,7
-"21",525,"DKK3",14,"gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser3.vp dusek.vp rusch.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser3.rp rusch.rp larocca.rp",1,4,1,4,1,2,1,7
-"22",550,"FOXN3",11,"gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser2.vp dusek.vp rusch.vp larocca.vp meaburn1.rp meaburn2.rp dusek.rp",1,4,1,1,2,1,1,7
-"23",603,"PITHD1",19,"gomez.sd gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",3,3,2,6,2,2,1,7
-"24",632,"WNK1",17,"obermoser4.sd dusek.sd meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,2,1,7,3,2,1,7
-"25",641,"BCAT1",19,"gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,2,6,2,2,2,7
-"26",697,"CHI3L2",21,"gomez.sd meaburn1.sd obermoser2.sd gomez.vp gosch.vp meaburn2.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",3,4,2,7,2,2,1,7
-"27",770,"FECH",22,"gomez.sd meaburn2.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",3,5,2,7,2,2,1,7
-"28",824,"KIF2A",14,"gomez.vp gosch.vp meaburn2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp meaburn1.rp meaburn2.rp obermoser1.rp dusek.rp rusch.rp larocca.rp",1,3,1,3,2,2,2,7
-"29",897,"VASH1",20,"meaburn1.sd rusch.sd gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,1,8,2,2,1,7
-"30",911,"CYBRD1",20,"meaburn2.sd gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,2,8,1,1,2,7
-"31",936,"FCGR2B",21,"gomez.sd meaburn1.sd gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",3,3,2,8,2,1,2,7
-"32",972,"PICALM",18,"meaburn1.sd meaburn2.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser2.vp obermoser3.vp dusek.vp rusch.vp larocca.vp meaburn1.rp meaburn2.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp",1,6,1,5,2,2,1,7
-"33",982,"MGLL",16,"gomez.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,1,8,2,1,1,7
-"34",1018,"MARK3",11,"rusch.sd gomez.vp meaburn2.vp obermoser1.vp dusek.vp larocca.vp gosch.rp meaburn2.rp obermoser1.rp dusek.rp rusch.rp",1,2,1,2,2,2,1,7
-"35",1058,"MBNL3",17,"gomez.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,1,8,2,2,1,7
-"36",1059,"RAP1GAP",18,"gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp rusch.rp larocca.rp",2,2,2,7,1,2,2,7
-"37",1130,"TNS1",19,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,2,8,2,2,2,7
-"38",1135,"CEACAM1",17,"meaburn1.sd meaburn2.sd gomez.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp dusek.rp larocca.rp",2,6,1,4,2,1,1,7
-"39",1289,"ABCB1",15,"gomez.vp gosch.vp meaburn2.vp obermoser2.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp dusek.rp rusch.rp larocca.rp",2,3,2,3,2,2,1,7
-"40",1313,"EIF2AK1",18,"gomez.sd gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser4.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",3,3,2,6,1,2,1,7
-"41",1415,"OAS1",22,"gomez.sd rusch.sd gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,2,8,2,3,2,7
-"42",1420,"RPH3A",13,"meaburn1.sd gomez.vp gosch.vp meaburn2.vp obermoser4.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,2,2,1,1,1,7
-"43",1461,"IRAK3",14,"gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp dusek.vp larocca.vp meaburn1.rp meaburn2.rp obermoser1.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,3,1,4,2,1,2,7
-"44",1478,"PDPR",17,"rusch.sd gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,1,1,8,2,3,1,7
-"45",1496,"IL5RA",18,"gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,2,8,1,1,1,7
-"46",1499,"ITGA6",13,"gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp dusek.vp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp dusek.rp rusch.rp larocca.rp",1,4,2,2,2,1,1,7
-"47",1601,"DSP",10,"obermoser2.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp obermoser2.rp dusek.rp rusch.rp larocca.rp",1,1,1,2,2,1,2,7
-"48",1700,"GCAT",18,"meaburn2.sd gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp rusch.rp larocca.rp",1,5,2,7,1,1,1,7
-"49",1711,"TPTEP1",15,"gomez.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,1,1,8,2,1,1,7
-"50",1775,"FAM118A",24,"gomez.sd meaburn1.sd rusch.sd larocca.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",3,5,2,8,1,3,2,7
-"51",1800,"GZMH",20,"gomez.sd gomez.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",3,4,1,8,2,1,1,7
-"52",1801,"GZMB",16,"obermoser1.vp obermoser2.vp obermoser3.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,2,1,7,2,2,1,7
-"53",1838,"PPM1A",17,"gomez.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp rusch.vp larocca.vp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp",1,4,1,7,1,2,1,7
-"54",1849,"TCL1A",14,"gosch.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,2,2,5,2,1,1,7
-"55",1913,"TUBB1",13,"obermoser2.vp obermoser3.vp dusek.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,1,1,6,2,1,1,7
-"56",1937,"SIRPB1",21,"meaburn2.sd obermoser4.sd gomez.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,1,9,2,2,2,7
-"57",1961,"BPI",16,"gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser3.vp dusek.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,1,6,2,1,1,7
-"58",1993,"RIOK3",22,"obermoser2.sd obermoser4.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,2,8,2,2,2,7
-"59",2050,"CD40LG",13,"meaburn2.sd gomez.vp gosch.vp meaburn2.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn2.rp obermoser2.rp obermoser3.rp dusek.rp",2,3,2,2,2,1,1,7
-"60",2133,"NPRL3",20,"gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,2,8,2,2,2,7
-"61",2167,"GSPT1",20,"gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,2,7,2,2,2,7
-"62",2171,"PRSS33",19,"gomez.vp meaburn1.vp meaburn2.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,1,7,2,2,1,7
-"63",2231,"ZDHHC2",10,"dusek.sd gomez.vp gosch.vp meaburn1.vp obermoser3.vp dusek.vp meaburn1.rp dusek.rp rusch.rp larocca.rp",1,2,1,1,3,1,1,7
-"64",2235,"CA2",21,"gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,2,8,2,2,2,7
-"65",2286,"BNIP3L",18,"obermoser4.sd gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,2,7,2,1,1,7
-"66",2311,"KLC3",16,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,2,7,2,1,1,7
-"67",2319,"FCER2",17,"gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,1,7,2,1,1,7
-"68",2384,"SIGLEC8",17,"gomez.vp gosch.vp meaburn2.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,3,2,5,2,2,2,7
-"69",2385,"CD79A",18,"gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,1,8,2,2,2,7
-"70",2389,"NKG7",16,"obermoser1.vp obermoser2.vp obermoser3.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,2,1,7,2,2,1,7
-"71",2420,"KLF1",14,"meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,1,1,6,2,2,1,7
-"72",2544,"TMEM176B",21,"meaburn2.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,5,2,7,1,2,2,7
-"73",2567,"NMRK1",17,"obermoser4.sd gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp",1,2,1,9,2,1,1,7
-"74",2569,"PRUNE2",23,"obermoser4.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,2,9,2,2,2,7
-"75",2591,"KANK1",16,"gosch.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,2,1,7,2,1,2,7
-"76",2611,"PDLIM1",14,"gomez.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp obermoser1.rp obermoser3.rp obermoser4.rp dusek.rp larocca.rp",2,1,1,6,2,1,1,7
-"77",2614,"HPS1",18,"gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,2,8,2,2,1,7
-"78",2681,"KRT23",20,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,2,8,2,2,2,7
-"79",2686,"RUNDC3A",16,"gomez.vp gosch.vp meaburn2.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,2,5,2,2,1,7
-"80",2754,"ABCC3",18,"obermoser2.sd gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp rusch.rp larocca.rp",1,3,2,9,1,1,1,7
-"81",2757,"DUSP3",14,"gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp larocca.vp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp",1,2,1,7,1,1,1,7
-"82",2789,"PF4V1",19,"gomez.vp gosch.vp meaburn1.vp obermoser2.vp obermoser3.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,2,6,2,2,2,7
-"83",2854,"MS4A6A",20,"obermoser2.sd obermoser4.sd gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,3,2,10,2,1,1,7
-"84",2865,"FOLR3",19,"gomez.sd gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,2,7,1,2,2,7
-"85",2907,"VWF",14,"gomez.vp gosch.vp obermoser2.vp obermoser4.vp rusch.vp gomez.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,1,6,1,2,1,7
-"86",2931,"LIN7A",19,"meaburn1.sd gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,1,8,2,1,1,7
-"87",2993,"CHPT1",22,"gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,2,8,2,2,2,7
-"88",3019,"FGFR1OP2",13,"gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp dusek.vp rusch.vp gosch.rp meaburn1.rp meaburn2.rp dusek.rp rusch.rp larocca.rp",1,4,2,1,2,2,1,7
-"89",3032,"ADTRP",18,"meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,3,1,8,2,2,1,7
-"90",3075,"E2F3",10,"gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser4.vp dusek.vp meaburn2.rp dusek.rp rusch.rp larocca.rp",1,2,1,2,2,1,1,7
-"91",3080,"ALDH5A1",19,"obermoser2.sd gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,2,9,2,1,1,7
-"92",3165,"BTNL8",15,"meaburn1.vp meaburn2.vp obermoser2.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp dusek.rp rusch.rp larocca.rp",1,4,1,4,2,2,1,7
-"93",3282,"ABCC5",12,"gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp dusek.vp larocca.vp meaburn1.rp obermoser1.rp dusek.rp rusch.rp",1,3,1,3,2,1,1,7
-"94",3332,"IFIH1",16,"gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser4.rp dusek.rp",2,3,2,5,2,1,1,7
-"95",3341,"SPTBN1",14,"gomez.vp gosch.vp meaburn1.vp meaburn2.vp dusek.vp rusch.vp larocca.vp meaburn1.rp meaburn2.rp obermoser2.rp obermoser3.rp dusek.rp rusch.rp larocca.rp",1,4,1,2,2,2,2,7
-"96",3355,"STAT1",20,"meaburn1.sd meaburn2.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser3.rp dusek.rp larocca.rp",2,6,2,5,2,1,2,7
-"97",3371,"GNLY",19,"gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,2,8,2,1,1,7
-"98",3427,"TRAK2",20,"gomez.sd gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",3,2,2,7,2,2,2,7
-"99",3449,"RALGPS2",14,"gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser4.vp dusek.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,1,3,2,1,2,7
-"100",3489,"FBXO6",13,"gomez.vp meaburn1.vp obermoser1.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser4.rp dusek.rp rusch.rp",2,3,1,3,2,1,1,7
-"101",3490,"C1orf21",16,"meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,4,1,5,2,2,1,7
-"102",3565,"CD160",16,"gomez.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,1,5,2,1,1,7
-"103",3611,"MAN1C1",16,"meaburn1.vp meaburn2.vp obermoser1.vp obermoser3.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp",1,4,1,6,2,1,1,7
-"104",3674,"FOXO3",23,"meaburn2.sd obermoser2.sd obermoser4.sd gomez.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,5,1,9,2,2,2,7
-"105",3680,"SPP1",16,"gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp dusek.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,1,5,2,1,1,7
-"106",3756,"FLVCR2",15,"meaburn1.sd gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp dusek.vp larocca.vp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp dusek.rp rusch.rp",1,4,2,4,2,1,1,7
-"107",3774,"FKBP1B",12,"gomez.vp gosch.vp obermoser1.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn2.rp obermoser1.rp dusek.rp rusch.rp larocca.rp",2,1,2,2,2,2,1,7
-"108",3794,"MXI1",17,"gomez.sd obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,1,8,2,1,2,7
-"109",3881,"EPHX2",15,"obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp",1,2,1,7,2,1,1,7
-"110",3904,"PLBD1",13,"meaburn2.sd gomez.vp gosch.vp obermoser2.vp obermoser4.vp dusek.vp larocca.vp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp rusch.rp",1,3,1,5,1,1,1,7
-"111",3996,"NT5C3A",18,"meaburn2.sd gomez.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp",2,4,1,6,2,2,1,7
-"112",4081,"TNFAIP6",17,"gomez.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,1,6,2,1,2,7
-"113",4109,"PI3",17,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,1,7,2,2,1,7
-"114",4176,"NQO2",21,"gomez.sd gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,2,8,2,2,1,7
-"115",4190,"TREM1",16,"gomez.vp gosch.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp",2,2,1,6,2,2,1,7
-"116",4257,"PPDPF",19,"gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,2,7,2,2,2,7
-"117",4356,"CCR7",14,"meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp gomez.rp gosch.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,2,1,7,1,1,1,7
-"118",4462,"HIP1",19,"gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,3,2,8,2,2,1,7
-"119",4467,"STEAP4",17,"gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp dusek.vp rusch.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp rusch.rp larocca.rp",1,4,1,6,1,2,2,7
-"120",4486,"VPREB3",15,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser4.vp larocca.vp gomez.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,1,7,1,1,2,7
-"121",4576,"MTUS1",18,"gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp rusch.rp larocca.rp",1,3,2,7,1,2,2,7
-"122",4764,"IDO1",17,"gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser3.vp dusek.vp rusch.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser3.rp dusek.rp rusch.rp larocca.rp",2,4,1,4,2,2,2,7
-"123",4782,"NAPSB",19,"obermoser2.sd gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp",2,2,2,9,1,2,1,7
-"124",4821,"CLUHP3",17,"meaburn2.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser2.vp obermoser4.vp rusch.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp larocca.rp",2,5,1,5,1,1,2,7
-"125",4837,"LGALS3",16,"gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser4.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn2.rp obermoser1.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,2,5,2,1,2,7
-"126",4924,"FCRL2",18,"obermoser2.sd gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,1,2,9,2,1,2,7
-"127",4937,"RBM38",14,"gomez.vp obermoser1.vp obermoser2.vp obermoser4.vp rusch.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,1,6,1,2,1,7
-"128",5011,"MKRN1",19,"gomez.sd obermoser2.sd gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",3,1,2,7,2,2,2,7
-"129",5021,"TMTC1",17,"meaburn1.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,3,1,7,2,2,1,7
-"130",5028,"CA1",17,"gomez.vp gosch.vp meaburn2.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,2,5,2,2,1,7
-"131",5070,"GSTM1",21,"meaburn1.sd meaburn2.sd gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,2,8,2,1,2,7
-"132",5072,"REG4",10,"meaburn1.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp obermoser3.rp dusek.rp rusch.rp larocca.rp",1,1,1,2,2,2,1,7
-"133",5075,"GSTM3",19,"meaburn1.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser2.vp obermoser3.vp dusek.vp rusch.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,5,1,6,2,2,1,7
-"134",5099,"RSAD2",16,"gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser2.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser3.rp obermoser4.rp rusch.rp larocca.rp",2,4,2,5,1,1,1,7
-"135",5122,"KLRD1",18,"meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,3,1,8,2,2,1,7
-"136",5149,"TPGS2",19,"gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,4,2,7,2,2,1,7
-"137",5205,"CD36",21,"obermoser2.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,1,9,2,1,2,7
-"138",5226,"PRRG4",18,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp rusch.rp larocca.rp",2,2,2,7,1,2,2,7
-"139",5253,"AHI1",10,"gomez.vp gosch.vp obermoser1.vp dusek.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp rusch.rp larocca.rp",2,1,2,2,1,1,1,7
-"140",5263,"RAB11FIP5",16,"gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp larocca.rp",1,3,2,7,1,1,1,7
-"141",5291,"NPL",19,"rusch.sd gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp",1,3,1,8,2,3,1,7
-"142",5432,"ST6GALNAC4",17,"gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp larocca.rp",2,1,2,8,2,1,1,7
-"143",5440,"TLR4",18,"gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser3.vp dusek.vp rusch.vp larocca.vp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,4,1,6,2,2,2,7
-"144",5452,"HEMGN",17,"gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,2,6,2,1,1,7
-"145",5481,"CD72",16,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,1,8,2,1,1,7
-"146",5505,"TUBB2A",20,"gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,3,2,8,2,2,2,7
-"147",5523,"FGFBP2",18,"gomez.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,1,7,2,2,1,7
-"148",5535,"SYTL2",17,"gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,4,1,7,2,1,1,7
-"149",5565,"THBS1",19,"gomez.sd obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,1,8,2,2,2,7
-"150",5665,"PARP9",19,"meaburn2.sd gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp",1,4,2,8,2,1,1,7
-"151",5696,"NAAA",24,"meaburn2.sd obermoser2.sd obermoser4.sd rusch.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp",2,5,1,10,2,3,1,7
-"152",5711,"LEF1",16,"obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp",1,2,1,7,2,2,1,7
-"153",5714,"PAPSS1",19,"obermoser4.sd gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp",2,3,1,9,2,1,1,7
-"154",5745,"TAPBPL",18,"meaburn2.sd gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp",2,4,1,7,2,1,1,7
-"155",5812,"RAB20",10,"gomez.vp gosch.vp obermoser1.vp dusek.vp rusch.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp larocca.rp",2,2,1,2,1,1,1,7
-"156",5830,"SLC24A4",17,"meaburn1.sd gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp",2,4,1,6,2,1,1,7
-"157",5831,"FBLN5",20,"gomez.sd gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",3,2,2,8,2,1,2,7
-"158",5866,"TPM1",19,"meaburn2.sd gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp",1,3,2,8,2,2,1,7
-"159",5876,"PCSK6",17,"gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,2,6,2,2,1,7
-"160",5940,"RANBP10",19,"gomez.sd obermoser2.sd gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp rusch.rp larocca.rp",3,2,2,7,1,2,2,7
-"161",5977,"SLC14A1",22,"gomez.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",3,4,2,8,2,2,1,7
-"162",6064,"NLRP12",21,"meaburn1.sd meaburn2.sd meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,6,1,8,2,2,1,7
-"163",6144,"FCRL5",21,"rusch.sd larocca.sd gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,2,7,1,3,3,7
-"164",6195,"S100A8",12,"gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp dusek.vp rusch.vp gomez.rp meaburn2.rp obermoser2.rp dusek.rp larocca.rp",2,2,1,3,2,1,1,7
-"165",6225,"ITPKB",12,"meaburn2.sd gomez.vp gosch.vp meaburn2.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp larocca.vp meaburn1.rp meaburn2.rp dusek.rp",1,4,1,2,2,1,1,7
-"166",6277,"AFF3",17,"gosch.vp meaburn2.vp obermoser1.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,3,2,6,2,2,1,7
-"167",6312,"OSBPL10",17,"gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,1,5,2,2,2,7
-"168",6361,"SNCA",21,"obermoser2.sd gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,2,8,2,2,2,7
-"169",6364,"CISD2",17,"meaburn1.sd gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,2,5,2,2,1,7
-"170",6373,"SFRP2",13,"gomez.vp gosch.vp meaburn2.vp obermoser1.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp dusek.rp rusch.rp larocca.rp",2,3,2,2,2,1,1,7
-"171",6398,"PAM",25,"meaburn1.sd meaburn2.sd obermoser1.sd obermoser4.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,6,2,10,2,1,2,7
-"172",6436,"PLA2G7",15,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp dusek.vp gomez.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,1,7,2,1,1,7
-"173",6444,"FGD2",22,"gomez.sd meaburn1.sd meaburn2.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp",3,6,1,7,2,2,1,7
-"174",6471,"GNA12",18,"gomez.sd obermoser2.sd gomez.vp obermoser1.vp obermoser2.vp obermoser3.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",3,1,1,8,2,2,1,7
-"175",6477,"CREB5",20,"meaburn2.sd gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,5,1,8,2,2,1,7
-"176",6482,"POMZP3",20,"meaburn2.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,5,1,7,2,2,1,7
-"177",6501,"NCAPG2",15,"gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp dusek.vp rusch.vp gomez.rp meaburn1.rp obermoser1.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,2,1,6,2,2,1,7
-"178",6545,"SLC25A37",20,"obermoser2.sd obermoser4.sd gomez.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,4,1,9,2,2,1,7
-"179",6614,"LCN2",19,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,2,8,2,2,2,7
-"180",6678,"SESN3",17,"meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,2,1,7,2,2,2,7
-"181",6709,"MS4A2",15,"gomez.vp gosch.vp obermoser1.vp obermoser4.vp dusek.vp rusch.vp larocca.vp meaburn1.rp meaburn2.rp obermoser1.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,2,1,5,2,2,2,7
-"182",6714,"FEZ1",11,"meaburn2.vp obermoser2.vp obermoser4.vp gomez.rp gosch.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,1,1,5,1,1,1,7
-"183",6717,"SIDT2",16,"gosch.vp meaburn1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,2,1,7,2,2,1,7
-"184",6764,"PRSS23",15,"meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,4,1,6,1,1,1,7
-"185",6854,"TMEM45B",19,"gomez.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,1,7,2,1,2,7
-"186",6958,"BANK1",15,"gosch.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,2,1,7,2,1,1,7
-"187",6968,"BMP6",11,"gomez.vp gosch.vp obermoser2.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser3.rp rusch.rp",2,1,2,3,1,1,1,7
-"188",6999,"JAZF1",18,"meaburn1.sd gomez.vp gosch.vp meaburn1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,2,7,2,1,1,7
-"189",7001,"PID1",14,"gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp rusch.rp larocca.rp",1,1,1,8,1,1,1,7
-"190",7094,"PTPRN2",22,"meaburn2.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,5,2,8,2,2,1,7
-"191",7182,"MAP3K7CL",17,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,1,8,2,2,1,7
-"192",7198,"PPP2R2B",18,"dusek.sd meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,3,1,8,3,1,1,7
-"193",7220,"MS4A1",16,"gomez.sd gosch.vp meaburn2.vp obermoser1.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,1,6,2,1,1,7
-"194",7244,"NTAN1",20,"meaburn2.sd obermoser4.sd gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gosch.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,3,2,9,2,2,1,7
-"195",7250,"NRG1",20,"meaburn2.sd gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,1,8,2,1,2,7
-"196",7347,"TSPAN33",20,"gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,2,7,2,1,2,7
-"197",7365,"ALAS2",18,"gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,2,8,2,1,1,7
-"198",7392,"FCER1G",14,"gomez.vp gosch.vp meaburn1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp dusek.rp rusch.rp larocca.rp",1,2,1,5,2,2,1,7
-"199",7445,"ISL2",17,"gomez.vp meaburn1.vp obermoser1.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,1,6,2,2,1,7
-"200",7477,"TNFRSF13C",12,"gomez.vp gosch.vp meaburn2.vp obermoser2.vp dusek.vp gomez.rp gosch.rp meaburn2.rp obermoser2.rp dusek.rp rusch.rp larocca.rp",2,2,2,2,2,1,1,7
-"201",7501,"PDE9A",18,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp rusch.rp larocca.rp",2,2,2,8,1,1,2,7
-"202",7574,"CCR5",16,"meaburn1.sd meaburn2.sd gosch.vp meaburn2.vp obermoser1.vp obermoser3.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser3.rp obermoser4.rp rusch.rp larocca.rp",1,5,2,5,1,1,1,7
-"203",7579,"FCRL3",18,"gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,3,2,8,2,1,1,7
-"204",7652,"ASGR2",17,"gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp rusch.rp larocca.rp",1,3,2,8,1,1,1,7
-"205",7712,"DHRS3",8,"gomez.vp gosch.vp meaburn2.vp rusch.vp meaburn2.rp obermoser1.rp dusek.rp larocca.rp",1,2,1,1,1,1,1,7
-"206",7753,"TRIM58",16,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,2,6,2,1,2,7
-"207",7864,"PROK2",15,"gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser4.rp rusch.rp larocca.rp",2,3,1,5,1,1,2,7
-"208",7866,"FSTL1",15,"obermoser2.sd gomez.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp dusek.rp rusch.rp larocca.rp",2,3,1,4,2,2,1,7
-"209",7869,"IGFBP7",15,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp dusek.vp rusch.vp larocca.vp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp dusek.rp rusch.rp",1,1,2,6,2,2,1,7
-"210",7882,"EOMES",18,"meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,4,1,7,2,2,1,7
-"211",7950,"CPA3",16,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,2,7,2,1,1,7
-"212",7967,"CCR1",20,"meaburn2.sd rusch.sd meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp",1,5,1,8,2,2,1,7
-"213",8089,"ERAP2",26,"gomez.sd gosch.sd meaburn1.sd meaburn2.sd rusch.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",3,6,3,8,2,3,1,7
-"214",8093,"EBF1",18,"gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,1,7,2,1,1,7
-"215",8116,"ANKRD55",18,"meaburn1.sd gosch.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,3,2,7,2,1,2,7
-"216",8143,"CTSB",21,"obermoser4.sd gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp",2,3,2,9,2,2,1,7
-"217",8155,"GPR146",17,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp larocca.rp",2,1,2,7,2,1,2,7
-"218",8206,"CYBB",15,"gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp meaburn1.rp obermoser1.rp obermoser2.rp dusek.rp rusch.rp",1,2,1,6,2,2,1,7
-"219",8271,"PDZD8",16,"gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gosch.rp meaburn1.rp meaburn2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,3,2,5,2,1,2,7
-"220",8394,"PPFIBP2",17,"gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp rusch.rp larocca.rp",1,4,1,7,1,2,1,7
-"221",8419,"MCM7",13,"gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp rusch.vp larocca.vp meaburn1.rp obermoser1.rp obermoser3.rp dusek.rp",1,2,1,6,1,1,1,7
-"222",8486,"EPB42",14,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp dusek.vp gomez.rp gosch.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,2,5,2,1,1,7
-"223",8508,"SAMD14",17,"meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,1,1,8,2,2,2,7
-"224",8626,"KRT1",18,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,2,7,2,2,1,7
-"225",8690,"PNOC",12,"gomez.vp gosch.vp dusek.vp rusch.vp larocca.vp gomez.rp meaburn1.rp obermoser1.rp obermoser3.rp obermoser4.rp dusek.rp larocca.rp",2,1,1,3,2,1,2,7
-"226",8700,"RNF187",16,"gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp",1,4,2,5,2,1,1,7
-"227",8782,"GSTM4",20,"gomez.sd meaburn1.sd gomez.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp rusch.rp larocca.rp",3,4,1,8,1,2,1,7
-"228",8794,"NSG1",18,"meaburn1.sd gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,2,1,8,2,2,2,7
-"229",8879,"RNASE2",15,"gomez.vp gosch.vp obermoser2.vp obermoser3.vp obermoser4.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,1,7,1,1,1,7
-"230",8884,"RNASE6",18,"dusek.sd gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,2,7,3,1,2,7
-"231",8901,"CLIC3",14,"gomez.vp meaburn1.vp obermoser1.vp obermoser2.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp dusek.rp rusch.rp larocca.rp",2,2,1,4,2,2,1,7
-"232",8994,"FAXDC2",18,"gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,2,7,2,2,1,7
-"233",8997,"CMTM8",16,"gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,3,1,8,1,1,1,7
-"234",9030,"KRT72",15,"gosch.vp meaburn2.vp obermoser2.vp obermoser4.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,3,1,6,1,1,2,7
-"235",9045,"GTSF1",16,"gomez.vp meaburn1.vp obermoser2.vp obermoser3.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp dusek.rp rusch.rp larocca.rp",2,3,1,5,2,2,1,7
-"236",9099,"SIGLEC17P",18,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,2,8,1,2,1,7
-"237",9155,"HOPX",17,"gomez.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,1,6,2,1,1,7
-"238",9163,"BCL2L1",16,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser4.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,2,6,1,2,2,7
-"239",9174,"ENC1",19,"rusch.sd gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,2,8,2,3,1,7
-"240",9269,"CLEC12A",22,"obermoser2.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,2,9,2,1,2,7
-"241",9270,"BPGM",20,"meaburn2.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,5,2,6,2,1,2,7
-"242",9360,"HPSE",13,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp dusek.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp rusch.rp",2,2,1,5,1,1,1,7
-"243",9362,"HSPA6",19,"meaburn2.sd meaburn2.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,4,1,7,2,2,2,7
-"244",9364,"LRRN3",16,"gomez.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,1,7,2,1,1,7
-"245",9378,"ABLIM3",16,"gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,1,2,8,2,1,1,7
-"246",9386,"SLC2A14",12,"gosch.vp meaburn1.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser3.rp dusek.rp rusch.rp larocca.rp",1,3,2,1,2,1,2,7
-"247",9410,"PTPRM",15,"gomez.vp gosch.vp meaburn1.vp obermoser1.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,2,3,2,1,2,7
-"248",9446,"JUP",19,"meaburn1.sd gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp dusek.vp rusch.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,4,1,7,2,2,2,7
-"249",9461,"HOXB2",19,"gomez.sd meaburn2.sd gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp",2,4,1,8,2,1,1,7
-"250",9471,"CEP19",18,"gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,4,1,8,2,1,1,7
-"251",9532,"ZNF266",18,"obermoser4.sd gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp",1,2,2,9,2,1,1,7
-"252",9625,"MCTP1",19,"gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp dusek.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,1,7,2,1,2,7
-"253",9687,"ZNF683",17,"gomez.vp gosch.vp obermoser1.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,2,7,2,1,1,7
-"254",9743,"LRRC37A",15,"gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser2.vp dusek.vp rusch.vp larocca.vp gosch.rp meaburn1.rp meaburn2.rp obermoser2.rp dusek.rp rusch.rp larocca.rp",1,4,2,2,2,2,2,7
-"255",9754,"VSIG10",17,"gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,2,7,2,2,1,7
-"256",9816,"CD19",17,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser4.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,2,7,1,2,1,7
-"257",9829,"CD163",17,"gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp rusch.rp",1,2,2,8,1,2,1,7
-"258",9939,"THBD",18,"meaburn2.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,5,2,4,2,1,2,7
-"259",10002,"HLA-DQB1",25,"gomez.sd meaburn1.sd meaburn2.sd obermoser2.sd rusch.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",3,6,1,8,2,3,2,7
-"260",10018,"CIITA",13,"gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser3.vp dusek.vp rusch.vp larocca.vp meaburn2.rp obermoser1.rp obermoser3.rp dusek.rp",1,3,1,4,2,1,1,7
-"261",10026,"FCER1A",17,"gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,2,2,8,2,1,1,7
-"262",10042,"PDXDC1",13,"gomez.vp gosch.vp meaburn1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp rusch.rp",1,3,1,5,1,1,1,7
-"263",10089,"PAK2",14,"meaburn1.sd meaburn2.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp dusek.vp rusch.vp larocca.vp meaburn1.rp meaburn2.rp obermoser4.rp dusek.rp rusch.rp",1,6,1,1,2,2,1,7
-"264",10110,"PCGF5",13,"gomez.vp gosch.vp meaburn1.vp obermoser3.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp dusek.rp rusch.rp larocca.rp",2,3,2,1,2,2,1,7
-"265",10111,"PRF1",16,"meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,3,1,6,2,2,1,7
-"266",10115,"S1PR5",16,"meaburn1.vp meaburn2.vp obermoser2.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,4,1,6,2,1,1,7
-"267",10118,"CHST13",19,"gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,1,8,2,1,2,7
-"268",10280,"MXRA7",20,"rusch.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,2,7,2,2,1,7
-"269",10295,"TTC3",10,"gomez.vp gosch.vp meaburn1.vp obermoser2.vp dusek.vp larocca.vp meaburn2.rp obermoser1.rp dusek.rp rusch.rp",1,2,1,2,2,1,1,7
-"270",10393,"CCR3",17,"gosch.vp meaburn1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,3,2,7,2,1,1,7
-"271",10404,"NOG",18,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,2,8,2,1,1,7
-"272",10413,"KREMEN1",17,"meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,4,1,6,2,2,1,7
-"273",10462,"OLIG1",22,"meaburn1.sd meaburn2.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,6,2,8,2,1,1,7
-"274",10517,"OSBP2",16,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,2,6,2,2,1,7
-"275",10625,"PBX1",17,"gomez.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,1,7,2,2,1,7
-"276",10653,"ARL17A",22,"meaburn2.sd dusek.sd gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,5,2,8,3,2,1,7
-"277",10707,"CYP4F12",14,"meaburn1.vp obermoser1.vp obermoser2.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,2,1,5,2,2,1,7
-"278",10753,"UBE2H",17,"gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp",2,2,2,6,2,2,1,7
-"279",10788,"ESPN",18,"gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,2,8,2,1,1,7
-"280",10797,"LILRA5",19,"gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,1,8,2,2,1,7
-"281",10936,"RHCE",15,"gomez.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp",2,1,1,7,2,1,1,7
-"282",10937,"PARVB",18,"rusch.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp dusek.vp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,4,2,6,2,2,1,7
-"283",10980,"VSTM1",17,"gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,2,2,8,2,1,1,7
-"284",11001,"FHIT",16,"meaburn2.sd rusch.sd gosch.vp meaburn2.vp obermoser1.vp obermoser4.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,4,2,5,1,2,1,7
-"285",11007,"KAZN",14,"meaburn1.vp meaburn2.vp obermoser1.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,4,1,4,2,1,1,7
-"286",11025,"HLA-DRB1",22,"meaburn1.sd dusek.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,1,8,3,2,2,7
-"287",11026,"AKR1C3",19,"gomez.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,1,8,2,1,2,7
-"288",11106,"SULT1A1",20,"gomez.sd meaburn1.sd meaburn2.sd gosch.vp meaburn2.vp obermoser1.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,5,1,7,2,1,2,7
-"289",11134,"ZNF502",9,"gosch.vp meaburn1.vp obermoser1.vp dusek.vp gomez.rp meaburn1.rp obermoser1.rp rusch.rp larocca.rp",1,2,1,2,1,1,1,7
-"290",11155,"HLA-DQA1",21,"gomez.sd gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",3,3,1,8,2,2,2,7
-"291",11180,"ARHGEF12",16,"gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn2.rp obermoser1.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,2,4,2,2,1,7
-"292",11291,"ATG7",19,"meaburn1.sd meaburn2.sd gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp dusek.rp rusch.rp",1,4,2,7,2,2,1,7
-"293",11295,"ELANE",13,"gomez.vp meaburn2.vp obermoser2.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser4.rp rusch.rp larocca.rp",2,2,1,4,1,2,1,7
-"294",11323,"RPS26",19,"meaburn1.sd meaburn2.sd obermoser2.sd obermoser4.sd gomez.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,4,1,10,1,1,1,7
-"295",11330,"CFD",18,"obermoser2.sd gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,2,1,9,2,1,2,7
-"296",11416,"CLEC4C",20,"meaburn2.sd rusch.sd gomez.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,4,1,7,2,3,1,7
-"297",11471,"HLA-DRB5",24,"gomez.sd meaburn1.sd obermoser2.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",3,5,1,9,2,2,2,7
-"298",11519,"F5",19,"meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,3,1,8,2,2,2,7
-"299",11561,"CES1",16,"obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,2,1,8,2,1,1,7
-"300",11680,"HLA-DMA",18,"meaburn2.sd gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp",1,4,1,8,2,1,1,7
-"301",11740,"LILRB3",19,"meaburn2.sd gomez.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp",2,5,1,7,2,1,1,7
-"302",11753,"HLA-G",15,"meaburn2.sd gosch.vp meaburn1.vp obermoser1.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp obermoser1.rp obermoser3.rp obermoser4.rp dusek.rp larocca.rp",1,2,1,6,2,1,2,7
-"303",12372,"HLA-DPB1",19,"meaburn1.sd meaburn2.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser2.vp obermoser3.vp rusch.vp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,6,2,6,1,2,1,7
-"304",12676,"ORM1",18,"gomez.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,1,8,2,1,1,7
-"305",12681,"HLA-DRB6",18,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,1,8,2,1,2,7
-"306",12816,"LEF1-AS1",14,"gomez.vp dusek.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,1,4,2,1,2,7
-"307",13081,"DDX11L2",17,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp larocca.vp gomez.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,1,8,2,1,2,7
-"308",13236,"RPL23AP7",21,"meaburn1.sd meaburn2.sd gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,6,2,8,1,1,2,7
-"309",13268,"HLA-DOB",18,"dusek.sd gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,2,8,2,1,1,7
-"310",13299,"PISD",16,"meaburn2.sd gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp larocca.vp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp",1,2,1,7,2,2,1,7
-"311",13339,"ABCC13",18,"gomez.vp gosch.vp meaburn2.vp obermoser2.vp obermoser3.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,2,6,1,2,2,7
-"312",13567,"NAIP",18,"gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,2,1,8,2,2,2,7
-"313",13592,"TMEM158",16,"obermoser2.sd meaburn2.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,2,1,8,2,1,1,7
-"314",13612,"GYPB",20,"gomez.vp gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,3,2,8,2,2,1,7
-"315",13859,"HP",16,"gosch.vp meaburn1.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp rusch.rp larocca.rp",1,2,2,8,1,1,1,7
-"316",13965,"ITGB3",18,"gomez.vp gosch.vp meaburn1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp rusch.vp larocca.vp gomez.rp gosch.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,2,7,2,2,2,7
-"317",14380,"SPIB",18,"gomez.vp gosch.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,2,2,8,2,1,1,7
-"318",14510,"CD24",21,"meaburn1.sd gomez.vp gosch.vp meaburn1.vp meaburn2.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,5,2,8,2,1,1,7
-"319",14676,"CCL4",17,"meaburn1.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp rusch.vp gomez.rp gosch.rp meaburn1.rp meaburn2.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",1,3,1,7,2,2,1,7
-"320",14679,"FCGBP",17,"gomez.vp obermoser1.vp obermoser2.vp obermoser3.vp obermoser4.vp rusch.vp larocca.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser3.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,1,8,1,2,2,7
-"321",14756,"CCL3",15,"gomez.vp gosch.vp obermoser1.vp obermoser2.vp obermoser4.vp dusek.vp gomez.rp gosch.rp meaburn1.rp obermoser1.rp obermoser2.rp obermoser4.rp dusek.rp rusch.rp larocca.rp",2,1,2,6,2,1,1,7
+"","hgnc_symbol","description"
+"1","ABCB1","ATP binding cassette subfamily B member 1 [Source:HGNC Symbol;Acc:HGNC:40]"
+"2","ABCC13","ATP binding cassette subfamily C member 13 (pseudogene) [Source:HGNC Symbol;Acc:HGNC:16022]"
+"3","ABCC3","ATP binding cassette subfamily C member 3 [Source:HGNC Symbol;Acc:HGNC:54]"
+"4","ABCC5","ATP binding cassette subfamily C member 5 [Source:HGNC Symbol;Acc:HGNC:56]"
+"5","ADAM28","ADAM metallopeptidase domain 28 [Source:HGNC Symbol;Acc:HGNC:206]"
+"6","ADTRP","androgen dependent TFPI regulating protein [Source:HGNC Symbol;Acc:HGNC:21214]"
+"7","AFF3","ALF transcription elongation factor 3 [Source:HGNC Symbol;Acc:HGNC:6473]"
+"8","AKR1C3","aldo-keto reductase family 1 member C3 [Source:HGNC Symbol;Acc:HGNC:386]"
+"9","ALAS2","5'-aminolevulinate synthase 2 [Source:HGNC Symbol;Acc:HGNC:397]"
+"10","ALDH5A1","aldehyde dehydrogenase 5 family member A1 [Source:HGNC Symbol;Acc:HGNC:408]"
+"11","ANK1","ankyrin 1 [Source:HGNC Symbol;Acc:HGNC:492]"
+"12","ANKRD55","ankyrin repeat domain 55 [Source:HGNC Symbol;Acc:HGNC:25681]"
+"13","AOC1","amine oxidase copper containing 1 [Source:HGNC Symbol;Acc:HGNC:80]"
+"14","ARHGEF12","Rho guanine nucleotide exchange factor 12 [Source:HGNC Symbol;Acc:HGNC:14193]"
+"15","ARL17A","ADP ribosylation factor like GTPase 17A [Source:HGNC Symbol;Acc:HGNC:24096]"
+"16","ASGR2","asialoglycoprotein receptor 2 [Source:HGNC Symbol;Acc:HGNC:743]"
+"17","BANK1","B cell scaffold protein with ankyrin repeats 1 [Source:HGNC Symbol;Acc:HGNC:18233]"
+"18","BCAT1","branched chain amino acid transaminase 1 [Source:HGNC Symbol;Acc:HGNC:976]"
+"19","BCL2L1","BCL2 like 1 [Source:HGNC Symbol;Acc:HGNC:992]"
+"20","BMP6","bone morphogenetic protein 6 [Source:HGNC Symbol;Acc:HGNC:1073]"
+"21","BNIP3L","BCL2 interacting protein 3 like [Source:HGNC Symbol;Acc:HGNC:1085]"
+"22","BPGM","bisphosphoglycerate mutase [Source:HGNC Symbol;Acc:HGNC:1093]"
+"23","BPI","bactericidal permeability increasing protein [Source:HGNC Symbol;Acc:HGNC:1095]"
+"24","BTNL8","butyrophilin like 8 [Source:HGNC Symbol;Acc:HGNC:26131]"
+"25","C1orf21","chromosome 1 open reading frame 21 [Source:HGNC Symbol;Acc:HGNC:15494]"
+"26","CA1","carbonic anhydrase 1 [Source:HGNC Symbol;Acc:HGNC:1368]"
+"27","CA2","carbonic anhydrase 2 [Source:HGNC Symbol;Acc:HGNC:1373]"
+"28","CCL3","C-C motif chemokine ligand 3 [Source:HGNC Symbol;Acc:HGNC:10627]"
+"29","CCL4","C-C motif chemokine ligand 4 [Source:HGNC Symbol;Acc:HGNC:10630]"
+"30","CCR1","C-C motif chemokine receptor 1 [Source:HGNC Symbol;Acc:HGNC:1602]"
+"31","CCR3","C-C motif chemokine receptor 3 [Source:HGNC Symbol;Acc:HGNC:1604]"
+"32","CCR5","C-C motif chemokine receptor 5 [Source:HGNC Symbol;Acc:HGNC:1606]"
+"33","CCR7","C-C motif chemokine receptor 7 [Source:HGNC Symbol;Acc:HGNC:1608]"
+"34","CD160","CD160 molecule [Source:HGNC Symbol;Acc:HGNC:17013]"
+"35","CD163","CD163 molecule [Source:HGNC Symbol;Acc:HGNC:1631]"
+"36","CD19","CD19 molecule [Source:HGNC Symbol;Acc:HGNC:1633]"
+"37","CD22","CD22 molecule [Source:HGNC Symbol;Acc:HGNC:1643]"
+"38","CD24","CD24 molecule [Source:HGNC Symbol;Acc:HGNC:1645]"
+"39","CD36","CD36 molecule [Source:HGNC Symbol;Acc:HGNC:1663]"
+"40","CD72","CD72 molecule [Source:HGNC Symbol;Acc:HGNC:1696]"
+"41","CD79A","CD79a molecule [Source:HGNC Symbol;Acc:HGNC:1698]"
+"42","CD79B","CD79b molecule [Source:HGNC Symbol;Acc:HGNC:1699]"
+"43","CD9","CD9 molecule [Source:HGNC Symbol;Acc:HGNC:1709]"
+"44","CEACAM1","CEA cell adhesion molecule 1 [Source:HGNC Symbol;Acc:HGNC:1814]"
+"45","CEP19","centrosomal protein 19 [Source:HGNC Symbol;Acc:HGNC:28209]"
+"46","CES1","carboxylesterase 1 [Source:HGNC Symbol;Acc:HGNC:1863]"
+"47","CFD","complement factor D [Source:HGNC Symbol;Acc:HGNC:2771]"
+"48","CHI3L2","chitinase 3 like 2 [Source:HGNC Symbol;Acc:HGNC:1933]"
+"49","CHPT1","choline phosphotransferase 1 [Source:HGNC Symbol;Acc:HGNC:17852]"
+"50","CHST13","carbohydrate sulfotransferase 13 [Source:HGNC Symbol;Acc:HGNC:21755]"
+"51","CIITA","class II major histocompatibility complex transactivator [Source:HGNC Symbol;Acc:HGNC:7067]"
+"52","CISD2","CDGSH iron sulfur domain 2 [Source:HGNC Symbol;Acc:HGNC:24212]"
+"53","CLEC12A","C-type lectin domain family 12 member A [Source:HGNC Symbol;Acc:HGNC:31713]"
+"54","CLEC4C","C-type lectin domain family 4 member C [Source:HGNC Symbol;Acc:HGNC:13258]"
+"55","CLIC3","chloride intracellular channel 3 [Source:HGNC Symbol;Acc:HGNC:2064]"
+"56","CLUHP3","clustered mitochondria homolog pseudogene 3 [Source:HGNC Symbol;Acc:HGNC:28447]"
+"57","CMTM8","CKLF like MARVEL transmembrane domain containing 8 [Source:HGNC Symbol;Acc:HGNC:19179]"
+"58","CPA3","carboxypeptidase A3 [Source:HGNC Symbol;Acc:HGNC:2298]"
+"59","CREB5","cAMP responsive element binding protein 5 [Source:HGNC Symbol;Acc:HGNC:16844]"
+"60","CTSB","cathepsin B [Source:HGNC Symbol;Acc:HGNC:2527]"
+"61","CYBB","cytochrome b-245 beta chain [Source:HGNC Symbol;Acc:HGNC:2578]"
+"62","CYBRD1","cytochrome b reductase 1 [Source:HGNC Symbol;Acc:HGNC:20797]"
+"63","DDX11","DEAD/H-box helicase 11 [Source:HGNC Symbol;Acc:HGNC:2736]"
+"64","DDX11L2","DEAD/H-box helicase 11 like 2 (pseudogene) [Source:HGNC Symbol;Acc:HGNC:37103]"
+"65","DHRS3","dehydrogenase/reductase 3 [Source:HGNC Symbol;Acc:HGNC:17693]"
+"66","DKK3","dickkopf WNT signaling pathway inhibitor 3 [Source:HGNC Symbol;Acc:HGNC:2893]"
+"67","DSP","desmoplakin [Source:HGNC Symbol;Acc:HGNC:3052]"
+"68","DUSP3","dual specificity phosphatase 3 [Source:HGNC Symbol;Acc:HGNC:3069]"
+"69","E2F2","E2F transcription factor 2 [Source:HGNC Symbol;Acc:HGNC:3114]"
+"70","E2F3","E2F transcription factor 3 [Source:HGNC Symbol;Acc:HGNC:3115]"
+"71","EBF1","EBF transcription factor 1 [Source:HGNC Symbol;Acc:HGNC:3126]"
+"72","EIF2AK1","eukaryotic translation initiation factor 2 alpha kinase 1 [Source:HGNC Symbol;Acc:HGNC:24921]"
+"73","ELANE","elastase, neutrophil expressed [Source:HGNC Symbol;Acc:HGNC:3309]"
+"74","ENC1","ectodermal-neural cortex 1 [Source:HGNC Symbol;Acc:HGNC:3345]"
+"75","EOMES","eomesodermin [Source:HGNC Symbol;Acc:HGNC:3372]"
+"76","EPB42","erythrocyte membrane protein band 4.2 [Source:HGNC Symbol;Acc:HGNC:3381]"
+"77","EPHX2","epoxide hydrolase 2 [Source:HGNC Symbol;Acc:HGNC:3402]"
+"78","ERAP2","endoplasmic reticulum aminopeptidase 2 [Source:HGNC Symbol;Acc:HGNC:29499]"
+"79","ESPN","espin [Source:HGNC Symbol;Acc:HGNC:13281]"
+"80","ETV7","ETS variant transcription factor 7 [Source:HGNC Symbol;Acc:HGNC:18160]"
+"81","F5","coagulation factor V [Source:HGNC Symbol;Acc:HGNC:3542]"
+"82","FAM118A","family with sequence similarity 118 member A [Source:HGNC Symbol;Acc:HGNC:1313]"
+"83","FAXDC2","fatty acid hydroxylase domain containing 2 [Source:HGNC Symbol;Acc:HGNC:1334]"
+"84","FBLN5","fibulin 5 [Source:HGNC Symbol;Acc:HGNC:3602]"
+"85","FBXO6","F-box protein 6 [Source:HGNC Symbol;Acc:HGNC:13585]"
+"86","FCER1A","Fc epsilon receptor Ia [Source:HGNC Symbol;Acc:HGNC:3609]"
+"87","FCER1G","Fc epsilon receptor Ig [Source:HGNC Symbol;Acc:HGNC:3611]"
+"88","FCGBP","Fc gamma binding protein [Source:HGNC Symbol;Acc:HGNC:13572]"
+"89","FCGR2B","Fc gamma receptor IIb [Source:HGNC Symbol;Acc:HGNC:3618]"
+"90","FCRL2","Fc receptor like 2 [Source:HGNC Symbol;Acc:HGNC:14875]"
+"91","FCRL3","Fc receptor like 3 [Source:HGNC Symbol;Acc:HGNC:18506]"
+"92","FCRL5","Fc receptor like 5 [Source:HGNC Symbol;Acc:HGNC:18508]"
+"93","FECH","ferrochelatase [Source:HGNC Symbol;Acc:HGNC:3647]"
+"94","FEZ1","fasciculation and elongation protein zeta 1 [Source:HGNC Symbol;Acc:HGNC:3659]"
+"95","FGD2","FYVE, RhoGEF and PH domain containing 2 [Source:HGNC Symbol;Acc:HGNC:3664]"
+"96","FGFBP2","fibroblast growth factor binding protein 2 [Source:HGNC Symbol;Acc:HGNC:29451]"
+"97","FGFR1OP2","FGFR1 oncogene partner 2 [Source:HGNC Symbol;Acc:HGNC:23098]"
+"98","FHIT","fragile histidine triad diadenosine triphosphatase [Source:HGNC Symbol;Acc:HGNC:3701]"
+"99","FKBP1B","FKBP prolyl isomerase 1B [Source:HGNC Symbol;Acc:HGNC:3712]"
+"100","FOLR3","folate receptor gamma [Source:HGNC Symbol;Acc:HGNC:3795]"
+"101","FOXN3","forkhead box N3 [Source:HGNC Symbol;Acc:HGNC:1928]"
+"102","FOXO3","forkhead box O3 [Source:HGNC Symbol;Acc:HGNC:3821]"
+"103","FSTL1","follistatin like 1 [Source:HGNC Symbol;Acc:HGNC:3972]"
+"104","GCAT","glycine C-acetyltransferase [Source:HGNC Symbol;Acc:HGNC:4188]"
+"105","GDE1","glycerophosphodiester phosphodiesterase 1 [Source:HGNC Symbol;Acc:HGNC:29644]"
+"106","GNA12","G protein subunit alpha 12 [Source:HGNC Symbol;Acc:HGNC:4380]"
+"107","GNLY","granulysin [Source:HGNC Symbol;Acc:HGNC:4414]"
+"108","GPR146","G protein-coupled receptor 146 [Source:HGNC Symbol;Acc:HGNC:21718]"
+"109","GSPT1","G1 to S phase transition 1 [Source:HGNC Symbol;Acc:HGNC:4621]"
+"110","GSTM1","glutathione S-transferase mu 1 [Source:HGNC Symbol;Acc:HGNC:4632]"
+"111","GSTM3","glutathione S-transferase mu 3 [Source:HGNC Symbol;Acc:HGNC:4635]"
+"112","GTSF1","gametocyte specific factor 1 [Source:HGNC Symbol;Acc:HGNC:26565]"
+"113","GYPB","glycophorin B (MNS blood group) [Source:HGNC Symbol;Acc:HGNC:4703]"
+"114","GZMB","granzyme B [Source:HGNC Symbol;Acc:HGNC:4709]"
+"115","GZMH","granzyme H [Source:HGNC Symbol;Acc:HGNC:4710]"
+"116","HEMGN","hemogen [Source:HGNC Symbol;Acc:HGNC:17509]"
+"117","HIP1","huntingtin interacting protein 1 [Source:HGNC Symbol;Acc:HGNC:4913]"
+"118","HLA-DMA","major histocompatibility complex, class II, DM alpha [Source:HGNC Symbol;Acc:HGNC:4934]"
+"119","HLA-DOB","major histocompatibility complex, class II, DO beta [Source:HGNC Symbol;Acc:HGNC:4937]"
+"120","HLA-DPB1","major histocompatibility complex, class II, DP beta 1 [Source:HGNC Symbol;Acc:HGNC:4940]"
+"121","HLA-DQA1","major histocompatibility complex, class II, DQ alpha 1 [Source:HGNC Symbol;Acc:HGNC:4942]"
+"122","HLA-DQB1","major histocompatibility complex, class II, DQ beta 1 [Source:HGNC Symbol;Acc:HGNC:4944]"
+"123","HLA-DRB1","major histocompatibility complex, class II, DR beta 1 [Source:HGNC Symbol;Acc:HGNC:4948]"
+"124","HLA-DRB5","major histocompatibility complex, class II, DR beta 5 [Source:HGNC Symbol;Acc:HGNC:4953]"
+"125","HLA-DRB6","major histocompatibility complex, class II, DR beta 6 (pseudogene) [Source:HGNC Symbol;Acc:HGNC:4954]"
+"126","HLA-G","major histocompatibility complex, class I, G [Source:HGNC Symbol;Acc:HGNC:4964]"
+"127","HOPX","HOP homeobox [Source:HGNC Symbol;Acc:HGNC:24961]"
+"128","HOXB2","homeobox B2 [Source:HGNC Symbol;Acc:HGNC:5113]"
+"129","HP","haptoglobin [Source:HGNC Symbol;Acc:HGNC:5141]"
+"130","HPS1","HPS1 biogenesis of lysosomal organelles complex 3 subunit 1 [Source:HGNC Symbol;Acc:HGNC:5163]"
+"131","HPSE","heparanase [Source:HGNC Symbol;Acc:HGNC:5164]"
+"132","HSPA6","heat shock protein family A (Hsp70) member 6 [Source:HGNC Symbol;Acc:HGNC:5239]"
+"133","IDO1","indoleamine 2,3-dioxygenase 1 [Source:HGNC Symbol;Acc:HGNC:6059]"
+"134","IFIH1","interferon induced with helicase C domain 1 [Source:HGNC Symbol;Acc:HGNC:18873]"
+"135","IGFBP7","insulin like growth factor binding protein 7 [Source:HGNC Symbol;Acc:HGNC:5476]"
+"136","IL5RA","interleukin 5 receptor subunit alpha [Source:HGNC Symbol;Acc:HGNC:6017]"
+"137","IRAK3","interleukin 1 receptor associated kinase 3 [Source:HGNC Symbol;Acc:HGNC:17020]"
+"138","ISL2","ISL LIM homeobox 2 [Source:HGNC Symbol;Acc:HGNC:18524]"
+"139","ITGA6","integrin subunit alpha 6 [Source:HGNC Symbol;Acc:HGNC:6142]"
+"140","ITGB3","integrin subunit beta 3 [Source:HGNC Symbol;Acc:HGNC:6156]"
+"141","ITPKB","inositol-trisphosphate 3-kinase B [Source:HGNC Symbol;Acc:HGNC:6179]"
+"142","JAZF1","JAZF zinc finger 1 [Source:HGNC Symbol;Acc:HGNC:28917]"
+"143","JUP","junction plakoglobin [Source:HGNC Symbol;Acc:HGNC:6207]"
+"144","KANK1","KN motif and ankyrin repeat domains 1 [Source:HGNC Symbol;Acc:HGNC:19309]"
+"145","KAZN","kazrin, periplakin interacting protein [Source:HGNC Symbol;Acc:HGNC:29173]"
+"146","KCNG1","potassium voltage-gated channel modifier subfamily G member 1 [Source:HGNC Symbol;Acc:HGNC:6248]"
+"147","KIF2A","kinesin family member 2A [Source:HGNC Symbol;Acc:HGNC:6318]"
+"148","KLC3","kinesin light chain 3 [Source:HGNC Symbol;Acc:HGNC:20717]"
+"149","KLF1","KLF transcription factor 1 [Source:HGNC Symbol;Acc:HGNC:6345]"
+"150","KLRD1","killer cell lectin like receptor D1 [Source:HGNC Symbol;Acc:HGNC:6378]"
+"151","KREMEN1","kringle containing transmembrane protein 1 [Source:HGNC Symbol;Acc:HGNC:17550]"
+"152","KRT1","keratin 1 [Source:HGNC Symbol;Acc:HGNC:6412]"
+"153","KRT23","keratin 23 [Source:HGNC Symbol;Acc:HGNC:6438]"
+"154","KRT72","keratin 72 [Source:HGNC Symbol;Acc:HGNC:28932]"
+"155","LCN2","lipocalin 2 [Source:HGNC Symbol;Acc:HGNC:6526]"
+"156","LEF1","lymphoid enhancer binding factor 1 [Source:HGNC Symbol;Acc:HGNC:6551]"
+"157","LEF1-AS1","LEF1 antisense RNA 1 [Source:HGNC Symbol;Acc:HGNC:40339]"
+"158","LGALS3","galectin 3 [Source:HGNC Symbol;Acc:HGNC:6563]"
+"159","LILRA5","leukocyte immunoglobulin like receptor A5 [Source:HGNC Symbol;Acc:HGNC:16309]"
+"160","LILRB3","leukocyte immunoglobulin like receptor B3 [Source:HGNC Symbol;Acc:HGNC:6607]"
+"161","LRRC37A","leucine rich repeat containing 37A [Source:HGNC Symbol;Acc:HGNC:29069]"
+"162","LRRN3","leucine rich repeat neuronal 3 [Source:HGNC Symbol;Acc:HGNC:17200]"
+"163","MAN1C1","mannosidase alpha class 1C member 1 [Source:HGNC Symbol;Acc:HGNC:19080]"
+"164","MAP3K7CL","MAP3K7 C-terminal like [Source:HGNC Symbol;Acc:HGNC:16457]"
+"165","MARK3","microtubule affinity regulating kinase 3 [Source:HGNC Symbol;Acc:HGNC:6897]"
+"166","MBNL3","muscleblind like splicing regulator 3 [Source:HGNC Symbol;Acc:HGNC:20564]"
+"167","MCTP1","multiple C2 and transmembrane domain containing 1 [Source:HGNC Symbol;Acc:HGNC:26183]"
+"168","MGLL","monoglyceride lipase [Source:HGNC Symbol;Acc:HGNC:17038]"
+"169","MKRN1","makorin ring finger protein 1 [Source:HGNC Symbol;Acc:HGNC:7112]"
+"170","MS4A1","membrane spanning 4-domains A1 [Source:HGNC Symbol;Acc:HGNC:7315]"
+"171","MS4A2","membrane spanning 4-domains A2 [Source:HGNC Symbol;Acc:HGNC:7316]"
+"172","MS4A6A","membrane spanning 4-domains A6A [Source:HGNC Symbol;Acc:HGNC:13375]"
+"173","MTUS1","microtubule associated scaffold protein 1 [Source:HGNC Symbol;Acc:HGNC:29789]"
+"174","MXI1","MAX interactor 1, dimerization protein [Source:HGNC Symbol;Acc:HGNC:7534]"
+"175","MXRA7","matrix remodeling associated 7 [Source:HGNC Symbol;Acc:HGNC:7541]"
+"176","MYOM2","myomesin 2 [Source:HGNC Symbol;Acc:HGNC:7614]"
+"177","NAAA","N-acylethanolamine acid amidase [Source:HGNC Symbol;Acc:HGNC:736]"
+"178","NAIP","NLR family apoptosis inhibitory protein [Source:HGNC Symbol;Acc:HGNC:7634]"
+"179","NAPSB","napsin B aspartic peptidase (pseudogene) [Source:HGNC Symbol;Acc:HGNC:13396]"
+"180","NCAPG2","non-SMC condensin II complex subunit G2 [Source:HGNC Symbol;Acc:HGNC:21904]"
+"181","NIPAL3","NIPA like domain containing 3 [Source:HGNC Symbol;Acc:HGNC:25233]"
+"182","NKG7","natural killer cell granule protein 7 [Source:HGNC Symbol;Acc:HGNC:7830]"
+"183","NLRP12","NLR family pyrin domain containing 12 [Source:HGNC Symbol;Acc:HGNC:22938]"
+"184","NMRK1","nicotinamide riboside kinase 1 [Source:HGNC Symbol;Acc:HGNC:26057]"
+"185","NOG","noggin [Source:HGNC Symbol;Acc:HGNC:7866]"
+"186","NPL","N-acetylneuraminate pyruvate lyase [Source:HGNC Symbol;Acc:HGNC:16781]"
+"187","NPRL3","NPR3 like, GATOR1 complex subunit [Source:HGNC Symbol;Acc:HGNC:14124]"
+"188","NQO2","N-ribosyldihydronicotinamide:quinone dehydrogenase 2 [Source:HGNC Symbol;Acc:HGNC:7856]"
+"189","NRG1","neuregulin 1 [Source:HGNC Symbol;Acc:HGNC:7997]"
+"190","NSG1","neuronal vesicle trafficking associated 1 [Source:HGNC Symbol;Acc:HGNC:18790]"
+"191","NT5C3A","5'-nucleotidase, cytosolic IIIA [Source:HGNC Symbol;Acc:HGNC:17820]"
+"192","NTAN1","N-terminal asparagine amidase [Source:HGNC Symbol;Acc:HGNC:29909]"
+"193","OAS1","2'-5'-oligoadenylate synthetase 1 [Source:HGNC Symbol;Acc:HGNC:8086]"
+"194","OLIG1","oligodendrocyte transcription factor 1 [Source:HGNC Symbol;Acc:HGNC:16983]"
+"195","ORM1","orosomucoid 1 [Source:HGNC Symbol;Acc:HGNC:8498]"
+"196","OSBP2","oxysterol binding protein 2 [Source:HGNC Symbol;Acc:HGNC:8504]"
+"197","OSBPL10","oxysterol binding protein like 10 [Source:HGNC Symbol;Acc:HGNC:16395]"
+"198","PAK2","p21 (RAC1) activated kinase 2 [Source:HGNC Symbol;Acc:HGNC:8591]"
+"199","PAM","peptidylglycine alpha-amidating monooxygenase [Source:HGNC Symbol;Acc:HGNC:8596]"
+"200","PAPSS1","3'-phosphoadenosine 5'-phosphosulfate synthase 1 [Source:HGNC Symbol;Acc:HGNC:8603]"
+"201","PARP9","poly(ADP-ribose) polymerase family member 9 [Source:HGNC Symbol;Acc:HGNC:24118]"
+"202","PARVB","parvin beta [Source:HGNC Symbol;Acc:HGNC:14653]"
+"203","PBX1","PBX homeobox 1 [Source:HGNC Symbol;Acc:HGNC:8632]"
+"204","PCGF5","polycomb group ring finger 5 [Source:HGNC Symbol;Acc:HGNC:28264]"
+"205","PCSK6","proprotein convertase subtilisin/kexin type 6 [Source:HGNC Symbol;Acc:HGNC:8569]"
+"206","PDE9A","phosphodiesterase 9A [Source:HGNC Symbol;Acc:HGNC:8795]"
+"207","PDLIM1","PDZ and LIM domain 1 [Source:HGNC Symbol;Acc:HGNC:2067]"
+"208","PDPR","pyruvate dehydrogenase phosphatase regulatory subunit [Source:HGNC Symbol;Acc:HGNC:30264]"
+"209","PDXDC1","pyridoxal dependent decarboxylase domain containing 1 [Source:HGNC Symbol;Acc:HGNC:28995]"
+"210","PDZD8","PDZ domain containing 8 [Source:HGNC Symbol;Acc:HGNC:26974]"
+"211","PF4V1","platelet factor 4 variant 1 [Source:HGNC Symbol;Acc:HGNC:8862]"
+"212","PI3","peptidase inhibitor 3 [Source:HGNC Symbol;Acc:HGNC:8947]"
+"213","PICALM","phosphatidylinositol binding clathrin assembly protein [Source:HGNC Symbol;Acc:HGNC:15514]"
+"214","PID1","phosphotyrosine interaction domain containing 1 [Source:HGNC Symbol;Acc:HGNC:26084]"
+"215","PISD","phosphatidylserine decarboxylase [Source:HGNC Symbol;Acc:HGNC:8999]"
+"216","PITHD1","PITH domain containing 1 [Source:HGNC Symbol;Acc:HGNC:25022]"
+"217","PLA2G7","phospholipase A2 group VII [Source:HGNC Symbol;Acc:HGNC:9040]"
+"218","PLBD1","phospholipase B domain containing 1 [Source:HGNC Symbol;Acc:HGNC:26215]"
+"219","PNOC","prepronociceptin [Source:HGNC Symbol;Acc:HGNC:9163]"
+"220","POMZP3","POM121 and ZP3 fusion [Source:HGNC Symbol;Acc:HGNC:9203]"
+"221","PPDPF","pancreatic progenitor cell differentiation and proliferation factor [Source:HGNC Symbol;Acc:HGNC:16142]"
+"222","PPFIBP2","PPFIA binding protein 2 [Source:HGNC Symbol;Acc:HGNC:9250]"
+"223","PPM1A","protein phosphatase, Mg2+/Mn2+ dependent 1A [Source:HGNC Symbol;Acc:HGNC:9275]"
+"224","PPP2R2B","protein phosphatase 2 regulatory subunit Bbeta [Source:HGNC Symbol;Acc:HGNC:9305]"
+"225","PRF1","perforin 1 [Source:HGNC Symbol;Acc:HGNC:9360]"
+"226","PROK2","prokineticin 2 [Source:HGNC Symbol;Acc:HGNC:18455]"
+"227","PRRG4","proline rich and Gla domain 4 [Source:HGNC Symbol;Acc:HGNC:30799]"
+"228","PRSS23","serine protease 23 [Source:HGNC Symbol;Acc:HGNC:14370]"
+"229","PRSS33","serine protease 33 [Source:HGNC Symbol;Acc:HGNC:30405]"
+"230","PRUNE2","prune homolog 2 with BCH domain [Source:HGNC Symbol;Acc:HGNC:25209]"
+"231","PTPRM","protein tyrosine phosphatase receptor type M [Source:HGNC Symbol;Acc:HGNC:9675]"
+"232","PTPRN2","protein tyrosine phosphatase receptor type N2 [Source:HGNC Symbol;Acc:HGNC:9677]"
+"233","RAB11FIP5","RAB11 family interacting protein 5 [Source:HGNC Symbol;Acc:HGNC:24845]"
+"234","RAB20","RAB20, member RAS oncogene family [Source:HGNC Symbol;Acc:HGNC:18260]"
+"235","RALGPS2","Ral GEF with PH domain and SH3 binding motif 2 [Source:HGNC Symbol;Acc:HGNC:30279]"
+"236","RANBP10","RAN binding protein 10 [Source:HGNC Symbol;Acc:HGNC:29285]"
+"237","RAP1GAP","RAP1 GTPase activating protein [Source:HGNC Symbol;Acc:HGNC:9858]"
+"238","RBM38","RNA binding motif protein 38 [Source:HGNC Symbol;Acc:HGNC:15818]"
+"239","RHCE","Rh blood group CcEe antigens [Source:HGNC Symbol;Acc:HGNC:10008]"
+"240","RIOK3","RIO kinase 3 [Source:HGNC Symbol;Acc:HGNC:11451]"
+"241","RNASE2","ribonuclease A family member 2 [Source:HGNC Symbol;Acc:HGNC:10045]"
+"242","RNASE6","ribonuclease A family member k6 [Source:HGNC Symbol;Acc:HGNC:10048]"
+"243","RNF187","ring finger protein 187 [Source:HGNC Symbol;Acc:HGNC:27146]"
+"244","RPH3A","rabphilin 3A [Source:HGNC Symbol;Acc:HGNC:17056]"
+"245","RPL23AP7","ribosomal protein L23a pseudogene 7 [Source:HGNC Symbol;Acc:HGNC:17336]"
+"246","RPS26","ribosomal protein S26 [Source:HGNC Symbol;Acc:HGNC:10414]"
+"247","RSAD2","radical S-adenosyl methionine domain containing 2 [Source:HGNC Symbol;Acc:HGNC:30908]"
+"248","RUNDC3A","RUN domain containing 3A [Source:HGNC Symbol;Acc:HGNC:16984]"
+"249","S100A8","S100 calcium binding protein A8 [Source:HGNC Symbol;Acc:HGNC:10498]"
+"250","S1PR5","sphingosine-1-phosphate receptor 5 [Source:HGNC Symbol;Acc:HGNC:14299]"
+"251","SAMD14","sterile alpha motif domain containing 14 [Source:HGNC Symbol;Acc:HGNC:27312]"
+"252","SESN3","sestrin 3 [Source:HGNC Symbol;Acc:HGNC:23060]"
+"253","SFRP2","secreted frizzled related protein 2 [Source:HGNC Symbol;Acc:HGNC:10777]"
+"254","SIDT2","SID1 transmembrane family member 2 [Source:HGNC Symbol;Acc:HGNC:24272]"
+"255","SIGLEC17P","sialic acid binding Ig like lectin 17, pseudogene [Source:HGNC Symbol;Acc:HGNC:15604]"
+"256","SIGLEC8","sialic acid binding Ig like lectin 8 [Source:HGNC Symbol;Acc:HGNC:10877]"
+"257","SIRPB1","signal regulatory protein beta 1 [Source:HGNC Symbol;Acc:HGNC:15928]"
+"258","SKAP2","src kinase associated phosphoprotein 2 [Source:HGNC Symbol;Acc:HGNC:15687]"
+"259","SLC14A1","solute carrier family 14 member 1 (Kidd blood group) [Source:HGNC Symbol;Acc:HGNC:10918]"
+"260","SLC24A4","solute carrier family 24 member 4 [Source:HGNC Symbol;Acc:HGNC:10978]"
+"261","SLC25A37","solute carrier family 25 member 37 [Source:HGNC Symbol;Acc:HGNC:29786]"
+"262","SLC2A14","solute carrier family 2 member 14 [Source:HGNC Symbol;Acc:HGNC:18301]"
+"263","SNCA","synuclein alpha [Source:HGNC Symbol;Acc:HGNC:11138]"
+"264","SPATA20","spermatogenesis associated 20 [Source:HGNC Symbol;Acc:HGNC:26125]"
+"265","SPIB","Spi-B transcription factor [Source:HGNC Symbol;Acc:HGNC:11242]"
+"266","SPP1","secreted phosphoprotein 1 [Source:HGNC Symbol;Acc:HGNC:11255]"
+"267","SPTBN1","spectrin beta, non-erythrocytic 1 [Source:HGNC Symbol;Acc:HGNC:11275]"
+"268","ST6GALNAC4","ST6 N-acetylgalactosaminide alpha-2,6-sialyltransferase 4 [Source:HGNC Symbol;Acc:HGNC:17846]"
+"269","STAP1","signal transducing adaptor family member 1 [Source:HGNC Symbol;Acc:HGNC:24133]"
+"270","STAT1","signal transducer and activator of transcription 1 [Source:HGNC Symbol;Acc:HGNC:11362]"
+"271","STEAP4","STEAP4 metalloreductase [Source:HGNC Symbol;Acc:HGNC:21923]"
+"272","SULT1A1","sulfotransferase family 1A member 1 [Source:HGNC Symbol;Acc:HGNC:11453]"
+"273","SYTL2","synaptotagmin like 2 [Source:HGNC Symbol;Acc:HGNC:15585]"
+"274","TAPBPL","TAP binding protein like [Source:HGNC Symbol;Acc:HGNC:30683]"
+"275","TCL1A","TCL1 family AKT coactivator A [Source:HGNC Symbol;Acc:HGNC:11648]"
+"276","THBD","thrombomodulin [Source:HGNC Symbol;Acc:HGNC:11784]"
+"277","THBS1","thrombospondin 1 [Source:HGNC Symbol;Acc:HGNC:11785]"
+"278","TLR4","toll like receptor 4 [Source:HGNC Symbol;Acc:HGNC:11850]"
+"279","TMEM158","transmembrane protein 158 [Source:HGNC Symbol;Acc:HGNC:30293]"
+"280","TMEM176A","transmembrane protein 176A [Source:HGNC Symbol;Acc:HGNC:24930]"
+"281","TMEM176B","transmembrane protein 176B [Source:HGNC Symbol;Acc:HGNC:29596]"
+"282","TMEM45B","transmembrane protein 45B [Source:HGNC Symbol;Acc:HGNC:25194]"
+"283","TMTC1","transmembrane O-mannosyltransferase targeting cadherins 1 [Source:HGNC Symbol;Acc:HGNC:24099]"
+"284","TNFAIP6","TNF alpha induced protein 6 [Source:HGNC Symbol;Acc:HGNC:11898]"
+"285","TNFRSF13C","TNF receptor superfamily member 13C [Source:HGNC Symbol;Acc:HGNC:17755]"
+"286","TNS1","tensin 1 [Source:HGNC Symbol;Acc:HGNC:11973]"
+"287","TPGS2","tubulin polyglutamylase complex subunit 2 [Source:HGNC Symbol;Acc:HGNC:24561]"
+"288","TPM1","tropomyosin 1 [Source:HGNC Symbol;Acc:HGNC:12010]"
+"289","TPTEP1","TPTE pseudogene 1 [Source:HGNC Symbol;Acc:HGNC:43648]"
+"290","TRAK2","trafficking kinesin protein 2 [Source:HGNC Symbol;Acc:HGNC:13206]"
+"291","TREM1","triggering receptor expressed on myeloid cells 1 [Source:HGNC Symbol;Acc:HGNC:17760]"
+"292","TRIM58","tripartite motif containing 58 [Source:HGNC Symbol;Acc:HGNC:24150]"
+"293","TSPAN33","tetraspanin 33 [Source:HGNC Symbol;Acc:HGNC:28743]"
+"294","TTC3","tetratricopeptide repeat domain 3 [Source:HGNC Symbol;Acc:HGNC:12393]"
+"295","TUBB1","tubulin beta 1 class VI [Source:HGNC Symbol;Acc:HGNC:16257]"
+"296","TUBB2A","tubulin beta 2A class IIa [Source:HGNC Symbol;Acc:HGNC:12412]"
+"297","UBE2H","ubiquitin conjugating enzyme E2 H [Source:HGNC Symbol;Acc:HGNC:12484]"
+"298","VASH1","vasohibin 1 [Source:HGNC Symbol;Acc:HGNC:19964]"
+"299","VCAN","versican [Source:HGNC Symbol;Acc:HGNC:2464]"
+"300","VPREB3","V-set pre-B cell surrogate light chain 3 [Source:HGNC Symbol;Acc:HGNC:12710]"
+"301","VSIG10","V-set and immunoglobulin domain containing 10 [Source:HGNC Symbol;Acc:HGNC:26078]"
+"302","VSTM1","V-set and transmembrane domain containing 1 [Source:HGNC Symbol;Acc:HGNC:29455]"
+"303","VWF","von Willebrand factor [Source:HGNC Symbol;Acc:HGNC:12726]"
+"304","WNK1","WNK lysine deficient protein kinase 1 [Source:HGNC Symbol;Acc:HGNC:14540]"
+"305","XK","X-linked Kx blood group antigen, Kell and VPS13A binding protein [Source:HGNC Symbol;Acc:HGNC:12811]"
+"306","ZDHHC2","zinc finger DHHC-type palmitoyltransferase 2 [Source:HGNC Symbol;Acc:HGNC:18469]"
+"307","ZNF266","zinc finger protein 266 [Source:HGNC Symbol;Acc:HGNC:13059]"
+"308","ZNF502","zinc finger protein 502 [Source:HGNC Symbol;Acc:HGNC:23718]"
+"309","ZNF683","zinc finger protein 683 [Source:HGNC Symbol;Acc:HGNC:28495]"

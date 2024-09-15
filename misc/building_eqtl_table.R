@@ -108,11 +108,11 @@ colnames(gtex) <- c("Symbol of blood RNA", "Ensembl ID", "rsID of eQTL", "GTEx v
                     "Genomic Context","Intergenic?") # Re-names the columns
 
 ## Attach stable_polymorphic, flexible, and housekeeping gene study statistics
-stable <- read.csv("~/Desktop/work_repo/github/cross_study_analysis/output/stable_polymorphic_scores.csv")
+stable <- read.csv("~/Desktop/work_repo/github/cross_study_analysis/output/characteristic_scores.csv")
 dynamic <- read.csv("~/Desktop/work_repo/github/cross_study_analysis/output/flexible_gene_scores.csv")
 house <- read.csv("~/Desktop/work_repo/github/cross_study_analysis/output/housekeeping_scores.csv")
 stable <- stable %>% dplyr::select(Symbol, Study_counts)
-colnames(stable) <- c("Symbol of blood RNA","Stable-polymorphic 4+ filter studies")
+colnames(stable) <- c("Symbol of blood RNA","Characteristic 4+ filter studies")
 dynamic <- dynamic %>% dplyr::select(Symbol, P_value_study_count)
 colnames(dynamic) <- c("Symbol of blood RNA","Studies below 0.05 p_value")
 house <- house %>% dplyr::select(Symbol, Studies)

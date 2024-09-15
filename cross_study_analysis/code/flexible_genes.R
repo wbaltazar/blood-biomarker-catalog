@@ -84,7 +84,18 @@ rusch$Symbol <- mapIds(hgu133plus2.db, rusch$ProbeID, column = "SYMBOL", keytype
 larocca <- read.csv(file = paste(input_dir, "LaRocca_study_data/output/limma_Time.csv", sep = ""))
 names(larocca)[1] <- "Symbol"
 
-data <- list(gomez, meaburn1, meaburn2, gosch, obermoser1, obermoser2, obermoser3, obermoser4, dusek, rusch, larocca)
+karlovich1 <- list()
+karlovich1[[1]] <- read.csv(file = paste(input_dir, "Karlovich_study_data/output/batch1_limma/limma_Day14.csv", sep = ""))
+names(karlovich1[[1]])[1] <- "ProbeID"
+karlovich1[[2]] <- read.csv(file = paste(input_dir, "Karlovich_study_data/output/batch1_limma/limma_Day28.csv", sep = ""))
+names(karlovich1[[2]])[1] <- "ProbeID"
+names(karlovich1) <- c("karlovich_14d", "karlovich_28d")
+
+karlovich2 <- read.csv(file = paste(input_dir, "Karlovich_study_data/output/batch2_limma/limma_Time.csv", sep = ""))
+names(karlovich2)[1] <- "ProbeID"
+
+data <- list(gomez, meaburn1, meaburn2, gosch, obermoser1, obermoser2, obermoser3, obermoser4, dusek, rusch, larocca,
+             karlovich1, karlovich2)
 
 # Function to recursively flatten a nested list
 flatten_list <- function(lst) {
@@ -110,9 +121,10 @@ flatten_list <- function(lst) {
 data <- flatten_list(data)
 names(data) <- c("gomez", "meaburn1", "meaburn2", paste("gosch",names(gosch),sep=""), paste("obermoser1",names(obermoser1),sep=""), 
                  paste("obermoser2",names(obermoser2),sep=""), paste("obermoser3",names(obermoser3),sep=""), 
-                 paste("obermoser4",names(obermoser4),sep=""), "dusek", "rusch", "larocca")
+                 paste("obermoser4",names(obermoser4),sep=""), "dusek", "rusch", "larocca", paste(names(karlovich1)),
+                 "karlovich2")
 length(data)
-# [1] 40
+# [1] 43
 
 ## The gosch data does not have a "symbol" column. Let's add it in.
 names(data$goschEighteenHrMain)[1] <- "Symbol"
@@ -164,15 +176,16 @@ adjpfilt_symbols <- lapply(adjpfilt_symbols, unique)
 
 all_symbols <- unique(unname(unlist(all_symbols)))
 length(all_symbols)
-# [1] 28913
+# [1] 28974
 
 ## Test concept
 all_symbols[1] # [1] "NEK8"
 sum(unlist(lapply(pfilt_symbols, function(x) {all_symbols[1] %in% x})))
-# [1] 5
+# [1] 9
 names(unlist(lapply(pfilt_symbols, function(x) {all_symbols[1] %in% x})))[unlist(lapply(pfilt_symbols, function(x) {all_symbols[1] %in% x}))]
-# [1] "gomez"                            "obermoser4BaselineVSfifteenAll"   "obermoser4BaselineVSthirtySixAll" "obermoser4BaselineVStwelveAll"   
-# [5] "rusch"
+# [1] "gomez"                            "goschFifteenHrMain"               "goschNineHrMain"                 
+# [4] "goschSixHrMain"                   "goschTwelveHrMain"                "obermoser4BaselineVSfifteenAll"  
+# [7] "obermoser4BaselineVSthirtySixAll" "obermoser4BaselineVStwelveAll"    "rusch"
 deg_results <- data.frame(Symbol = all_symbols, `P_counts` = 0, `P_study_names` = 0, `AdjP_counts` = 0,
                           `AdjP_study_names` = 0)
 head(deg_results)
@@ -197,33 +210,70 @@ for (i in 1:nrow(deg_results)) {
   deg_results[i,4] <- sum(unlist(lapply(adjpfilt_symbols, function(x) {deg_results$Symbol[i] %in% x})))
   deg_results[i,5] <- paste(names(unlist(lapply(adjpfilt_symbols, function(x) {all_symbols[i] %in% x})))[unlist(lapply(adjpfilt_symbols, function(x) {all_symbols[i] %in% x}))], collapse = " ")
 }
-studs <- c("gomez", "meaburn", "gosch", "obermoser", "dusek", "rusch", "larocca")
-deg_results[,(length(deg_results)+1):(length(deg_results) + 7)] <- 0
-names(deg_results)[6:12] <- studs
-deg_results[,13] <- 0
-names(deg_results)[13] <- "P_value_study_count"
+studs <- c("gomez", "meaburn", "gosch", "obermoser", "dusek", "rusch", "larocca", "karlovich")
+deg_results[,(length(deg_results)+1):(length(deg_results) + 8)] <- 0
+names(deg_results)[6:13] <- studs
 deg_results[,14] <- 0
-names(deg_results)[14] <- "AdjP_value_study_count"
+names(deg_results)[14] <- "P_value_study_count"
+deg_results[,15] <- 0
+names(deg_results)[15] <- "AdjP_value_study_count"
 for (i in 1:nrow(deg_results)) {
-  for (j in 6:12) {
+  for (j in 6:13) {
     deg_results[i,j] <- sum(grepl(names(deg_results)[j], unlist(str_split(deg_results[i,3], pattern = " "))))
   }
 }
 for (i in 1:nrow(deg_results)) {
-  deg_results[i,13] <- as.numeric(grepl("gomez", deg_results$P_study_names[i])) +
+  deg_results[i,14] <- as.numeric(grepl("gomez", deg_results$P_study_names[i])) +
     as.numeric(grepl("meaburn", deg_results$P_study_names[i])) +
     as.numeric(grepl("gosch", deg_results$P_study_names[i])) +
     as.numeric(grepl("obermoser", deg_results$P_study_names[i])) +
     as.numeric(grepl("dusek", deg_results$P_study_names[i])) +
     as.numeric(grepl("rusch", deg_results$P_study_names[i])) +
-    as.numeric(grepl("larocca", deg_results$P_study_names[i]))
-  deg_results[i,14] <- as.numeric(grepl("gomez", deg_results$AdjP_study_names[i])) +
+    as.numeric(grepl("larocca", deg_results$P_study_names[i])) +
+    as.numeric(grepl("karlovich", deg_results$P_study_names[i]))
+  deg_results[i,15] <- as.numeric(grepl("gomez", deg_results$AdjP_study_names[i])) +
     as.numeric(grepl("meaburn", deg_results$AdjP_study_names[i])) +
     as.numeric(grepl("gosch", deg_results$AdjP_study_names[i])) +
     as.numeric(grepl("obermoser", deg_results$AdjP_study_names[i])) +
     as.numeric(grepl("dusek", deg_results$AdjP_study_names[i])) +
     as.numeric(grepl("rusch", deg_results$AdjP_study_names[i])) +
-    as.numeric(grepl("larocca", deg_results$AdjP_study_names[i]))
+    as.numeric(grepl("larocca", deg_results$AdjP_study_names[i])) +
+    as.numeric(grepl("karlovich", deg_results$P_study_names[i])) 
 }
 head(deg_results)
 write.csv(deg_results, file = paste(output_dir, "flexible_gene_scores.csv", sep = ""))
+
+## Supplementary table S2 ----
+deg_results <- read.csv(paste(output_dir, "flexible_gene_scores.csv", sep = ""))
+head(deg_results[order(deg_results$P_value_study_count, decreasing = T), c("Symbol", "P_value_study_count")],20)
+#       Symbol P_value_study_count
+# 613    VMA21                   7
+# 9      LRIG1                   6
+# 14   CCDC88A                   6
+# 25      <NA>                   6
+# 54       AGL                   6
+# 62     USP49                   6
+# 83    DIS3L2                   6
+# 88    SMURF2                   6
+# 106    FSD1L                   6
+# 110  PLEKHA3                   6
+# 165 SLC25A16                   6
+# 179  C9orf85                   6
+# 219    DCHS1                   6
+# 267     RNF7                   6
+# 286      TDG                   6
+# 307      FN1                   6
+# 351     HPS4                   6
+# 367   ZNF273                   6
+# 370     BIVM                   6
+# 397     MZF1                   6
+dim(deg_results[deg_results$P_value_study_count >= 6,])
+# [1] 123  16
+supp_table <- deg_results[deg_results$P_value_study_count >= 6,"Symbol"]
+library(biomaRt)
+mart <- useDataset(dataset = "hsapiens_gene_ensembl", mart = useMart("ENSEMBL_MART_ENSEMBL"))
+supp_table <- getBM(attributes = c("hgnc_symbol","description"),
+                    filters = "hgnc_symbol",
+                    values = supp_table,
+                    mart = mart)
+write.csv(supp_table, file = paste(output_dir, "supplementary_table_2.csv", sep = ""))

@@ -22,6 +22,8 @@ e8 <- read_rds("./data/expr/obermoser4.rds")
 e9 <- read_rds("./data/expr/dusek.rds")
 e10 <- read_rds("./data/expr/rusch.rds")
 e11 <- read_rds("./data/expr/larocca.rds")
+e12 <- read_rds("./data/expr/Karlovich1.rds")
+e13 <- read_rds("./data/expr/Karlovich2.rds")
 
 # Gomez ----
 e1 <- e1[which(rownames(e1) %in% symbols),]
@@ -261,3 +263,21 @@ dim(larocca_extra)
 # [1] 1 9
 larocca <- rbind(larocca[,-1], larocca_extra)
 write.csv(larocca, "./data/annotate/larocca.csv")
+
+
+# Karlovich ----
+find <- str_replace_all(rownames(e12), "\\.(?!\\d$)", "-") %>% str_remove_all(pattern = "\\..")
+length(unique(find)) # [1] 31390
+index <- which(find %in% symbols)
+length(index) # [1] 23610
+## This makes sure we include all probes that represent our common set of genes.
+e12 <- e12[index,]
+dim(e12)
+# [1] 23610   67
+rownames(e12) <-  str_replace_all(rownames(e12), "\\.(?!\\d$)", "-")
+write_rds(e12, "./data/expr/Karlovich1.rds")
+e13 <- e13[index,]
+dim(e13)
+# [1] 23610    41
+rownames(e13) <- str_replace_all(rownames(e13), "\\.(?!\\d$)", "-")
+write_rds(e13, "./data/expr/Karlovich2.rds")

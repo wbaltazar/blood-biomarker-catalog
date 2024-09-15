@@ -18,6 +18,8 @@ e8 <- read_rds("./data/expr/obermoser4.rds")
 e9 <- read_rds("./data/expr/dusek.rds")
 e10 <- read_rds("./data/expr/rusch.rds")
 e11 <- read_rds("./data/expr/larocca.rds")
+e12 <- read_rds("./data/expr/Karlovich1.rds")
+e13 <- read_rds("./data/expr/Karlovich2.rds")
 symbolOptions <- read.table("./data/symbol.txt")
 symbolOptions <- symbolOptions$x
 eqtlOptionsGene <- unique(gtex$`Symbol`)
@@ -142,10 +144,20 @@ ui <- fluidPage(
                                                      tags$i("Example entries"),
                                                      DT::dataTableOutput("laroccaTableHead")
                                      ),
+                                     accordion_panel(title = "Karlovich et al.",
+                                                     tags$h5("About this dataset"),
+                                                     tags$p("This study observed changes in the whole-blood transcriptome of heatlhy volunteers at multiple timepoints.
+                                                            The purpose of the study was to identify stable and dynamic genes in whole blood, and samples were collected
+                                                            in two batches. The first contains timepoints from 2 to 4 weeks; the second contains before and after 90 days."),
+                                                     tags$br(),
+                                                     tags$i("Example entries"),
+                                                     DT::dataTableOutput("karlovichTableHead")
+                                     ),
                                      tags$h4("References"),
                                      tags$p("Dusek, Jeffery A., Hasan H. Otu, Ann L. Wohlhueter, Manoj Dusek, Luiz F. Zerbini, Marie G. Joseph, Herbert Benson, and Towia A. Libermann. “Genomic Counter-Stress Changes Induced by the Relaxation Response.” PLoS ONE 3, no. 7 (July 2, 2008): e2576. https://doi.org/10.1371/journal.pone.0002576."),
                                      tags$p("Gómez-Carballa, A., Navarro, L., Pardo-Seco, J., Bello, X., Pischedda, S., Viz-Lasheras, S., Camino-Mera, A., et al. (2023). Music compensates for altered gene expression in age-related cognitive disorders. Scientific Reports, 13(1), 21259. https://doi.org/10.1038/s41598-023-48094-5"),
                                      tags$p("Gosch, A., Bhardwaj, A., & Courts, C. (2023). TrACES of time: Transcriptomic analyses for the contextualization of evidential stains – Identification of RNA markers for estimating time-of-day of bloodstain deposition. Forensic Science International: Genetics, 67, 102915. https://doi.org/10.1016/j.fsigen.2023.102915"),
+                                     tags$p("Karlovich, Chris, Guillemette Duchateau-Nguyen, Andrea Johnson, Patricia McLoughlin, Mercidita Navarro, Carole Fleurbaey, Lori Steiner, et al. “A Longitudinal Study of Gene Expression in Healthy Individuals.” BMC Medical Genomics 2 (June 7, 2009): 33. https://doi.org/10.1186/1755-8794-2-33."),
                                      tags$p("LaRocca, T. J., Smith, M. E., Freeberg, K. A., Craighead, D. H., Helmuth, T., Robinson, M. M., Nair, K. S., Bryan, A. D., & Seals, D. R. (2023). Novel whole blood transcriptome signatures of changes in maximal aerobic capacity in response to endurance exercise training in healthy women. Physiological Genomics, 55(8), 338–344. https://doi.org/10.1152/physiolgenomics.00017.2023"),
                                      tags$p("Meaburn, E. L., Fernandes, C., Craig, I. W., Plomin, R., & Schalkwyk, L. C. (2009). Assessing individual differences in genome-wide gene expression in human whole blood: Reliability over four hours and stability over 10 months. Twin Research and Human Genetics: The Official Journal of the International Society for Twin Studies, 12(4), 372. https://doi.org/10.1375/twin.12.4.372"),
                                      tags$p("Obermoser, G., Presnell, S., Domico, K., Xu, H., Wang, Y., Anguiano, E., Thompson-Snipes, L., et al. (2013). Systems scale interactive exploration reveals quantitative and qualitative differences in response to influenza and pneumococcal vaccines. Immunity, 38(4), 831–844. https://doi.org/10.1016/j.immuni.2012.12.008"),
@@ -164,7 +176,7 @@ ui <- fluidPage(
                                    tags$p("The first tab in the navigation bar is called the eQTL Variant Search. This tab consists of a synthesis of the GWAS Catalog, GTEx database, and healthy, longitudinal whole-blood transcriptome data for candidate biomarker identification."),
                                    tags$p("When you open the page, you are immediately brought to a table consisting of variant data on 9,474 unique genes. On the left side are the filtering tools which will help us find RNAs we are interested in."),
                                    tags$ul(
-                                     tags$li("the 'Gene' button filters the table to contain only results for the gene in the dropdown menu. You can adjust the gene in the box by clicking through the options or searching your own symbol by typing it in.", tutorial("When you select 'Gene' as your filtering option, the sliders will not work. This is because scores are assigned to gene symbols, so all results will have the same stable-polymorphic, flexibility, and housekeeping score.")),
+                                     tags$li("the 'Gene' button filters the table to contain only results for the gene in the dropdown menu. You can adjust the gene in the box by clicking through the options or searching your own symbol by typing it in.", tutorial("When you select 'Gene' as your filtering option, the sliders will not work. This is because scores are assigned to gene symbols, so all results will have the same characteristic, flexibility, and housekeeping score.")),
                                      tags$li("the 'Disease/Trait' button filters the table to contain only genes which have been associated with a selected trait in the GWAS Catalog. Our data contains information for 15,149 unique phenotypes."),
                                      tags$li("the 'No filter' button does not filter by trait or gene, only by the slider values below.", tutorial("We explain how to use these later in the tutorial!"))
                                    ),
@@ -172,15 +184,15 @@ ui <- fluidPage(
                                    tags$h5("Choosing your genes of interest"),
                                    tags$p("For researchers who already have genes they are interested in studying, we suggest using the 'Gene' filtering option. Otherwise, the disease/trait filter option can help with discovering new blood RNA biomarkers for clinical validation. The slider options below these buttons filter each gene according to their expression profile in whole blood RNA. When the slider is set to -1, it is turned off, and the table will not be filtered by that score. These sliders will help us find candidate biomarker genes."),
                                    tags$ul(
-                                     tags$li(tags$b("Stable-polymorphic studies:"), "stable-polymorphic genes are stably expressed over time, but vary in expression between individuals (see top right panel in Graphical Abstract). This column shows how many studies in which the gene was determined to be stable-polymorphic. These genes are ideal candidates for diagnostic, predictive, prognostic, and risk biomarkers."),
+                                     tags$li(tags$b("Characteristic studies:"), "characteristic genes are stably expressed over time, but vary in expression between individuals (see top right panel in Graphical Abstract). This column shows how many studies in which the gene was determined to be characteristic. These genes are ideal candidates for diagnostic, predictive, prognostic, and risk biomarkers."),
                                      tags$li(tags$b("Studies below 0.05 p-value:"), "indicates in how many studies the gene was called differential expression over time, evaluated using the p-value from a limma analysis comparing baseline and follow-up sampling. These genes are ideal candidates for safety, monitoring, and pharmacodynamic response biomarkers."),
                                      tags$li(tags$b("Housekeeping studies:"), "housekeeping genes were identified in each study if they had above median expression level, were stable over time, and showed low variation across individuals in a study. Since our samples come from healthy individuals, we recommend using these RNAs to create healthy reference ranges for a gene.", tutorial("You can view the expression level of genes in the 'Gene Symbol Search' panel, which we discuss later on in the tutorial."))
                                    ),
                                    tags$p("For this example, let's look for RNAs associated with cardiovascular disease. Ensure the 'Disease/Trait' button is ticked and search for 'cardiovascular' in the search box. To load results, click on the trait of interest."),
                                    div(img(src = "tutorial2.png", height = "300px"), img(src = "tutorial3.png", height = "300px")),
-                                   tags$p("Let's find RNAs that are stable over time but vary between individuals. These will be our stable-polymorphic genes (see About): so, we will use this example to find RNAs that stratify cardiovascular disease risk in whole blood. We can find the stable-polymorphic slider at the bottom of the search panel. Set the slider to 5 and click the '>='. button to filter for all genes called as stable-polymoprhic in 5 or more studies."),
-                                   div(img(src = "tutorial4.png", height = "300px"), img(src = "tutorial5.png", height = "300px"), tutorial("Because the table is very large, you must slide all the way right to view the scores. As you can see, all genes are stable-polymorphic in at least 5 studies.")),
-                                   tags$p("Some genes show good stable-polymoprhic profiles but also change over time as indicated by the 'Flexible number of (no.) studies' column (",tags$code("GTF2I"),", for example). We can also adjust this slider to further narrow our results from 26 genes to 13."),
+                                   tags$p("Let's find RNAs that are stable over time but vary between individuals. These will be our characteristic genes (see About): so, we will use this example to find RNAs that stratify cardiovascular disease risk in whole blood. We can find the characteristic slider at the bottom of the search panel. Set the slider to 5 and click the '>='. button to filter for all genes called as characteristic in 5 or more studies."),
+                                   div(img(src = "tutorial4.png", height = "300px"), img(src = "tutorial5.png", height = "300px"), tutorial("Because the table is very large, you must slide all the way right to view the scores. As you can see, all genes are characteristic in at least 5 studies.")),
+                                   tags$p("Some genes show good characteristic profiles but also change over time as indicated by the 'Flexible number of (no.) studies' column (",tags$code("GTF2I"),", for example). We can also adjust this slider to further narrow our results from 44 genes to 16."),
                                    div(img(src = "tutorial6.png", height = "450px"), tutorial("Hovering over the column names shows an HTML title that explains each variable. Hold the mouse right on the text- not in any of the space. You may need to hold your mouse there for a few seconds- if it's still not loading, try moving between columns until the app recongizes you are searching for titles.")),
                                    tags$p("We've narrowed our options down significantly. We can see in row 3, ", tags$code("rs35134"), " is associated with expression levels of ", tags$code("ERAP2"), " according to GTEx. In GWAS, ", tags$code("rs35134"), " maps to an intronic variant of ", tags$code("ENSG00000247121"), " between ", tags$code("ERAP1"), " and ", tags$code("ERAP2"), ".", tutorial("The dash in the GWAS Catalog Mapping column signifies an intergenic region. Hover over 'GWAS Catalog Mapping' to learn more."), "Both the eQTL and GWAS p-values are significant."),
                                    div(img(src = "tutorial61.png", height = "450px")),
@@ -192,7 +204,7 @@ ui <- fluidPage(
                                    tags$p("To explore the expression levels and summary statistics for your gene in our data, you’ll want to click the ", tags$b("Gene Symbol Search"), " tab in the navigation bar."),
                                    div(img(src = "tutorial9.png", height = "450px")),
                                    tags$em("This is the screen you will see upon clicking the tab."),
-                                   tags$p("Let's learn more about our housekeeping gene,", tags$code("ERAP2"), ". We click the top left box, search the gene, and click it."),
+                                   tags$p("Let's learn more about our characteristic gene,", tags$code("ERAP2"), ". We click the top left box, search the gene, and click it."),
                                    div(img(src = "tutorial10.png", height = "450px")),
                                    tags$p("The 'Select dataset' box allows us to choose from one of the seven studies described in the 'About' section. This will allow us to view our gene's expression level on different platforms (microarray or RNA-seq) over different lengths of time (50 minutes to 16 weeks), and two sampling sites (finger and venipuncture). Let's select the Rusch et al. dataset, and let's click the 'Average Expression' row on the table in the top left box. You should see this screen:"),
                                    div(img(src = "tutorial11.png", height = "450px")),
@@ -203,7 +215,7 @@ ui <- fluidPage(
                                      tags$li(tags$b("Bottom left:"), "a panel with 5 tabs to visualize your results. The stat density tab displays a density plot for the statistic selected in the above box; the stat boxplot disaplys a boxplot for the statistic. The gene or probe you select will be represented by a blue line. The last three tabs are the scores from earlier and show where ", tags$code("ERAP2 - 1554272_at"), " lies among all other genes.", tutorial("If you hover over the question marks on these last three tabs, you will get an explanation of what each score signifies as a brief reminder.")),
                                      tags$li(tags$b("Bottom right:"), "a summary of the gene information and transcripts from the Ensembl Genome Browser. Some transcripts / genes may not have information in this box.")
                                    ),
-                                   tags$p("We see on the bottom right that our gene is ", tags$code("endoplasmic reticulum aminopeptidase 2"), ". This probe for ", tags$code("ERAP2"), " isn't robustly expressed: let's select ", tags$code("219759_at")," instead using the Select Probe option. We see ", tags$code("219759_at")," is robustly expressed in blood, remains very stable over 12 weeks, and has high variability between individuals.", tutorial("This is characteristic of stable-polymorphic genes.")),
+                                   tags$p("We see on the bottom right that our gene is ", tags$code("endoplasmic reticulum aminopeptidase 2"), ". This probe for ", tags$code("ERAP2"), " isn't robustly expressed: let's select ", tags$code("219759_at")," instead using the Select Probe option. We see ", tags$code("219759_at")," is robustly expressed in blood, remains very stable over 12 weeks, and has high variability between individuals.", tutorial("This is characteristic of characteristic genes.")),
                                    div(img(src = "tutorial111.png", height = "450px")),
                                    tags$p("The last option on this screen is adjusting the coloring of the spaghetti plot. By typing directly into the box, you can change how the lines are colored according to variables recorded by the study. Each dataset has different coloring options- in order to see all these options, go to 'Home', 'About' and explore each of the datasets. The table headers are the available options.", tutorial("To switch back to individual coloring, type 'subject' into the box. All studies have a 'subject' option.")),
                                    div(img(src = "tutorial12.png", height = "300px"),img(src = "tutorial13.png", height = "300px")),
@@ -211,7 +223,7 @@ ui <- fluidPage(
                                    tags$h4("Step 3: Collecting your biomarkers"),
                                    tags$p("This tool helps facilitate strong biomarker candidates for your trait of interest. You can search by condition to find new genes, explore genes you are interested in, or just observe patterns in healthy whole blood generally. We hope that these features allow you to make the best decisions for your whole-blood clincial biomarker research."),
                                    tags$p("For ", tags$code("ERAP2"), ", we can note the within variation as well as the total variation to make informed estimates about how ", tags$code("ERAP2"), " will behave in biomarker studies, and use that information to construct well-designed experiments for clinical validation of ", tags$code("ERAP2"), " as a blood RNA biomarkers."),
-                                   tags$p("Finally, all summary statistics for each dataset and study counts", tutorial("Stable-polymorphic, flexibility, and housekeeping study counts, median statistics, and more!"), "are available in .csv format on the ", tags$b("Download Data"), " tab."),
+                                   tags$p("Finally, all summary statistics for each dataset and study counts", tutorial("Characteristic, flexibility, and housekeeping study counts, median statistics, and more!"), "are available in .csv format on the ", tags$b("Download Data"), " tab."),
                                    tags$h5("Conclusion and practical guidance"),
                                    tags$p("This concludes the tutorial. We recommend starting by investigating a disease or trait you are interested in using the eQTL variant search tab, and then filtering your results to find a suitable biomarker candidate for that disease. Then, search for that biomarker candidate in the Gene Symbol Search tab to find statistics for that gene and see how its expression levels vary from study to study."),
                                    tags$p("Thank you for using our application. We appreciate any feedback! Submit suggestions or comments using the 'Submit Feedback' tool on the left side of this page (you may need to scroll up to see it)."),
@@ -230,8 +242,11 @@ Nucleic Acids Res. 2022 Nov 9:gkac1010. doi: 10.1093/nar/gkac1010. Epub ahead of
                           ### Acknowledgements----
                           tabPanel(title = "Acknowledgments",
                                    tags$h3("Credits"),
-                                   tags$p("Designed by", tags$b("Will C Baltazar,"), "idea conceived by", tags$b("Laura B Ferguson,"), "supported and tested by", tags$b("The Messing Lab.")),
-                                   tags$p("The Messing Lab"),
+                                   div(img(src = "wcb.png", height = "160px")),
+                                   tags$p("Designed by", tags$b(tags$a("Will C. Baltazar", href = "https://www.linkedin.com/in/will-baltazar-0aa787209/"))),
+                                   div(img(src = "lbf.png", height = "170px")),
+                                   tags$p("Idea conceived by", tags$b(tags$a("Dr. Laura B. Ferguson", href = "https://scholar.google.com/citations?user=wry3ovkAAAAJ&hl=en&inst=10220790398908802146"))),
+                                   tags$p("Supported and tested by", tags$b("The Messing Lab.")),
                                    tags$p("The Waggoner Center for Alcohol and Addiction Research"),
                                    tags$p("Department of Neurology"),
                                    tags$p("Department of Neuroscience"),
@@ -268,20 +283,20 @@ Nucleic Acids Res. 2022 Nov 9:gkac1010. doi: 10.1093/nar/gkac1010. Epub ahead of
                                                           label = "Disease or trait to filter by",
                                                           choices = NULL),
                                            sliderInput(inputId = "stableTableSlider",
-                                                       label = "Stable-polymorphic studies?",
-                                                       min = -1, max = 7, value = -1),
+                                                       label = "Characteristic studies?",
+                                                       min = -1, max = 8, value = -1),
                                            radioButtons(inputId = "stableInequality", label = "only show studies...",
                                                         choiceNames = c("=","<=",">="), 
                                                         choiceValues = c("equal","less","more")),
                                            sliderInput(inputId = "dynamicTableSlider",
                                                        label = "Flexible studies?",
-                                                       min = -1, max = 6, value = -1),
+                                                       min = -1, max = 7, value = -1),
                                            radioButtons(inputId = "dynamicInequality", label = "only show studies...",
                                                         choiceNames = c("=","<=",">="), 
                                                         choiceValues = c("equal","less","more")),
                                            sliderInput(inputId = "houseSlider",
                                                        label = "Housekeeping studies?",
-                                                       min = -1, max = 6, value = -1),
+                                                       min = -1, max = 8, value = -1),
                                            radioButtons(inputId = "houseInequality", label = "only show studies...",
                                                         choiceNames = c("=","<=",">="), 
                                                         choiceValues = c("equal","less","more")),
@@ -326,7 +341,9 @@ Nucleic Acids Res. 2022 Nov 9:gkac1010. doi: 10.1093/nar/gkac1010. Epub ahead of
                                          "Obermoser et al. (9 days, finger, vaccine cohort 2, microarray)" = "pheno_obermoser4",
                                          "Dusek et al. (8 weeks, relaxation response training, microarray)" = "pheno_dusek",
                                          "Rusch et al. (12 weeks, vein, males in military w/ sleeping disturbances, microarray)" = "pheno_rusch",
-                                         "LaRocca et al. (16 weeks, women in endurance training, RNA-seq)" = "pheno_larocca"),
+                                         "LaRocca et al. (16 weeks, women in endurance training, RNA-seq)" = "pheno_larocca",
+                                         "Karlovich et al. (4 weeks, healthy volunteers, microarray)" = "pheno_karlovich1",
+                                         "Karlovich et al. (90 days, healthy volunteers, microarray)" = "pheno_karlovich2"),
                              selected = "Gosch et al. (24 hours)"),
                  textInput("column", "Change Coloring (optional):", "subject"),
                  # uiOutput(outputId = "columnSelectUI"), # this will replace the textInput on the line above.
@@ -367,15 +384,15 @@ Nucleic Acids Res. 2022 Nov 9:gkac1010. doi: 10.1093/nar/gkac1010. Epub ahead of
                                    nav_panel(title = span("Stat Boxplot", uiOutput("noStatSelected2", inline = TRUE)),
                                              plotOutput(outputId = "statBoxplot")),
                                    nav_panel(title = span(
-                                     "Stable-polymorphic studies",
+                                     "Characteristic studies",
                                      tooltip(
                                        icon("circle-question"),
-                                       "The stable-polymorphic number is the number of studies in which a gene was found to be stable within an individual over time but variable between individuals. It has a maximum value of 7",
+                                       "The characteristic number is the number of studies in which a gene was found to be stable within an individual over time but variable between individuals. It has a maximum value of 7",
                                        placement = "right"
                                      )
                                    ),
                                    plotOutput("stablePolyScorePlot"),
-                                   tags$b(tags$p("Number of studies where the stable-polymorphic threshold was passed:")),
+                                   tags$b(tags$p("Number of studies where the characteristic threshold was passed:")),
                                    tags$p(textOutput("stableNum")), 
                                    tags$i(textOutput("stableStudies")),
                                    ),
@@ -433,10 +450,14 @@ Nucleic Acids Res. 2022 Nov 9:gkac1010. doi: 10.1093/nar/gkac1010. Epub ahead of
                                          "Dusek 8 week transcript statistics (11.6 MB)" = "dusek",
                                          "Rusch 12 week transcript statistics (14 MB)" = "rusch",
                                          "LaRocca 16 week transcript statistics (3.4 MB)" = "larocca",
-                                         "Stable-polymorphic scores (2.2 MB)" = "stable",
-                                         "Flexibility scores (2.9 MB)" = "flex",
-                                         "Housekeeping scores (1.5 MB)" = "house",
-                                         "Median gene statistics (4.3 MB)" = "median"), selected = ""),
+                                         "Karlovich 4 week transcript statistics (14.6 MB)" = "k1",
+                                         "Karlovich 90 day transcript statistics (13.1 MB)" = "k2",
+                                         "Characteristic scores (2.6 MB)" = "stable",
+                                         "Flexibility scores (4 MB)" = "flex",
+                                         "Housekeeping scores (1.6 MB)" = "house",
+                                         "Median gene statistics (4.2 MB)" = "median",
+                                         "Functional characteristic, flexible, and housekeeping categories (411 KB)" = "sdf2"),
+                             selected = ""),
                  downloadButton("downloadData", "Download")
                ),
                mainPanel = mainPanel(
@@ -464,7 +485,7 @@ server <- function(input, output, session) {
   ### Conditional UI for if there are multiple probes for a gene ----
   #### Is it an Affy array? ----
   isMicroarray <- reactive({
-    input$pData %in% c("pheno_dusek", "pheno_rusch", "pheno_meaburn1", "pheno_meaburn2")
+    input$pData %in% c("pheno_dusek", "pheno_rusch", "pheno_meaburn1", "pheno_meaburn2", "pheno_karlovich1", "pheno_karlovich2")
   })
   #### Is it an Ilmn array? ----
   isBeadChip <- reactive({
@@ -511,7 +532,9 @@ server <- function(input, output, session) {
                    "pheno_obermoser4" = e8,
                    "pheno_dusek" = e9,
                    "pheno_rusch" = e10,
-                   "pheno_larocca" = e11
+                   "pheno_larocca" = e11,
+                   "pheno_karlovich1" = e12,
+                   "pheno_karlovich2" = e13
     )
     pdata <- switch(input$pData,
                     "pheno_gomez" = pheno_data[[1]],
@@ -524,7 +547,9 @@ server <- function(input, output, session) {
                     "pheno_obermoser4" = pheno_data[[8]],
                     "pheno_dusek" = pheno_data[[9]],
                     "pheno_rusch" = pheno_data[[10]],
-                    "pheno_larocca" = pheno_data[[11]]
+                    "pheno_larocca" = pheno_data[[11]],
+                    "pheno_karlovich1" = pheno_data[[12]],
+                    "pheno_karlovich2" = pheno_data[[13]]
     )
     checkprobe <- (isMicroarray() | isBeadChip()) & !is.null(input$probeInput)
     
@@ -545,7 +570,7 @@ server <- function(input, output, session) {
   
   ### Gene/Transcript Info output ----
   output$geneInfo <- renderDataTable({
-    if (input$pData %in% c("pheno_rusch", "pheno_dusek", "pheno_meaburn1", "pheno_meaburn2")) {
+    if (input$pData %in% c("pheno_rusch", "pheno_dusek", "pheno_meaburn1", "pheno_meaburn2", "pheno_karlovich1", "pheno_karlovich2")) {
       use <- anno_data$affy[anno_data$affy$affy_hg_u133_plus_2 == input$probeInput,]
     } else if (input$pData %in% c("pheno_obermoser1","pheno_obermoser2","pheno_obermoser3","pheno_obermoser4")) {
       use <- anno_data$ilmn[anno_data$ilmn$illumina_humanwg_6_v3 == input$probeInput,]
@@ -610,7 +635,9 @@ server <- function(input, output, session) {
                     "pheno_obermoser4" = variation_tables[[8]],
                     "pheno_dusek" = variation_tables[[9]],
                     "pheno_rusch" = variation_tables[[10]],
-                    "pheno_larocca" = variation_tables[[11]]
+                    "pheno_larocca" = variation_tables[[11]],
+                    "pheno_karlovich1" = variation_tables[[12]],
+                    "pheno_karlovich2" = variation_tables[[13]]
     )
     checkprobe <- (isMicroarray() | isBeadChip()) & !is.null(input$probeInput)
     if (checkprobe) {
@@ -694,7 +721,7 @@ server <- function(input, output, session) {
       geom_vline(xintercept = stnum, color = "royalblue") +
       annotate(geom = "text", label = paste(input$geneName), x = stnum + 0.75, y = 5800) +
       theme_minimal_hgrid() +
-      labs(x = "Stable-polymorphic score", y = "All genes")
+      labs(x = "Characteristic score", y = "All genes")
   })
   
   output$flexibilityScorePlot <- renderPlot({
@@ -735,7 +762,9 @@ server <- function(input, output, session) {
                     "pheno_obermoser4" = variation_tables[[8]],
                     "pheno_dusek" = variation_tables[[9]],
                     "pheno_rusch" = variation_tables[[10]],
-                    "pheno_larocca" = variation_tables[[11]]
+                    "pheno_larocca" = variation_tables[[11]],
+                    "pheno_karlovich1" = variation_tables[[12]],
+                    "pheno_karlovich2" = variation_tables[[13]]
     )
     
     checkprobe <- (isMicroarray() | isBeadChip()) & !is.null(input$probeInput)
@@ -770,7 +799,9 @@ server <- function(input, output, session) {
                     "pheno_obermoser4" = variation_tables[[8]],
                     "pheno_dusek" = variation_tables[[9]],
                     "pheno_rusch" = variation_tables[[10]],
-                    "pheno_larocca" = variation_tables[[11]]
+                    "pheno_larocca" = variation_tables[[11]],
+                    "pheno_karlovich1" = variation_tables[[12]],
+                    "pheno_karlovich2" = variation_tables[[13]]
     )
     
     checkprobe <- (isMicroarray() | isBeadChip()) & !is.null(input$probeInput)
@@ -809,44 +840,44 @@ server <- function(input, output, session) {
       )
     } else {
       if (input$stableInequality == "equal") {
-        stableSliderOption <- if (input$stableTableSlider >= 0) {input$stableTableSlider} else {0:7}
+        stableSliderOption <- if (input$stableTableSlider >= 0) {input$stableTableSlider} else {0:8}
       }
       if (input$stableInequality == "less") {
-        stableSliderOption <- if (input$stableTableSlider >= 0) {0:input$stableTableSlider} else {0:7}
+        stableSliderOption <- if (input$stableTableSlider >= 0) {0:input$stableTableSlider} else {0:8}
       }
       if (input$stableInequality == "more") {
-        stableSliderOption <- if (input$stableTableSlider >= 0) {input$stableTableSlider:7} else {0:7}
+        stableSliderOption <- if (input$stableTableSlider >= 0) {input$stableTableSlider:8} else {0:8}
       }
       if (input$dynamicInequality == "equal") {
-        dynamicSliderOption <- if (input$dynamicTableSlider >= 0) {input$dynamicTableSlider} else {0:6}
+        dynamicSliderOption <- if (input$dynamicTableSlider >= 0) {input$dynamicTableSlider} else {0:7}
       }
       if (input$dynamicInequality == "less") {
-        dynamicSliderOption <- if (input$dynamicTableSlider >= 0) {0:input$dynamicTableSlider} else {0:6}
+        dynamicSliderOption <- if (input$dynamicTableSlider >= 0) {0:input$dynamicTableSlider} else {0:7}
       }
       if (input$dynamicInequality == "more") {
-        dynamicSliderOption <- if (input$dynamicTableSlider >= 0) {input$dynamicTableSlider:6} else {0:6}
+        dynamicSliderOption <- if (input$dynamicTableSlider >= 0) {input$dynamicTableSlider:7} else {0:7}
       }
       if (input$houseInequality == "equal") {
-        houseSliderOption <- if (input$houseSlider >= 0) {input$houseSlider} else {0:6}
+        houseSliderOption <- if (input$houseSlider >= 0) {input$houseSlider} else {0:8}
       }
       if (input$houseInequality == "less") {
-        houseSliderOption <- if (input$houseSlider >= 0) {0:input$houseSlider} else {0:6}
+        houseSliderOption <- if (input$houseSlider >= 0) {0:input$houseSlider} else {0:8}
       }
       if (input$houseInequality == "more") {
-        houseSliderOption <- if (input$houseSlider >= 0) {input$houseSlider:6} else {0:6}
+        houseSliderOption <- if (input$houseSlider >= 0) {input$houseSlider:8} else {0:8}
       }
       
       ## If disease filter is selected, present all options that meet slider criteria and the trait of interest.
       if (input$gtexFilter == "Disease/Trait") {
         result <- gtex %>% 
-          dplyr::filter(`GWAS Trait` == input$eqtlChoiceTrait, (`Stable-polymorphic 4+ filter studies` %in% stableSliderOption),
+          dplyr::filter(`GWAS Trait` == input$eqtlChoiceTrait, (`Characteristic 4+ filter studies` %in% stableSliderOption),
                         (`Studies below 0.05 p_value` %in% dynamicSliderOption), (`Housekeeping 4+ filter studies` %in% houseSliderOption))
       }
       
       ## If no filter is selected, present all options that meet slider criteria.
       if (input$gtexFilter == "No filter") {
         result <- gtex %>% 
-          dplyr::filter(`Stable-polymorphic 4+ filter studies` %in% stableSliderOption, 
+          dplyr::filter(`Characteristic 4+ filter studies` %in% stableSliderOption, 
                         `Studies below 0.05 p_value` %in% dynamicSliderOption, 
                         `Housekeeping 4+ filter studies` %in% houseSliderOption)
       }
@@ -886,6 +917,7 @@ server <- function(input, output, session) {
   ## Downloads ----
   
   datasetInput <- reactive({
+    library(readxl)
     switch(input$downloadSelectInput,
            "gomez" = variation_tables[[1]],
            "m1" = variation_tables[[2]],
@@ -898,10 +930,13 @@ server <- function(input, output, session) {
            "dusek" = variation_tables[[9]],
            "rusch" = variation_tables[[10]],
            "larocca" = variation_tables[[11]],
+           "k1" = variation_tables[[12]],
+           "k2" = variation_tables[[13]],
            "stable" = stable,
            "flex" = dynamic,
            "house" = housekeeping,
-           "median" = read.csv("./data/median_stability_statistics.csv"))
+           "median" = read.csv("./data/median_stability_statistics_all.csv"),
+           "sdf2" = read.csv("./data/supplementary_data_2.csv"))
   })
   
   fn <- reactive({
@@ -917,10 +952,13 @@ server <- function(input, output, session) {
            "dusek" = "dusek_variation",
            "rusch" = "rusch_variation",
            "larocca" = "larocca_variation",
+           "k1" = "karlovich_batch1_variation",
+           "k2" = "karlovich_batch2_variation",
            "stable" = "stablepolymorphic_genes",
            "flex" = "flexible_genes",
            "house" = "housekeeping_genes",
-           "median" = "median_stability_statistics")
+           "median" = "median_stability_statistics",
+           "sdf2" = "functional_categories")
   })
   
   ### Preview ----
@@ -953,6 +991,7 @@ server <- function(input, output, session) {
   output$ruschTableHead <- DT::renderDataTable(head(pheno_data[[10]]))
   output$laroccaTableHead <- DT::renderDataTable(head(pheno_data[[11]]))
   output$meaburnTableHead <- DT::renderDataTable(head(pheno_data[[2]]))
+  output$karlovichTableHead <- DT::renderDataTable(head(pheno_data[[12]]))
   
   # Feedback code
   observeEvent(input$submitFeedback, {

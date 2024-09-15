@@ -157,22 +157,6 @@ table(pheno_data$id, pheno_data$sex)
 # 51      2    0
 # 59      2    0
 
-
-# Control probe QC ----
-
-## Control probe plots
-source("~/Desktop/work_repo/github/scratch code/Affy_control_probe_check.R")
-a <- polyA_check(df, pheno_data, "time")[[1]]
-b <- hybrid_check(df, pheno_data, "time")[[1]]
-c <- positive_check(df, pheno_data, "time")
-d <- polyA_check(df, pheno_data, "title")[[1]]
-e <- hybrid_check(df, pheno_data, "title")[[1]]
-f <- positive_check(df, pheno_data, "title")
-pdf(file = paste(output_dir, "control_probes.pdf", sep = ""), height = 12, width = 12)
-plot_grid(a,b,c,d,e,f, nrow = 3)
-dev.off()
-
-
 # Run MDS and PCA ----
 ## PCAtools
 p <- pca(df, metadata = pheno_data, center = T, scale = T)

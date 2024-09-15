@@ -4,13 +4,13 @@
 study_names <- c("Gomez-Carballa", "Meaburn Day 1", "Meaburn Day 2",
                  "Gosch", "Obermoser C1 Vein", "Obermoser C1 Finger",
                  "Obermoser C2 Vein", "Obermoser C2 Finger",
-                 "Bhasin", "Rusch", "LaRocca")
+                 "Bhasin", "Rusch", "LaRocca", "Karlovich Batch 1", "Karlovich Batch 2")
 
 ## Variation tables
 variation_tables <- list()
 files <- c("1variation.csv", "2variation.csv", "3variation.csv", "4variation.csv",
            "5variation.csv", "6variation.csv", "7variation.csv", "8variation.csv",
-           "9variation.csv", "10variation.csv", "11variation.csv")
+           "9variation.csv", "10variation.csv", "11variation.csv", "12variation.csv", "13variation.csv")
 for (i in 1:length(files)) {
   variation_tables[[i]] <- read.csv(file = paste("./data/variation/", files[i], sep = ""))
   names(variation_tables)[i] <- study_names[i]
@@ -56,10 +56,16 @@ names(variation_tables[[10]]) <- c("Probe ID", "Within Variation", "Total Variat
 names(variation_tables[[11]]) <- c("Symbol", "Within Variation", "Total Variation", "Rs", "Average Expression",
                                    "Subject VP", "Response VP", "Time-response VP", "Time VP", "Residual VP", "Repeatability", 
                                    "Genetic Variance", "Residual Variance", "Symbol2")
+names(variation_tables[[12]]) <- c("Probe ID", "Within Variation", "Total Variation SD", "Rs", "Average Expression", "Subject VP", 
+                                   "Age VP", "Age-28d VP", "Age-14d VP", "Time-sex VP", "Sex VP", "Time VP", "Residual VP", 
+                                   "Repeatability", "Genetic Variance", "Residual Variance", "Symbol")
+names(variation_tables[[13]]) <- c("Probe ID", "Within Variation", "Total Variation SD", "Rs", "Average Expression", "Subject VP", 
+                                   "Age-day90 VP", "Age VP", "Sex VP", "Time VP", "Time-sex VP", "Residual VP", 
+                                   "Repeatability", "Genetic Variance", "Residual Variance", "Symbol")
 
 
 ## Stability and dynamic data
-stable <- read.csv("./data/stable_polymorphic_scores.csv")
+stable <- read.csv("./data/characteristic_scores.csv")
 dynamic <-  read.csv("./data/flexible_gene_scores.csv")
 housekeeping <- read.csv("./data/housekeeping_scores.csv")
 
@@ -94,7 +100,7 @@ gtexColumnNames <- c(
   '<span title="Reported p-value for strongest SNP risk allele (linked to dbGaP Association Browser). Note that p-values are rounded to 1 significant digit (for example, a published p-value of 4.8 x 10-7 is rounded to 5 x 10-7)">GWAS p_value</span>',
   '<span title="Provides information on a variant’s predicted most severe functional effect from Ensembl">Genomic Context</span>',
   '<span title="Denotes whether SNP is in intergenic region (0 = no; 1 = yes)">Intergenic?</span>',
-  '<span title="A score ranging from 0-7. Genes that score higher are generally expressed stably over time for an individual, but expression levels vary between individuals.">Stable-polymorphic no. studies</span>',
+  '<span title="A score ranging from 0-7. Genes that score higher are generally expressed stably over time for an individual, but expression levels vary between individuals.">Characteristic no. studies</span>',
   '<span title="A score ranging from 0-6. Genes that score higher were called differentially expressed over time in more studies (p < 0.05 using limma comparing baseline and follow-up gene expression), indicating varying expression levels over time.">Flexible no. studies</span>',
   '<span title="A score ranging from 0-6. Genes that score higher show little variation across time or across individuals.">Housekeeping no. studies</span>'
 )

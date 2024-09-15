@@ -42,6 +42,10 @@ dusek$Symbol <- mapIds(x = hgu133plus2.db, keys = dusek$...1, column = "SYMBOL",
 rusch <- read_csv(file = paste(input_dir, "Rusch_study_data/output/Rusch_variation.csv", sep = ""))
 rusch$Symbol <- mapIds(x = hgu133plus2.db, keys = rusch$...1, column = "SYMBOL", keytype = "PROBEID")
 larocca <- read_csv(file = paste(input_dir, "LaRocca_study_data/output/LaRocca_variation.csv", sep = ""))
+karlovich1 <- read_csv(file = paste(input_dir, "Karlovich_study_data/output/Karlovich_batch1_variation.csv", sep = ""))
+karlovich1$Symbol <- mapIds(x = hgu133plus2.db, keys = karlovich1$...1, column = "SYMBOL", keytype = "PROBEID")
+karlovich2 <- read_csv(file = paste(input_dir, "Karlovich_study_data/output/Karlovich_batch2_variation.csv", sep = ""))
+karlovich2$Symbol <- mapIds(x = hgu133plus2.db, keys = karlovich2$...1, column = "SYMBOL", keytype = "PROBEID")
 
 data <- list(gomez, gosch, meaburn1, meaburn2, obermoser1, obermoser2, obermoser3, obermoser4,
              dusek, rusch, larocca)
@@ -76,7 +80,7 @@ writexl::write_xlsx(towrite, path = paste(output_dir, "housekeeping_filter_summa
 
 ## How many unique filters are there?
 length(all_filters)
-# [1] 11
+# [1] 13
 
 ## Get results ----
 ## Create pool of genes
@@ -100,7 +104,7 @@ all_symbols[1] # [1] "TSPAN6"
 sum(unlist(lapply(all_filters, function(x) {all_symbols["RAN3BP"] %in% x})))
 # [1] 7
 paste(na.omit(names(unlist(lapply(all_filters, function(x) {all_symbols["RAN3BP"] %in% x})))[unlist(lapply(all_filters, function(x) {all_symbols["RAN3BP"] %in% x}))]), collapse = " ")
-# "meaburn1.rs meaburn2.rs obermoser2.rs obermoser3.rs obermoser4.rs dusek.rs rusch.rs"
+# "meaburn1.rs meaburn2.rs obermoser2.rs obermoser3.rs obermoser4.rs dusek.rs rusch.rs karlovich1.rs karlovich2.rs"
 
 ### Run ----
 for (i in 1:nrow(housekeeping_results)) {
@@ -111,7 +115,7 @@ for (i in 1:nrow(housekeeping_results)) {
 head(housekeeping_results)
 
 ### Bin which filters the gene passed ----
-housekeeping_results[,4:14] <- 0
+housekeeping_results[,4:16] <- 0
 names(housekeeping_results) <- c(names(housekeeping_results)[1:3], names(data))
 head(housekeeping_results,1)
 studies <- names(data)
@@ -122,19 +126,55 @@ for (study in studies) {
 }
 housekeeping_results <- housekeeping_results %>% 
   mutate(Studies = (gomez > 0) + (meaburn1 + meaburn2 > 0) + (gosch > 0) + (obermoser1 + obermoser2 + obermoser3 + obermoser4 > 0) +
-           (dusek > 0) + (rusch > 0) + (larocca > 0))
+           (dusek > 0) + (rusch > 0) + (larocca > 0) + (karlovich1 + karlovich2 > 0))
 
 ### Save results -----
 write.csv(housekeeping_results, file = paste(output_dir, "housekeeping_scores.csv", sep = ""))
-print(head(housekeeping_results[order(housekeeping_results$Studies, decreasing = T),c(1,2,length(names(housekeeping_results)))], 10))
-#       Symbols Score Studies
-# 379    RANBP3     7       6
-# 1724  POLDIP3     6       6
-# 4167   WRNIP1     6       6
-# 5572    PARP6     6       6
-# 6504  SH3KBP1     7       6
-# 9767 NFATC2IP     6       6
-# 212    LYPLA2     6       5
-# 223    RNF216     5       5
-# 569  TBC1D22A     6       5
-# 791      DHX8     5       5
+
+## Table 2 ----
+housekeeping_results <- read.csv(paste(output_dir, "housekeeping_scores.csv", sep = ""))
+supp_table <- housekeeping_results[order(housekeeping_results$Studies, decreasing = T),]
+head(supp_table)
+# X  Symbol Score                                                                                     Filters gomez gosch meaburn1
+# 379   379  RANBP3     8 gosch.rs meaburn2.rs obermoser3.rs obermoser4.rs dusek.rs rusch.rs larocca.rs karlovich1.rs     0     1        0
+# 5572 5572   PARP6     7               gomez.rs gosch.rs meaburn1.rs obermoser4.rs rusch.rs larocca.rs karlovich1.rs     1     1        1
+# 212   212  LYPLA2     7              gomez.rs gosch.rs meaburn1.rs meaburn2.rs obermoser4.rs rusch.rs karlovich1.rs     1     1        1
+# 223   223  RNF216     6                             gomez.rs meaburn2.rs dusek.rs rusch.rs larocca.rs karlovich2.rs     1     0        0
+# 1131 1131   REXO1     6                        gosch.rs meaburn2.rs obermoser4.rs rusch.rs larocca.rs karlovich1.rs     0     1        0
+# 1724 1724 POLDIP3     6                             gomez.rs gosch.rs meaburn1.rs obermoser3.rs rusch.rs larocca.rs     1     1        1
+# meaburn2 obermoser1 obermoser2 obermoser3 obermoser4 dusek rusch larocca karlovich1 karlovich2 Studies
+# 379         1          0          0          1          1     1     1       1          1          0       7
+# 5572        0          0          0          0          1     0     1       1          1          0       7
+# 212         1          0          0          0          1     0     1       0          1          0       6
+# 223         1          0          0          0          0     1     1       1          0          1       6
+# 1131        1          0          0          0          1     0     1       1          1          0       6
+# 1724        0          0          0          1          0     0     1       1          0          0       6
+dim(housekeeping_results[housekeeping_results$Studies >= 6,])
+# [1] 17 18
+supp_table <- supp_table[supp_table$Studies >= 6, "Symbol"]
+library(biomaRt)
+mart <- useDataset(dataset = "hsapiens_gene_ensembl", mart = useMart("ENSEMBL_MART_ENSEMBL"))
+supp_table <- getBM(attributes = c("hgnc_symbol","description"),
+                    filters = "hgnc_symbol",
+                    values = supp_table,
+                    mart = mart)
+supp_table
+#    hgnc_symbol                                                                                   description
+# 1        DHDDS              dehydrodolichyl diphosphate synthase subunit [Source:HGNC Symbol;Acc:HGNC:20603]
+# 2       EFTUD2      elongation factor Tu GTP binding domain containing 2 [Source:HGNC Symbol;Acc:HGNC:30858]
+# 3        GPAA1           glycosylphosphatidylinositol anchor attachment 1 [Source:HGNC Symbol;Acc:HGNC:4446]
+# 4         ING4                       inhibitor of growth family member 4 [Source:HGNC Symbol;Acc:HGNC:19423]
+# 5       LYPLA2                                        lysophospholipase 2 [Source:HGNC Symbol;Acc:HGNC:6738]
+# 6         MBD1                        methyl-CpG binding domain protein 1 [Source:HGNC Symbol;Acc:HGNC:6916]
+# 7       MRPS25                       mitochondrial ribosomal protein S25 [Source:HGNC Symbol;Acc:HGNC:14511]
+# 8     NFATC2IP nuclear factor of activated T cells 2 interacting protein [Source:HGNC Symbol;Acc:HGNC:25906]
+# 9        PARP6               poly(ADP-ribose) polymerase family member 6 [Source:HGNC Symbol;Acc:HGNC:26921]
+# 10     POLDIP3                DNA polymerase delta interacting protein 3 [Source:HGNC Symbol;Acc:HGNC:23782]
+# 11      RANBP3                                      RAN binding protein 3 [Source:HGNC Symbol;Acc:HGNC:9850]
+# 12       REXO1                                 RNA exonuclease 1 homolog [Source:HGNC Symbol;Acc:HGNC:24616]
+# 13       RHOT2                              ras homolog family member T2 [Source:HGNC Symbol;Acc:HGNC:21169]
+# 14      RNF216                                   ring finger protein 216 [Source:HGNC Symbol;Acc:HGNC:21698]
+# 15     SH3KBP1            SH3 domain containing kinase binding protein 1 [Source:HGNC Symbol;Acc:HGNC:13867]
+# 16      STRADA                               STE20 related adaptor alpha [Source:HGNC Symbol;Acc:HGNC:30172]
+# 17      WRNIP1                        WRN helicase interacting protein 1 [Source:HGNC Symbol;Acc:HGNC:20876]
+write.csv(supp_table, paste(output_dir, "housekeeping_6_or_more_studies.csv", sep = ""))

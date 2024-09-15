@@ -1,7 +1,7 @@
 ## Affymetrix HGU133 Plus 2.0 control probe custom code
 
 ## Check poly-A probe expression ----
-polyA_check <- function(mat, meta, groupby) {
+polyA_check <- function(mat, meta, groupby, legend.position = 'left') {
   if (!(identical(colnames(mat), rownames(meta)))) {
     stop("Colnames of expression matrix must be identical to rownames of metadata.")
   }
@@ -24,6 +24,7 @@ polyA_check <- function(mat, meta, groupby) {
     p <- ggplot(data = polyA, aes(x = group, y = expr, fill = group)) +
       geom_boxplot() +
       theme_linedraw() +
+      theme(legend.position = legend.position) +
       geom_label(aes(x = length(by)/2, y = 10, label = paste("p =", round(pval,3)), fill = NULL)) +
       ggtitle("Average polyA probe expression across groups.")
   } else {
@@ -32,6 +33,7 @@ polyA_check <- function(mat, meta, groupby) {
     p <- ggplot(data = polyA, aes(x = group, y = expr, fill = group)) +
       geom_boxplot() +
       theme_linedraw() +
+      theme(legend.position = legend.position) +
       geom_label(aes(x = length(by)/2, y = 10, label = paste("p =", round(pval,3)), fill = NULL)) +
       ggtitle("Average polyA probe expression across groups.")
   }
@@ -50,7 +52,7 @@ polyA_check <- function(mat, meta, groupby) {
 }
 
 ## Check hybridization expression----
-hybrid_check <- function(mat, meta, groupby) {
+hybrid_check <- function(mat, meta, groupby, legend.position = 'left') {
   if (!(identical(colnames(mat), rownames(meta)))) {
     stop("Colnames of expression matrix must be identical to rownames of metadata.")
   }
@@ -73,6 +75,7 @@ hybrid_check <- function(mat, meta, groupby) {
     p <- ggplot(data = polyA, aes(x = group, y = expr, fill = group)) +
       geom_boxplot() +
       theme_linedraw() +
+      theme(legend.position = legend.position) +
       geom_label(aes(x = length(by)/2, y = 10, label = paste("p =", round(pval,3)), fill = NULL)) +
       ggtitle("Average hybridization control probe expression across groups.")
   } else {
@@ -81,6 +84,7 @@ hybrid_check <- function(mat, meta, groupby) {
     p <- ggplot(data = polyA, aes(x = group, y = expr, fill = group)) +
       geom_boxplot() +
       theme_linedraw() +
+      theme(legend.position = legend.position) +
       geom_label(aes(x = length(by)/2, y = 10, label = paste("p =", round(pval,3)), fill = NULL)) +
       ggtitle("Average hybridization control probe expression across groups.")
   }
@@ -99,7 +103,7 @@ hybrid_check <- function(mat, meta, groupby) {
 }
 
 ## Check positive control expression----  
-positive_check <- function(mat, meta, groupby) {
+positive_check <- function(mat, meta, groupby, legend.position = 'left') {
   if (!(identical(colnames(mat), rownames(meta)))) {
     stop("Colnames of expression matrix must be identical to rownames of metadata.")
   }
@@ -123,6 +127,7 @@ positive_check <- function(mat, meta, groupby) {
     p <- ggplot(data = polyA, aes(x = group, y = expr, fill = group)) +
       geom_boxplot() +
       theme_linedraw() +
+      theme(legend.position = legend.position) +
       geom_label(aes(x = length(by)/2, y = 10, label = paste("p =", round(pval,3)), fill = NULL)) +
       ggtitle("Average positive control probe expression across groups.")
   } else {
@@ -131,6 +136,7 @@ positive_check <- function(mat, meta, groupby) {
     p <- ggplot(data = polyA, aes(x = group, y = expr, fill = group)) +
       geom_boxplot() +
       theme_linedraw() +
+      theme(legend.position = legend.position) +
       geom_label(aes(x = length(by)/2, y = 10, label = paste("p =", round(pval,3)), fill = NULL)) +
       ggtitle("Average positive control probe expression across groups.")
   }
