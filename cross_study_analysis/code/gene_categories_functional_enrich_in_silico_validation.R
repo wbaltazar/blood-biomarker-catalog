@@ -76,11 +76,11 @@ length(house_enrich)
 
 ## Create the Venn Diagram before removing intersections ----
 venn.diagram(x = list(stable_enrich, dynamic_enrich, house_enrich), 
-             category.names = c("Stable-polymorphic", "Flexible", "Housekeeping"),
+             category.names = c("Characteristic", "Flexible", "Housekeeping"),
              fill = c("#84cbeb", "#fffeb0", "#f6c6ad"), col = "black", alpha = c(0.8,0.8,0.8),
              main = "Gene categories", imagetype = "png", cex = 1.5,
              main.fontfamily = "Arial", main.fontface = "bold", main.cex = 1.5, fontfamily = "Arial",
-             cat.fontfamily = "Arial", cat.dist = c(-0.075,-0.05, -0.05), cat.cex = c(1.1,1.2,1.2),
+             cat.fontfamily = "Arial", cat.fontface = "bold", cat.dist = c(-0.075,-0.05, -0.05), cat.cex = c(1.1,1.2,1.2),
              disable.logging = T,
              filename = paste(output_dir, "venn_diagram_overlap.png", sep = ""))
 
