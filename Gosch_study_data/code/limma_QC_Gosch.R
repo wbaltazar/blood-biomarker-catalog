@@ -78,6 +78,9 @@ title("Barplot of library sizes")
 dev.off()
 which(x$samples$lib.size == 401784615)
 # [1] 60
+pheno_data[60,]
+#                                  title geo_accession age participant   time    sex                                sample
+# GSM6965634 Blood, ParticipantJ, 23.00h    GSM6965634  22           J 23.00h Female 21Aug27_F10-L1_S96_L004.featureCounts
 colnames(x$counts)[60] == rownames(x$samples)[60]
 # [1] TRUE
 x$counts <- x$counts[,-60]

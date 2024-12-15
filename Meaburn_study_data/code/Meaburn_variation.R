@@ -61,9 +61,15 @@ celfiles <- list.files(input_dir, full.names = T)
 c1 <- celfiles[which(str_extract(celfiles, "GSM\\d{6}") %in% p1$geo_accession)]
 length(c1)
 data <- ReadAffy(filenames = c1)
+calls <- mas5calls.AffyBatch(data)
+probe_pval <- assayData(calls)[["se.exprs"]] ## Returns p-values
+minSamples <- min(colSums(table(p1$id, p1$time)))
+expressed <- rowSums(probe_pval < 0.05) >= minSamples
 data <- affy::rma(data)
 norm_expr <- exprs(data)
+norm_expr <- norm_expr[expressed,]
 dim(norm_expr)
+# [1] 25419    19
 table(p1$sex, p1$id)
 #        TD19901 TD19902 TD23461 TD23462 TD24111 TD24112 TD32681 TD32682 TD51281 TD51282
 # Female       2       2       2       2       2       2       0       0       2       2
@@ -157,9 +163,16 @@ write.csv(data_var, paste(output_dir, "Meaburn_day1_variation.csv", sep = ""), r
 c2 <- celfiles[which(str_extract(celfiles, "GSM\\d{6}") %in% p2$geo_accession)]
 length(c2) # [1] 17
 data <- ReadAffy(filenames = c2)
+calls <- mas5calls.AffyBatch(data)
+probe_pval <- assayData(calls)[["se.exprs"]] ## Returns p-values
+minSamples <- min(colSums(table(p2$id, p2$time)))
+expressed <- rowSums(probe_pval < 0.05) >= minSamples
 data <- affy::rma(data)
 norm_expr <- exprs(data)
+norm_expr <- norm_expr[expressed,]
 dim(norm_expr)
+# [1] 26474    17
+
 table(p2$sex, p2$id)
 #        TD19901 TD19902 TD23461 TD23462 TD24111 TD24112 TD32681 TD32682 TD51281 TD51282
 # Female       1       2       2       1       2       2       0       0       2       2

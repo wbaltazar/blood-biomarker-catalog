@@ -28,14 +28,6 @@ input_dir <- "~/Desktop/work_repo/data/GSE81761_RAW/"
 ## OUTPUT: tables and graphics
 output_dir <- "~/Desktop/work_repo/github/Rusch_study_data/output/"
 
-# Load in data ----
-data <- ReadAffy(celfile.path = input_dir)
-data <- affy::rma(data)
-norm_expr <- exprs(data)
-colnames(norm_expr) <- str_extract(colnames(norm_expr), pattern = "GSM\\d+")
-dim(norm_expr)
-# [1] 54675    38
-
 # Phenotype data
 gset <- getGEO("GSE81761", GSEMatrix =TRUE, AnnotGPL=TRUE)
 pheno_data_org <- pData(gset$GSE81761_series_matrix.txt.gz)
@@ -48,7 +40,7 @@ pheno_data <- pheno_data_org %>%
                 race = `race:ch1`,
                 sex = `Sex:ch1`,
                 time = `timepoint:ch1`)
-pheno_data <- pheno_data[pheno_data$geo_accession %in% colnames(norm_expr),]
+pheno_data <- pheno_data[pheno_data$geo_accession %in% str_extract(list.files(input_dir), "GSM\\d+"),]
 dim(pheno_data)
 # [1] 38  8
 pheno_data$subject <- str_extract(string = pheno_data$source, pattern = "Subject \\d+")
@@ -58,6 +50,20 @@ table(pheno_data$subject)
 # 2           1           2           2           2           2           2           2           2           2           2 
 # Subject 69  Subject 72  Subject 73  Subject 76  Subject 80   Subject 9  Subject 94  Subject 95  Subject 98 
 # 2           2           2           1           2           2           2           2           2 
+
+# Load in data ----
+data <- ReadAffy(celfile.path = input_dir)
+calls <- mas5calls.AffyBatch(data)
+probe_pval <- assayData(calls)[["se.exprs"]] ## Returns p-values
+minSamples <- min(colSums(table(pheno_data$subject, pheno_data$time)))
+print(minSamples)
+# [1] 19
+expressed <- rowSums(probe_pval < 0.05) >= minSamples
+data <- affy::rma(data)
+norm_expr <- exprs(data)
+norm_expr <- norm_expr[expressed,]
+dim(norm_expr)
+# [1] 21374    38
 
 # Variation analysis ----
 

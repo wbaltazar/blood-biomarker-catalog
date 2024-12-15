@@ -104,12 +104,14 @@ data$genes <- BGX
 data$other$Detection <- detectionpvalues
 dim(data$E)
 # [1] 48803   621
+## Remove unexpressed probes and controls
+minSamples <- min(colSums(table(pheno_data$subject, pheno_data$time))) # Find the minimum group size
+expressed <- rowSums(data$other$Detection < 0.05) >= minSamples
+
 data_norm <- neqc(data)
-controls <- data_norm$genes$controls$Probe_Id
-expressed <- rowSums(data_norm$other$Detection < 0.05) >= 3
 data_norm$E <- data_norm$E[expressed,]
-data_norm$E <- data_norm$E[-which(rownames(data_norm$E) %in% controls),]
 dim(data_norm$E)
+# [1] 27489   621
 
 ## Prinicpal Component for batches ----
 library(PCAtools)
@@ -122,7 +124,7 @@ pheno_data <- pheno_data %>%
   mutate(`Treat2` = ifelse(pheno_data$treat %in% c("Flu","FLUZONE", "Influenza"), "Fluzone", ifelse(pheno_data$treat %in% c("PNEUM","Pneumovax"), "Pneumovax", "Saline"))) %>% 
   mutate(`CohortTreat` = paste(`Cohort`, `Treat2`, sep = ', '), `CohortBloodTreat` = paste(`Cohort`, `Blood source`, `Treat2`, sep = ', '))
 p <- pca(data_norm$E, metadata = pheno_data, center = T, scale = T)
-pdf(file = paste(output_dir, "batches_pca.pdf"))
+pdf(file = paste(output_dir, "batches_pca.pdf", sep = ""))
 biplot(p, 
        colby = "group", 
        legendPosition = "right",
@@ -132,7 +134,7 @@ biplot(p,
        subtitle = "Note: in final analysis, cohort 3 is excluded. Additionally, Training_Set_Vein samples with 'Saline' are removed.",
        subtitleLabSize = 7, legendLabSize = 8)
 dev.off()
-pdf(file = paste(output_dir, "batches_samplesite_pca.pdf"))
+pdf(file = paste(output_dir, "batches_samplesite_pca.pdf", sep = ""))
 biplot(p, 
        colby = "Blood source", 
        legendPosition = "right",
@@ -141,7 +143,7 @@ biplot(p,
        title = "Obermoser: normalized data files colored by blood source", titleLabSize = 14,
        subtitleLabSize = 7)
 dev.off()
-pdf(file = paste(output_dir, "batches_treatments_pca.pdf"))
+pdf(file = paste(output_dir, "batches_treatments_pca.pdf", sep = ""))
 biplot(p, colby = "group", 
        legendPosition = "right", 
        lab = "", shape = "treat", 
@@ -204,6 +206,34 @@ data@.Data[[5]] <- NULL
 data$E <- x
 data$genes <- BGX
 data$other$Detection <- detectionpvalues
+sum(BGX$controls[,1] %in% rownames(data$E))
+# [1] 7, all housekeeping genes -- neqc will use detection p-values
+dim(data$E)
+# [1] 48803   214
+png(paste(output_dir, "boxplot_p1v_unnormalized_unfiltered.png", sep = ""), width = 800, height  = 800, units = 'px')
+as_tibble(data$E) %>% 
+  pivot_longer(names_to = 'sample', values_to = 'expr', cols = colnames(data$E)) %>% 
+  ggplot(aes(x = sample , y = expr)) + 
+  geom_boxplot() +
+  labs(title = 'Sample boxplots', subtitle = 'unfiltered, unnormalized') +
+  theme(axis.text.x = element_text(size = 0))
+dev.off()
+
+# Filter lowly-expressed genes
+minSamples <- min(colSums(table(p1v$subject, p1v$time))) # Find the minimum group size
+expressed <- rowSums(data$other$Detection < 0.05) >= minSamples
+data_norm <- neqc(data)
+data_norm$E <- data_norm$E[expressed,]
+dim(data_norm$E)
+# [1] 21794   214
+png(paste(output_dir, "boxplot_p1v.png", sep = ""), width = 800, height  = 800, units = 'px')
+as_tibble(data_norm$E) %>% 
+  pivot_longer(names_to = 'sample', values_to = 'expr', cols = colnames(data$E)) %>% 
+  ggplot(aes(x = sample , y = expr)) + 
+  geom_boxplot() +
+  labs(title = 'Sample boxplots') +
+  theme(axis.text.x = element_text(size = 0))
+dev.off()
 
 ### Unsupervised clustering analysis: determine samples for analysis ----
 ### This cohort is interesting because there appear to be some sort of replicates in the analysis. However,
@@ -212,7 +242,7 @@ data$other$Detection <- detectionpvalues
 identical(substr(p1v$array, start = 1, stop = 10),str_extract(colnames(data$E),"\\d........."))
 names(data$E) <- rownames(p1v)
 p <- pca(data$E, metadata = p1v, center = T, scale = T)
-pdf(file = paste(output_dir, "training_vein_pre_QC_pca.pdf"))
+pdf(file = paste(output_dir, "training_vein_pre_QC_pca.pdf", sep = ""))
 biplot(p, colby = "treat", encircle = T, legendPosition = "right",
        title = "Clustering all samples", subtitle = "Saline, rather than saline, cluster with Pneumovax.")
 dev.off()
@@ -221,13 +251,13 @@ dev.off()
 corp <- data$E[,which(p1v$treat %in% c("saline", "Saline"))]
 colnames(corp) <- paste(p1v[which(p1v$treat %in% c("saline", "Saline")), "subject"], p1v[which(p1v$treat %in% c("saline", "Saline")), "treat"])
 library(pheatmap)
-pdf(file = paste(output_dir, "training_vein_pre_QC_hierarchical_clusters.pdf"))
+pdf(file = paste(output_dir, "training_vein_pre_QC_hierarchical_clusters.pdf", sep = ""))
 pheatmap(cor(corp), cluster_cols = F, cluster_rows = F)
 dev.off()
 # This makes it clear that the saline samples are more correlated with one another than the Saline samples are.
 # This most fits our expectations for a saline treatment, so we use it for analysis.
 
-## Repeat step 1 w/o unknown samples ----
+## Repeat step 1 w/o the anomalous, "Saline" samples ----
 p1v <- p1v[-grep("Saline",p1v$treat), ]
 temp <- files[str_extract(files, "GSM\\d+") %in% p1v$geo_accession]
 x <- lapply(
@@ -259,17 +289,24 @@ table(data_norm$genes$controls$Reporter_Group_Name)
 
 
 ## Remove unexpressed probes and controls
-controls <- data_norm$genes$controls$Probe_Id
-expressed <- rowSums(data_norm$other$Detection < 0.05) >= 3
-data_norm$E <- data_norm$E[expressed,]
-data_norm$E <- data_norm$E[-which(rownames(data_norm$E) %in% controls),]
 dim(data_norm$E)
-# [1] 30998   161
+# [1] 48803   161
+quantile(rowSums(data_norm$other$Detection < 0.05), p = c(seq(0,1, by = 0.1)))
+# 0%  10%  20%  30%  40%  50%  60%  70%  80%  90% 100% 
+# 0    0    1    1    3    9   30  109  159  161  161 
+minSamples <- min(colSums(table(p1v$subject, p1v$time))) # Find the minimum group size
+print(minSamples)
+# [1] 17
+expressed <- rowSums(data_norm$other$Detection < 0.05) >= minSamples
+data_norm$E <- data_norm$E[expressed,]
+dim(data_norm$E)
+# [1] 21699   161
 
 ## Step 2: PCA and MDS QC analysis ----
 identical(substr(p1v$array, start = 1, stop = 10), str_extract(colnames(data_norm$E),"\\d........."))
 # [1] TRUE
 colnames(data_norm$E) <- rownames(p1v)
+p1v$treat2 <- ifelse(p1v$treat %in% c("Flu", "saline"), 1, 0)
 ### PCAtools ----
 p <- pca(data_norm$E, metadata = p1v, center = T, scale = T)
 
@@ -298,7 +335,7 @@ ptre <-  biplot(p,
                 legendPosition = 'right', legendLabSize = 9, legendIconSize = 3)
 peigencor <- eigencorplot(p,
                           components = getComponents(p, 1:10),
-                          metavars = c("time", 'sex', 'race', 'ethnicity', 'treat'),
+                          metavars = c("time", 'sex', 'race', 'ethnicity', 'treat', 'treat2'),
                           cexCorval = 0.5,
                           fontCorval = 1, 
                           posLab = 'all',
@@ -317,6 +354,22 @@ toprow <- plot_grid(ptime, psex, psub, align = 'h', nrow = 1)
 botrow <- plot_grid(ptre, scree, peigencor, align = 'h', nrow = 1)
 pdf(file = paste(output_dir, "pca_p1v_QC.pdf", sep = ""), height = 12, width = 16)
 plot_grid(toprow, botrow, ncol = 1, align = 'v')
+dev.off()
+# Interestingly, there is a separation of the pneumo samples from flu and saline. Additionally,
+# the pneumo sample have a separation within them. However, this isn't reflected in the eigencor plot.
+pdf(file = paste(output_dir, "p1v_ethnicity_pca.pdf", sep = ""))
+biplot(p, 
+       showLoadings = F,
+       lab = NULL, 
+       colby = "ethnicity",
+       legendPosition = 'right', legendLabSize = 9, legendIconSize = 3)
+dev.off()
+pdf(file = paste(output_dir, "p1v_race_pca.pdf", sep = ""))
+biplot(p, 
+       showLoadings = F,
+       lab = NULL, 
+       colby = "race",
+       legendPosition = 'right', legendLabSize = 9, legendIconSize = 3)
 dev.off()
 
 ### MDS ----
@@ -365,7 +418,7 @@ design <- model.matrix(~0+TS, df)
 colnames(design) <- make.names(levels(TS))
 cor <- duplicateCorrelation(df, design, block=id)
 cor$consensus.correlation
-# [1] 0.1135356
+# [1] 0.1839405
 
 fit <- lmFit(object=df, design=design, block=id, correlation=cor$consensus.correlation)
 
@@ -554,18 +607,17 @@ write.csv(y, file = paste(output_dir, "training_vein_limma/limma_F.csv", sep = "
 
 dt <- decideTests(x)
 summary(dt)
-#        BaseVSzeroALL BaseVSoneALL BaseVSthreeALL BaseVSsevenALL BaseVStenALL BaseVSfourteenALL BaseVStwentyOneALL BaseVStwentyEightALL
-# Down               0          371              0            961            0                 0                  1                    3   
-# NotSig         31003        30415          31003          29735        31001             31003              31001                30998
-# Up                 0          217              0            307            2                 0                  1                    2 
+#        BaseVSzeroALL BaseVSoneALL BaseVSthreeALL BaseVSsevenALL BaseVStenALL BaseVSfourteenALL BaseVStwentyOneALL
+# Down               0          611              0           1171            0                 0                  5
+# NotSig         21699        20733          21699          20139        21697             21699              21692
+# Up                 0          355              0            389            2                 0                  2 
 ### many more
 dt <- decideTests(x, adjust.method = 'none')
 summary(dt)
-#        BaseVSzeroALL BaseVSoneALL BaseVSthreeALL BaseVSsevenALL BaseVStenALL BaseVSfourteenALL BaseVStwentyOneALL BaseVStwentyEightALL 
-# Down             734         2554            845           2608         1011               895               1338                 1043 
-# NotSig         29621        26515          29457          26419        28988             29393              28587                29238 
-# Up               648         1934            701           1976         1004               715               1078                  722 
-### many more
+# BaseVSzeroALL BaseVSoneALL BaseVSthreeALL BaseVSsevenALL BaseVStenALL BaseVSfourteenALL BaseVStwentyOneALL
+# Down             612         2499            741           2560          923               820               1231
+# NotSig         20678        17508          20466          17448        19936             20401              19645
+# Up               409         1692            492           1691          840               478                823
 
 names(y) # 72 columns
 tables <- list()
@@ -627,39 +679,6 @@ pdf(file = paste(output_dir, "training_vein_limma/volcanos.pdf", sep = ""), widt
 plot_grid(plotlist = volcanos[grep("^Base", names(volcanos))], align = 'hv', nrow = 2)
 dev.off()
 
-#### Supplementary figure S1
-dir.create(paste(output_dir, "figure_s1", sep = ""))
-
-flu <- tables[grep("^Flu", names(tables))]
-flu <- lapply(flu, function(x) {
-  x %>% filter(adj.P.Val < 0.05) %>% nrow() %>% return()
-})
-flu <- unlist(flu)
-
-pne <- tables[grep("^Pneu", names(tables))]
-pne <- lapply(pne, function(x) {
-  x %>% filter(adj.P.Val < 0.05) %>% nrow() %>% return()
-})
-pne <- unlist(pne)
-pne <- tables[grep("^Pneu", names(tables))]
-pne <- lapply(pne, function(x) {
-  x %>% filter(adj.P.Val < 0.05) %>% nrow() %>% return()
-})
-pne <- unlist(pne)
-
-sal <- tables[grep("^Saline", names(tables))]
-sal <- lapply(sal, function(x) {
-  x %>% filter(adj.P.Val < 0.05) %>% nrow() %>% return()
-})
-sal <- unlist(sal)
-time <- factor(c(7, 8, 10, 14, 17, 21, 28, 35), levels = c(7, 8, 10, 14, 17, 21, 28, 35), ordered = T)
-
-figures1 <- tibble(time, sal, flu, pne)
-figures1 <- figures1 %>% pivot_longer(cols = c(sal, flu, pne), names_to = "treatment")
-figureS1 <- figures1 %>% ggplot(aes(x = time, y = value, fill = treatment)) +
-  geom_col(position = "dodge", color = "black") +
-  labs(title = 'Cohort 1 Vein', subtitle = 'DEGs (adjusted p < 0.05), shot administered at time = 7',
-       x = 'Time from baseline', y = 'DEGs')
 
 # Analysis 2: Test_Set_Finger (p1f) ----
 ## Step 1: Read in raw expression data ----
@@ -729,27 +748,46 @@ data$E <- x
 # data$targets <- targetinfo
 data$genes <- BGX
 data$other$Detection <- detectionpvalues
+dim(data$E)
+# [1] 48803    49
+png(paste(output_dir, "boxplot_p1f_unnormalized_unfiltered.png", sep = ""), width = 800, height  = 800, units = 'px')
+as_tibble(data$E) %>% 
+  pivot_longer(names_to = 'sample', values_to = 'expr', cols = colnames(data$E)) %>% 
+  ggplot(aes(x = sample , y = expr)) + 
+  geom_boxplot() +
+  labs(title = 'Sample boxplots', subtitle = 'unfiltered, unnormalized') +
+  theme(axis.text.x = element_text(size = 0))
+dev.off()
 
 ### Background correction and normalization ----
 data_norm <- neqc(data)
-table(data_norm$genes$controls$Reporter_Group_Name)
-# biotin            cy3_hyb       housekeeping           labeling low_stringency_hyb 
-# 2                  6                  7                  2                  8 
-# negative 
-# 759 
-
-## Remove unexpressed probes and controls
-controls <- data_norm$genes$controls$Probe_Id
-expressed <- rowSums(data_norm$other$Detection < 0.05) >= 3
-data_norm$E <- data_norm$E[expressed,]
-data_norm$E <- data_norm$E[-which(rownames(data_norm$E) %in% controls),]
 dim(data_norm$E)
-# [1] 22413    49
+# [1] 48803    49
+
+## Remove unexpressed probes
+minSamples <- min(colSums(table(p1f$subject, p1f$time))) # Find the minimum group size
+print(minSamples)
+# [1] 16
+expressed <- rowSums(data_norm$other$Detection < 0.05) >= minSamples
+data_norm$E <- data_norm$E[expressed,]
+dim(data_norm$E)
+# [1] 16054    49
+png(paste(output_dir, "boxplot_p1f.png", sep = ""), width = 800, height  = 800, units = 'px')
+as_tibble(data_norm$E) %>% 
+  pivot_longer(names_to = 'sample', values_to = 'expr', cols = colnames(data$E)) %>% 
+  ggplot(aes(x = sample , y = expr)) + 
+  geom_boxplot() +
+  labs(title = 'Sample boxplots') +
+  theme(axis.text.x = element_text(size = 0))
+dev.off()
+
 
 ## Step 3: PCA and MDS analysis ----
 identical(substr(p1f$array, start = 1, stop = 10), str_extract(colnames(data_norm$E),"\\d........."))
 # [1] TRUE
+p1f$treat2 <- ifelse(p1f$treat %in% c("FLUZONE", "NS"), 1, 0)
 ### PCAtools ----
+colnames(data_norm$E) <- rownames(p1f)
 p <- pca(data_norm$E, metadata = p1f, center = T, scale = T)
 
 scree <- screeplot(p, getComponents(p, c(1:10)))
@@ -777,7 +815,7 @@ ptre <-  biplot(p,
                 legendPosition = 'right', legendLabSize = 9, legendIconSize = 3)
 peigencor <- eigencorplot(p,
                           components = getComponents(p, 1:10),
-                          metavars = c("time", 'sex', 'race', 'ethnicity', 'treat'),
+                          metavars = c("time", 'sex', 'race', 'ethnicity', 'treat', 'treat2'),
                           cexCorval = 0.5,
                           fontCorval = 1, 
                           posLab = 'all',
@@ -796,6 +834,20 @@ toprow <- plot_grid(ptime, psex, psub, align = 'h', nrow = 1)
 botrow <- plot_grid(ptre, scree, peigencor, align = 'h', nrow = 1)
 pdf(file = paste(output_dir, "pca_p1f_QC.pdf", sep = ""), height = 12, width = 16)
 plot_grid(toprow, botrow, ncol = 1, align = 'v')
+dev.off()
+pdf(file = paste(output_dir, "p1f_ethnicity_pca.pdf", sep = ""))
+biplot(p, 
+       showLoadings = F,
+       lab = NULL, 
+       colby = "ethnicity",
+       legendPosition = 'right', legendLabSize = 9, legendIconSize = 3)
+dev.off()
+pdf(file = paste(output_dir, "p1f_race_pca.pdf", sep = ""))
+biplot(p, 
+       showLoadings = F,
+       lab = NULL, 
+       colby = "race",
+       legendPosition = 'right', legendLabSize = 9, legendIconSize = 3)
 dev.off()
 
 ### MDS ----
@@ -844,7 +896,7 @@ design <- model.matrix(~0+TS, df)
 colnames(design) <- make.names(levels(TS))
 cor <- duplicateCorrelation(df, design, block=id)
 cor$consensus.correlation
-# [1] 0.1753894
+# [1] 0.2327384
 
 fit <- lmFit(object=df, design=design, block=id, correlation=cor$consensus.correlation)
 
@@ -910,16 +962,16 @@ write.csv(y, file = paste(output_dir, "test_finger_limma/limma_F.csv", sep = "")
 
 dt <- decideTests(x)
 summary(dt)
-#       BaselineVSzeroAll BaselineVSsevenAll 
-# Down                   0                  3
-# NotSig             22413              22386
-# Up                     0                 24
+#        BaselineVSzeroAll BaselineVSsevenAll 
+# Down                   0                  5
+# NotSig             16054              16026
+# Up                     0                 23
 dt <- decideTests(x, adjust.method = 'none')
 summary(dt)
 #        BaselineVSzeroAll BaselineVSsevenAll 
-# Down                 312               1345 
-# NotSig             21731              19883 
-# Up                   370               1185 
+# Down                 197               1069 
+# NotSig             15587              14126 
+# Up                   270                859
 
 names(y)
 tables <- list()
@@ -1044,28 +1096,44 @@ data$E <- x
 data$genes <- BGX
 data$other$Detection <- detectionpvalues
 
+png(paste(output_dir, "boxplot_p2v_unnormalized_unfiltered.png", sep = ""), width = 800, height  = 800, units = 'px')
+as_tibble(data$E) %>% 
+  pivot_longer(names_to = 'sample', values_to = 'expr', cols = colnames(data$E)) %>% 
+  ggplot(aes(x = sample , y = expr)) + 
+  geom_boxplot() +
+  labs(title = 'Sample boxplots', subtitle = 'unfiltered, unnormalized') +
+  theme(axis.text.x = element_text(size = 0))
+dev.off()
+
 ### Background correction and normalization ----
 data_norm <- neqc(data)
-table(data_norm$genes$controls$Reporter_Group_Name)
-# biotin            cy3_hyb       housekeeping           labeling low_stringency_hyb 
-# 2                  6                  7                  2                  8 
-# negative 
-# 759 
-
+dim(data_norm$E)
+# [1] 48803   143
 
 ## Remove unexpressed probes and controls
-controls <- data_norm$genes$controls$Probe_Id
-expressed <- rowSums(data_norm$other$Detection < 0.05) >= 3
+minSamples <- min(colSums(table(p2v$subject, p2v$time))) # Find the minimum group size
+print(minSamples)
+# [1] 17
+expressed <- rowSums(data_norm$other$Detection < 0.05) >= minSamples
 data_norm$E <- data_norm$E[expressed,]
-data_norm$E <- data_norm$E[-which(rownames(data_norm$E) %in% controls),]
 dim(data_norm$E)
-# [1] 27531   143
+# [1] 21167   143
+
+png(paste(output_dir, "boxplot_p2v.png", sep = ""), width = 800, height  = 800, units = 'px')
+as_tibble(data_norm$E) %>% 
+  pivot_longer(names_to = 'sample', values_to = 'expr', cols = colnames(data$E)) %>% 
+  ggplot(aes(x = sample , y = expr)) + 
+  geom_boxplot() +
+  labs(title = 'Sample boxplots') +
+  theme(axis.text.x = element_text(size = 0))
+dev.off()
 
 ## Step 3: PCA and MDS analysis ----
 # are pheno and matrix aligned?
 identical(substr(p2v$array, start = 1, stop = 10), str_extract(colnames(data_norm$E),"\\d........."))
 # [1] TRUE
 colnames(data_norm$E) <- rownames(p2v)
+p2v$treat2 <- ifelse(p2v$treat %in% c("FLUZONE", "Saline"), 1, 0)
 ### PCAtools ----
 p <- pca(data_norm$E, metadata = p2v, center = T, scale = T)
 
@@ -1094,7 +1162,7 @@ ptre <-  biplot(p,
                 legendPosition = 'right', legendLabSize = 9, legendIconSize = 3)
 peigencor <- eigencorplot(p,
                           components = getComponents(p, 1:10),
-                          metavars = c("time", 'sex', 'race', 'ethnicity', 'treat'),
+                          metavars = c("time", 'sex', 'race', 'ethnicity', 'treat', 'treat2'),
                           cexCorval = 0.5,
                           fontCorval = 1, 
                           posLab = 'all',
@@ -1108,11 +1176,14 @@ peigencor <- eigencorplot(p,
                           corUSE = 'pairwise.complete.obs',
                           signifSymbols = c('****', '***', '**', '*', ''),
                           signifCutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, 1),
-                          returnPlot = F)
+                          returnPlot = T)
 toprow <- plot_grid(ptime, psex, psub, align = 'h', nrow = 1)
 botrow <- plot_grid(ptre, scree, peigencor, align = 'h', nrow = 1)
 pdf(file = paste(output_dir, "pca_p2v_QC.pdf", sep = ""), height = 12, width = 16)
 plot_grid(toprow, botrow, ncol = 1, align = 'v')
+dev.off()
+pdf(file = paste(output_dir, "p2v_pairsplot.pdf", sep = ""))
+pairsplot(p, colby = 'treat')
 dev.off()
 rownames(p$loadings) <- make.names(mapIds(x = illuminaHumanv3.db, keys = rownames(p$loadings), column = "SYMBOL", keytype = "PROBEID"), unique = T)
 pdf(file = paste(output_dir, "ethnicity_p2v_pca.pdf", sep = ""))
@@ -1123,6 +1194,20 @@ biplot(p,
        legendPosition = 'right', legendLabSize = 10, legendIconSize = 3,
        title = 'Ethnicity of samples',
        subtitle = 'p2v samples')
+dev.off()
+pdf(file = paste(output_dir, "p2v_ethnicity_pca.pdf", sep = ""))
+biplot(p, 
+       showLoadings = F,
+       lab = NULL, 
+       colby = "ethnicity",
+       legendPosition = 'right', legendLabSize = 9, legendIconSize = 3)
+dev.off()
+pdf(file = paste(output_dir, "p2v_race_pca.pdf", sep = ""))
+biplot(p, 
+       showLoadings = F,
+       lab = NULL, 
+       colby = "race",
+       legendPosition = 'right', legendLabSize = 9, legendIconSize = 3)
 dev.off()
 
 ### MDS ----
@@ -1170,7 +1255,7 @@ design <- model.matrix(~0+TS, df)
 colnames(design) <- make.names(levels(TS))
 cor <- duplicateCorrelation(df, design, block=id)
 cor$consensus.correlation
-# [1] 0.1599962
+# [1] 0.216593
 
 fit <- lmFit(object=df, design=design, block=id, correlation=cor$consensus.correlation)
 
@@ -1331,16 +1416,16 @@ write.csv(y, file = ,paste(output_dir, "test_vein_limma/limma_F.csv", sep = ""),
 
 dt <- decideTests(x)
 summary(dt)
-#        BaselineVSzeroAll BaselineVSpoint5All BaselineVSoneAll BaselineVSthreeAll BaselineVSsevenAll BaselineVStenAll BaselineVStwentyEightAll
-# Down                   0                   4                0                  0                  6                0                        0
-# NotSig             27530               27525            27530              27531              27450            27531                    27531
-# Up                     1                   2                1                  0                 75                0                        0
+#        BaselineVSzeroAll BaselineVSpoint5All BaselineVSoneAll BaselineVSthreeAll BaselineVSsevenAll BaselineVStenAll
+# Down                   0                   4                0                  0                  5                0
+# NotSig             21167               21162            21167              21167              21085            21167
+# Up                     0                   1                0                  0                 77                0
 dt <- decideTests(x, adjust.method = 'none')
 summary(dt)
-#        BaselineVSzeroAll BaselineVSpoint5All BaselineVSoneAll BaselineVSthreeAll BaselineVSsevenAll BaselineVStenAll BaselineVStwentyEightAll
-# Down                 711                 713              463                832               1075             1124                      945
-# NotSig             26355               25965            26581              26014              25513            25373                    25753
-# Up                   465                 853              487                685                943             1034                      833
+#        BaselineVSzeroAll BaselineVSpoint5All BaselineVSoneAll BaselineVSthreeAll BaselineVSsevenAll BaselineVStenAll
+# Down                 568                 593              321                680                958             1022
+# NotSig             20278               19877            20511              19994              19455            19226
+# Up                   321                 697              335                493                754              919
 
 names(y)
 tables <- list()
@@ -1352,7 +1437,7 @@ for (i in 1:63) {
                                       names(y)[i],".csv",sep = ""), row.names = TRUE)
 }
 
-### Figure S1 ----
+### Figure S2 ----
 tables <- tables[which(grepl("^FLU|^PNEUM|^Saline", names(tables)))]
 names(tables)
 saline <- list()
@@ -1373,7 +1458,7 @@ for (i in 15:21) {
                                  title = "", caption = "", subtitle = "", legendPosition = 'none', xlim = c(-3,3), ylim = c(0,18))
 }
 bot <- plot_grid(plotlist = flu, nrow = 1, align = 'h')
-pdf(file = paste(output_dir, "figureS1.pdf"), height = 12, width = 24)
+pdf(file = paste(output_dir, "figureS2.pdf", sep = ""), height = 12, width = 24)
 plot_grid(top, mid, bot, nrow = 3, align = 'v')
 dev.off()
 
@@ -1501,22 +1586,43 @@ data@.Data[[5]] <- NULL
 data$E <- x
 data$genes <- BGX
 data$other$Detection <- detectionpvalues
+png(paste(output_dir, "boxplot_p2f_unnormalized_unfiltered.png", sep = ""), width = 800, height  = 800, units = 'px')
+as_tibble(data$E) %>% 
+  pivot_longer(names_to = 'sample', values_to = 'expr', cols = colnames(data$E)) %>% 
+  ggplot(aes(x = sample , y = expr)) + 
+  geom_boxplot() +
+  labs(title = 'Sample boxplots', subtitle = 'unfiltered, unnormalized') +
+  theme(axis.text.x = element_text(size = 0))
+dev.off()
 
 ### Background correction and normalization ----
 data_norm <- neqc(data)
+dim(data_norm$E)
+# [1] 48803   185
 
 ## Remove unexpressed probes and controls
-controls <- data_norm$genes$controls$Probe_Id
-expressed <- rowSums(data_norm$other$Detection < 0.05) >= 3
+minSamples <- min(colSums(table(p2f$subject, p2f$time))) # Find the minimum group size
+print(minSamples)
+# [1] 16
+expressed <- rowSums(data_norm$other$Detection < 0.05) >= minSamples
 data_norm$E <- data_norm$E[expressed,]
-data_norm$E <- data_norm$E[-which(rownames(data_norm$E) %in% controls),]
 dim(data_norm$E)
-# [1] 23484   185
+# [1] 19825   185
+png(paste(output_dir, "boxplot_p2f.png", sep = ""), width = 800, height  = 800, units = 'px')
+as_tibble(data_norm$E) %>% 
+  pivot_longer(names_to = 'sample', values_to = 'expr', cols = colnames(data$E)) %>% 
+  ggplot(aes(x = sample , y = expr)) + 
+  geom_boxplot() +
+  labs(title = 'Sample boxplots') +
+  theme(axis.text.x = element_text(size = 0))
+dev.off()
+
 
 ## Step 3: PCA and MDS analysis ----
 identical(substr(p2f$array, start = 1, stop = 10), str_extract(colnames(data_norm$E),"\\d........."))
 # [1] TRUE
 colnames(data_norm$E) <- rownames(p2f)
+p2f$treat2 <- ifelse(p2f$treat %in% c("FLUZONE", "Saline"), 1, 0)
 ### PCAtools ----
 p <- pca(data_norm$E, metadata = p2f, center = T, scale = T)
 
@@ -1545,7 +1651,7 @@ ptre <-  biplot(p,
                 legendPosition = 'right', legendLabSize = 9, legendIconSize = 3)
 peigencor <- eigencorplot(p,
                           components = getComponents(p, 1:10),
-                          metavars = c("time", 'sex', 'race', 'ethnicity', 'treat'),
+                          metavars = c("time", 'sex', 'race', 'ethnicity', 'treat', 'treat2'),
                           cexCorval = 0.5,
                           fontCorval = 1, 
                           posLab = 'all',
@@ -1566,14 +1672,17 @@ pdf(file = paste(output_dir, "pca_p2f_QC.pdf", sep = ""), height = 12, width = 1
 plot_grid(toprow, botrow, ncol = 1, align = 'v')
 dev.off()
 rownames(p$loadings) <- make.names(mapIds(x = illuminaHumanv3.db, keys = rownames(p$loadings), column = "SYMBOL", keytype = "PROBEID"), unique = T)
-pdf(file = paste(output_dir, "ethnicity_p2f_pca.pdf", sep = ""))
+pdf(file = paste(output_dir, "p2f_ethnicity_pca.pdf", sep = ""))
 biplot(p, 
-       showLoadings = T,
        lab = NULL, 
        colby = "ethnicity", 
-       legendPosition = 'right', legendLabSize = 10, legendIconSize = 3,
-       title = 'Ethnicity of samples',
-       subtitle = 'p2f samples')
+       legendPosition = 'right', legendLabSize = 10, legendIconSize = 3)
+dev.off()
+pdf(file = paste(output_dir, "p2f_race_pca.pdf", sep = ""))
+biplot(p, 
+       lab = NULL, 
+       colby = "race", 
+       legendPosition = 'right', legendLabSize = 10, legendIconSize = 3)
 dev.off()
 
 ### MDS ----
@@ -1621,7 +1730,7 @@ design <- model.matrix(~0+TS, df)
 colnames(design) <- make.names(levels(TS))
 cor <- duplicateCorrelation(df, design, block=id)
 cor$consensus.correlation
-# [1] 0.2495819
+# [1] 0.2886753
 
 fit <- lmFit(object=df, design=design, block=id, correlation=cor$consensus.correlation)
 
@@ -1840,32 +1949,24 @@ write.csv(y, file = paste(output_dir, "training_finger_limma/limma_F.csv", sep =
 
 dt <- decideTests(x)
 summary(dt)
-#        BaselineVSzeroAll BaselineVSone.5All BaselineVSthreeAll BaselineVSsixAll
-# Down                   5                 10                  8               54
-# NotSig             23478              23446              23467            23308
-# Up                     1                 28                  9              122
-#        BaselineVSnineAll BaselineVStwelveAll BaselineVSfifteenAll BaselineVStwentyFourAll
-# Down                 324                 395                 1291                      20
-# NotSig             22614               22624                21166                   23429
-# Up                   546                 465                 1027                      35
-#        BaselineVSthirtySixAll BaselineVSfortyEightAll 
-# Down                      126                      28               
-# NotSig                  23169                   23399               
-# Up                        189                      57
+#        BaselineVSzeroAll BaselineVSone.5All BaselineVSthreeAll BaselineVSsixAll BaselineVSnineAll BaselineVStwelveAll
+# Down                   1                  8                 13               63               364                 443
+# NotSig             19823              19789              19787            19595             18807               18867
+# Up                     1                 28                 25              167               654                 515
+#        BaselineVSfifteenAll BaselineVStwentyFourAll BaselineVSthirtySixAll BaselineVSfortyEightAll 
+# Down                   1335                      19                    118                      39                    
+# NotSig                17425                   19766                  19512                   19719            
+# Up                     1065                      40                    195                      67
 dt <- decideTests(x, adjust.method = 'none')
 summary(dt)
-#        BaselineVSzeroAll BaselineVSone.5All BaselineVSthreeAll BaselineVSsixAll
-# Down                 710               1276               1176             1424
-# NotSig             21723              20607              20648            20123
-# Up                  1051               1601               1660             1937
-#        BaselineVSnineAll BaselineVStwelveAll BaselineVSfifteenAll BaselineVStwentyFourAll
-# Down                2110                2046                 2920                    1144
-# NotSig             18893               19009                17473                   20876
-# Up                  2481                2429                 3091                    1464
-#        BaselineVSthirtySixAll BaselineVSfortyEightAll 
-# Down                     1511                    1286             
-# NotSig                  19877                   20540              
-# Up                       2096                    1658
+#        BaselineVSzeroAll BaselineVSone.5All BaselineVSthreeAll BaselineVSsixAll BaselineVSnineAll BaselineVStwelveAll
+# Down                 558               1134               1014             1238              1945                1864
+# NotSig             18390              17248              17334            16806             15557               15700
+# Up                   877               1443               1477             1781              2323                2261
+#        BaselineVSfifteenAll BaselineVStwentyFourAll BaselineVSthirtySixAll BaselineVSfortyEightAll 
+# Down                   2702                     986                   1338                    1144 
+# NotSig                14326                   17559                  16584                   17224 
+# Up                     2797                    1280                   1903                    1457 
 
 names(y)
 tables <- list()
@@ -1927,7 +2028,7 @@ pdf(file = paste(output_dir, "training_finger_limma/volcanos.pdf", sep = ""), he
 plot_grid(plotlist = volcanos, align = 'h', nrow = 2)
 dev.off()
 
-### Figure S2 ----
+### Figure S3 ----
 tables <- tables[which(grepl("^FLU|^PNEUM|^Saline", names(tables)))]
 names(tables)
 saline <- list()
@@ -1948,6 +2049,6 @@ for (i in 21:30) {
                                  title = "", caption = "", subtitle = "", legendPosition = 'none', xlim = c(-3,3), ylim = c(0,18))
 }
 bot <- plot_grid(plotlist = flu, nrow = 1, align = 'h')
-pdf(file = paste(output_dir, "figureS2.pdf"), height = 12, width = 26)
+pdf(file = paste(output_dir, "figureS3.pdf", sep = ""), height = 12, width = 26)
 plot_grid(top, mid, bot, nrow = 3, align = 'v')
 dev.off()

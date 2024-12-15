@@ -30,14 +30,6 @@ input_dir <- "~/Desktop/work_repo/data/GSE10041_RAW/"
 ## OUTPUT: tables and graphics
 output_dir <- "~/Desktop/work_repo/github/Dusek_study_data/output/"
 
-
-# Load in data ----
-data <- ReadAffy(celfile.path = input_dir)
-data <- affy::rma(data)
-norm_expr <- exprs(data)
-colnames(norm_expr) <- gsub(pattern = "(.CEL.gz)", replacement = "", x = colnames(norm_expr))
-dim(norm_expr)
-
 # Phenotype data
 gset <- getGEO("GSE10041", GSEMatrix =TRUE, AnnotGPL=TRUE)
 pheno_data_org <- pData(gset$GSE10041_series_matrix.txt.gz)
@@ -53,18 +45,34 @@ length(grep("M", pheno_data$title)) # [1] 25 This is the correct number in the o
 pheno_data <- pheno_data[-grep("M", pheno_data$title),]
 dim(pheno_data)
 # [1] 47  4
-pheno_data <- pheno_data[pheno_data$geo_accession %in% colnames(norm_expr),]
+pheno_data <- pheno_data[pheno_data$geo_accession %in% str_extract(list.files(input_dir), "GSM\\d+"),]
 dim(pheno_data)
 # [1] 44  4
+
+# Load in data ----
+data <- ReadAffy(celfile.path = input_dir)
+calls <- mas5calls.AffyBatch(data)
+probe_pval <- assayData(calls)[["se.exprs"]] ## Returns p-values
+minSamples <- min(colSums(table(pheno_data$id, pheno_data$time)))
+expressed <- rowSums(probe_pval < 0.05) >= minSamples
+
+data <- affy::rma(data)
+norm_expr <- exprs(data)
+norm_expr <- norm_expr[expressed,]
+dim(norm_expr)
+# [1] 15963    44
+colnames(norm_expr) <- gsub(pattern = "(.CEL.gz)", replacement = "", x = colnames(norm_expr))
 identical(pheno_data$geo_accession, colnames(norm_expr))
+
 # Annotate sex
-rps4y_vals <- norm_expr["201909_at",]
+xist_vals <- norm_expr["227671_at",]
+plot(xist_vals)
 pheno_data$sex <- NA
-for (i in 1:length(rps4y_vals)) {
-  if (rps4y_vals[i] > 8) {
-    pheno_data$sex[i] <- "Male"
-  } else {
+for (i in 1:length(xist_vals)) {
+  if (xist_vals[i] > 8) {
     pheno_data$sex[i] <- "Female"
+  } else {
+    pheno_data$sex[i] <- "Male"
   }
 }
 table(pheno_data$sex, pheno_data$id)

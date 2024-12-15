@@ -1,4 +1,4 @@
-## Date: Jul 24 2024
+## Date: Nov 3 2024
 
 ## Building a tool for querying your rsIDs!
 ## Set input directory to where GTEx variants and rsID lookup table are
@@ -10,18 +10,30 @@ output_dir <- "~/Desktop/work_repo/Box organization/1results/RShiny-application/
 library(tidyverse)
 library(AnnotationDbi)
 library(EnsDb.Hsapiens.v86)
-gtex <- read_tsv("./GTEx_Analysis_v8_eQTL/Whole_Blood.v8.signif_variant_gene_pairs.txt.gz")
+library(nanoparquet)
+gtex <- read_parquet("./GTEx_Analysis_v10_eQTL_updated/Whole_Blood.v10.eQTLs.signif_pairs.parquet")
 gtex$gene_id <- gsub(pattern = "(.*)(\\..*)", replacement = "\\1", x = gtex$gene_id)
 gtex$Symbol <- mapIds(EnsDb.Hsapiens.v86, keys = gtex$gene_id, column = "SYMBOL", keytype = "GENEID")
 
 variant_ids <- gtex$variant_id
 length(variant_ids)
-# [1] 2414653
+# [1] 2985690
+symbols <- read.table("~/Desktop/work_repo/github/cross_study_analysis/output/common_symbols6099.txt")
+symbols <- symbols$x
+sum(symbols %in% gtex$Symbol)
+# [1] 4452
 
-## Get the rsIDs for the eQTLs so that they can be matched with GWAS traits.
+
+## Get the rsIDs for the eQTLs so that they can be matched with GWAS traits. SKIP if you have run before!
 library(data.table)
-id_table <- fread(input = "./GTEx_Analysis_2017-06-05_v8_WholeGenomeSeq_838Indiv_Analysis_Freeze.lookup_table.txt.gz",
-      select = c("variant_id", "rs_id_dbSNP151_GRCh38p7"))
+id_table <- fread(input = "./GTEx_Analysis_2021-02-11_v10_WholeGenomeSeq_953Indiv.lookup_table.txt.gz", nrows = 2)
+id_table
+# variant_id    chr   pos    ref    alt num_alt_per_site rs_id_dbSNP155_GRCh38p13  variant_id_b37
+# <char> <char> <int> <char> <char>            <int>                   <char>          <char>
+#   1: chr1_13550_G_A_b38   chr1 13550      G      A                1              rs554008981 1_13550_G_A_b37
+# 2: chr1_14436_G_A_b38   chr1 14436      G      A                1               rs28507908 1_14436_G_A_b37
+id_table <- fread(input = "./GTEx_Analysis_2021-02-11_v10_WholeGenomeSeq_953Indiv.lookup_table.txt.gz",
+      select = c("variant_id", "rs_id_dbSNP155_GRCh38p13"))
 
 id_table <- id_table %>%
   dplyr::filter(variant_id %in% variant_ids)
@@ -29,33 +41,19 @@ id_table <- id_table %>%
 # Save the results for later!!
 write.table(id_table, "./filtered_rsIDs.txt")
 
+# Start HERE if you already have the id_table
+id_table <- read.table("./filtered_rsIDs.txt")
 dim(id_table)
-# [1] 1277338       2
+# [1] 1500832       2
 length(unique(gtex$variant_id))
-# [1] 1277338
+# [1] 1500832
 
 gtex <- merge(gtex, id_table, by = "variant_id")
 dim(gtex)
-# [1] 2414653      14
-head(gtex)
-# variant_id         gene_id tss_distance ma_samples ma_count       maf pval_nominal     slope  slope_se
-# 1 chr1_100000723_G_A_b38 ENSG00000156876      -132232        153      172 0.1283580  1.55009e-04  0.147698 0.0387947
-# 2   chr1_1000018_G_A_b38 ENSG00000187608        -1120         40       40 0.0298507  9.47022e-14 -0.501117 0.0657039
-# 3 chr1_100002416_C_T_b38 ENSG00000156876      -130539         64       67 0.0500000  1.54726e-08  0.334512 0.0583289
-# 4 chr1_100003060_C_T_b38 ENSG00000122477      -175213         62       67 0.0500000  4.36290e-06  0.401704 0.0866499
-# 5 chr1_100003083_G_T_b38 ENSG00000156876      -129872         62       65 0.0485075  5.92769e-08  0.324030 0.0590180
-# 6  chr1_10000449_G_A_b38 ENSG00000162444         3243         26       27 0.0201493  2.91247e-05 -0.261548 0.0620871
-# pval_nominal_threshold min_pval_nominal   pval_beta Symbol rsID rs_id_dbSNP151_GRCh38p7
-# 1            0.000246184      1.54726e-08 5.63557e-05  SASS6    1              rs11166389
-# 2            0.000134488      1.41503e-28 2.86633e-23  ISG15    1             rs146254088
-# 3            0.000246184      1.54726e-08 5.63557e-05  SASS6    1              rs12128170
-# 4            0.000190134      7.36133e-09 2.28188e-05 LRRC39    1                rs547241
-# 5            0.000246184      1.54726e-08 5.63557e-05  SASS6    1              rs11801439
-# 6            0.000104450      1.61451e-06 5.01701e-03   RBP7    1             rs141577932
-
+# [1] 2985690      14
 
 # Next, get the associated traits for the rsIDs.
-associations <- read_tsv("./gwas_catalog_v1.0-associations_e111_r2024-04-22.tsv")
+associations <- read_tsv("./gwas_catalog_v1.0-associations_e113_r2024-11-20.tsv")
 names(associations)
 # [1] "DATE ADDED TO CATALOG"      "PUBMEDID"                   "FIRST AUTHOR"              
 # [4] "DATE"                       "JOURNAL"                    "LINK"                      
@@ -72,63 +70,64 @@ names(associations)
 
 
 associations <- associations %>% 
-  dplyr::select(`DISEASE/TRAIT`, `REPORTED GENE(S)`, MAPPED_GENE, SNPS, CONTEXT, INTERGENIC, `OR or BETA`,
+  dplyr::select(`DISEASE/TRAIT`, `REPORTED GENE(S)`, MAPPED_GENE, SNPS, CONTEXT, `OR or BETA`,
                 `P-VALUE`, PVALUE_MLOG,)
 dim(associations)
-# [1] 607094      9
+# [1] 692444      8
 head(associations)
-# # A tibble: 6 × 9
-# `DISEASE/TRAIT`       `REPORTED GENE(S)` MAPPED_GENE SNPS  CONTEXT INTERGENIC `OR or BETA` `P-VALUE` PVALUE_MLOG
-# <chr>                 <chr>              <chr>       <chr> <chr>        <dbl>        <dbl>     <dbl>       <dbl>
-#   1 Mean corpuscular vol… NR                 PPIF - ZCC… rs10… interg…          1       0.0141     3e-12        11.5
-# 2 Mean corpuscular vol… NR                 PTEN - MED… rs80… interg…          1       0.0192     4e-23        22.4
-# 3 Mean corpuscular vol… NR                 FAS         rs38… non_co…          0       0.0153     3e-17        16.5
-# 4 Mean corpuscular vol… NR                 TBC1D12     rs11… intron…          0       0.0138     5e-14        13.3
-# 5 Mean corpuscular vol… NR                 NKX2-3 - S… rs10… interg…          1       0.0300     1e-47        47  
-# 6 Mean corpuscular vol… NR                 NT5C2       rs12… intron…          0       0.0290     4e-48        47.4
+# A tibble: 6 × 8
+# `DISEASE/TRAIT`           `REPORTED GENE(S)` MAPPED_GENE        SNPS       CONTEXT            `OR or BETA` `P-VALUE` PVALUE_MLOG
+# <chr>                     <chr>              <chr>              <chr>      <chr>                     <dbl>     <dbl>       <dbl>
+#   1 Inflammatory skin disease LCE1E              LCE1F - LCE1E      rs77199844 intergenic_variant         1.23   2  e-17        16.7
+# 2 Inflammatory skin disease TNFAIP3            TNFAIP3            rs643177   intron_variant             1.27   9  e-16        15.0
+# 3 Inflammatory skin disease LCE3E              CRCT1 - LCE3E      rs10888499 intergenic_variant         1.49   5  e-25        24.3
+# 4 Inflammatory skin disease CTB-11I22.1        LINC01932          rs10515778 intron_variant             1.29   2  e-14        13.7
+# 5 Inflammatory skin disease RP1-91G5.3, LCE5A  FLG-AS1 - LCE5A    rs471144   intergenic_variant         1.54   2  e-12        11.7
+# 6 Inflammatory skin disease UBLCP1             LINC01932 - UBLCP1 rs11135056 intergenic_variant         1.45   1  e-25        25  
 
-colnames(associations)[4] <- "rs_id_dbSNP151_GRCh38p7"
-gtex <- merge(gtex, associations, by = "rs_id_dbSNP151_GRCh38p7", all.x = TRUE)
+colnames(associations)[4] <- "rs_id_dbSNP155_GRCh38p13"
+gtex <- merge(gtex, associations, by = "rs_id_dbSNP155_GRCh38p13", all.x = TRUE)
 dim(gtex)
-# [1] 2653785      22
+# [1] 3298488      21
 colnames(gtex)
-# [1] "rs_id_dbSNP151_GRCh38p7" "variant_id"              "gene_id"                 "tss_distance"           
-# [5] "ma_samples"              "ma_count"                "maf"                     "pval_nominal"           
-# [9] "slope"                   "slope_se"                "pval_nominal_threshold"  "min_pval_nominal"       
-# [13] "pval_beta"               "Symbol"                  "DISEASE/TRAIT"           "REPORTED GENE(S)"       
-# [17] "MAPPED_GENE"             "CONTEXT"                 "INTERGENIC"              "OR or BETA"             
-# [21] "P-VALUE"                 "PVALUE_MLOG"  
-gtex <- gtex[,c("Symbol", "gene_id", "rs_id_dbSNP151_GRCh38p7", "variant_id", "maf", "slope", 
+# [1] "rs_id_dbSNP155_GRCh38p13" "variant_id"               "gene_id"                  "tss_distance"            
+# [5] "af"                       "ma_samples"               "ma_count"                 "pval_nominal"            
+# [9] "slope"                    "slope_se"                 "pval_nominal_threshold"   "min_pval_nominal"        
+# [13] "pval_beta"                "Symbol"                   "DISEASE/TRAIT"            "REPORTED GENE(S)"        
+# [17] "MAPPED_GENE"              "CONTEXT"                  "OR or BETA"               "P-VALUE"                 
+# [21] "PVALUE_MLOG"
+gtex <- gtex[,c("Symbol", "gene_id", "rs_id_dbSNP155_GRCh38p13", "variant_id", "af", "slope", 
                 "pval_nominal", "pval_beta",
-                "DISEASE/TRAIT", "MAPPED_GENE", "REPORTED GENE(S)", "OR or BETA", "P-VALUE", "CONTEXT",
-                "INTERGENIC")] # Re-orders the columns
-colnames(gtex) <- c("Symbol of blood RNA", "Ensembl ID", "rsID of eQTL", "GTEx variant ID","MAF in GTEx WB",
+                "DISEASE/TRAIT", "MAPPED_GENE", "REPORTED GENE(S)", "OR or BETA", "P-VALUE", "CONTEXT")] # Re-orders the columns
+colnames(gtex) <- c("Symbol of blood RNA", "Ensembl ID", "rsID of eQTL", "GTEx variant ID","Alt allele frequency in GTEx WB",
                     "eQTL slope", "eQTL nominal p_val", "eQTL beta p_value",
                     "GWAS Trait", "GWAS Catalog Mapping", "Reported Mapping", "OR or BETA", "GWAS p_value",
-                    "Genomic Context","Intergenic?") # Re-names the columns
+                    "Genomic Context") # Re-names the columns
 
 ## Attach stable_polymorphic, flexible, and housekeeping gene study statistics
 stable <- read.csv("~/Desktop/work_repo/github/cross_study_analysis/output/characteristic_scores.csv")
 dynamic <- read.csv("~/Desktop/work_repo/github/cross_study_analysis/output/flexible_gene_scores.csv")
-house <- read.csv("~/Desktop/work_repo/github/cross_study_analysis/output/housekeeping_scores.csv")
 stable <- stable %>% dplyr::select(Symbol, Study_counts)
-colnames(stable) <- c("Symbol of blood RNA","Characteristic 4+ filter studies")
+colnames(stable) <- c("Symbol of blood RNA","Trait 4+ filter studies")
 dynamic <- dynamic %>% dplyr::select(Symbol, P_value_study_count)
 colnames(dynamic) <- c("Symbol of blood RNA","Studies below 0.05 p_value")
-house <- house %>% dplyr::select(Symbol, Studies)
-colnames(house) <- c("Symbol of blood RNA","Housekeeping 4+ filter studies")
 
-gtex <- merge(gtex, stable, all.x = T, by = "Symbol of blood RNA", sort = F)
-gtex <- merge(gtex, dynamic, all.x = T, by = "Symbol of blood RNA", sort = F)
-gtex <- merge(gtex, house, all.x = T, by = "Symbol of blood RNA", sort = F)
+gtex <- merge(gtex, stable, all = T, by = "Symbol of blood RNA", sort = F)
+gtex <- merge(gtex, dynamic, all = T, by = "Symbol of blood RNA", sort = F)
 dim(gtex)
-# [1] 2653785      18
+# [1] 3311615      16
 
 ## Filter out by common symbols. Common symbols file is in cross_study_analysis repo
-symbols <- read.table("~/Desktop/work_repo/github/cross_study_analysis/output/common_symbols9474.txt")
-symbols <- symbols$x
 gtex <- gtex[gtex$`Symbol of blood RNA` %in% symbols,]
 dim(gtex)
-# [1] 1352592      18
+# [1] 1058955     16
 
-write_rds(gtex, paste(output_dir, "gtex_variants_and_phenotypes_whole_blood.rds", sep = ""))
+library(nanoparquet)
+nanoparquet::write_parquet(gtex, file = paste(output_dir, "gtex_variants_and_phenotypes_whole_blood.parquet", sep = ""))
+
+nrow(gtex[is.na(gtex$`rsID of eQTL`),])
+# [1] 1647 -- genes without eQTL-GWAS link
+length(unique(gtex[!is.na(gtex$`rsID of eQTL`),"Symbol of blood RNA"]))
+# [1] 4452
+length(unique(gtex$`GWAS Trait`))
+# [1] 14952

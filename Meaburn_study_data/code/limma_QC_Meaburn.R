@@ -1,4 +1,4 @@
-## Date: July 12 2024
+## Date: Oct 21 2024
 
 # The following code contains a standard limma analysis and some quality control calculations we generated.
 
@@ -48,9 +48,9 @@ table(pheno_data$sex, pheno_data$time)
 p1 <- pheno_data[grep("Dayone", pheno_data$time),]
 p2 <- pheno_data[grep("Daytwo", pheno_data$time),]
 
-## We know that the data were batched because of the mismatch of control probes:
-data <- ReadAffy(celfile.path = input_dir)
-data <- affy::rma(data)
+## We can test if the data were batched using the control probes:
+raw <- ReadAffy(celfile.path = input_dir)
+data <- affy::rma(raw)
 norm_expr <- exprs(data)
 colnames(norm_expr) <- str_extract(colnames(norm_expr), "GSM\\d+")
 identical(rownames(pheno_data), colnames(norm_expr)) # [1] TRUE
@@ -58,7 +58,7 @@ source("~/Desktop/work_repo/github/misc/Affy_control_probe_check.R")
 a <- polyA_check(norm_expr, pheno_data, "time")[[1]]
 b <- hybrid_check(norm_expr, pheno_data, "time")[[1]]
 c <- positive_check(norm_expr, pheno_data, "time")
-pdf(file = paste(output_dir, "control_probes_batched.pdf"), height = 7, width = 12)
+pdf(file = paste(output_dir, "control_probes_batched.pdf", sep = ""), height = 7, width = 12)
 plot_grid(a,b,c, nrow = 1)
 dev.off()
 ## Poly A an hybridization show concerning batch effects, justifying our separation of the days.
@@ -67,13 +67,13 @@ dev.off()
 celfiles <- list.files(input_dir, full.names = T)
 c1 <- celfiles[which(str_extract(celfiles, "GSM\\d+") %in% p1$geo_accession)]
 length(c1) # [1] 19
-data <- ReadAffy(filenames = c1)
+raw <- ReadAffy(filenames = c1)
 
 ## Raw data QC----
 ## According to the researchers, poor or abnormal arrays were already filtered out using the same methods
 ## we use (Mearburn et al. 2009). This is simply to double-check array quality.
 library(affyPLM)
-Pset <- fitPLM(data) #input non-normalized data
+Pset <- fitPLM(raw, background = F, normalize = F) #input non-normalized data
 pdf(file = paste(output_dir, "RLE_and_NUSE_day_1.pdf", sep = ""))
 par(mfrow = c(1,2))
 RLE(Pset,main = "RLE for Meaburn day 1 raw data")
@@ -81,11 +81,28 @@ NUSE(Pset, main = "NUSE for Meaburn day 1 raw data")
 dev.off()
 # These arrays have good statistics.
 
+## Get expression calls using MAS 5.0 ----
+calls <- mas5calls.AffyBatch(raw)
+probe_pval <- assayData(calls)[["se.exprs"]] ## Returns p-values
+dim(probe_pval)
+# [1] 54675    19
+minSamples <- min(colSums(table(p1$id, p1$time)))
+print(minSamples)
+# [1] 9
+expressed <- rowSums(probe_pval < 0.05) >= minSamples
+
 ## Normalize the data into an eSet ----
-data <- affy::rma(data)
+data <- affy::rma(raw)
 
 # Get expression estimates
-normalized_expression <- exprs(data)
+unfiltered_normalized_expression <- exprs(data)
+## Remove unexpressed probes
+normalized_expression <- unfiltered_normalized_expression[expressed,]
+dim(unfiltered_normalized_expression)
+# [1] 54675    19
+dim(normalized_expression)
+# [1] 25419    19
+
 normalized_expression[1:5,1:5]
 #           GSM371373.CEL.gz GSM371374.CEL.gz GSM371376.CEL.gz GSM371378.CEL.gz GSM371383.CEL.gz
 # 1007_s_at         7.376076         7.171558         7.129033         7.127949         6.941682
@@ -93,9 +110,9 @@ normalized_expression[1:5,1:5]
 # 117_at            9.833055         9.674456         9.631341         9.478013         9.385483
 # 121_at            7.799649         7.734322         7.524356         7.258983         7.480098
 # 1255_g_at         2.731875         2.619617         2.555998         2.635680         2.636198
-dim(normalized_expression)
-# [1] 54675    19
+
 colnames(normalized_expression) <- gsub(pattern = "(.CEL.gz)", replacement = "", x = colnames(normalized_expression))
+colnames(unfiltered_normalized_expression) <- gsub(pattern = "(.CEL.gz)", replacement = "", x = colnames(unfiltered_normalized_expression))
 df <- data.frame(normalized_expression)
 identical(colnames(df), rownames(p1))
 # [1] TRUE
@@ -111,15 +128,15 @@ table(p1$time, p1$id)
 
 ## Normalized data QC----
 ### Plots and quantiles
-pdf(file = paste(output_dir, "features_hist.pdf"))
+pdf(file = paste(output_dir, "features_hist_day1.pdf", sep = ""))
 hist(normalized_expression)
 dev.off()
-pdf(file = paste(output_dir, "samples_box.pdf"))
+pdf(file = paste(output_dir, "samples_box_day1.pdf", sep = ""))
 boxplot(normalized_expression)
 dev.off()
 quantile(normalized_expression)
 # 0%       25%       50%       75%      100% 
-# 1.737961  3.620242  5.105667  6.898987 14.629243
+# 1.881568  5.579088  6.916074  8.236908 14.629243 
 
 
 # What are the highly expressed RNAs?
@@ -135,6 +152,17 @@ mapIds(x = hgu133plus2.db, keys = head(names(avg_gene_exp)), keytype = "PROBEID"
 ### PCA tools ----
 library(PCAtools)
 p <- pca(df, metadata = p1, center = T, scale = T)
+p_unfilt <- pca(unfiltered_normalized_expression, metadata = p1, center = T, scale = T)
+pdf(file = paste(output_dir, "day1_unfiltered_pca.pdf", sep = ""))
+biplot(p_unfilt, 
+       showLoadings = F,
+       lab = p1$id, 
+       colby = "time", colkey = c("Dayone_10am" = "blue", "Dayone_2pm" = "red"), 
+       legendPosition = 'right', legendLabSize = 12, legendIconSize = 3,
+       title = 'Meaburn 4 hours',
+       subtitle = 'day 1 - lowly epxressed genes not filtered')
+dev.off()
+
 
 scree <- screeplot(p)
 ptime <- biplot(p, 
@@ -143,7 +171,7 @@ ptime <- biplot(p,
                 colby = "time", colkey = c("Dayone_10am" = "blue", "Dayone_2pm" = "red"), 
                 legendPosition = 'right', legendLabSize = 12, legendIconSize = 3,
                 title = 'Meaburn 4 hours',
-                subtitle = 'day 1')
+                subtitle = 'day 1 - lowly epxressed genes filtered')
 psex <- biplot(p, 
                showLoadings = F,
                lab = NULL, 
@@ -207,6 +235,7 @@ control_index <- grep("lys|Lys|thr|Thr|dap|Dap|phe|Phe|Trp|bioB|BioB|BioC|bioC|b
 rownames(df)[control_index]
 df <- df[-control_index,]
 dim(df)
+# [1] 26545    19
 rownames(df)[grep("AFFX", x = rownames(df))]
 
 ### Fit LM ----
@@ -219,7 +248,7 @@ design <- model.matrix(~0+TS, df)
 colnames(design) <- make.names(levels(TS))
 cor <- duplicateCorrelation(df, design, block=id)
 cor$consensus.correlation
-# 0.1769784
+# 0.393599
 
 fit <- lmFit(object=df, design=design, block=id, correlation=cor$consensus.correlation)
 
@@ -241,14 +270,14 @@ dt <- decideTests(x)
 summary(dt)
 #         Time TimeMale
 # Down       0        0
-# NotSig 54630    54630
+# NotSig 26545    26545
 # Up         0        0
 dt <- decideTests(x, adjust.method = 'none')
 summary(dt)
 #         Time TimeMale
-# Down    1261     1210
-# NotSig 51686    51881
-# Up      1683     1539
+# Down     680      733
+# NotSig 24352    24657
+# Up      1513     1155
 
 write.csv(y, file = paste(output_dir, "day1_limma_F.csv", sep = ""))
 
@@ -317,13 +346,13 @@ dev.off()
 # Analysis of day 2 data ----
 c2 <- celfiles[which(str_extract(celfiles, "GSM\\d{6}") %in% p2$geo_accession)]
 length(c2) # [1] 17
-data <- ReadAffy(filenames = c2)
+raw <- ReadAffy(filenames = c2)
 
 ## Raw data QC----
 ## According to the researchers, poor or abnormal arrays were already filtered out using the same methods
 ## we use (Mearburn et al. 2009). This is simply to double-check array quality.
 library(affyPLM)
-Pset <- fitPLM(data) #input non-normalized data
+Pset <- fitPLM(raw, background = F, normalize = F) #input non-normalized data
 pdf(file = paste(output_dir, "RLE_and_NUSE_day_2.pdf", sep = ""))
 par(mfrow = c(1,2))
 RLE(Pset,main = "RLE for Meaburn day 2 raw data")
@@ -331,21 +360,35 @@ NUSE(Pset, main = "NUSE for Meaburn day 2 raw data")
 dev.off()
 # These arrays have good statistics.
 
+## Get expression calls using MAS 5.0 ----
+calls <- mas5calls.AffyBatch(raw)
+probe_pval <- assayData(calls)[["se.exprs"]] ## Returns p-values
+dim(probe_pval)
+# [1] 54675    17
+minSamples <- min(colSums(table(p2$id, p2$time)))
+print(minSamples)
+# [1] 7
+expressed <- rowSums(probe_pval < 0.05) >= minSamples
+
 ## Normalize the data into an eSet ----
-data <- affy::rma(data)
+data <- affy::rma(raw)
 
 # Get expression estimates
-normalized_expression <- exprs(data)
+unfiltered_normalized_expression <- exprs(data)
+normalized_expression <- unfiltered_normalized_expression[expressed,]
+dim(normalized_expression)
+# [1] 26474    17
+
 normalized_expression[1:5,1:5]
-#           GSM371375.CEL.gz GSM371377.CEL.gz GSM371379.CEL.gz GSM371380.CEL.gz GSM371381.CEL.gz
+#          GSM371375.CEL.gz GSM371377.CEL.gz GSM371379.CEL.gz GSM371380.CEL.gz GSM371381.CEL.gz
 # 1007_s_at         7.408323         7.290897         7.013294         6.694431         6.882215
 # 1053_at           7.028865         7.160074         7.468729         7.249186         7.172744
 # 117_at            9.305568         9.376824         9.305617        10.009949        10.174146
 # 121_at            7.689531         7.639373         7.268682         7.098646         7.354284
-# 1255_g_at         2.941955         2.502733         2.467833         2.401614         2.411333
-dim(normalized_expression)
-# [1] 54675    17
+# 1294_at           8.158172         8.307702         8.385276         8.202762         8.054674
+
 colnames(normalized_expression) <- gsub(pattern = "(.CEL.gz)", replacement = "", x = colnames(normalized_expression))
+colnames(unfiltered_normalized_expression) <- gsub(pattern = "(.CEL.gz)", replacement = "", x = colnames(unfiltered_normalized_expression))
 df <- data.frame(normalized_expression)
 identical(colnames(df), rownames(p2))
 # [1] TRUE
@@ -360,30 +403,33 @@ table(p2$time, p2$id)
 
 
 ## Normalized data QC----
-### Plots and quantiles
-pdf(file = paste(output_dir, "features_hist.pdf"))
-hist(normalized_expression)
-dev.off()
-pdf(file = paste(output_dir, "samples_box.pdf"))
-boxplot(normalized_expression)
-dev.off()
-quantile(normalized_expression)
-# 0%       25%       50%       75%      100% 
-# 1.825471  3.417146  4.934040  6.917551 14.721409 
-
-# What are the highly expressed RNAs?
-avg_gene_exp <- rowMeans(x = normalized_expression, na.rm = T)
-head(avg_gene_exp) # creates vector of each gene's mean
-avg_gene_exp <- avg_gene_exp[order(avg_gene_exp, decreasing = T)] # order by decreasing order
-mapIds(x = hgu133plus2.db, keys = head(names(avg_gene_exp)), keytype = "PROBEID", column = "SYMBOL")
-
-# AFFX-hum_alu_at     204892_x_at     202917_s_at     206559_x_at     208834_x_at     208825_x_at 
-#              NA        "EEF1A1"        "S100A8"        "EEF1A1"        "RPL23A"        "RPL23A" 
-
-## MDS and PCA ----
 ### PCA tools ----
 library(PCAtools)
 p <- pca(df, metadata = p2, center = T, scale = T)
+p_unfilt <- pca(unfiltered_normalized_expression, metadata = p2, center = T, scale = T)
+pdf(file = paste(output_dir, "day2_unfiltered_pca.pdf", sep = ""))
+biplot(p_unfilt, 
+       showLoadings = F,
+       lab = p2$id, 
+       colby = "time", colkey = c("Daytwo_10am" = "blue", "Daytwo_2pm" = "red"), 
+       legendPosition = 'right', legendLabSize = 12, legendIconSize = 3,
+       title = 'Meaburn 4 hours',
+       subtitle = 'day 2 - lowly epxressed genes not filtered')
+dev.off()
+# TD32681 and TD32682, 2pm samples are separated from most other samples on PCA.
+p2[grep("TD32681|TD32682", p2$id),]
+#                               title geo_accession  sex        time      id
+# GSM371396 Blood_TD32681_Daytwo_10am     GSM371396 Male Daytwo_10am TD32681
+# GSM371398  Blood_TD32681_Daytwo_2pm     GSM371398 Male  Daytwo_2pm TD32681
+# GSM371400  Blood_TD32682_Daytwo_2pm     GSM371400 Male  Daytwo_2pm TD32682
+grep("GSM371398|GSM371400",colnames(Pset@chip.coefs))
+# [1] 12 13
+pdf(paste(output_dir, "GSM371398_GSM371400_pseudo.pdf", sep = ""), width = 12, height = 9)
+par(mfrow = c(1,2))
+image(Pset, which = 12)
+image(Pset, which = 13)
+dev.off()
+
 
 scree <- screeplot(p)
 ptime <- biplot(p, 
@@ -392,7 +438,7 @@ ptime <- biplot(p,
                 colby = "time", colkey = c("Daytwo_10am" = "blue", "Daytwo_2pm" = "red"), 
                 legendPosition = 'right', legendLabSize = 12, legendIconSize = 3,
                 title = 'Meaburn 4 hours',
-                subtitle = 'day 2')
+                subtitle = 'day 2 - lowly expressed probes filtered')
 psex <- biplot(p, 
                showLoadings = F,
                lab = NULL, 
@@ -448,6 +494,26 @@ limma::plotMDS(x = df,
 title("MDS Plot")
 dev.off()
 
+### Plots and quantiles
+pdf(file = paste(output_dir, "features_hist_day2.pdf", sep = ""))
+hist(normalized_expression)
+dev.off()
+pdf(file = paste(output_dir, "samples_box_day2.pdf", sep = ""))
+boxplot(normalized_expression)
+dev.off()
+quantile(normalized_expression)
+# 0%       25%       50%       75%      100% 
+# 1.870306  5.594583  6.951321  8.279332 14.721409 
+
+# What are the highly expressed RNAs?
+avg_gene_exp <- rowMeans(x = normalized_expression, na.rm = T)
+head(avg_gene_exp) # creates vector of each gene's mean
+avg_gene_exp <- avg_gene_exp[order(avg_gene_exp, decreasing = T)] # order by decreasing order
+mapIds(x = hgu133plus2.db, keys = head(names(avg_gene_exp)), keytype = "PROBEID", column = "SYMBOL")
+
+# AFFX-hum_alu_at     204892_x_at     202917_s_at     206559_x_at     208834_x_at     208825_x_at 
+#              NA        "EEF1A1"        "S100A8"        "EEF1A1"        "RPL23A"        "RPL23A" 
+
 
 ## limma analysis----
 
@@ -456,6 +522,7 @@ control_index <- grep("lys|Lys|thr|Thr|dap|Dap|phe|Phe|Trp|bioB|BioB|BioC|bioC|b
 rownames(df)[control_index]
 df <- df[-control_index,]
 dim(df)
+# [1] 26432    17
 rownames(df)[grep("AFFX", x = rownames(df))]
 
 ### Fit LM ----
@@ -468,7 +535,7 @@ design <- model.matrix(~0+TS, df)
 colnames(design) <- make.names(levels(TS))
 cor <- duplicateCorrelation(df, design, block=id)
 cor$consensus.correlation
-# 0.3797878
+# 0.5628484
 
 fit <- lmFit(object=df, design=design, block=id, correlation=cor$consensus.correlation)
 
@@ -489,15 +556,15 @@ y$Symbol <- mapIds(x = hgu133plus2.db, keys = row.names(y), column = "SYMBOL", k
 dt <- decideTests(x)
 summary(dt)
 #         Time TimeMale
-# Down      31       39
-# NotSig 54523    54546
-# Up        76       45
+# Down     107       97
+# NotSig 25766    26014
+# Up       559      321
 dt <- decideTests(x, adjust.method = 'none')
 summary(dt)
 #         Time TimeMale
-# Down    2865     2919
-# NotSig 48356    48612
-# Up      3409     3099
+# Down    1127     1016
+# NotSig 21743    22149
+# Up      3562     3267
 
 write.csv(y, file = paste(output_dir, "day2_limma_F.csv", sep = ""))
 

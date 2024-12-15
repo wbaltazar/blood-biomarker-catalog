@@ -88,12 +88,11 @@ data$E <- x
 data$genes <- BGX
 data$other$Detection <- detectionpvalues
 data_norm <- neqc(data)
-controls <- data_norm$genes$controls$Probe_Id
-expressed <- rowSums(data_norm$other$Detection < 0.05) >= 3
+minSamples <- min(colSums(table(p1v$subject, p1v$time))) # Find the minimum group size
+expressed <- rowSums(data_norm$other$Detection < 0.05) >= minSamples
 data_norm$E <- data_norm$E[expressed,]
-data_norm$E <- data_norm$E[-which(rownames(data_norm$E) %in% controls),]
 dim(data_norm$E)
-# [1] 31003   161
+# [1] 21699   161
 norm_expr <- data_norm$E
 
 ## varianceParitition 1 ----
@@ -200,12 +199,11 @@ data$E <- x
 data$genes <- BGX
 data$other$Detection <- detectionpvalues
 data_norm <- neqc(data)
-controls <- data_norm$genes$controls$Probe_Id
-expressed <- rowSums(data_norm$other$Detection < 0.05) >= 3
+minSamples <- min(colSums(table(p1f$subject, p1f$time))) # Find the minimum group size
+expressed <- rowSums(data_norm$other$Detection < 0.05) >= minSamples
 data_norm$E <- data_norm$E[expressed,]
-data_norm$E <- data_norm$E[-which(rownames(data_norm$E) %in% controls),]
 dim(data_norm$E)
-# [1] 22413    49
+# [1] 16054    49
 norm_expr <- data_norm$E
 
 ## varianceParitition 2 ----
@@ -312,12 +310,11 @@ data$E <- x
 data$genes <- BGX
 data$other$Detection <- detectionpvalues
 data_norm <- neqc(data)
-controls <- data_norm$genes$controls$Probe_Id
-expressed <- rowSums(data_norm$other$Detection < 0.05) >= 3
+minSamples <- min(colSums(table(p2v$subject, p2v$time))) # Find the minimum group size
+expressed <- rowSums(data_norm$other$Detection < 0.05) >= minSamples
 data_norm$E <- data_norm$E[expressed,]
-data_norm$E <- data_norm$E[-which(rownames(data_norm$E) %in% controls),]
 dim(data_norm$E)
-# [1] 27431   143
+# [1] 21167   143
 norm_expr <- data_norm$E
 
 ## varianceParitition 3 ----
@@ -424,12 +421,11 @@ data$E <- x
 data$genes <- BGX
 data$other$Detection <- detectionpvalues
 data_norm <- neqc(data)
-controls <- data_norm$genes$controls$Probe_Id
-expressed <- rowSums(data_norm$other$Detection < 0.05) >= 3
+minSamples <- min(colSums(table(p2f$subject, p2f$time))) # Find the minimum group size
+expressed <- rowSums(data_norm$other$Detection < 0.05) >= minSamples
 data_norm$E <- data_norm$E[expressed,]
-data_norm$E <- data_norm$E[-which(rownames(data_norm$E) %in% controls),]
 dim(data_norm$E)
-# [1] 23484   185
+# [1] 19825   185
 norm_expr <- data_norm$E
 
 ## varianceParitition 4 ----

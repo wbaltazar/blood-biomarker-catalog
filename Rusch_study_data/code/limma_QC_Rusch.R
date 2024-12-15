@@ -1,4 +1,4 @@
-## Date: July 11 2024
+## Date: October 24 2024
 
 # The following code contains a standard limma analysis and some quality control calculations we generated.
 
@@ -62,87 +62,115 @@ table(pheno_data$patient_ID)
 
 ## Remove samples where only one timepoint is available
 single_timepoint <- pheno_data$geo_accession[which(pheno_data$patient_ID %in% c("Subject 16", "Subject 2", "Subject 25", "Subject 50", "Subject 61", "Subject 71", "Subject 81"))]
-files <- list.files(input_dir)
-files <- files[grep(paste(single_timepoint, collapse = "|"), files)]
-length(files) # [1] 7
-file.remove(paste(input_dir, files, sep = ""))
+files <- list.files(input_dir, full.names = T)
+files <- files[-grep(paste(single_timepoint, collapse = "|"), files)]
 
 # Import the CEL data ----
-files <- list.files(input_dir)
-files <- files[-grep(paste(pheno_data$geo_accession, collapse = "|"), files)]
-length(files) # [1] 62
-file.remove(paste(input_dir, files, sep = ""))
-
-data <- ReadAffy(celfile.path = input_dir)
+files <- files[grep(paste(pheno_data$geo_accession, collapse = "|"), files)]
+length(files) # [1] 40
+data <- ReadAffy(filenames = list.files(input_dir, full.names = T)[grep(paste(files, collapse = "|"), list.files(input_dir, full.names = T))])
 
 # Raw data QC ----
 # affyPLM: generates probe linear model and allows generation of pseudoimages
-Pset <- fitPLM(data) # input non-normalized data
+Pset <- fitPLM(data, background = F, normalize = F)
 pdf(file = paste(output_dir, "RLE_and_NUSE.pdf", sep = ""))
 par(mfrow = c(1,2))
 RLE(Pset,main = "RLE for Rusch raw data")
 NUSE(Pset, main = "NUSE for Rusch raw data")
 dev.off()
-## The second to last NUSE plot is highly elevated. RLE looks normal.
-## Filter out any samples in the meta data that are not in the imported data.
+## The second to last NUSE plot is highly elevated, RLE is low. 10th sample has a high RLE.
 pheno_data <- pheno_data[pheno_data$geo_accession %in% str_extract(colnames(exprs(data)), pattern = "GSM\\d+"),]
-pdf(file = paste(output_dir, "GSM2175261_pseudo.pdf", sep = ""))
+pheno_data[c(10,39),]
+# title geo_accession                   source age    ethnicity                             race  sex      time
+# GSM2175202 md186    GSM2175202  Subject 38, timepoint 2  22 Not Hispanic                        Caucasian Male Follow Up
+# GSM2175261 md521    GSM2175261 Subject 108, timepoint 2  36 Not Hispanic Native Hawaiian/Pacific Islander Male Follow-Up
+# patient_ID
+# GSM2175202  Subject 38
+# GSM2175261 Subject 108
+pdf(file = paste(output_dir, "GSM2175202_GSM2175261_pseudo.pdf", sep = ""))
+par(mfrow = c(1,2))
+image(Pset, which = 10)
 image(Pset, which = 39)
 dev.off()
-pheno_data[pheno_data$geo_accession == "GSM2175261",] 
-# GSM2175261 Subject 108, time point 2. Anomalies on right of array. This sample will probably stand out in a principal component plot.
 
 # Background correct and normalize the data into an eSet object
+raw <- data
 data <- affy::rma(data)
 
 # Get expression estimates
-normalized_expression <- exprs(data)
-normalized_expression[1:5,1:5]
-dim(normalized_expression)
+unfiltered_normalized_expression <- exprs(data)
+dim(unfiltered_normalized_expression)
 # [1] 54675    40
 
-## Raw QC PCAs and pseudoimages ----
-colnames(normalized_expression) <- str_extract(colnames(normalized_expression), pattern = "GSM\\d+")
-identical(rownames(pheno_data), colnames(normalized_expression)) # [1] TRUE
-p <-  pca(normalized_expression, metadata = pheno_data, center = T, scale = T)
+## QC PCAs and pseudoimages ----
+colnames(unfiltered_normalized_expression) <- str_extract(colnames(unfiltered_normalized_expression), pattern = "GSM\\d+")
+identical(rownames(pheno_data), colnames(unfiltered_normalized_expression)) 
+# [1] TRUE
+pheno_data$time <- ifelse(pheno_data$time == "Baseline", "Baseline", "Followup")
+p <-  pca(unfiltered_normalized_expression, metadata = pheno_data, center = T, scale = T)
 pdf(file = paste(output_dir, "pre_qc_pca_plot.pdf", sep = ""))
 biplot(p, 
-       colby = "patient_ID", 
+       colby = "patient_ID", shape = "time",
        legendPosition = "right",
-       title = "Rusch et al. data pre-QC")
+       title = "Rusch et al.", subtitle = "lowly-expressed genes not filtered")
 dev.off()
-## Remove patient 108 before further analysis.
-## Renormalize the data without this sample.
-files <- list.files(input_dir)
-files <- files[grep("GSM2175261", files)]
-file.remove(paste(input_dir, files, sep = ""))
+## Remove patient 108, timepoint 2 before further analysis.
 
-data <- ReadAffy(celfile.path = input_dir)
-data <- affy::rma(data)
-normalized_expression <- exprs(data)
-dim(normalized_expression)
+## Re-normalize the data without this sample.
+files <- files[-grep("GSM2175261", files)]
+raw <- ReadAffy(filenames = files)
+data <- affy::rma(raw)
+unfiltered_normalized_expression <- exprs(data)
+dim(unfiltered_normalized_expression)
 # [1] 54675    39
+
+## Get expression calls using MAS 5.0 ----
+calls <- mas5calls.AffyBatch(raw)
+probe_pval <- assayData(calls)[["se.exprs"]] ## Returns p-values
+dim(probe_pval)
+# [1] 54675    39
+minSamples <- min(colSums(table(pheno_data$patient_ID, pheno_data$time)))
+print(minSamples)
+# [1] 20
+expressed <- rowSums(probe_pval < 0.05) >= minSamples
+normalized_expression <- unfiltered_normalized_expression[expressed,]
+dim(normalized_expression)
+# [1] 21133    39
+
+colnames(unfiltered_normalized_expression) <- str_extract(colnames(unfiltered_normalized_expression), pattern = "GSM\\d+")
 colnames(normalized_expression) <- str_extract(colnames(normalized_expression), pattern = "GSM\\d+")
-pheno_data <- pheno_data[pheno_data$geo_accession %in% colnames(normalized_expression),]
+pheno_data <- pheno_data[pheno_data$geo_accession %in% colnames(unfiltered_normalized_expression),]
+dim(pheno_data)
+# [1] 39  9
+
+p_unf <-  pca(unfiltered_normalized_expression, metadata = pheno_data, center = T, scale = T)
 p <-  pca(normalized_expression, metadata = pheno_data, center = T, scale = T)
-pdf(file = paste(output_dir, "pre_qc_pca_plot2.pdf", sep = ""))
-biplot(p, 
-       colby = "patient_ID", 
+pdf(file = paste(output_dir, "unfiltered_qc_pca.pdf", sep = ""))
+biplot(p_unf, 
+       colby = "patient_ID", shape = "time",
        legendPosition = "right",
-       title = "Rusch et al. data pre-QC")
+       title = "Rusch et al. data QC",
+       subtitle = "RMA normalized, unfiltered")
 dev.off()
-pheno_data[pheno_data$geo_accession == "GSM2175214",]
-# GSM2175214 Subject 76, timepoint 1 is driving most of the variation in this data.
-which(pheno_data$geo_accession == "GSM2175214") # [1] 18
-data <- ReadAffy(celfile.path = input_dir)
-Pset <- fitPLM(data) # input non-normalized data
-pdf(file = paste(output_dir, "RLE_and_NUSE2.pdf", sep = ""))
+pdf(file = paste(output_dir, "filtered_qc_pca.pdf", sep = ""))
+biplot(p, 
+       colby = "patient_ID", shape = "time",
+       legendPosition = "right", 
+       title = "Rusch et al. data QC",
+       subtitle = "RMA normalized, filtered")
+dev.off()
+
+grep("GSM2175187|GSM2175214", sampleNames(Pset@phenoData))
+# [1]  6 18
+
+pheno_data[pheno_data$geo_accession %in% c("GSM2175214", "GSM2175187"),]
+#            title geo_accession                  source age    ethnicity      race  sex     time patient_ID
+# GSM2175187 md152    GSM2175187 Subject 10, timepoint 2  49 Not Hispanic Caucasian Male Followup Subject 10
+# GSM2175214 md245    GSM2175214 Subject 76, timepoint 1  46 Not Hispanic Caucasian Male Baseline Subject 76
+
+pdf(file = paste(output_dir, "GSM2175187_GSM2175214_pseudo.pdf", sep = ""))
 par(mfrow = c(1,2))
-RLE(Pset,main = "RLE for Rusch pre-QC data")
-NUSE(Pset, main = "NUSE for Rusch pre-QC data")
-dev.off()
-## Has a slightly elevated NUSE.
-pdf(file = paste(output_dir, "GSM2175214_pseudo.pdf", sep = ""))
+image(Pset, which = 6)
 image(Pset, which = 18)
 dev.off()
 ## Clear strip pattern on the array, plus the variation in PCA, we removed this sample as well.
@@ -151,60 +179,92 @@ files <- list.files(input_dir)
 files <- files[grep("GSM2175214", files)]
 file.remove(paste(input_dir, files, sep = ""))
 
-## IF YOU HAVE RUN THIS FILE BEFORE, START HERE AFTER RUNNING LIBRARIES AND getGEO. ----
-## Change column names to include only GEO sample ID and exclude pheno_data rows that don't include colnames(df).
-
+# IF YOU HAVE RUN THIS FILE BEFORE, START HERE AFTER RUNNING LIBRARIES AND getGEO. ----
+pheno_data <- pheno_data[pheno_data$geo_accession %in% str_extract(list.files(input_dir), "GSM\\d+"),]
+dim(pheno_data)
+# [1] 38  9
 data <- ReadAffy(celfile.path = input_dir)
-data <- affy::rma(data)
-normalized_expression <- exprs(data)
-dim(normalized_expression)
+pheno_data$time[pheno_data$time != "Baseline"] <- rep(x = "Followup", times = length(pheno_data$time[pheno_data$time != "Baseline"]))
+table(pheno_data$patient_ID, pheno_data$time)
+#             Baseline Followup
+# Subject 10         1        1
+# Subject 108        1        0
+# Subject 117        1        1
+# Subject 37         1        1
+# Subject 38         1        1
+# Subject 46         1        1
+# Subject 49         1        1
+# Subject 53         1        1
+# Subject 63         1        1
+# Subject 66         1        1
+# Subject 68         1        1
+# Subject 69         1        1
+# Subject 72         1        1
+# Subject 73         1        1
+# Subject 76         0        1
+# Subject 80         1        1
+# Subject 9          1        1
+# Subject 94         1        1
+# Subject 95         1        1
+# Subject 98         1        1
+
+
+## Get expression calls using MAS 5.0 ----
+calls <- mas5calls.AffyBatch(data)
+probe_pval <- assayData(calls)[["se.exprs"]] ## Returns p-values
+dim(probe_pval)
 # [1] 54675    38
+minSamples <- min(colSums(table(pheno_data$patient_ID, pheno_data$time)))
+print(minSamples)
+# [1] 19
+expressed <- rowSums(probe_pval < 0.05) >= minSamples
+
+## Normalize the data into an eSet ----
+data <- affy::rma(data)
+
+# Get expression estimates
+unfiltered_normalized_expression <- exprs(data)
+dim(unfiltered_normalized_expression)
+# [1] 54675    38
+normalized_expression <- unfiltered_normalized_expression[expressed,]
+dim(normalized_expression)
+# [1] 21374    38
+
+colnames(unfiltered_normalized_expression) <- str_extract(colnames(unfiltered_normalized_expression), pattern = "GSM\\d+")
 colnames(normalized_expression) <- str_extract(colnames(normalized_expression), pattern = "GSM\\d+")
 pheno_data <- pheno_data[pheno_data$geo_accession %in% colnames(normalized_expression),]
 dim(pheno_data)
 # [1] 38  9
-p <-  pca(normalized_expression, metadata = pheno_data, center = T, scale = T)
-pdf(file = paste(output_dir, "post_qc_pca.pdf", sep = ""))
+p <-  pca(unfiltered_normalized_expression, metadata = pheno_data, center = T, scale = T)
+pdf(file = paste(output_dir, "unfiltered_pca.pdf", sep = ""))
 biplot(p, 
        colby = "patient_ID", 
        legendPosition = "right",
-       title = "Rusch et al. data pre-QC")
+       title = "Rusch et al. data pre-QC",
+       subtitle = "lowly-expressed genes not filtered")
+dev.off()
+pheno_data[pheno_data$geo_accession == "GSM2175187",]
+p <-  pca(normalized_expression, metadata = pheno_data, center = T, scale = T)
+pdf(file = paste(output_dir, "filtered_pca.pdf", sep = ""))
+biplot(p, 
+       colby = "patient_ID", 
+       legendPosition = "right",
+       title = "Rusch et al. data pre-QC",
+       subtitle = "lowly-expressed genes filtered")
 dev.off()
 pheno_data[pheno_data$geo_accession == "GSM2175187",]
 # GSM2175187 Subject 10, timepoint 2
 which(pheno_data$geo_accession == "GSM2175187") # [1] 6
-data <- ReadAffy(celfile.path = input_dir)
-Pset <- fitPLM(data) # input non-normalized data
-pdf(file = paste(output_dir, "RLE_and_NUSE3.pdf", sep = ""))
-par(mfrow = c(1,2))
-RLE(Pset,main = "RLE for Rusch post-QC data")
-NUSE(Pset, main = "NUSE for Rusch post-QC data")
-dev.off()
 pdf(file = paste(output_dir, "GSM2175187_pseudo.pdf", sep = ""))
-image(Pset, which = 18)
+image(Pset, which = 6)
 dev.off()
-
-## We removed this patient's baseline sample. What does their follow-up sample look like?
-image(Pset, which = which(pheno_data$patient_ID == "Subject 108"))
-pheno_data[pheno_data$patient_ID == "Subject 108",]
-# title geo_accession                   source age    ethnicity                             race  sex     time  patient_ID
-# GSM2175248 md441    GSM2175248 Subject 108, timepoint 1  36 Not Hispanic Native Hawaiian/Pacific Islander Male Baseline Subject 108
-
-## Pseudoimage looks normal, no concerning PCA deviations. This will be our working dataset.
 
 # Pre-processing ----
-pheno_data$time[pheno_data$time != "Baseline"] <- rep(x = "Followup", times = length(pheno_data$time[pheno_data$time != "Baseline"]))
-table(pheno_data$patient_ID)
-# Subject 10 Subject 108 Subject 117  Subject 37  Subject 38  Subject 46  Subject 49  Subject 53  Subject 63  Subject 66  Subject 68 
-# 2           1           2           2           2           2           2           2           2           2           2 
-# Subject 69  Subject 72  Subject 73  Subject 76  Subject 80   Subject 9  Subject 94  Subject 95  Subject 98 
-# 2           2           2           1           2           2           2           2           2 
-
 df <- data.frame(normalized_expression)
 identical(colnames(df), pheno_data$geo_accession)
 # [1] TRUE
 dim(df)
-# [1] 54675    38
+# [1] 21374    38
 dim(pheno_data)
 # [1] 38  9
 
@@ -219,7 +279,7 @@ boxplot(normalized_expression)
 dev.off()
 quantile(normalized_expression)
 # 0%       25%       50%       75%      100% 
-# 1.974886  4.140058  5.610911  6.978722 15.494129
+# 1.974886  6.052111  7.206498  8.371418 15.494129 
 
 # What are the highly expressed RNAs?
 avg_gene_exp <- rowMeans(x = normalized_expression, na.rm = T)
@@ -306,6 +366,7 @@ control_index <- grep("lys|Lys|thr|Thr|dap|Dap|phe|Phe|Trp|bioB|BioB|BioC|bioC|b
 rownames(df)[control_index]
 df <- df[-control_index,]
 dim(df)
+# [1] 21332    38
 rownames(df)[grep("AFFX", x = rownames(df))]
 
 id <- factor(pheno_data$patient_ID)
@@ -318,7 +379,7 @@ design <- model.matrix(~0+TS, df)
 colnames(design) <- make.names(levels(TS))
 cor <- duplicateCorrelation(df, design, block=id)
 cor$consensus.correlation
-# [1] 0.4531557
+# [1] 0.5508815
 
 fit <- lmFit(object=df, design=design, block=id, correlation=cor$consensus.correlation)
 
@@ -349,15 +410,15 @@ y$Symbol <- mapIds(x = hgu133plus2.db, keys = row.names(y), column = "SYMBOL", k
 dt <- decideTests(x)
 summary(dt)
 #         Time ITimeHispanic TimeWhite TimeBlack TimeNativeAmerican
-# Down       1             0         0         0                  0
-# NotSig 54628         54630     54629     54630              54627
-# Up         1             0         1         0                  3
+# Down     199             0         0         0                  0
+# NotSig 18332         21332     21332     21332              21332
+# Up      2801             0         0         0                  0
 dt <- decideTests(x, adjust.method = 'none')
 summary(dt)
 #         Time ITimeHispanic TimeWhite TimeBlack TimeNativeAmerican
-# Down    7116          3545      2118       697               1118
-# NotSig 41171         49488     51518     53152              52943
-# Up      6343          1597       994       781                569
+# Down     983           299       640       135                324
+# NotSig 14309         19487     20213     20983              20829
+# Up      6040          1546       479       214                179
 
 write.csv(y, paste(output_dir, "limma_F.csv", sep = ""), row.names=T)
 names(y)

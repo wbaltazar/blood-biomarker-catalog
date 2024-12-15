@@ -1,4 +1,4 @@
-## Date: August 25 2024
+## Date: October 27 2024
 
 ## Calculate statistics for stability in Karlovich study
 ## INPUT: Expr and pheno data
@@ -67,10 +67,16 @@ files <- files[str_extract(files, "GSM\\d+") %in% p1$geo_accession]
 length(files)
 # [1] 66
 data <- ReadAffy(filenames = files)
+calls <- mas5calls.AffyBatch(data)
+probe_pval <- assayData(calls)[["se.exprs"]] ## Returns p-values
+minSamples <- min(colSums(table(p1$subject, p1$time)))
+expressed <- rowSums(probe_pval < 0.05) >= minSamples
+
 data <- affy::rma(data)
 norm_expr <- exprs(data)
+norm_expr <- norm_expr[expressed,]
 dim(norm_expr)
-# [1] 54675    66
+# [1] 17635    66
 table(p1$sex, p1$subject)
 #        106 108 113 114 117 121 123 131 135 138 147 148 154 159 160 163 165 172 173 174 179 180
 # Female   0   0   0   0   0   0   0   0   0   0   3   3   3   3   3   3   3   3   3   3   3   3
@@ -160,11 +166,22 @@ length(files)
 files <- files[-grep("GSM401157|GSM401087|GSM401148", files)]
 length(files)
 # [1] 40
+p2 <- p2[-grep("GSM401087|GSM401148|GSM401157", p2$geo_accession),]
+dim(p2)
+# [1] 40  6
 data <- ReadAffy(filenames = files)
+calls <- mas5calls.AffyBatch(data)
+probe_pval <- assayData(calls)[["se.exprs"]] ## Returns p-values
+minSamples <- min(colSums(table(p2$subject, p2$time)))
+print(minSamples)
+# [1] 20
+expressed <- rowSums(probe_pval < 0.05) >= minSamples
+
 data <- affy::rma(data)
 norm_expr <- exprs(data)
+norm_expr <- norm_expr[expressed,]
 dim(norm_expr)
-# [1] 54675    40
+# [1] 16352    40
 colnames(norm_expr) <- gsub(pattern = "(.CEL.gz)", replacement = "", x = colnames(norm_expr)) # greps file extension and replaces it
 dim(norm_expr)
 df <- data.frame(norm_expr)

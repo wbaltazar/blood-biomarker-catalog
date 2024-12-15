@@ -12,15 +12,13 @@ These folders contain the raw data and code used to preprocess and perform analy
 
     -   limma-QC R scripts perform pre-processing steps on the data as well as quality control. It also contains the code for differential expression analysis using limma.
 
-        -   Dusek has an extra script called pre_QC which should be run before the limma_QC file.
-
-        -   These files all take the files as they are stored on GEO (which you must unzip first) for analysis. As long as your input directory has access to these files, the code runs correctly. Since some files are removed during quality control, the code may not run as expected the second time (you will receive non-existent file errors). You can get around this by running only the parts of the code needed for analysis or re-downloading the raw data from GEO and setting it as the input directory.
+        -   These files all take the files as they are stored on GEO (which you must unzip first) for analysis. As long as your input directory has access to these files, the code runs correctly.
 
     -   The variation R scripts perform the pre-processing steps as before and calculate all statistics needed for gene categorization.
 
 -   output folder
 
-    -   Contains all outputs from the R code. Contains various outputs, including csv files and pdfs of figures.
+    -   Contains all outputs from the R code. Contains various outputs, including CSV files and image files for figures.
 
 ### cross_study_analysis
 
@@ -28,13 +26,11 @@ These folders contain the raw data and code used to preprocess and perform analy
 
     -   Scripts for finding
 
-        -   characteristic genes (stable_polymorphic_genes.R)
+        -   trait genes (trait_genes.R)
 
-        -   flexible genes (flexible_genes.R)
+        -   state genes (state_genes.R)
 
-        -   housekeeping genes (housekeeping.R)
-
-    -   gene_categories_functional_enrich_in_silico_validation.R finds genes which meet their respective categories criteria in 4 or more studies (one microarray, one RNA-seq) and creates a list of those genes in the form of a txt file. Creates sub-directories in output for storing the outputs of in silico validation analysis and functional enrichment analysis. Performs functional enrichment analysis using clusterProfiler and produces all figures.
+    -   gene_categories_functional_enrich_in_silico_validation.R finds genes which meet their respective categories criteria in 4 or more studies (one microarray, one RNA-seq) and creates a list of those genes in the form of a TXT file. Creates sub-directories in output for storing the outputs of in silico validation analysis and functional enrichment analysis. Performs functional enrichment analysis using clusterProfiler and produces all figures.
 
 -   output folder
 
@@ -44,13 +40,15 @@ These folders contain the raw data and code used to preprocess and perform analy
 
 -   Affy_control_probe_check.R contains functions for assessing Affymetrix array control probe statistics. This script is envoked in Meaburn_study_data to determine batches.
 
--   building_eqtl_table.R contains code used to format the eQTL search table utilized by the eQTL variant search tab in the RShiny application
+-   building_eqtl_table.R contains code used to format the eQTL search table utilized by the eQTL variant search tab in the RShiny application. It requires the significant variant-gene pairs file from GTEx v10, the lookup table for the rsIDs from GTEx, and the most up-to-date version of the GWAS associations table as of December 14, 2024.
 
 -   biomaRt_all_transcripts.R contains code used to download gene information data used for the gene search tab in the RShiny application
 
 -   formatting_expr_for_app.R contains code used to create RDS files used for RShiny app spaghetti plots. It matches gene names to Probe IDs and Gene IDs for the Gene Info application function.
 
--   for_common_symbols_in_app.R contains code used to create RDS files used in RShiny app spaghetti plots as well. It filters the genes in the RDS files so that only the 9474 common symbols are used in the analysis.
+-   for_common_symbols_in_app.R contains code used to create RDS files used in RShiny app spaghetti plots as well. It filters the genes in the RDS files so that only the 6,099 common symbols are used in the analysis.
+
+-   writing_parquet_files.R contains code that transforms files for the RShiny application into parquet files for faster loading.
 
 ### RShiny-application
 
@@ -60,7 +58,7 @@ These folders contain the raw data and code used to preprocess and perform analy
 
     -   Alternatively, the code in the misc directory and study_data folders can be used to produce the necessary data and results used in the application. The folders should be organized such that the data is accessible in directories called by app.R and data.R (functions.R does not require any files).
 
--   As of September 15, 2024, this RShiny code is up to date.
+-   As of December 14, 2024, this RShiny code is up to date.
 
 ## Session Info
 

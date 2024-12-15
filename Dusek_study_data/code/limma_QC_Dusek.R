@@ -1,5 +1,4 @@
-## Date: July 11 2024
-## You should run "pre_QC_Dusek.R" before running this script to remove poor quality arrays from input directory.
+## Date: Nov 8 2024
 
 # Load libraries ----
 
@@ -17,31 +16,155 @@ library(PCAtools)
 library(EnhancedVolcano)
 library(RColorBrewer)
 
-## INPUT: pre-QC'd .CEL files
+## INPUT: Raw, unzipped .CEL files
 input_dir <- "~/Desktop/work_repo/data/GSE10041_RAW/"
 ## OUTPUT: limma results, plots, figures
 output_dir <- "~/Desktop/work_repo/github/Dusek_study_data/output/"
 
-# Import the CEL data ----
-data <- ReadAffy(celfile.path = input_dir)
+## Load in metadata
+gset <- getGEO("GSE10041", GSEMatrix =TRUE, AnnotGPL=TRUE)
+pheno_data_org <- pData(gset$GSE10041_series_matrix.txt.gz)
+feature_data <- fData(gset$GSE10041_series_matrix.txt.gz)
+pheno_data <- pheno_data_org %>% 
+  dplyr::select(title = title,
+                geo_accession = geo_accession)
+pheno_data$time <- str_extract(pheno_data_org$title, "N.")
+pheno_data$id <- str_extract(pheno_data_org$title, "-.*") %>% 
+  str_replace("-","")
+dim(pheno_data)
+# [1] 72 4
+length(grep("M", pheno_data$title)) # [1] 25 This is the correct number in the original and validation groups.
+pheno_data <- pheno_data[-grep("M", pheno_data$title),] # M samples are not used for longitudinal analyses.
+dim(pheno_data)
+# [1] 47  4
 
-## Raw data QC ----
-# affyPLM: generates probe linear model and allows generation of pseudoimages
-library(affyPLM)
-Pset <- fitPLM(data) #input non-normalized data
-pdf(file = paste(output_dir, "RLE_and_NUSE.pdf", sep = ""))
-par(mfrow = c(1,2))
-RLE(Pset,main="RLE for Dusek et al.")
-NUSE(Pset,main="NUSE for Dusek et al.")
+files <- list.files(input_dir, full.names = T)
+length(files)
+# [1] 72
+files <- files[grep(paste(pheno_data$geo_accession, collapse = "|"), files)]
+length(files)
+# [1] 47
+raw <- ReadAffy(filenames = files)
+obj <- affy::rma(raw)
+norm_expr <- exprs(obj)
+colnames(norm_expr) <- str_replace(colnames(norm_expr), ".CEL.gz", replacement = "")
+identical(colnames(norm_expr), rownames(pheno_data))
+# [1] TRUE
+dim(norm_expr)
+# [1] 54675    47
+## Since sex is not in the metadata, we annotated it according to specific XIST value.
+rps4y1_vals <- norm_expr["201909_at",]
+pheno_data$sex <- NA
+for (i in 1:length(rps4y1_vals)) {
+  if (rps4y1_vals[i] > 8) {
+    pheno_data$sex[i] <- "Male"
+  } else {
+    pheno_data$sex[i] <- "Female"
+  }
+}
+dim(pheno_data)
+# [1] 47  5
+table(pheno_data$id, pheno_data$sex) # patient 30 has mixed sex samples. Mislabeled.
+pheno_data[grep("30", pheno_data$id),] # [1] "GSM253667" "GSM253695" will be removed from analyses.
+#           title geo_accession time id    sex
+# GSM253667 N1-30     GSM253667   N1 30 Female
+# GSM253695 N2-30     GSM253695   N2 30   Male
+grep("30", pheno_data$id)
+# [1]  5 33
+pdf(file = paste(output_plot, "sample_rps4y1_values.pdf", sep = ""))
+rps4y1_vals %>% data.frame() %>% bind_cols(pheno_data$id) %>% 
+  ggplot(aes(x = 1:length(rps4y1_vals), y = .)) + 
+  geom_text(aes(label = `...2`, color = `...2`)) +
+  labs(x = 'index', y = 'RPS4Y1 normalized expression') +
+  geom_hline(yintercept = 8, linetype = 'dashed')
 dev.off()
+
+library(affyPLM)
+## Check for visual abnormalities
+plm <- fitPLM(raw, background = F, normalize = F)
+pdf(file = paste(output_plot, "NUSE_RLE_preQC.pdf", sep = ""))
+par(mfrow = c(1,2))
+RLE(plm, ylim = c(-4,4))
+title("RLE")
+NUSE(plm, ylim = c(0.75,1.8)) # Patient 50 array time 2 array stands out. Should be removed.
+title("NUSE")
+dev.off()
+pheno_data[nrow(pheno_data),]
+# title geo_accession time id  sex
+# GSM253709 N2-50     GSM253709   N2 50 Male
+
+# Last sample has artifacts
+which(pheno_data$id == 50) # [1] 23 47
+pdf(file = paste(output_plot, "subject_50_pseudoimages.pdf", sep = ""))
+par(mfrow = c(1,2))
+image(plm, which = 23) # some spotting
+image(plm, which = 47) # very intense
+dev.off()
+
+pdf(file = paste(output_dir, "GSM253709_pseudo.pdf", sep = ""))
+image(plm, which = 47)
+dev.off()
+
+## Principal component analysis of filtered, normalized expression
+p <- pca(as.matrix(norm_expr), metadata = pheno_data, center = T, scale = T)
+loads <- rownames(p$loadings)
+loads <- mapIds(hgu133plus2.db, loads, "SYMBOL", "PROBEID")
+loads <- make.names(ifelse(is.na(loads), names(loads), unname(loads)), unique = T)
+rownames(p$loadings) <- loads
+pdf(file = paste(output_plot, "filter_preQC_pca.pdf", sep = ""))
+biplot(p, showLoadings = T, colby = "time", shape = "sex", encircle = T, lab = pheno_data$id, legendPosition = "right")
+dev.off()
+
+# Filter unexpressed genes
+calls <- mas5calls.AffyBatch(raw)
+probe_pval <- assayData(calls)[["se.exprs"]] ## Returns p-values
+dim(probe_pval)
+# [1] 54675    47
+minSamples <- min(colSums(table(pheno_data$id, pheno_data$time)))
+print(minSamples)
+# [1] 23
+expressed <- rowSums(probe_pval < 0.05) >= minSamples
+norm_expr <- norm_expr[expressed,]
+dim(norm_expr)
+# [1] 15938    47
+## Principal component analysis of unfiltered, normalized expression
+norm_expr <- exprs(obj)
+colnames(norm_expr) <- str_replace(colnames(norm_expr), ".CEL.gz", replacement = "")
+p <- pca(as.matrix(norm_expr), metadata = pheno_data, center = T, scale = T)
+loads <- rownames(p$loadings)
+loads <- mapIds(hgu133plus2.db, loads, "SYMBOL", "PROBEID")
+loads <- make.names(ifelse(is.na(loads), names(loads), unname(loads)), unique = T)
+rownames(p$loadings) <- loads
+pdf(file = paste(output_plot, "NOfilter_preQC_pca.pdf", sep = ""))
+biplot(p, showLoadings = T, colby = "time", shape = "sex", encircle = T, lab = pheno_data$id, legendPosition = "right")
+dev.off()
+
+# Import the CEL data ----
+files <- files[-grep("GSM253709|GSM253667|GSM253695", files)]
+pheno_data <- pheno_data[-grep("GSM253709|GSM253667|GSM253695", pheno_data$geo_accession),]
+data <- ReadAffy(filenames = files)
+
+# Get expression calls using MAS 5.0
+calls <- mas5calls.AffyBatch(data)
+probe_pval <- assayData(calls)[["se.exprs"]] ## Returns p-values
+dim(probe_pval)
+# [1] 54675    44
+minSamples <- min(table(pheno_data$time))
+print(minSamples)
+# [1] 22
+expressed <- rowSums(probe_pval < 0.05) >= minSamples
 
 ## Normalize the data into an eSet ----
 data <- affy::rma(data)
 
-# Get expression estimates
+## Get expression estimates
 normalized_expression <- exprs(data)
 dim(normalized_expression)
 # [1] 54675    44
+## Remove unexpressed probes
+normalized_expression <- normalized_expression[expressed,]
+dim(normalized_expression)
+# [1] 15963    44
 
 # Generate informative plots / data
 pdf(file = paste(output_dir, "features_hist.pdf", sep = ""))
@@ -52,7 +175,7 @@ boxplot(normalized_expression)
 dev.off()
 quantile(normalized_expression)
 # 0%       25%       50%       75%      100% 
-# 2.416043  4.457443  5.600040  6.714875 14.765905 
+# 2.513918  5.922759  7.061899  8.206119 14.765905 
 
 # What are the highly expressed RNAs?
 avg_gene_exp <- rowMeans(x = normalized_expression, na.rm = TRUE)
@@ -64,70 +187,22 @@ mapIds(x = hgu133plus2.db, keys = head(names(avg_gene_exp)), keytype = "PROBEID"
 # 214414_x_at 211745_x_at 211696_x_at 209458_x_at 204018_x_at 211699_x_at 
 # "HBA1"      "HBA1"       "HBB"      "HBA1"      "HBA1"      "HBA1" 
 
-# Load in metadata ----
-gset <- getGEO("GSE10041", GSEMatrix =TRUE, AnnotGPL=TRUE)
-pheno_data_org <- pData(gset$GSE10041_series_matrix.txt.gz)
-feature_data <- fData(gset$GSE10041_series_matrix.txt.gz)
-dim(pheno_data_org)
-# [1] 72 33
-# filter out traits we want
-pheno_data <- pheno_data_org %>% 
-  dplyr::select(title = title,
-                geo_accession = geo_accession)
-pheno_data$time <- str_extract(pheno_data_org$title, "N.")
-pheno_data$id <- str_extract(pheno_data_org$title, "-.*") %>% 
-  str_replace("-","")
-dim(pheno_data)
-# [1] 72 4
-length(grep("M", pheno_data$title)) # [1] 25 This is the correct number in the original and validation groups.
-pheno_data <- pheno_data[-grep("M", pheno_data$title),]
-dim(pheno_data)
-# [1] 47  4
-
-table(pheno_data$time, pheno_data$id)
-#    01 02 03 06 07 11 12 14 23 30 32 33 34 35 36 39 40 41 46 47 49 50 51 59
-# N1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  0  1  1  1  1  1  1  1  1  1
-# N2  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
-sum(na.omit(pheno_data$time) == "N1") #[1] 23
-sum(na.omit(pheno_data$time) == "N2") #[1] 24
-# In this study, the researchers collected 19 N1 data points and 20 N2 datapoints for their analysis (one
-# of the N1 arrays had too low of an intensity.) They also had a validation cohort of 5 additional individuals.
-# The pheno data indicates we are one sample short. This is explained in GEO: there were 4 validation samples.
-# However, there isn't a way to discern which cohort is which using the pheno_data.
-
 # rename expression data columns
 colnames(normalized_expression)
 colnames(normalized_expression) <- gsub(pattern = "(.CEL.gz)", replacement = "", x = colnames(normalized_expression))
-dim(normalized_expression)
+identical(pheno_data$geo_accession, colnames(normalized_expression))
+# [1] TRUE
 df <- data.frame(normalized_expression)
 
-pheno_data <- pheno_data[pheno_data$geo_accession %in% colnames(df),]
-dim(pheno_data)
-# [1] 44  4
-
-# remove unnecessary columns
-df <- df[,colnames(df) %in% pheno_data$geo_accession]
-normalized_expression <- normalized_expression[,colnames(normalized_expression) %in% pheno_data$geo_accession]
-dim(df)
-# [1] 54675    44
-
-# make sure that the order of samples in the pheno data matches the order in exp data
-index <- match(pheno_data$geo_accession, colnames(df))
-pheno_data <- pheno_data[index,]
-dim(pheno_data)
-# [1] 44  4
-identical(pheno_data$geo_accession, colnames(df))
-# [1] TRUE
-
 # Annotate sex
-rps4y_vals <- normalized_expression["201909_at",]
-plot(rps4y_vals)
+xist_vals <- normalized_expression["227671_at",]
+plot(xist_vals)
 pheno_data$sex <- NA
-for (i in 1:length(rps4y_vals)) {
-  if (rps4y_vals[i] > 8) {
-    pheno_data$sex[i] <- "Male"
-  } else {
+for (i in 1:length(xist_vals)) {
+  if (xist_vals[i] > 8) {
     pheno_data$sex[i] <- "Female"
+  } else {
+    pheno_data$sex[i] <- "Male"
   }
 }
 
@@ -224,7 +299,6 @@ limma::plotMDS(x = df,
 title("MDS Plot")
 dev.off()
 
-
 # limma analysis ----
 
 # Remove spike-in probes (AFFX hybridization and polyA probes)
@@ -232,19 +306,22 @@ control_index <- grep("lys|Lys|thr|Thr|dap|Dap|phe|Phe|Trp|bioB|BioB|BioC|bioC|b
 rownames(df)[control_index]
 df <- df[-control_index,]
 dim(df)
-# [1] 54630    42
+# [1] 15945    44
 rownames(df)[grep("AFFX", x = rownames(df))]
+# [1] "AFFX-HSAC07/X00351_3_at"     "AFFX-HSAC07/X00351_5_at"     "AFFX-HSAC07/X00351_M_at"     "AFFX-hum_alu_at"            
+# [5] "AFFX-HUMGAPDH/M33197_3_at"   "AFFX-HUMGAPDH/M33197_5_at"   "AFFX-HUMGAPDH/M33197_M_at"   "AFFX-HUMISGF3A/M97935_3_at" 
+# [9] "AFFX-HUMISGF3A/M97935_MB_at" "AFFX-HUMRGE/M10098_3_at"     "AFFX-HUMRGE/M10098_5_at"     "AFFX-HUMRGE/M10098_M_at"    
+# [13] "AFFX-M27830_5_at"    
 
 id <- factor(pheno_data$id)
 time <- factor(pheno_data$time)
 sex <- factor(pheno_data$sex)
-
 TS <- factor(paste(time,sex, sep = "."))
 design <- model.matrix(~0+TS, df)
 colnames(design) <- make.names(levels(TS))
 cor <- duplicateCorrelation(df, design, block=id)
 cor$consensus.correlation
-# [1] 0.2657351
+# [1] 0.3508609
 
 fit <- lmFit(object=df, design=design, block=id, correlation=cor$consensus.correlation)
 
@@ -266,14 +343,14 @@ dt <- decideTests(x)
 summary(dt)
 #         Time Time_sex
 # Down       0        0
-# NotSig 54630    54630
+# NotSig 15607    15607
 # Up         0        0
 dt <- decideTests(x, adjust.method = "none")
 summary(dt)
 #         Time Time_sex
-# Down     874     3399
-# NotSig 52928    49655
-# Up       828     1576
+# Down      86      459
+# NotSig 15353    14398
+# Up       168      750
 tables <- list(time = topTable(x, coef = 1, number = Inf, adjust.method = "fdr"),
                interaction = topTable(x, coef = 2, number = Inf, adjust.method = "fdr"))
 tables <- lapply(tables, function(x) {

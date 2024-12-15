@@ -1,5 +1,5 @@
-## Which is the best for finding stable-polymorphic genes: .sd, .vp, or .rp?
-## July 30 2024
+## Which is the best for finding stable-polymorphic genes: , .vp, or .rp?
+## October 27 2024
 library(tidyverse)
 library(VennDiagram)
 
@@ -20,9 +20,9 @@ sourcePartial(fn = paste(input, "code/stable_polymorphic_genes.R", sep = ""),
               endTag = '# Stable-polymorphic genes across studies ----'
               )
 
-symbols <- read.table(paste(input, "output/common_symbols9474.txt", sep = ""))
+symbols <- read.table(paste(input, "output/common_symbols6099.txt", sep = ""))
 symbols <- symbols$x
-sd_count <- data.frame(matrix(ncol = 13, nrow = 9474))
+sd_count <- data.frame(matrix(ncol = 13, nrow = 6099))
 rownames(sd_count) <- symbols
 colnames(sd_count) <- names(sd)
 for (i in 1:nrow(sd_count)) {
@@ -32,8 +32,8 @@ for (i in 1:nrow(sd_count)) {
 }
 head(sd_count)
 sd_count <- sd_count %>% 
-  mutate(Microarray = obermoser1 + obermoser2 + obermoser3 + obermoser4 + dusek + rusch + meaburn1 + meaburn2 +
-           karlovich1 + karlovich2,
+  mutate(Microarray = obermoser1 + obermoser2 + obermoser3 + obermoser4 + dusek + rusch + meaburn1 +
+           meaburn2 + karlovich1 + karlovich2,
          RNAseq = gomez + gosch + larocca) %>% 
   mutate(Studies = gomez  + gosch  + (obermoser1 + obermoser2 + obermoser3 + obermoser4  > 0) + dusek  +
            rusch  + larocca  + (meaburn1 + meaburn2  > 0) + (karlovich1 + karlovich2 > 0))
@@ -42,9 +42,9 @@ sd_symbols <- sd_count %>%
   dplyr::filter(Microarray > 0, RNAseq > 0, Studies >= 4) %>% 
   rownames()
 sd_symbols
-# [1] "FAM118A"  "ERAP2"    "HLA-DQB1"
+# [1] "ERAP2"    "HLA-DQB1" "HLA-DRB5"
 
-vp_count <- data.frame(matrix(ncol = 13, nrow = 9474))
+vp_count <- data.frame(matrix(ncol = 13, nrow = 6099))
 rownames(vp_count) <- symbols
 colnames(vp_count) <- names(vp)
 for (i in 1:nrow(vp_count)) {
@@ -64,9 +64,9 @@ vp_symbols <- vp_count %>%
   dplyr::filter(Microarray > 0, RNAseq > 0, Studies >= 4) %>% 
   rownames()
 length(vp_symbols)
-# [1] 2651
+# [1] 1260
 
-rp_count <- data.frame(matrix(ncol = 13, nrow = 9474))
+rp_count <- data.frame(matrix(ncol = 13, nrow = 6099))
 rownames(rp_count) <- symbols
 colnames(rp_count) <- names(rp)
 for (i in 1:nrow(rp_count)) {
@@ -86,7 +86,7 @@ rp_symbols <- rp_count %>%
   dplyr::filter(Microarray > 0, RNAseq > 0, Studies >= 4) %>% 
   rownames()
 length(rp_symbols)
-# [1] 1878
+# [1] 869
 
 venn.diagram(x = list(sd_symbols, vp_symbols, rp_symbols), 
              category.names = c("Standard deviation", "variancePartition", "Repeatability"),

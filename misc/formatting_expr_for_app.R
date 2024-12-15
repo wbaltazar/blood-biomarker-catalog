@@ -43,6 +43,8 @@ sourcePartial("~/Desktop/work_repo/github/Meaburn_study_data/code/Meaburn_variat
               startTag = "## Load libraries ----", 
               endTag = "## varianceParitition 1 ----")
 head(norm_expr)
+dim(norm_expr)
+# [1] 25419    19
 colnames(norm_expr) <- str_replace(colnames(norm_expr), pattern = "\\.CEL.gz", replacement = "")
 probes <- unlist(rownames(norm_expr))
 class(probes)
@@ -53,20 +55,18 @@ norm_expr <- as.data.frame(norm_expr)
 norm_expr$Probe <- probes
 new_names <- mapIds(x = hgu133plus2.db, keys = probes, column = "SYMBOL", keytype = "PROBEID")
 head(unname(new_names), 100)
-# [1] "DDR1"     "RFC2"     "HSPA6"    "PAX8"     "GUCA1A"   "UBA7"     "THRA"     "PTPN21"   "CCL5"    
-# [10] "CYP2E1"   "EPHB3"    "ESRRA"    "CYP2A6"   "SCARB1"   "TTLL12"   NA         "WFDC2"    "MAPK1"   
-# [19] "MAPK1"    "ADAM32"   "SPATA17"  "PRR22"    "PRR22"    "PXK"      "PXK"      "VPS18"    "MSANTD3" 
-# [28] "SLC46A1"  "SLC46A1"  "TIMD4"    "SLC39A5"  "ZDHHC11"  "ATP6V1E2" "AFG3L1P"  "CILP2"    "CILP2"   
-# [37] "PIGX"     "TMEM196"  "SLC39A13" "BEST4"    "AK9"      "CORO6"    "TMEM106A" "TMEM106A" "ALG10"   
-# [46] "ALG10"    "TTC39C"   "NEXN"     "C15orf40" "RAX2"     "MFAP3"    "EYA3"     "GIMAP1"   "GIMAP1"  
-# [55] "GIMAP1"   "KLK8"     "CCDC65"   "CCDC65"   "PABIR3"   "PABIR3"   "CFAP53"   "CFAP53"   "ARMCX4"  
-# [64] "RBBP6"    "CENPBD1P" "TRIOBP"   "TRIOBP"   "CATSPER1" "HOXD4"    "GSC"      "SP7"      "PDE7A"   
-# [73] "CNOT7"    "CRYZL1"   "PRSS33"   "PRSS33"   "CBARP"    "CBARP"    "MCMDC2"   "TIRAP"    "LEAP2"   
-# [82] "MSI2"     "SCIN"     "SCIN"     "CTCFL"    "C4orf33"  "C4orf33"  "C4orf33"  "ZNF333"   "TVP23C"  
-# [91] "RDH10"    "RDH10"    "SRSF12"   "GARIN4"   "GARIN4"   "GAPT"     "SCUBE1"   "ERICH5"   "ERICH5"  
-# [100] "CCDC185" 
+# [1] "DDR1"      "RFC2"      "HSPA6"     "PAX8"      "UBA7"      "THRA"      "CCL5"      "CYP2E1"    "ESRRA"     "CYP2A6"   
+# [11] "SCARB1"    "TTLL12"    NA          "MAPK1"     "MAPK1"     "PXK"       "PXK"       "MSANTD3"   "SLC46A1"   "ZDHHC11"  
+# [21] "ATP6V1E2"  "AFG3L1P"   "PIGX"      "CORO6"     "TMEM106A"  "TMEM106A"  "ALG10"     "TTC39C"    "NEXN"      "C15orf40" 
+# [31] "MFAP3"     "GIMAP1"    "GIMAP1"    "GIMAP1"    "CCDC65"    "CCDC65"    "PABIR3"    "PABIR3"    "RBBP6"     "CENPBD1P" 
+# [41] "TRIOBP"    "PDE7A"     "CNOT7"     "CRYZL1"    "PRSS33"    "PRSS33"    "TIRAP"     "LEAP2"     "MSI2"      "C4orf33"  
+# [51] "ZNF333"    "GAPT"      "CLEC12A"   "CLEC4F"    "NEDD1"     "ETV3"      "TM2D3"     "ZNF485"    "ACAP2"     "PTPRC"    
+# [61] "LACTB"     "LACTB"     "AFG1L"     "SLAMF6"    "GPBAR1"    "HIPK1"     "ACVR1C"    "TMEM74"    "VTI1A"     "TAGAP"    
+# [71] "TAGAP"     "LETM2"     "CLEC4C"    "NLRC4"     "NLRC4"     "ZNF570"    "ABCC13"    "IL12RB1"   "FAM223B"   "JAK1"     
+# [81] "JAK1"      "CDC42SE2"  "CDC42SE2"  "COP1"      "STX6"      "POLR2J2"   "PMS2P5"    "HSH2D"     "TRNT1"     "HERPUD2"  
+# [91] "ARSG"      "ZNF101"    "ZNF101"    "PHC3"      "TNFRSF10A" "RFFL"      "HPS4"      "C5orf22"   "FLCN"      "SH2D3C" 
 sum(is.na(new_names))
-# [1] 10025
+# [1] 3100
 for (i in 1:length(new_names)) {
   if (is.na(new_names[i])) {
     new_names[i] <- names(new_names)[i]
@@ -77,10 +77,10 @@ for (i in 1:length(new_names)) {
 sum(is.na(new_names))
 # [1] 0
 length(grep("^\\d", new_names))
-# [1] 9973
+# [1] 3052
 new_names <- make.names(new_names, unique = T)
 rownames(norm_expr) <- new_names
-write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data/expr/Meaburn1.rds")
+write_rds(norm_expr, file = "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/Meaburn1.rds")
 ## Write phenotype data to application folder
 write.csv(p1, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/2Meaburn1_pheno.csv")
 
@@ -91,6 +91,8 @@ sourcePartial("~/Desktop/work_repo/github/Meaburn_study_data/code/Meaburn_variat
 colnames(norm_expr) <- str_replace(colnames(norm_expr), pattern = "\\.CEL.gz", replacement = "")
 probes <- unlist(rownames(norm_expr))
 norm_expr <- as.data.frame(norm_expr)
+dim(norm_expr)
+# [1] 26474    17
 norm_expr$Probe <- probes
 new_names <- mapIds(x = hgu133plus2.db, keys = probes, column = "SYMBOL", keytype = "PROBEID")
 head(unname(new_names), 100)
@@ -105,7 +107,7 @@ sum(is.na(new_names))
 # [1] 0
 new_names <- make.names(new_names, unique = T)
 rownames(norm_expr) <- new_names
-write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data/expr/Meaburn2.rds")
+write_rds(norm_expr, file = "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/Meaburn2.rds")
 ## Write phenotype data to application folder
 write.csv(p2, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/2Meaburn2_pheno.csv")
 
@@ -139,22 +141,17 @@ write.csv(pheno_data, "~/Desktop/work_repo/Box organization/1results/RShiny-appl
 sourcePartial("~/Desktop/work_repo/github/Obermoser_study_data/code/Obermoser_variation.R",
               startTag = "# across cohorts measures different time intervals, including an hour-by-hour measurement.", 
               endTag = "## varianceParitition 1 ----")
-norm_expr[1:5,1:5]
-# X4835507041_F.AVG_Signal X4835507052_A.AVG_Signal X4835507049_K.AVG_Signal X4853887047_C.AVG_Signal
-# ILMN_2209417                 4.480964                 4.525181                 4.509781                 4.731090
-# ILMN_1765401                 6.427961                 6.345370                 5.231324                 7.154682
-# ILMN_1652171                 4.971882                 4.602338                 4.752796                 4.838257
-# ILMN_1652170                 5.182336                 4.756486                 5.818189                 4.849556
-# ILMN_1792710                 5.362644                 4.829314                 5.304991                 5.403610
-# X4835507042_G.AVG_Signal
-# ILMN_2209417                 4.570871
-# ILMN_1765401                 6.363239
-# ILMN_1652171                 4.605877
-# ILMN_1652170                 5.256817
-# ILMN_1792710                 4.852865
+norm_expr[1:4,1:4]
+#              X4835507041_F.AVG_Signal X4835507052_A.AVG_Signal X4835507049_K.AVG_Signal X4853887047_C.AVG_Signal
+# ILMN_1765401                 6.433098                 6.350373                 5.234039                 7.160030
+# ILMN_1652170                 5.184856                 4.757480                 5.822481                 4.850829
+# ILMN_1792710                 5.365804                 4.830513                 5.307994                 5.406890
+# ILMN_1703558                 8.187752                 8.537027                 8.147067                 8.438531
 identical(substr(p1v$array, start = 1, stop = 10), str_extract(colnames(norm_expr), "\\d+"))
 # [1] TRUE
 colnames(norm_expr) <- p1v$geo_accession
+dim(norm_expr)
+# [1] 21699   161
 newnames <- mapIds(x = illuminaHumanv3.db, keys = rownames(norm_expr), column = "SYMBOL", keytype = "PROBEID")
 for (i in 1:length(newnames)) {
   if (is.na(newnames[i])) {
@@ -171,14 +168,14 @@ norm_expr <- as.data.frame(norm_expr)
 norm_expr$Probe <- rownames(norm_expr)
 rownames(norm_expr) <- make.names(newnames, unique = T)
 norm_expr[1:5, 1:5]
-# GSM744835 GSM744836 GSM744837 GSM744838 GSM744839
-# ATP4A      4.480964  4.525181  4.509781  4.731090  4.570871
-# RRN3       6.427961  6.345370  5.231324  7.154682  6.363239
-# CDKN2C     4.971882  4.602338  4.752796  4.838257  4.605877
-# LINC00273  5.182336  4.756486  5.818189  4.849556  5.256817
-# DAPK3      5.362644  4.829314  5.304991  5.403610  4.852865
+#           GSM744835 GSM744836 GSM744837 GSM744838 GSM744839
+# RRN3       6.433098  6.350373  5.234039  7.160030  6.368260
+# LINC00273  5.184856  4.757480  5.822481  4.850829  5.259615
+# DAPK3      5.365804  4.830513  5.307994  5.406890  4.854150
+# FHL3       8.187752  8.537027  8.147067  8.438531  8.051755
+# DNAJC15    7.545133  6.856175  6.924462  7.075560  7.333289
 head(norm_expr$Probe)
-# [1] "ILMN_2209417" "ILMN_1765401" "ILMN_1652171" "ILMN_1652170" "ILMN_1792710" "ILMN_1703558"
+# [1] "ILMN_1765401" "ILMN_1652170" "ILMN_1792710" "ILMN_1703558" "ILMN_1812666" "ILMN_1720799"
 write_rds(norm_expr, file = "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/obermoser1.rds")
 ## Write phenotype data to application folder
 write.csv(p1v, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/4obermoser1_pheno.csv")
@@ -193,6 +190,8 @@ head(colnames(norm_expr))
 identical(substr(p1f$array, start = 1, stop = 10), str_extract(colnames(norm_expr), "\\d+"))
 # [1] TRUE
 colnames(norm_expr) <- p1f$geo_accession
+dim(norm_expr)
+# [1] 16054    49
 newnames <- mapIds(x = illuminaHumanv3.db, keys = rownames(norm_expr), column = "SYMBOL", keytype = "PROBEID")
 for (i in 1:length(newnames)) {
   if (is.na(newnames[i])) {
@@ -209,7 +208,7 @@ rownames(norm_expr) <- make.names(newnames, unique = T)
 norm_expr[1:5, 1:5]
 head(norm_expr$Probe)
 dim(norm_expr)
-# [1] 22413    50 (same as Obermoser_variation.R, but one more column for Probe)
+# [1] 16054    50 (same as Obermoser_variation.R, but one more column for Probe)
 write_rds(norm_expr, file = "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/obermoser2.rds")
 ## Write phenotype data to application folder
 write.csv(p1f, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/4obermoser2_pheno.csv")
@@ -224,6 +223,8 @@ head(colnames(norm_expr))
 identical(substr(p2v$array, start = 1, stop = 10), str_extract(colnames(norm_expr), "\\d+"))
 # [1] TRUE
 colnames(norm_expr) <- p2v$geo_accession
+dim(norm_expr)
+# [1] 21167   144
 newnames <- mapIds(x = illuminaHumanv3.db, keys = rownames(norm_expr), column = "SYMBOL", keytype = "PROBEID")
 for (i in 1:length(newnames)) {
   if (is.na(newnames[i])) {
@@ -240,7 +241,7 @@ rownames(norm_expr) <- make.names(newnames, unique = T)
 norm_expr[1:5, 1:5]
 head(norm_expr$Probe)
 dim(norm_expr)
-# [1] 27431   144
+# [1] 21167   144
 write_rds(norm_expr, file = "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/obermoser3.rds")
 ## Write phenotype data to application folder
 write.csv(p2v, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/4obermoser3_pheno.csv")
@@ -255,6 +256,8 @@ head(colnames(norm_expr))
 identical(substr(p2f$array, start = 1, stop = 10), str_extract(colnames(norm_expr), "\\d+"))
 # [1] TRUE
 colnames(norm_expr) <- p2f$geo_accession
+dim(norm_expr)
+# [1] 19825   185
 newnames <- mapIds(x = illuminaHumanv3.db, keys = rownames(norm_expr), column = "SYMBOL", keytype = "PROBEID")
 for (i in 1:length(newnames)) {
   if (is.na(newnames[i])) {
@@ -271,7 +274,7 @@ rownames(norm_expr) <- make.names(newnames, unique = T)
 norm_expr[1:5, 1:5]
 head(norm_expr$Probe)
 dim(norm_expr)
-# [1] 23484   186 (same as Obermoser_variation.R, but one more column for Probe)
+# [1] 19825   186
 write_rds(norm_expr, file = "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/obermoser4.rds")
 ## Write phenotype data to application folder
 write.csv(p2f, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/4obermoser4_pheno.csv")
@@ -281,12 +284,14 @@ sourcePartial("~/Desktop/work_repo/github/Dusek_study_data/code/Dusek_variation.
               startTag = "## Load libraries ----", 
               endTag = "## varianceParitition ----")
 norm_expr[1:5,1:5]
-# GSM253663 GSM253664 GSM253665 GSM253666 GSM253668
-# 1007_s_at  6.893945  6.933046  7.038875  7.360868  7.033034
-# 1053_at    6.020718  5.967918  6.221690  6.340561  5.705007
-# 117_at     8.405883  8.248298  8.831063  8.202793  8.309342
-# 121_at     8.494362  8.781406  8.425188  8.529056  8.447904
-# 1255_g_at  3.325685  3.624963  3.340179  3.407576  3.516416
+#         GSM253663 GSM253664 GSM253665 GSM253666 GSM253668
+# 1053_at  6.020718  5.967918  6.221690  6.340561  5.705007
+# 117_at   8.405883  8.248298  8.831063  8.202793  8.309342
+# 121_at   8.494362  8.781406  8.425188  8.529056  8.447904
+# 1294_at  7.761764  7.398413  7.644221  7.626453  7.577665
+# 1316_at  5.800415  6.072798  5.869718  5.698908  5.951719
+dim(norm_expr)
+# [1] 15963    44
 newnames <- mapIds(x = hgu133plus2.db, keys = rownames(norm_expr), column = "SYMBOL", keytype = "PROBEID")
 for (i in 1:length(newnames)) {
   if (is.na(newnames[i])) {
@@ -311,14 +316,14 @@ sourcePartial("~/Desktop/work_repo/github/Rusch_study_data/code/Rusch_variation.
               startTag = "## Load libraries ----", 
               endTag = "## varianceParitition ----")
 dim(norm_expr)
-# [1] 54675    38
-norm_expr[1:5,1:5]
-# GSM2175170 GSM2175171 GSM2175182 GSM2175183 GSM2175185
-# 1007_s_at   6.723975   6.796586   7.164297   6.610909   6.818922
-# 1053_at     6.599784   6.712995   6.859752   7.145761   6.817535
-# 117_at      9.007288   8.805269   8.375141   9.490100   9.197723
-# 121_at      8.227604   8.331777   8.171151   8.175178   8.197186
-# 1255_g_at   3.011893   2.993132   2.910271   2.848268   2.735265
+# [1] 21374    38
+norm_expr[1:5,1:3]
+# GSM2175170_md109_HG-U133_Plus_2.CEL.gz GSM2175171_md112_HG-U133_Plus_2.CEL.gz GSM2175182_md138_HG-U133_Plus_2.CEL.gz
+# 1053_at                               6.599784                               6.712995                               6.859752
+# 117_at                                9.007288                               8.805269                               8.375141
+# 121_at                                8.227604                               8.331777                               8.171151
+# 1294_at                               7.829571                               7.858019                               7.998548
+# 1316_at                               5.646710                               5.949423                               6.005740
 newnames <- mapIds(x = hgu133plus2.db, keys = rownames(norm_expr), column = "SYMBOL", keytype = "PROBEID")
 for (i in 1:length(newnames)) {
   if (is.na(newnames[i])) {
@@ -333,14 +338,22 @@ norm_expr <- as.data.frame(norm_expr)
 norm_expr$Probe <- rownames(norm_expr)
 rownames(norm_expr) <- make.names(newnames, unique = T)
 norm_expr[1:5, 1:5]
-# GSM2175170 GSM2175171 GSM2175182 GSM2175183 GSM2175185
-# DDR1     6.723975   6.796586   7.164297   6.610909   6.818922
-# RFC2     6.599784   6.712995   6.859752   7.145761   6.817535
-# HSPA6    9.007288   8.805269   8.375141   9.490100   9.197723
-# PAX8     8.227604   8.331777   8.171151   8.175178   8.197186
-# GUCA1A   3.011893   2.993132   2.910271   2.848268   2.735265
+#       GSM2175170_md109_HG-U133_Plus_2.CEL.gz GSM2175171_md112_HG-U133_Plus_2.CEL.gz GSM2175182_md138_HG-U133_Plus_2.CEL.gz
+# RFC2                                6.599784                               6.712995                               6.859752
+# HSPA6                               9.007288                               8.805269                               8.375141
+# PAX8                                8.227604                               8.331777                               8.171151
+# UBA7                                7.829571                               7.858019                               7.998548
+# THRA                                5.646710                               5.949423                               6.005740
+#       GSM2175183_md139_HG-U133_Plus_2.CEL.gz GSM2175185_md141_HG-U133_Plus_2.CEL.gz
+# RFC2                                7.145761                               6.817535
+# HSPA6                               9.490100                               9.197723
+# PAX8                                8.175178                               8.197186
+# UBA7                                7.650091                               8.150917
+# THRA                                5.540203                               5.482492
+colnames(norm_expr) <- str_extract(colnames(norm_expr), pattern = "^GSM\\d+")
+colnames(norm_expr)[39] <- "Probe"
 head(norm_expr$Probe)
-# [1] "1007_s_at" "1053_at"   "117_at"    "121_at"    "1255_g_at" "1294_at"  
+# [1] "1053_at"   "117_at"    "121_at"    "1294_at"   "1316_at"   "1405_i_at"
 write_rds(norm_expr, file = "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/rusch.rds")
 ## Write phenotype data to application folder
 write.csv(pheno_data, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/6Rusch_pheno.csv")
@@ -362,6 +375,7 @@ write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data
 
 ## Since all RNA-seq data sets are matrices, we can replace their row names with named lists that include ENSEMBL IDs
 e11 <- read_rds("~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/larocca.rds")
+library(EnsDb.Hsapiens.v86)
 new_names <- mapIds(x = EnsDb.Hsapiens.v86, keys = str_replace(rownames(e11), "\\.", "-"), column = "GENEID", keytype = "SYMBOL")
 names(rownames(e11)) <- unname(new_names)
 head(rownames(e11))
@@ -387,6 +401,8 @@ sourcePartial("~/Desktop/work_repo/github/Karlovich_study_data/code/Karlovich_va
               startTag = "## Load libraries ----", 
               endTag = "## varianceParitition 1 ----")
 head(norm_expr)
+dim(norm_expr)
+# [1] 17635    66
 colnames(norm_expr) <- str_replace(colnames(norm_expr), pattern = "\\.CEL.gz", replacement = "")
 probes <- unlist(rownames(norm_expr))
 class(probes)
@@ -397,20 +413,20 @@ norm_expr <- as.data.frame(norm_expr)
 norm_expr$Probe <- probes
 new_names <- mapIds(x = hgu133plus2.db, keys = probes, column = "SYMBOL", keytype = "PROBEID")
 head(unname(new_names), 100)
-# [1] "DDR1"     "RFC2"     "HSPA6"    "PAX8"     "GUCA1A"   "UBA7"     "THRA"     "PTPN21"   "CCL5"    
-# [10] "CYP2E1"   "EPHB3"    "ESRRA"    "CYP2A6"   "SCARB1"   "TTLL12"   NA         "WFDC2"    "MAPK1"   
-# [19] "MAPK1"    "ADAM32"   "SPATA17"  "PRR22"    "PRR22"    "PXK"      "PXK"      "VPS18"    "MSANTD3" 
-# [28] "SLC46A1"  "SLC46A1"  "TIMD4"    "SLC39A5"  "ZDHHC11"  "ATP6V1E2" "AFG3L1P"  "CILP2"    "CILP2"   
-# [37] "PIGX"     "TMEM196"  "SLC39A13" "BEST4"    "AK9"      "CORO6"    "TMEM106A" "TMEM106A" "ALG10"   
-# [46] "ALG10"    "TTC39C"   "NEXN"     "C15orf40" "RAX2"     "MFAP3"    "EYA3"     "GIMAP1"   "GIMAP1"  
-# [55] "GIMAP1"   "KLK8"     "CCDC65"   "CCDC65"   "PABIR3"   "PABIR3"   "CFAP53"   "CFAP53"   "ARMCX4"  
-# [64] "RBBP6"    "CENPBD1P" "TRIOBP"   "TRIOBP"   "CATSPER1" "HOXD4"    "GSC"      "SP7"      "PDE7A"   
-# [73] "CNOT7"    "CRYZL1"   "PRSS33"   "PRSS33"   "CBARP"    "CBARP"    "MCMDC2"   "TIRAP"    "LEAP2"   
-# [82] "MSI2"     "SCIN"     "SCIN"     "CTCFL"    "C4orf33"  "C4orf33"  "C4orf33"  "ZNF333"   "TVP23C"  
-# [91] "RDH10"    "RDH10"    "SRSF12"   "GARIN4"   "GARIN4"   "GAPT"     "SCUBE1"   "ERICH5"   "ERICH5"  
-# [100] "CCDC185" 
+# [1] "RFC2"       "HSPA6"      "PAX8"       "UBA7"       "THRA"       "CCL5"       "ESRRA"      "SCARB1"     "TTLL12"    
+# [10] "MAPK1"      "MAPK1"      "PXK"        "SLC46A1"    "ZDHHC11"    "AFG3L1P"    "PIGX"       "CORO6"      "TMEM106A"  
+# [19] "NEXN"       "C15orf40"   "GIMAP1"     "GIMAP1"     "GIMAP1"     "CCDC65"     "RBBP6"      "CENPBD1P"   "PDE7A"     
+# [28] "CRYZL1"     "PRSS33"     "LEAP2"      "MSI2"       "ZNF333"     "GAPT"       "CLEC12A"    "ETV3"       "TM2D3"     
+# [37] "ZNF485"     "SERPINB11"  "ACAP2"      "PTPRC"      "LACTB"      "SLAMF6"     "GPBAR1"     "ACVR1C"     "TMEM74"    
+# [46] "VTI1A"      "CLEC4C"     "NLRC4"      "RAI1"       NA           "IL12RB1"    "FAM223B"    "JAK1"       "JAK1"      
+# [55] "CDC42SE2"   "CDC42SE2"   "COP1"       "POLR2J2"    "PMS2P5"     "HSH2D"      "HERPUD2"    "ARSG"       "ZNF101"    
+# [64] "ZNF101"     "PHC3"       "HPS4"       "FLCN"       "SH2D3C"     "PPP1R3B"    "UCN3"       "ARL11"      "CARD16"    
+# [73] "CARD16"     "SLC4A1"     "GOLM2"      "RHOXF1"     "KLHDC1"     "CADM2"      "ZNF563"     "CLEC4D"     "CLEC4D"    
+# [82] "HELB"       "SEC62"      "SEC62"      "TLR4"       "SIGLEC10"   NA           "CACNG6"     "EXOC3L2"    "LINC01312" 
+# [91] "MMEL1"      "TRIM67-AS1" "ZMYM6"      "DNAJB13"    "CNPY3"      "SCAMP1"     "SDCCAG8"    "CD300LF"    "PIP4K2B"   
+# [100] "SLFN5"     
 sum(is.na(new_names))
-# [1] 10025
+# [1] 1913
 for (i in 1:length(new_names)) {
   if (is.na(new_names[i])) {
     new_names[i] <- names(new_names)[i]
@@ -421,10 +437,10 @@ for (i in 1:length(new_names)) {
 sum(is.na(new_names))
 # [1] 0
 length(grep("^\\d", new_names))
-# [1] 9973
+# [1] 1907
 new_names <- make.names(new_names, unique = T)
 rownames(norm_expr) <- new_names
-write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data/expr/Karlovich1.rds")
+write_rds(norm_expr, file = "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/Karlovich1.rds")
 ## Write phenotype data to application folder
 write.csv(p1, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/8Karlovich1_pheno.csv")
 
@@ -433,6 +449,8 @@ sourcePartial("~/Desktop/work_repo/github/Karlovich_study_data/code/Karlovich_va
               startTag = "# Analysis of batch 2 data ----", 
               endTag = "## varianceParitition 2 ----")
 colnames(norm_expr) <- str_replace(colnames(norm_expr), pattern = "\\.CEL.gz", replacement = "")
+dim(norm_expr)
+# [1] 16352    40
 probes <- unlist(rownames(norm_expr))
 norm_expr <- as.data.frame(norm_expr)
 norm_expr$Probe <- probes
@@ -449,6 +467,6 @@ sum(is.na(new_names))
 # [1] 0
 new_names <- make.names(new_names, unique = T)
 rownames(norm_expr) <- new_names
-write_rds(norm_expr, file = "./Box organization/1results/RShiny-application/data/expr/Karlovich2.rds")
+write_rds(norm_expr, file = "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/expr/Karlovich2.rds")
 ## Write phenotype data to application folder
 write.csv(p2, "~/Desktop/work_repo/Box organization/1results/RShiny-application/data/phenotypes/8Karlovich2_pheno.csv")

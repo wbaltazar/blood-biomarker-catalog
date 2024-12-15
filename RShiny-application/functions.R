@@ -4,6 +4,7 @@ library(rJava)
 library(httr)
 library(jsonlite)
 library(cowplot)
+library(nanoparquet)
 
 # The gene_graph function ----
 gene_graph <- function(geneName, pData, expr, column = "subject", ylim = c(min(expr),max(expr))) {
@@ -19,7 +20,7 @@ gene_graph <- function(geneName, pData, expr, column = "subject", ylim = c(min(e
       ggtitle(geneName) +
       theme(title = element_text(size = 15, face = "bold"), axis.title = element_text(size = 10)) +
       xlab(label = "Time of sampling") +
-      ylab(label = "Normalized expression") +
+      ylab(label = "log2(normalized expression)") +
       lims(y = ylim) +
       labs(color = column)
     return(p)
@@ -44,7 +45,7 @@ gene_graph_p <- function(probeName, pData, expr, column = "subject", ylim = c(mi
       ggtitle(paste(symbol[which(rownames(expr) == probeName)], ", ", probeName, sep = "")) +
       theme(title = element_text(size = 15, face = "bold"), axis.title = element_text(size = 10)) +
       xlab(label = "Time of sampling") +
-      ylab(label = "Normalized expression") +
+      ylab(label = "log2(normalized expression)") +
       lims(y = ylim) +
       labs(color = column)
     return(p)
