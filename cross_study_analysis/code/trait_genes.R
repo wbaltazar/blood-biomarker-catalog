@@ -81,7 +81,7 @@ rp <- lapply(data, function (x) {
     as.list() %>% unlist() %>% unname()
 })
 
-# Stable-polymorphic genes across studies ----
+# Trait genes across studies ----
 ## reformat so gene symbols are similar ----
 ### Replaces all '.' with '-' unless they are the final . proceeded by a number (which come about
 # as a consequence of make.names(gene_symbols, unique = T)). Then, removes the . at the end.
@@ -99,7 +99,7 @@ names(rp) <- paste(names(rp), "rp", sep = ".")
 
 all_filters <- c(sd, vp, rp)
 towrite <- lapply(all_filters, as.data.frame)
-writexl::write_xlsx(towrite, path = paste(output_dir, "characteristic_thresholds.xlsx", sep = ""))
+writexl::write_xlsx(towrite, path = paste(output_dir, "trait_thresholds.xlsx", sep = ""))
 
 ## How many unique filters are there?
 length(all_filters)
@@ -144,7 +144,7 @@ stable_results <- stable_results %>%
            (dusek > 0) + (rusch > 0) + (larocca > 0) + (karlovich > 0))
 
 ### Save results -----
-write.csv(stable_results, file = paste(output_dir, "characteristic_scores.csv", sep = ""))
+write.csv(stable_results, file = paste(output_dir, "trait_scores.csv", sep = ""))
 
 ## Median statistic function
 summarize_statistics <- function(gene) {
@@ -201,7 +201,7 @@ length(common_symbols)
 write.table(common_symbols, file = paste(output_dir, "common_symbols6099.txt", sep = ""))
 
 ## Supplementary Table 1 ----
-stable_results <- read.csv(file = paste(output_dir, "characteristic_scores.csv", sep = ""))
+stable_results <- read.csv(file = paste(output_dir, "trait_scores.csv", sep = ""))
 stable_results <- stable_results %>% dplyr::filter(Study_counts == 8)
 dim(stable_results)
 # [1] 309  13

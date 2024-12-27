@@ -241,10 +241,10 @@ for (i in 1:nrow(deg_results)) {
     as.numeric(grepl("karlovich", deg_results$P_study_names[i])) 
 }
 head(deg_results)
-write.csv(deg_results, file = paste(output_dir, "flexible_gene_scores.csv", sep = ""))
+write.csv(deg_results, file = paste(output_dir, "state_gene_scores.csv", sep = ""))
 
 ## Supplementary table S2 ----
-deg_results <- read.csv(paste(output_dir, "flexible_gene_scores.csv", sep = ""))
+deg_results <- read.csv(paste(output_dir, "state_gene_scores.csv", sep = ""))
 head(deg_results[order(deg_results$P_value_study_count, decreasing = T), c("Symbol", "P_value_study_count")],20)
 #       Symbol P_value_study_count
 # 613    VMA21                   7

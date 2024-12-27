@@ -15,9 +15,9 @@ sourcePartial <- function(fn, startTag='#from here', endTag='#to here') {
   source(tc)
   close(tc)
 }
-sourcePartial(fn = paste(input, "code/stable_polymorphic_genes.R", sep = ""), 
+sourcePartial(fn = paste(input, "code/trait_genes.R", sep = ""), 
               startTag = '## Load in', 
-              endTag = '# Stable-polymorphic genes across studies ----'
+              endTag = '# Trait genes across studies ----'
               )
 
 symbols <- read.table(paste(input, "output/common_symbols6099.txt", sep = ""))
@@ -91,8 +91,17 @@ length(rp_symbols)
 venn.diagram(x = list(sd_symbols, vp_symbols, rp_symbols), 
              category.names = c("Standard deviation", "variancePartition", "Repeatability"),
              fill = c("orange1", "royalblue3", "darkviolet"), col = "black",
-             main = "Characteristic gene filters (>= 4 studies)", imagetype = "png", 
+             main = "Trait gene filters (>= 4 studies)", imagetype = "png", 
              main.fontfamily = "Arial", main.fontface = "bold", fontfamily = "Arial", cat.cex = c(1.078,1.13,1.23),
              cat.fontfamily = "Arial", cat.dist = c(-0.078,-0.09, -0.09),
              disable.logging = T,
              filename = paste(output, "comparison_of_filters.png", sep = ""))
+## WITHOUT LABELS
+venn.diagram(x = list(sd_symbols, vp_symbols, rp_symbols), 
+             category.names = c("", "", ""),
+             fill = c("orange1", "royalblue3", "darkviolet"), col = "black",
+             main = "", imagetype = "png", 
+             main.fontfamily = "Arial", main.fontface = "bold", fontfamily = "Arial", cat.cex = c(1.078,1.13,1.23),
+             cat.fontfamily = "Arial", cat.dist = c(-0.078,-0.09, -0.09), cex = 1.8,
+             disable.logging = T,
+             filename = paste(output, "supplementary_figure_s1.png", sep = ""))

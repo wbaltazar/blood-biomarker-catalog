@@ -122,6 +122,48 @@ gtex <- gtex[gtex$`Symbol of blood RNA` %in% symbols,]
 dim(gtex)
 # [1] 1058955     16
 
+num_eqtls_gene <- c()
+for (gene in symbols) {
+  num_eqtls_gene <- c(num_eqtls_gene, length(unique(gtex$`rsID of eQTL`[gtex$`Symbol of blood RNA` == gene])))
+}
+num_traits_gene <- c()
+for (gene in symbols) {
+  num_traits_gene <- c(num_traits_gene, length(unique(gtex$`GWAS Trait`[gtex$`Symbol of blood RNA` == gene])))
+}
+
+median <- read.csv("~/Desktop/work_repo/github/cross_study_analysis/output/median_stability_statistics_all.csv")
+median <- median[median$Symbol %in% symbols, ]
+# Percentiles!
+expression <- median[order(median$Average.Expression),]
+expression$percentile <- (1:nrow(expression))/nrow(expression) * 100
+colnames(expression)[c(10,11)] <- c("Symbol of blood RNA", "Median Average Normalized Expression Percentile")
+expression <- expression[,c("Symbol of blood RNA", "Median Average Normalized Expression Percentile")]
+repeatable <- median[order(median$repeatability),]
+repeatable$percentile <- (1:nrow(repeatable))/nrow(repeatable) * 100
+colnames(repeatable)[c(10,11)] <- c("Symbol of blood RNA", "Median Repeatability Percentile")
+repeatable <- repeatable[,c("Symbol of blood RNA", "Median Repeatability Percentile")]
+genvar <- median[order(median$gen.variance),]
+genvar$percentile <- (1:nrow(genvar))/nrow(genvar) * 100
+colnames(genvar)[c(10,11)] <- c("Symbol of blood RNA", "Median Genetic Variance Percentile")
+genvar <- genvar[,c("Symbol of blood RNA","Median Genetic Variance Percentile")]
+
+append <- data.frame(`Symbol of blood RNA` = symbols, 
+                     `Number of eQTL associations in GTEx` = num_eqtls_gene,
+                     `Number of trait associations in GWAS` = num_traits_gene)
+colnames(append) <- c("Symbol of blood RNA", "Number of eQTL associations in GTEx", "Number of trait associations in GWAS")
+append <- merge(append, expression, by = "Symbol of blood RNA")
+append <- merge(append, repeatable, by = "Symbol of blood RNA")
+append <- merge(append, genvar, by = "Symbol of blood RNA")
+
+gtex <- merge(gtex, append, by = "Symbol of blood RNA", all.x = T, sort = F)
+dim(gtex)
+# [1] 1058955      21
+for (i in 1:ncol(gtex)) {
+  if (class(gtex[,i]) == 'numeric') {
+    gtex[,i] <- signif(gtex[,i], digits = 2)
+  } else next
+}
+  
 library(nanoparquet)
 nanoparquet::write_parquet(gtex, file = paste(output_dir, "gtex_variants_and_phenotypes_whole_blood.parquet", sep = ""))
 

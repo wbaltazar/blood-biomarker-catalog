@@ -28,7 +28,9 @@ output_dir <- "~/Desktop/work_repo/github/Obermoser_study_data/output/"
 
 # Load in metadata ----
 gset <- getGEO("GSE30101", AnnotGPL = TRUE, GSEMatrix = TRUE)
+# gset <- getGEO(filename = "~/Downloads/GSE30101_series_matrix.txt.gz", AnnotGPL = TRUE, GSEMatrix = TRUE) # Alternative method, sometimes getGEO will not download this file from GEO.
 pheno_data_org <- pData(gset$GSE30101_series_matrix.txt.gz)
+# pheno_data_org <- pData(gset)
 feature_data <- fData(gset$GSE30101_series_matrix.txt.gz)
 
 colnames(pheno_data_org)
@@ -2051,4 +2053,55 @@ for (i in 21:30) {
 bot <- plot_grid(plotlist = flu, nrow = 1, align = 'h')
 pdf(file = paste(output_dir, "figureS3.pdf", sep = ""), height = 12, width = 26)
 plot_grid(top, mid, bot, nrow = 3, align = 'v')
+dev.off()
+
+## Discovering diurnal genes ----
+diurnal_contrasts <- makeContrasts(A.One.5 = (F.1.5.Saline.African.American.NA + F.1.5.Saline.Caucasian.Hispanic + F.1.5.Saline.Caucasian.Non.Hispanic.or.Latino + M.1.5.Saline.Caucasian.Non.Hispanic.or.Latino)/4 - 
+                                      (F.0.Saline.African.American.NA + F.0.Saline.Caucasian.Hispanic + F.0.Saline.Caucasian.Non.Hispanic.or.Latino + M.0.Saline.Caucasian.Non.Hispanic.or.Latino)/4,
+                                   B.Three = (F.3.Saline.African.American.NA + F.3.Saline.Caucasian.Hispanic + F.3.Saline.Caucasian.Non.Hispanic.or.Latino + M.3.Saline.Caucasian.Non.Hispanic.or.Latino)/4 - 
+                                     (F.0.Saline.African.American.NA + F.0.Saline.Caucasian.Hispanic + F.0.Saline.Caucasian.Non.Hispanic.or.Latino + M.0.Saline.Caucasian.Non.Hispanic.or.Latino)/4,
+                                   C.Six = (F.6.Saline.African.American.NA + F.6.Saline.Caucasian.Hispanic + F.6.Saline.Caucasian.Non.Hispanic.or.Latino + M.6.Saline.Caucasian.Non.Hispanic.or.Latino)/4 - 
+                                     (F.0.Saline.African.American.NA + F.0.Saline.Caucasian.Hispanic + F.0.Saline.Caucasian.Non.Hispanic.or.Latino + M.0.Saline.Caucasian.Non.Hispanic.or.Latino)/4,
+                                   D.Nine = (F.9.Saline.African.American.NA + F.9.Saline.Caucasian.Hispanic + F.9.Saline.Caucasian.Non.Hispanic.or.Latino + M.9.Saline.Caucasian.Non.Hispanic.or.Latino)/4 - 
+                                     (F.0.Saline.African.American.NA + F.0.Saline.Caucasian.Hispanic + F.0.Saline.Caucasian.Non.Hispanic.or.Latino + M.0.Saline.Caucasian.Non.Hispanic.or.Latino)/4,
+                                   E.Twelve = (F.12.Saline.African.American.NA + F.12.Saline.Caucasian.Hispanic + F.12.Saline.Caucasian.Non.Hispanic.or.Latino + M.12.Saline.Caucasian.Non.Hispanic.or.Latino)/4 - 
+                                     (F.0.Saline.African.American.NA + F.0.Saline.Caucasian.Hispanic + F.0.Saline.Caucasian.Non.Hispanic.or.Latino + M.0.Saline.Caucasian.Non.Hispanic.or.Latino)/4,
+                                   F.Fifteen = (F.15.Saline.African.American.NA + F.15.Saline.Caucasian.Hispanic + F.15.Saline.Caucasian.Non.Hispanic.or.Latino + M.15.Saline.Caucasian.Non.Hispanic.or.Latino)/4 - 
+                                     (F.0.Saline.African.American.NA + F.0.Saline.Caucasian.Hispanic + F.0.Saline.Caucasian.Non.Hispanic.or.Latino + M.0.Saline.Caucasian.Non.Hispanic.or.Latino)/4,
+                                   G.Twentyfour = (F.24.Saline.African.American.NA + F.24.Saline.Caucasian.Hispanic + F.24.Saline.Caucasian.Non.Hispanic.or.Latino + M.24.Saline.Caucasian.Non.Hispanic.or.Latino)/4 - 
+                                     (F.0.Saline.African.American.NA + F.0.Saline.Caucasian.Hispanic + F.0.Saline.Caucasian.Non.Hispanic.or.Latino + M.0.Saline.Caucasian.Non.Hispanic.or.Latino)/4,
+                                   levels = colnames(design))
+fit2 <- contrasts.fit(fit, diurnal_contrasts)
+x <- eBayes(fit2)
+
+### Print results to new directory ----
+dir.create(path = paste(output_dir, "diurnal_genes", sep = ""))
+y <- topTable(x, number = Inf, adjust.method = "fdr")
+y$Symbol <- mapIds(x = illuminaHumanv3.db, keys = row.names(y), column = "SYMBOL", keytype = "PROBEID")
+write.csv(y, file = paste(output_dir, "diurnal_genes/diurnal_limma_F.csv", sep = ""), row.names = TRUE)
+
+dt <- decideTests(x, adjust.method = NULL)
+summary(dt)
+#        A.One.5 B.Three C.Six D.Nine E.Twelve F.Fifteen G.Twentyfour
+# Down      1027    1269   790    762      782       585          382
+# NotSig   17858   17235 18118  18087    18200     18755        19061
+# Up         940    1321   917    976      843       485          382
+
+## Supplemental figure 5A ----
+tables <- list()
+for (i in 1:7) {
+  tables[[i]] <- topTable(x, coef = i, number = Inf, adjust.method = "fdr")
+}
+degs <- lapply(tables, function(x){
+  x %>% filter(P.Value < 0.05) %>% nrow() %>% return()
+})
+degstb <- tibble(time = factor(c(1.5,3,6,9,12,15,24), levels = c(1.5,3,6,9,12,15,24), ordered = T), nums = unlist(degs))
+pdf(file = paste(output_dir, "figureS5A.pdf", sep = ""), width = 8, height = 8)
+ggplot(degstb, aes(x = time, y = nums)) + 
+  geom_col(fill = "black", color = "black") +
+  labs(title = "", subtitle = "",
+       x = "hours from baseline", y = "DEGs (p < 0.05)") +
+  theme_minimal() +
+  theme(axis.title.x = element_text(size = 14), axis.title.y = element_text(size = 14),
+        axis.text.x = element_text(size = 15), axis.text.y = element_text(size = 15))
 dev.off()

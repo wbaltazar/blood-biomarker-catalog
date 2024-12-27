@@ -436,3 +436,18 @@ ggplot(degstb, aes(x = time, y = nums)) +
   theme(axis.title.x = element_text(size = 14), axis.title.y = element_text(size = 14),
         axis.text.x = element_text(size = 15), axis.text.y = element_text(size = 15))
 dev.off()
+
+## Diurnal only for the F-statistic ----
+diurnal_contrasts <- makeContrasts(# Main Effect of Time ONLY
+  ThreeHrMain = (Female.05.00h + Male.05.00h)/2 - (Female.02.00h + Male.02.00h)/2,
+  SixHrMain = (Female.08.00h + Male.08.00h)/2 - (Female.02.00h + Male.02.00h)/2,
+  NineHrMain = (Female.11.00h + Male.11.00h)/2 - (Female.02.00h + Male.02.00h)/2,
+  TwelveHrMain = (Female.14.00h + Male.14.00h)/2 - (Female.02.00h + Male.02.00h)/2,
+  FifteenHrMain = (Female.17.00h + Male.17.00h)/2 - (Female.02.00h + Male.02.00h)/2,
+  EighteenHrMain = (Female.20.00h + Male.20.00h)/2 - (Female.02.00h + Male.02.00h)/2,
+  TwentyoneHrMain = (Female.23.00h + Male.23.00h)/2 - (Female.02.00h + Male.02.00h)/2,
+  levels = colnames(design))
+fit2 <- contrasts.fit(fit, contrasts = diurnal_contrasts)
+e <- eBayes(fit2)
+y <- topTable(e, number = Inf, adjust.method = "fdr", sort.by = "F")
+write.csv(y, paste(output_dir, "diurnal_genes_limma_F.csv", sep = ""), row.names=T)
