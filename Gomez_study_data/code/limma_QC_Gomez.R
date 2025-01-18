@@ -1,10 +1,12 @@
-## Date: Jul 11 2024
+## Date: Jan 17 2025
 
-### SUMMARY: Tuning gene expression to music: the compensatory effect of
-# music on age-related cognitive disorders , Gomex-Carballa et al Oct 2023
+## This script performs limma differential expression analysis of data from the following study:
+# Gómez-Carballa, Alberto, Laura Navarro, Jacobo Pardo-Seco, Xabier Bello, Sara Pischedda, Sandra Viz-Lasheras, 
+# Alba Camino-Mera, et al. “Music Compensates for Altered Gene Expression in Age-Related Cognitive Disorders.” 
+# Scientific Reports 13, no. 1 (December 2, 2023): 21259. https://doi.org/10.1038/s41598-023-48094-5.
 
-### Subjects had blood drawn into PAXgene Tubes before and after a 50 minute concert. Data on
-# healthy controls was collected.
+## Subjects had blood drawn into PAXgene Tubes before and after a 50 minute concert. Data on
+## healthy controls was collected.
 
 ## Load libraries ----
 library(edgeR)
@@ -42,7 +44,7 @@ colnames(pheno_data_raw)
 
 table(pheno_data_raw$`timepoint:ch1`)
 # 1  2 
-# 6 54 This is the incorrect column, and contains faulty sample labels.
+# 6 54 This column is mislabeled, and contains faulty sample labels.
 length(grep("Timepoint-2", pheno_data_raw$title[which(pheno_data_raw$`group:ch1` == "Control")]))
 # [1] 14 Correct number of healthy controls, as stated by study authors.
 pheno_data <- pheno_data_raw %>% 
@@ -133,7 +135,7 @@ table(x$samples$participant, x$samples$time)
 # 22-P-1120   1 1
 
 # Step 3: Filter out lowly expressed genes ----
-## For the pre-filtering plot
+## For the pre-filtering plot, save unfiltered log CPM values
 lcpm <- cpm(x, log = TRUE)
 ## Filter by expr
 keep.exprs <- filterByExpr(x, group=x$samples$time) 
@@ -195,7 +197,7 @@ barplot(x$samples$lib.size, main = "library size")
 barplot(lcpm, main = "lcpm lib sizes")
 dev.off()
 
-## Step 4: Unsupervised clustering analysis with PCAtools and Glimma ----
+## Step 4: Unsupervised clustering analysis with PCAtools for QC ----
 p <- pca(lcpm, metadata = x$samples, center = T, scale = T) 
 ## Change ENSG IDs to gene symbols.
 p$xvars <- make.names(unname(mapIds(x = Homo.sapiens, keys = rownames(p$loadings), column = "SYMBOL", keytype = "ENSEMBL")), unique = T)
@@ -240,19 +242,6 @@ toprow <- plot_grid(ptime, psex, psub, align = 'h', nrow = 1)
 botrow <- plot_grid(scree, peigencor, align = 'h', nrow = 1)
 pdf(file = paste(output_dir, "pca.pdf", sep = ""), height = 12, width = 16)
 plot_grid(toprow, botrow, ncol = 1, align = 'v')
-dev.off()
-
-# MDS plot
-colors <- brewer.pal(n = 12, name = "Paired")
-colors <- c(colors, "brown", "salmon")
-colors <- rep(colors, each = 2)
-pdf(file = paste(output_dir, "mds.pdf", sep = ""))
-limma::plotMDS(x = lcpm, 
-               cex = 1, 
-               var.explained = T, 
-               col = colors,
-               labels = x$samples$participant)
-title("MDS Plot")
 dev.off()
 
 # Step 5: voom transform the data for limma ----
@@ -355,8 +344,8 @@ volcano1 <- EnhancedVolcano(yt,
                             lab = yt$Symbol,
                             x = "logFC",
                             y = "P.Value",
-                            title = ("Gomez: Comparison of before and after 50 minute RNA-seq"), titleLabSize = 12,
-                            subtitle = "",
+                            title = ("Gomez: 50-minute samples"), titleLabSize = 12,
+                            subtitle = "Main effect of time", caption = NULL,
                             labSize = (4.0),
                             col = c("black","lightblue","royalblue","blue"),
                             colAlpha = 1,
@@ -371,8 +360,8 @@ volcano2 <- EnhancedVolcano(ys,
                             lab = ys$Symbol,
                             x = "logFC",
                             y = "P.Value",
-                            title = ("Gomez: Comparison of before and after 50 minute RNA-seq"), titleLabSize = 12,
-                            subtitle = "Male to female interaction term",
+                            title = (""), titleLabSize = 12,
+                            subtitle = "Male to female interaction term", caption = NULL,
                             labSize = (4.0),
                             col = c("black","lightblue","royalblue","blue"),
                             colAlpha = 1,

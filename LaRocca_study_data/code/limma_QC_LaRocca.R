@@ -1,4 +1,11 @@
-## Date: Jul 11 2024
+## Date: Jan 17 2025
+
+## This script performs limma differential expression analysis of data from the following study:
+# LaRocca, Thomas J., Meghan E. Smith, Kaitlin A. Freeberg, Daniel H. Craighead, Timothy Helmuth, 
+# Matthew M. Robinson, K. Sreekumaran Nair, Angela D. Bryan, and Douglas R. Seals. “Novel Whole Blood 
+# Transcriptome Signatures of Changes in Maximal Aerobic Capacity in Response to Endurance Exercise 
+# Training in Healthy Women.” Physiological Genomics 55, no. 8 (August 2023): 338–44. 
+# https://doi.org/10.1152/physiolgenomics.00017.2023.
 
 ### SUMMARY: Do responders/non-responders to exercise induced changes in VO2 max have different
 # transcriptional profiles? Data from 30 women sampled at baseline and 4 months after random
@@ -101,7 +108,7 @@ M <- median(x$samples$lib.size) * 1e-6
 # Set the log-cpm cutoff
 lcpm.cutoff <- log2(10/M + 2/L)
 
-pdf(file = paste(output_dir, "filtered_counts.pdf"))
+pdf(file = paste(output_dir, "filtered_counts.pdf", sep = ""))
 ### Code to generate plot for filtered genes
 # Calculate the number of samples (nsamples)
 nsamples <- ncol(x)
@@ -146,13 +153,13 @@ x$samples$norm.factors
 range(x$samples$norm.factors)
 # [1] 0.2585464 2.2287677
 
-pdf(file = paste(output_dir, "library_sizes.pdf"))
+pdf(file = paste(output_dir, "library_sizes.pdf", sep = ""))
 par(mfrow = c(1,2))
 barplot(x$samples$lib.size, main = "library size")
-barplot(colSums(lcpm), col=col, main = "lcpm lib sizes")
+barplot(colSums(lcpm), col=col, main = "lcpm lib sizes", cex.names = 0.6)
 dev.off()
 
-# Step 4: MDS & PCA ----
+# Step 4: PCA for quality control ----
 # PCAtools
 library(PCAtools) #response, time, participant
 p <- pca(x$counts, metadata = data.frame(x$samples, row.names = colnames(x$counts)), center = T, scale = T)
@@ -196,21 +203,6 @@ toprow <- plot_grid(ptime, pres, psub, align = 'h', nrow = 1)
 botrow <- plot_grid(scree, peigencor, align = 'h', nrow = 1)
 pdf(file = paste(output_dir, "pca.pdf", sep = ""), height = 12, width = 16)
 plot_grid(toprow, botrow, ncol = 1, align = 'v')
-dev.off()
-
-# MDS plot
-qual_col_pals <- brewer.pal.info[brewer.pal.info$category == 'qual',]
-col_vector <- unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
-colors <- sample(col_vector, 30)
-colors <- rep(colors, each = 2)
-colors <- colors[-20] # Account for missing sample
-pdf(file = paste(output_dir, "mds.pdf", sep = ""))
-limma::plotMDS(x = lcpm, 
-               cex = 1, 
-               var.explained = T, 
-               col = colors,
-               labels = paste("P-",x$samples$participant, sep = ""))
-title("MDS Plot")
 dev.off()
 
 # Step 5: voom transform the data for limma ----
@@ -303,7 +295,7 @@ histlist[[8]] <- ggplot(data = y, aes(x = P.Value)) +
   ggtitle("P-value histogram of time F-statistic") +
   theme_cowplot() +
   theme(title = element_text(size = 7.5))
-pdf(file = paste(output_dir, "p_value_histograms.pdf", sep = ""))
+pdf(file = paste(output_dir, "p_value_histograms.pdf", sep = ""), width = 12)
 plot_grid(plotlist = histlist, nrow = 2, ncol = 4, labels = LETTERS[1:8], align = 'hv')
 dev.off()
 
@@ -353,6 +345,6 @@ volcano3 <- EnhancedVolcano(tables[[3]],
                             pCutoff = 1e-2,
                             boxedLabels = FALSE,
                             drawConnectors = TRUE)
-pdf(paste(output_dir, "volcano_plots.pdf", sep = ""), width = 10)
+pdf(paste(output_dir, "volcano_plots.pdf", sep = ""), width = 11)
 plot_grid(volcano1, volcano2, volcano3, align = 'h', labels = LETTERS[1:3], nrow = 1)
 dev.off()

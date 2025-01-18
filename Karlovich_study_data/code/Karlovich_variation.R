@@ -1,4 +1,4 @@
-## Date: October 27 2024
+# Date: January 17 2025
 
 ## Calculate statistics for stability in Karlovich study
 ## INPUT: Expr and pheno data
@@ -27,11 +27,6 @@ library(hgu133plus2.db)
 ## INPUT: .CEL files from GSE16028
 input_dir <- "~/Desktop/work_repo/data/"
 ## OUTPUT: tables and graphics
-output_dir <- "~/Desktop/work_repo/github/Karlovich_study_data/output/"
-
-## INPUT: GSE16028 raw data from GEO
-input_dir <- "~/Desktop/work_repo/data/"
-## OUTPUT: limma results, QC, and graphics
 output_dir <- "~/Desktop/work_repo/github/Karlovich_study_data/output/"
 
 # Load in metadata and create batches ----
@@ -82,7 +77,7 @@ table(p1$sex, p1$subject)
 # Female   0   0   0   0   0   0   0   0   0   0   3   3   3   3   3   3   3   3   3   3   3   3
 # Male     3   3   3   3   3   3   3   3   3   3   0   0   0   0   0   0   0   0   0   0   0   0
 
-## varianceParitition 1 ----
+## variancePartition 1 ----
 names(p1)
 # "title"         "geo_accession" "subject"       "age"           "sex"           "time"     
 formula <- ~ (1|subject) + as.numeric(age) + (1|time) + (1|sex) + (1|time:sex) + as.numeric(age):time
@@ -115,8 +110,8 @@ names(within_person_sd2) <- levels(person)
 within_person_sd2
 sd_within <- rowMeans(within_person_sd2, na.rm = TRUE)
 head(sd_within)
-# 1007_s_at    1053_at     117_at     121_at  1255_g_at    1294_at 
-# 0.11101551 0.07088556 0.12074206 0.13273315 0.07930451 0.16932864 
+# 1053_at     117_at     121_at    1294_at    1316_at  1405_i_at 
+# 0.17039357 0.22884449 0.09070506 0.17053974 0.13979569 0.23540320 
 data_var <- as.data.frame(matrix(cbind(sd_within, sd_total), nrow = length(sd_within)))
 rownames(data_var) <- rownames(norm_expr)
 names(data_var) <- c("Within Variation (SD)", "Total Variation (SD)")
@@ -152,8 +147,8 @@ genenames <- make.names(ifelse(is.na(genenames), names(genenames), unname(genena
 data_var$Symbol <- genenames
 
 ## Heatmap ----
-pdf(paste(output_dir, "batch1_statistic_correlations.pdf", sep = ""))
-pheatmap(cor(data_var[,-length(names(data_var))]), display_numbers = T, fontsize_number = 4)
+pdf(paste(output_dir, "batch1_statistic_heatmap.pdf", sep = ""))
+pheatmap(cor(data_var[,-length(names(data_var))]), display_numbers = T, fontsize_number = 6)
 dev.off()
 ## Save ----
 write.csv(data_var, paste(output_dir, "Karlovich_batch1_variation.csv", sep = ""), row.names = T)
@@ -200,7 +195,7 @@ param <- SnowParam(4, "SOCK", progressbar = TRUE)
 varPart <- fitExtractVarPartModel(exprObj = norm_expr, formula = formula, data = p2, BPPARAM = param)
 vp <- sortCols(varPart)
 pdf(paste(output_dir, "batch2_vp_violin_plot.pdf", sep = ""))
-plotVarPart(vp)
+plotVarPart(vp) + theme(axis.text.x = element_text(size = 11))
 dev.off()
 
 ## standard deviation ----
@@ -262,8 +257,8 @@ genenames <- make.names(ifelse(is.na(genenames), names(genenames), unname(genena
 data_var$Symbol <- genenames
 
 ## Heatmap ----
-pdf(paste(output_dir, "batch2_statistic_correlations.pdf", sep = ""))
-pheatmap(cor(data_var[,-length(names(data_var))]), display_numbers = T, fontsize_number = 4)
+pdf(paste(output_dir, "batch2_statistic_heatmap.pdf", sep = ""))
+pheatmap(cor(data_var[,-length(names(data_var))]), display_numbers = T, fontsize_number = 7)
 dev.off()
 ## Save ----
 write.csv(data_var, paste(output_dir, "Karlovich_batch2_variation.csv", sep = ""), row.names = T)

@@ -103,12 +103,6 @@ vp <- sortCols(varPart)
 pdf(paste(output_dir, "p1v_vp_violin_plot.pdf", sep = ""))
 plotVarPart(vp)
 dev.off()
-# Canonical Correlation Analysis
-form <- ~ subject + time + sex + treat + race
-C <- canCorPairs(form, p1v)
-pdf(paste(output_dir, "p1v_cca.pdf", sep = ""))
-plotCorrMatrix(C)
-dev.off()
 
 ## standard deviation ----
 avgexpr <- rowMeans(norm_expr)
@@ -170,7 +164,7 @@ genenames <- make.names(ifelse(is.na(genenames), names(genenames), unname(genena
 data_var$Symbol <- genenames
 
 ## Heatmap ----
-pdf(paste(output_dir, "p1v_statistic_correlations.pdf", sep = ""))
+pdf(paste(output_dir, "p1v_statistic_heatmap.pdf", sep = ""))
 pheatmap(cor(data_var[,-length(names(data_var))]), display_numbers = T, fontsize_number = 4)
 dev.off()
 ## Save ----
@@ -213,12 +207,6 @@ varPart <- fitExtractVarPartModel(exprObj = norm_expr, formula = formula, data =
 vp <- sortCols(varPart)
 pdf(paste(output_dir, "p1f_vp_violin_plot.pdf", sep = ""))
 plotVarPart(vp)
-dev.off()
-# Canonical Correlation Analysis
-form <- ~ subject + time + sex + treat + race
-C <- canCorPairs(form, p1f)
-pdf(paste(output_dir, "p1f_cca.pdf", sep = ""))
-plotCorrMatrix(C)
 dev.off()
 
 ## standard deviation ----
@@ -281,8 +269,8 @@ genenames <- make.names(ifelse(is.na(genenames), names(genenames), unname(genena
 data_var$Symbol <- genenames
 
 ## Heatmap ----
-pdf(paste(output_dir, "p1f_statistic_correlations.pdf", sep = ""))
-pheatmap(cor(data_var[,-length(names(data_var))]), display_numbers = T, fontsize_number = 4)
+pdf(paste(output_dir, "p1f_statistic_heatmap.pdf", sep = ""))
+pheatmap(cor(data_var[,-length(names(data_var))]), display_numbers = T, fontsize_number = 5)
 dev.off()
 ## Save ----
 write.csv(data_var, paste(output_dir, "Obermoser_p1f_variation.csv", sep = ""), row.names = T)
@@ -323,13 +311,7 @@ param <- SnowParam(4, "SOCK", progressbar = TRUE)
 varPart <- fitExtractVarPartModel(exprObj = norm_expr, formula = formula, data = p2v, BPPARAM = param)
 vp <- sortCols(varPart)
 pdf(paste(output_dir, "p2v_vp_violin_plot.pdf", sep = ""))
-plotVarPart(vp)
-dev.off()
-# Canonical Correlation Analysis
-form <- ~ subject + time + sex + treat + race
-C <- canCorPairs(form, p2v)
-pdf(paste(output_dir, "p2v_cca.pdf", sep = ""))
-plotCorrMatrix(C)
+plotVarPart(vp) + theme(axis.text.x = element_text(size = 9))
 dev.off()
 
 ## standard deviation ----
@@ -392,7 +374,7 @@ genenames <- make.names(ifelse(is.na(genenames), names(genenames), unname(genena
 data_var$Symbol <- genenames
 
 ## Heatmap ----
-pdf(paste(output_dir, "p2v_statistic_correlations.pdf", sep = ""))
+pdf(paste(output_dir, "p2v_statistic_heatmap.pdf", sep = ""))
 pheatmap(cor(data_var[,-length(names(data_var))]), display_numbers = T, fontsize_number = 4)
 dev.off()
 ## Save ----
@@ -434,13 +416,7 @@ param <- SnowParam(4, "SOCK", progressbar = TRUE)
 varPart <- fitExtractVarPartModel(exprObj = norm_expr, formula = formula, data = p2f, BPPARAM = param)
 vp <- sortCols(varPart)
 pdf(paste(output_dir, "p2f_vp_violin_plot.pdf", sep = ""))
-plotVarPart(vp)
-dev.off()
-# Canonical Correlation Analysis
-form <- ~ subject + time + sex + treat + race
-C <- canCorPairs(form, p2f)
-pdf(paste(output_dir, "p2f_cca.pdf", sep = ""))
-plotCorrMatrix(C)
+plotVarPart(vp) + theme(axis.text.x = element_text(size = 9))
 dev.off()
 
 ## standard deviation ----
@@ -503,7 +479,7 @@ genenames <- make.names(ifelse(is.na(genenames), names(genenames), unname(genena
 data_var$Symbol <- genenames
 
 ## Heatmap ----
-pdf(paste(output_dir, "p2f_statistic_correlations.pdf", sep = ""))
+pdf(paste(output_dir, "p2f_statistic_heatmap.pdf", sep = ""))
 pheatmap(cor(data_var[,-length(names(data_var))]), display_numbers = T, fontsize_number = 4)
 dev.off()
 ## Save ----

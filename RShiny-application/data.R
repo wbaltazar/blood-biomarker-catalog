@@ -134,10 +134,10 @@ for (i in 1:length(pheno_data)) {
     colnames(pheno_data[[i]])[grep("participant|id", colnames(pheno_data[[i]]))] <- "subject"
   }
 }
+pheno_data$Rusch$subject <- str_remove(pheno_data$Rusch$subject, "Subject ")
 
 ## eQTL data
-# gtex <- read_rds("./data/eqtls/gtex_variants_and_phenotypes_whole_blood.rds")
-gtex <- nanoparquet::read_parquet("./data/eqtls/gtex_variants_and_phenotypes_whole_blood.parquet")
+load_gtex <- function(){nanoparquet::read_parquet("./data/eqtls/gtex_variants_and_phenotypes_whole_blood.parquet")}
 gtexColumnNames <- c(
   '<span title="GENCODE gene name for blood RNA">Symbol of blood RNA</span>',
   '<span title="GENCODE/Ensembl gene ID for blood RNA">Ensembl ID</span>',
@@ -154,29 +154,63 @@ gtexColumnNames <- c(
   '<span title="Reported p-value for strongest SNP risk allele (linked to dbGaP Association Browser). Note that p-values are rounded to 1 significant digit (for example, a published p-value of 4.8 x 10-7 is rounded to 5 x 10-7)">GWAS p_value</span>',
   '<span title="Provides information on a variant’s predicted most severe functional effect from Ensembl">Genomic Context</span>',
   '<span title="A score ranging from 0-7. Genes that score higher are generally expressed stably over time for an individual, but expression levels vary between individuals.">Trait no. studies</span>',
-  '<span title="A score ranging from 0-6. Genes that score higher were called differentially expressed over time in more studies (p < 0.05 using limma comparing baseline and follow-up gene expression), indicating varying expression levels over time.">State no. studies</span>'
+  '<span title="A score ranging from 0-6. Genes that score higher were called differentially expressed over time in more studies (p < 0.05 using limma comparing baseline and follow-up gene expression), indicating varying expression levels over time.">State no. studies</span>',
+  '<span title="The number of unique eQTLs associated with this gene.">Number of eQTL associations in GTEx</span>',
+  '<span title="The number of unique traits associated with the eQTLs of this gene.">Number of trait associations in GWAS</span>',
+  '<span title="The percentile of the median RNA average expression level across studies among the 6,099 genes.">Median Average Normalized Expression Percentile</span>',
+  '<span title="The percentile of the median repeatability across studies among the 6,099 genes.">Median Repeatability Percentile</span>',
+  '<span title="The percentile of the median genetic variance across studies among the 6,099 genes.">Median Genetic Variance Percentile</span>'
 )
 
-# Gene graph
-gtex_gene <- as.data.frame(table(gtex$`Symbol of blood RNA`))
-gtex_gene <- gtex_gene[order(gtex_gene$Freq, decreasing = T),]
-gtex_gene$index = 1:nrow(gtex_gene)
+eqtlOptionsGene <- function() {
+  gtex <- load_gtex()
+  return(unique(gtex$`Symbol`))
+}
+eqtlOptionsTrait <- function() {
+  gtex <- load_gtex()
+  return(unique(gtex$`GWAS Trait`))
+}
+eqtlOptionsIds <- function() {
+  gtex <- load_gtex()
+  return(unique(gtex$`rsID of eQTL`))
+}
 
-# rsID graph
-gtex_rsID <- as.data.frame(table(gtex$`rsID of eQTL`))
-gtex_rsID <- gtex_rsID[order(gtex_rsID$Freq, decreasing = T),]
-gtex_rsID$index = 1:nrow(gtex_rsID)
+# Gene graph loader
+load_gtex_gene <- function() {
+  gtex <- load_gtex()
+  gtex_gene <- as.data.frame(table(gtex$`Symbol of blood RNA`))
+  gtex_gene <- gtex_gene[order(gtex_gene$Freq, decreasing = T),]
+  gtex_gene$index = 1:nrow(gtex_gene)
+  return(gtex_gene)
+}
 
-# Trait graph
-gtex_trait <- as.data.frame(table(gtex$`GWAS Trait`))
-gtex_trait <- gtex_trait[order(gtex_trait$Freq, decreasing = T),]
-gtex_trait$index = 1:nrow(gtex_trait)
+# rsID graph loader
+load_gtex_rsID <- function() {
+  gtex <- load_gtex()
+  gtex_rsID <- as.data.frame(table(gtex$`rsID of eQTL`))
+  gtex_rsID <- gtex_rsID[order(gtex_rsID$Freq, decreasing = T),]
+  gtex_rsID$index = 1:nrow(gtex_rsID)
+  return(gtex_rsID)
+}
 
-# Gene Trait Graph
-gtex_gene_trait <- gtex[!is.na(gtex$`GWAS Trait`),]
-gtex_gene_trait <- as.data.frame(table(gtex_gene_trait$`Symbol of blood RNA`))
-gtex_gene_trait <- gtex_gene_trait[order(gtex_gene_trait$Freq, decreasing = T),]
-gtex_gene_trait$index = 1:nrow(gtex_gene_trait)
+# Trait graph loader
+load_gtex_trait <- function() {
+  gtex <- load_gtex()
+  gtex_trait <- as.data.frame(table(gtex$`GWAS Trait`))
+  gtex_trait <- gtex_trait[order(gtex_trait$Freq, decreasing = T),]
+  gtex_trait$index = 1:nrow(gtex_trait)
+  return(gtex_trait)
+}
+
+# Gene Trait graph loader
+load_gtex_gene_trait <- function() {
+  gtex <- load_gtex()
+  gtex_gene_trait <- gtex[!is.na(gtex$`GWAS Trait`),]
+  gtex_gene_trait <- as.data.frame(table(gtex_gene_trait$`Symbol of blood RNA`))
+  gtex_gene_trait <- gtex_gene_trait[order(gtex_gene_trait$Freq, decreasing = T),]
+  gtex_gene_trait$index = 1:nrow(gtex_gene_trait)
+  return(gtex_trait_trait)
+}
 
 ## ENSEMBL annotation data
 anno_data <- list()

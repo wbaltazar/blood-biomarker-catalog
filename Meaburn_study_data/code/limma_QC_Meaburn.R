@@ -1,6 +1,12 @@
-## Date: Oct 21 2024
+## Date: Jan 17 2025
 
-# The following code contains a standard limma analysis and some quality control calculations we generated.
+# The following code contains a standard limma analysis and some quality control calculations we generated
+# for the following study:
+# Meaburn, Emma L., Cathy Fernandes, Ian W. Craig, Robert Plomin, and Leonard C. Schalkwyk. “Assessing Individual
+# Differences in Genome-Wide Gene Expression in Human Whole Blood: Reliability Over Four Hours and Stability Over
+# 10 Months.” Twin Research and Human Genetics : The Official Journal of the International Society for Twin Studies
+# 12, no. 4 (August 2009): 10.1375/twin.12.4.372. https://doi.org/10.1375/twin.12.4.372.
+
 
 # Load libraries ----
 
@@ -54,14 +60,60 @@ data <- affy::rma(raw)
 norm_expr <- exprs(data)
 colnames(norm_expr) <- str_extract(colnames(norm_expr), "GSM\\d+")
 identical(rownames(pheno_data), colnames(norm_expr)) # [1] TRUE
-source("~/Desktop/work_repo/github/misc/Affy_control_probe_check.R")
-a <- polyA_check(norm_expr, pheno_data, "time")[[1]]
-b <- hybrid_check(norm_expr, pheno_data, "time")[[1]]
-c <- positive_check(norm_expr, pheno_data, "time")
+## Below creates barplots of the probes, and compares the means of the different timepoints using ANOVA
+# Poly-A Probes plot
+index <- grep(pattern = "AFFX-r2-Bs-.*|thr|lys|phe|dap|Thr|Lys|Phe|Dap", x = rownames(norm_expr))
+polyA <- as_tibble(norm_expr[index,])
+polyA <- polyA %>% 
+  pivot_longer(cols = names(polyA),
+               names_to = "sample",
+               values_to = "expr" )
+polyA$group <- factor(pheno_data[polyA$sample, "time"])
+pval <- aov(expr ~ group, data = polyA)
+pval1 <- summary(pval)[[1]][["Pr(>F)"]][1]
+a <- ggplot(data = polyA, aes(x = group, y = expr, fill = group)) +
+  geom_boxplot() +
+  theme_linedraw() +
+  theme(legend.position = NULL, axis.text.x = element_text(angle = 45, vjust = 0.5)) +
+  geom_label(aes(x = 2.5, y = 10, label = paste("p =", round(pval1,3)), fill = NULL)) +
+  ggtitle("Average polyA probe expression")
+# Hybridization Probes plot
+index <- grep(pattern = "cre|Cre|BioC|BioD|BioB|bioC|bioD|bioB", x = rownames(norm_expr))
+hybrids <- as_tibble(norm_expr[index,])
+hybrids <- hybrids %>% 
+  pivot_longer(cols = names(hybrids),
+               names_to = "sample",
+               values_to = "expr" )
+hybrids$group <- factor(pheno_data[hybrids$sample, "time"])
+pval <- aov(expr ~ group, data = hybrids)
+pval2 <- summary(pval)[[1]][["Pr(>F)"]][1]
+b <- ggplot(data = hybrids, aes(x = group, y = expr, fill = group)) +
+  geom_boxplot() +
+  theme_linedraw() +
+  theme(legend.position = NULL, axis.text.x = element_text(angle = 45, vjust = 0.5)) +
+  geom_label(aes(x = 2.5, y = 10, label = paste("p =", round(pval2,3)), fill = NULL)) +
+  ggtitle("Average hybridization probe expression")  
+index <- grep(pattern = "200801_x_at|200887_s_at|209969_s_at|212581_x_at|213453_x_at|213867_x_at|217398_x_at|224594_x_at|AFFX-HSAC07/X00351_3_at|AFFX-HSAC07/X00351_5_at|AFFX-HSAC07/X00351_M_at|AFFX-HUMGAPDH/M33197_3_at|AFFX-HUMGAPDH/M33197_5_at|AFFX-HUMGAPDH/M33197_M_at|AFFX-HUMISGF3A/M97935_3_at|AFFX-HUMISGF3A/M97935_5_at|AFFX-HUMISGF3A/M97935_MA_at|AFFX-HUMISGF3A/M97935_MB_at", 
+              x = rownames(norm_expr))
+positives <- as_tibble(norm_expr[index,])
+positives <- positives %>% 
+  pivot_longer(cols = names(positives),
+               names_to = "sample",
+               values_to = "expr" )
+positives$group <- factor(pheno_data[positives$sample, "time"])
+pval <- aov(expr ~ group, data = positives)
+pval3 <- summary(pval)[[1]][["Pr(>F)"]][1]
+c <- ggplot(data = positives, aes(x = group, y = expr, fill = group)) +
+  geom_boxplot() +
+  theme_linedraw() +
+  theme(legend.position = NULL, axis.text.x = element_text(angle = 45, vjust = 0.5)) +
+  geom_label(aes(x = 2.5, y = 10, label = paste("p =", round(pval3,3)), fill = NULL)) +
+  ggtitle("Average positive control expression") 
 pdf(file = paste(output_dir, "control_probes_batched.pdf", sep = ""), height = 7, width = 12)
 plot_grid(a,b,c, nrow = 1)
 dev.off()
-## Poly A an hybridization show concerning batch effects, justifying our separation of the days.
+## Poly A probes and hybridization probes show considerable differences over the 10-month period,
+## justifying our separation of the different days samples were collected for analysis.
 
 # Analysis of day 1 data ----
 celfiles <- list.files(input_dir, full.names = T)
@@ -109,7 +161,7 @@ normalized_expression[1:5,1:5]
 # 1053_at           7.195994         7.161228         7.194788         7.208823         7.268647
 # 117_at            9.833055         9.674456         9.631341         9.478013         9.385483
 # 121_at            7.799649         7.734322         7.524356         7.258983         7.480098
-# 1255_g_at         2.731875         2.619617         2.555998         2.635680         2.636198
+# 1294_at           8.872039         8.367323         8.349681         8.459974         8.253178
 
 colnames(normalized_expression) <- gsub(pattern = "(.CEL.gz)", replacement = "", x = colnames(normalized_expression))
 colnames(unfiltered_normalized_expression) <- gsub(pattern = "(.CEL.gz)", replacement = "", x = colnames(unfiltered_normalized_expression))
@@ -136,7 +188,7 @@ boxplot(normalized_expression)
 dev.off()
 quantile(normalized_expression)
 # 0%       25%       50%       75%      100% 
-# 1.881568  5.579088  6.916074  8.236908 14.629243 
+# 1.881568  5.731374  7.017506  8.304698 14.629243 
 
 
 # What are the highly expressed RNAs?
@@ -148,8 +200,7 @@ mapIds(x = hgu133plus2.db, keys = head(names(avg_gene_exp)), keytype = "PROBEID"
 # AFFX-hum_alu_at     217414_x_at     204018_x_at     214414_x_at     211745_x_at     209458_x_at 
 #              NA          "HBA2"          "HBA1"          "HBA1"          "HBA1"          "HBA1" 
 
-## MDS and PCA ----
-### PCA tools ----
+## PCA for quality control ----
 library(PCAtools)
 p <- pca(df, metadata = p1, center = T, scale = T)
 p_unfilt <- pca(unfiltered_normalized_expression, metadata = p1, center = T, scale = T)
@@ -205,29 +256,6 @@ pdf(file = paste(output_dir, "pca_day_one.pdf", sep = ""), height = 12, width = 
 plot_grid(toprow, botrow, ncol = 1, align = 'v')
 dev.off()
 
-
-### MDS ----
-qual_col_pals <- brewer.pal.info
-col_vector <- unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
-colors <- sample(col_vector, length(unique(p1$id)))
-new_colors <- c()
-for (i in 1:length(p1$id)) {
-  new_colors[i] <- switch(p1$id[i],
-                          "TD19901" = colors[1], "TD19902" = colors[2], "TD23461" = colors[3], "TD23462" = colors[4], 
-                          "TD24111" = colors[5], "TD24112" = colors[6], "TD32681" = colors[7], "TD32682" = colors[8],
-                          "TD51281" = colors[9], "TD51282" = colors[10]
-  )
-}
-pdf(file = paste(output_dir, "mds_day_one.pdf", sep = ""))
-limma::plotMDS(x = df, 
-               cex = 1, 
-               var.explained = T, 
-               col = new_colors,
-               labels = paste(p1$id, p1$sex, sep = ", "))
-title("MDS Plot")
-dev.off()
-
-
 ## limma analysis----
 
 ### Remove control probes ----
@@ -235,8 +263,12 @@ control_index <- grep("lys|Lys|thr|Thr|dap|Dap|phe|Phe|Trp|bioB|BioB|BioC|bioC|b
 rownames(df)[control_index]
 df <- df[-control_index,]
 dim(df)
-# [1] 26545    19
+# [1] 25377    19
 rownames(df)[grep("AFFX", x = rownames(df))]
+# [1] "AFFX-HSAC07/X00351_3_at"     "AFFX-HSAC07/X00351_5_at"     "AFFX-HSAC07/X00351_M_at"     "AFFX-hum_alu_at"            
+# [5] "AFFX-HUMGAPDH/M33197_3_at"   "AFFX-HUMGAPDH/M33197_5_at"   "AFFX-HUMGAPDH/M33197_M_at"   "AFFX-HUMISGF3A/M97935_3_at" 
+# [9] "AFFX-HUMISGF3A/M97935_5_at"  "AFFX-HUMISGF3A/M97935_MA_at" "AFFX-HUMISGF3A/M97935_MB_at" "AFFX-HUMRGE/M10098_3_at"    
+# [13] "AFFX-HUMRGE/M10098_5_at"     "AFFX-HUMRGE/M10098_M_at"     "AFFX-M27830_5_at"            "AFFX-M27830_M_at"
 
 ### Fit LM ----
 id <- factor(p1$id)
@@ -270,14 +302,14 @@ dt <- decideTests(x)
 summary(dt)
 #         Time TimeMale
 # Down       0        0
-# NotSig 26545    26545
+# NotSig 25377    25377
 # Up         0        0
 dt <- decideTests(x, adjust.method = 'none')
 summary(dt)
 #         Time TimeMale
-# Down     680      733
-# NotSig 24352    24657
-# Up      1513     1155
+# Down     660      727
+# NotSig 23233    23542
+# Up      1484     1108
 
 write.csv(y, file = paste(output_dir, "day1_limma_F.csv", sep = ""))
 
@@ -296,13 +328,13 @@ for (i in 1:2) {
     geom_histogram(fill = "lightblue", color = "black") +
     theme_cowplot() +
     ggtitle("", subtitle = names(y)[i]) +
-    theme(title = element_text(size = 7.5))
+    theme(title = element_text(size = 12))
   b <- ggplot(data = tables[[i]], aes(x = adj.P.Val)) +
     geom_histogram(fill = "lightblue", color = "black") +
     theme_cowplot() +
     ggtitle("", subtitle = names(y)[i]) +
-    theme(title = element_text(size = 7.5))
-  pdf(file = paste(output_dir, names(y)[i], "day_1_p_value_histograms.pdf", sep = ""))
+    theme(title = element_text(size = 12))
+  pdf(file = paste(output_dir, names(y)[i], "_day_1_p_value_histograms.pdf", sep = ""), width = 10)
   plot_grid(a, b, labels = c('A. P-value histogram', 'B. BH-adjusted'))
   dev.off()
 }
@@ -328,7 +360,7 @@ b <- EnhancedVolcano(toptable = tables[[2]],
                      x = "logFC",
                      y = "P.Value",
                      lab = tables[[2]]$Symbol,
-                     title = "4-hour comparison",
+                     title = "",
                      subtitle ="Time interaction (male - female)",
                      caption = "Meaburn Day 1",
                      col = c("black","lightblue","royalblue","blue"),
@@ -472,28 +504,6 @@ pdf(file = paste(output_dir, "pca_day_two.pdf", sep = ""), height = 12, width = 
 plot_grid(toprow, botrow, ncol = 1, align = 'v')
 dev.off()
 
-
-### MDS ----
-qual_col_pals <- brewer.pal.info
-col_vector <- unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
-colors <- sample(col_vector, length(unique(p2$id)))
-new_colors <- c()
-for (i in 1:length(p2$id)) {
-  new_colors[i] <- switch(p1$id[i],
-                          "TD19901" = colors[1], "TD19902" = colors[2], "TD23461" = colors[3], "TD23462" = colors[4], 
-                          "TD24111" = colors[5], "TD24112" = colors[6], "TD32681" = colors[7], "TD32682" = colors[8],
-                          "TD51281" = colors[9], "TD51282" = colors[10]
-  )
-}
-pdf(file = paste(output_dir, "mds_day_two.pdf", sep = ""))
-limma::plotMDS(x = df, 
-               cex = 1, 
-               var.explained = T, 
-               col = new_colors,
-               labels = paste(p2$id, p2$sex, sep = ", "))
-title("MDS Plot")
-dev.off()
-
 ### Plots and quantiles
 pdf(file = paste(output_dir, "features_hist_day2.pdf", sep = ""))
 hist(normalized_expression)
@@ -524,6 +534,10 @@ df <- df[-control_index,]
 dim(df)
 # [1] 26432    17
 rownames(df)[grep("AFFX", x = rownames(df))]
+# [1] "AFFX-HSAC07/X00351_3_at"     "AFFX-HSAC07/X00351_5_at"     "AFFX-HSAC07/X00351_M_at"     "AFFX-hum_alu_at"            
+# [5] "AFFX-HUMGAPDH/M33197_3_at"   "AFFX-HUMGAPDH/M33197_5_at"   "AFFX-HUMGAPDH/M33197_M_at"   "AFFX-HUMISGF3A/M97935_3_at" 
+# [9] "AFFX-HUMISGF3A/M97935_5_at"  "AFFX-HUMISGF3A/M97935_MA_at" "AFFX-HUMISGF3A/M97935_MB_at" "AFFX-HUMRGE/M10098_3_at"    
+# [13] "AFFX-HUMRGE/M10098_5_at"     "AFFX-HUMRGE/M10098_M_at"     "AFFX-M27830_5_at"            "AFFX-M27830_M_at" 
 
 ### Fit LM ----
 id <- factor(p2$id)
@@ -589,7 +603,7 @@ for (i in 1:2) {
     theme_cowplot() +
     ggtitle("", subtitle = names(y)[i]) +
     theme(title = element_text(size = 7.5))
-  pdf(file = paste(output_dir, names(y)[i], "day_2_p_value_histograms.pdf", sep = ""))
+  pdf(file = paste(output_dir, names(y)[i], "_day_2_p_value_histograms.pdf", sep = ""), width = 10)
   plot_grid(a, b, labels = c('A. P-value histogram', 'B. BH-adjusted'))
   dev.off()
 }
@@ -615,7 +629,7 @@ b <- EnhancedVolcano(toptable = tables[[2]],
                      x = "logFC",
                      y = "P.Value",
                      lab = tables[[2]]$Symbol,
-                     title = "4-hour comparison",
+                     title = "",
                      subtitle ="Time interaction (male - female)",
                      caption = "Meaburn Day 2",
                      col = c("black","lightblue","royalblue","blue"),

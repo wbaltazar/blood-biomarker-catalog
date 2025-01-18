@@ -1,6 +1,4 @@
-## Date: Jul 12 2024
-
-## You should run "limma_QC_Rusch.R" before running this script to remove poor quality arrays from input directory.
+## Date: Jan 17 2025
 
 ## Calculate statistics for stability in Rusch study
 ## INPUT: Expr and pheno data
@@ -31,6 +29,8 @@ output_dir <- "~/Desktop/work_repo/github/Rusch_study_data/output/"
 # Phenotype data
 gset <- getGEO("GSE81761", GSEMatrix =TRUE, AnnotGPL=TRUE)
 pheno_data_org <- pData(gset$GSE81761_series_matrix.txt.gz)
+pheno_data_org <- pheno_data_org %>% 
+  filter(`case/control:ch1` == "No PTSD")
 pheno_data <- pheno_data_org %>% 
   dplyr::select(title = title, 
                 geo_accession = geo_accession,
@@ -40,19 +40,24 @@ pheno_data <- pheno_data_org %>%
                 race = `race:ch1`,
                 sex = `Sex:ch1`,
                 time = `timepoint:ch1`)
-pheno_data <- pheno_data[pheno_data$geo_accession %in% str_extract(list.files(input_dir), "GSM\\d+"),]
-dim(pheno_data)
-# [1] 38  8
 pheno_data$subject <- str_extract(string = pheno_data$source, pattern = "Subject \\d+")
+pheno_data <- pheno_data[-which(pheno_data$subject %in% c("Subject 16", "Subject 2", "Subject 25", "Subject 50", "Subject 61", "Subject 71", "Subject 81")),]
+pheno_data <- pheno_data[-grep("GSM2175261|GSM2175214", pheno_data$geo_accession),]
+dim(pheno_data)
+# [1] 38  9
+
 pheno_data$time[pheno_data$time != "Baseline"] <- rep(x = "Followup", times = length(pheno_data$time[pheno_data$time != "Baseline"]))
 table(pheno_data$subject)
+
 # Subject 10 Subject 108 Subject 117  Subject 37  Subject 38  Subject 46  Subject 49  Subject 53  Subject 63  Subject 66  Subject 68 
 # 2           1           2           2           2           2           2           2           2           2           2 
 # Subject 69  Subject 72  Subject 73  Subject 76  Subject 80   Subject 9  Subject 94  Subject 95  Subject 98 
 # 2           2           2           1           2           2           2           2           2 
 
 # Load in data ----
-data <- ReadAffy(celfile.path = input_dir)
+files <- list.files(input_dir, full.names = T)
+files <- files[grep(paste(pheno_data$geo_accession, collapse = "|"), files)]
+data <- ReadAffy(filenames = files)
 calls <- mas5calls.AffyBatch(data)
 probe_pval <- assayData(calls)[["se.exprs"]] ## Returns p-values
 minSamples <- min(colSums(table(pheno_data$subject, pheno_data$time)))
@@ -77,12 +82,6 @@ varPart <- fitExtractVarPartModel(exprObj = norm_expr, formula = formula, data =
 vp <- sortCols(varPart)
 pdf(paste(output_dir, "vp_violin_plot.pdf", sep = ""))
 plotVarPart(vp)
-dev.off()
-# Canonical Correlation Analysis
-form <- ~ subject + time + race + ethnicity + age
-C <- canCorPairs(form, pheno_data)
-pdf(paste(output_dir, "cca.pdf", sep = ""))
-plotCorrMatrix(C)
 dev.off()
 
 ## standard deviation ----
@@ -144,8 +143,8 @@ genenames <- make.names(ifelse(is.na(genenames), names(genenames), unname(genena
 data_var$Symbol <- genenames
 
 ## Heatmap ----
-pdf(paste(output_dir, "statistic_correlations.pdf", sep = ""))
-pheatmap(cor(data_var[,-length(names(data_var))]), display_numbers = T, fontsize_number = 4)
+pdf(paste(output_dir, "statistic_heatmap.pdf", sep = ""))
+pheatmap(cor(data_var[,-length(names(data_var))]), display_numbers = T, fontsize_number = 7)
 dev.off()
 ## Save ----
 write.csv(data_var, paste(output_dir, "Rusch_variation.csv", sep = ""), row.names = T)

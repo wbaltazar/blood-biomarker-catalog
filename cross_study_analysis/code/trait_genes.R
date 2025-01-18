@@ -1,6 +1,6 @@
 ## Grouping genes according to their differential expression across studies
 ## In order for this code to work, all variation files should be run in their respective study_data directories.
-## Date: Jul 20 2024
+## Date: Jan 17 2025
 
 ## Load in summary data
 library(tidyverse)
@@ -106,15 +106,19 @@ length(all_filters)
 # [1] 39
 
 ## Get results ----
-## Create pool of genes
+## Create pool of all genes
 symbol_find <- function(x) {
   index <- grep("Symbol", names(x))
   return(x[,index])
 }
 all_symbols <- unname(unlist(lapply(data, symbol_find)))
-all_symbols <- all_symbols %>% str_replace_all("\\.(?!\\d$)", "-") %>% str_remove_all(pattern = "\\..") %>% unique()
+# Use dash for notation instead of periods, EXCEPT when it denotes a version number. Then, remove all suspected version numbers.
+all_symbols <- all_symbols %>% str_replace_all("\\.(?!\\d$)", "-") 
+length(unlist(unique(all_symbols)))
+# [1] 24100
+all_symbols <- all_symbols %>% str_remove_all(pattern = "\\..") %>% unique()
 length(unlist(all_symbols))
-# [1] 23879
+# [1] 23883
 
 ## Test run the counting algorithm
 stable_results <- data.frame(Symbol = all_symbols, Score = 0, Filters = 0)
@@ -142,6 +146,32 @@ for (i in 1:nrow(stable_results)) {
 stable_results <- stable_results %>% 
   mutate(Study_counts = (gomez > 0) + (meaburn > 0) + (gosch > 0) + (obermoser > 0) +
            (dusek > 0) + (rusch > 0) + (larocca > 0) + (karlovich > 0))
+head(stable_results)
+
+symbol_not_found <- function(x) {
+  index <- grep("Symbol", names(x))
+  ref <- x[[index]]
+  ref <- ref %>% str_replace_all("\\.(?!\\d$)", "-") %>% str_remove_all(pattern = "\\..") %>% unique()
+  return(setdiff(all_symbols, ref))
+}
+
+## If a symbol is not found in a dataset, replace its value with NA
+na_index <- lapply(data, symbol_not_found)
+names(na_index) <- paste(names(na_index), ".na", sep = "")
+for_merge <- data.frame(Symbol = all_symbols, Studies_not_found_in = 0)
+i = 1
+for_merge$Symbol[i]
+# [1] "TSPAN6"
+paste(na.omit(names(unlist(lapply(na_index, function(x) {for_merge$Symbol[i] %in% x})))[unlist(lapply(na_index, function(x) {for_merge$Symbol[i] %in% x}))]), collapse = " ")
+# [1] "meaburn1.na meaburn2.na dusek.na rusch.na larocca.na karlovich1.na karlovich2.na"
+for (i in 1:nrow(for_merge)) {
+  for_merge[i,2] <- paste(na.omit(names(unlist(lapply(na_index, function(x) {for_merge$Symbol[i] %in% x})))[unlist(lapply(na_index, function(x) {for_merge$Symbol[i] %in% x}))]), collapse = " ")
+}
+stable_results <- merge(stable_results, for_merge, by = "Symbol", sort = F)
+dim(stable_results)
+# [1] 23883    13
+length(unique(stable_results$Symbol))
+# [1] 23883
 
 ### Save results -----
 write.csv(stable_results, file = paste(output_dir, "trait_scores.csv", sep = ""))
@@ -188,14 +218,7 @@ write.csv(gene_summaries, file = paste(output_dir, "median_stability_statistics_
 
 # COMMON SYMBOLS ----
 # Genes found in all datasets
-symbols <- lapply(data, symbol_find)
-symbols <- lapply(symbols, function(x) {
-  x %>% unlist() %>% unname() %>% str_replace_all(pattern = "\\.(?!\\d$)", replacement =  "-") %>% str_remove_all(pattern = "\\..")
-})
-common_symbols <- intersect(symbols[[1]], symbols[[2]])
-for (i in symbols) {
-  common_symbols <- intersect(common_symbols, i)
-}
+common_symbols <- for_merge[which(for_merge$Studies_not_found_in == ""),"Symbol"]
 length(common_symbols)
 # [1] 6099
 write.table(common_symbols, file = paste(output_dir, "common_symbols6099.txt", sep = ""))
@@ -204,7 +227,7 @@ write.table(common_symbols, file = paste(output_dir, "common_symbols6099.txt", s
 stable_results <- read.csv(file = paste(output_dir, "trait_scores.csv", sep = ""))
 stable_results <- stable_results %>% dplyr::filter(Study_counts == 8)
 dim(stable_results)
-# [1] 309  13
+# [1] 112 14
 supp_table <- stable_results$Symbol
 library(biomaRt)
 mart <- useDataset(dataset = "hsapiens_gene_ensembl", mart = useMart("ENSEMBL_MART_ENSEMBL"))
@@ -212,4 +235,4 @@ supp_table <- getBM(attributes = c("hgnc_symbol","description"),
                     filters = "hgnc_symbol",
                     values = supp_table,
                     mart = mart)
-write.csv(supp_table, file = paste(output_dir, "supplementary_table_1.csv", sep = ""))
+write.csv(supp_table, file = paste(output_dir, "NEW_supplementary_table_1.csv", sep = ""))

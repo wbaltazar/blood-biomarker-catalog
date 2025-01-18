@@ -1,4 +1,9 @@
-## Date: Nov 8 2024
+## Date: Jan 17 2025
+
+## This script performs limma differential expression analysis of data from the following study:
+# Dusek, Jeffery A., Hasan H. Otu, Ann L. Wohlhueter, Manoj Bhasin, Luiz F. Zerbini, Marie G. Joseph, 
+# Herbert Benson, and Towia A. Libermann. “Genomic Counter-Stress Changes Induced by the Relaxation Response.” 
+# PLoS ONE 3, no. 7 (July 2, 2008): e2576. https://doi.org/10.1371/journal.pone.0002576.
 
 # Load libraries ----
 
@@ -21,10 +26,10 @@ input_dir <- "~/Desktop/work_repo/data/GSE10041_RAW/"
 ## OUTPUT: limma results, plots, figures
 output_dir <- "~/Desktop/work_repo/github/Dusek_study_data/output/"
 
-## Load in metadata
+## Load in metadata from GEO accession: GSE10041 ----
 gset <- getGEO("GSE10041", GSEMatrix =TRUE, AnnotGPL=TRUE)
 pheno_data_org <- pData(gset$GSE10041_series_matrix.txt.gz)
-feature_data <- fData(gset$GSE10041_series_matrix.txt.gz)
+# feature_data <- fData(gset$GSE10041_series_matrix.txt.gz)
 pheno_data <- pheno_data_org %>% 
   dplyr::select(title = title,
                 geo_accession = geo_accession)
@@ -34,10 +39,12 @@ pheno_data$id <- str_extract(pheno_data_org$title, "-.*") %>%
 dim(pheno_data)
 # [1] 72 4
 length(grep("M", pheno_data$title)) # [1] 25 This is the correct number in the original and validation groups.
-pheno_data <- pheno_data[-grep("M", pheno_data$title),] # M samples are not used for longitudinal analyses.
+# The M samples were sampled from experienced meditators at a single timepoint. This is not needed for longitudinal analyses.
+pheno_data <- pheno_data[-grep("M", pheno_data$title),]
 dim(pheno_data)
 # [1] 47  4
 
+## Read in the expression data ----
 files <- list.files(input_dir, full.names = T)
 length(files)
 # [1] 72
@@ -45,14 +52,14 @@ files <- files[grep(paste(pheno_data$geo_accession, collapse = "|"), files)]
 length(files)
 # [1] 47
 raw <- ReadAffy(filenames = files)
-obj <- affy::rma(raw)
+obj <- affy::rma(raw) # Normalizes the data via the RMA method.
 norm_expr <- exprs(obj)
 colnames(norm_expr) <- str_replace(colnames(norm_expr), ".CEL.gz", replacement = "")
 identical(colnames(norm_expr), rownames(pheno_data))
 # [1] TRUE
 dim(norm_expr)
 # [1] 54675    47
-## Since sex is not in the metadata, we annotated it according to specific XIST value.
+## Since sex was not included in the metadata, we will infer it using RPS4Y1 transcript values
 rps4y1_vals <- norm_expr["201909_at",]
 pheno_data$sex <- NA
 for (i in 1:length(rps4y1_vals)) {
@@ -64,14 +71,14 @@ for (i in 1:length(rps4y1_vals)) {
 }
 dim(pheno_data)
 # [1] 47  5
-table(pheno_data$id, pheno_data$sex) # patient 30 has mixed sex samples. Mislabeled.
+table(pheno_data$id, pheno_data$sex) # Patient 30's samples have mixed sex samples. Most likely due to a labeling error.
 pheno_data[grep("30", pheno_data$id),] # [1] "GSM253667" "GSM253695" will be removed from analyses.
 #           title geo_accession time id    sex
 # GSM253667 N1-30     GSM253667   N1 30 Female
 # GSM253695 N2-30     GSM253695   N2 30   Male
 grep("30", pheno_data$id)
 # [1]  5 33
-pdf(file = paste(output_plot, "sample_rps4y1_values.pdf", sep = ""))
+pdf(file = paste(output_dir, "sample_rps4y1_values.pdf", sep = ""))
 rps4y1_vals %>% data.frame() %>% bind_cols(pheno_data$id) %>% 
   ggplot(aes(x = 1:length(rps4y1_vals), y = .)) + 
   geom_text(aes(label = `...2`, color = `...2`)) +
@@ -79,14 +86,16 @@ rps4y1_vals %>% data.frame() %>% bind_cols(pheno_data$id) %>%
   geom_hline(yintercept = 8, linetype = 'dashed')
 dev.off()
 
+## Quality control ----
+## AffyPLM build probe linear models that are useful for assessing data quality.
 library(affyPLM)
 ## Check for visual abnormalities
 plm <- fitPLM(raw, background = F, normalize = F)
-pdf(file = paste(output_plot, "NUSE_RLE_preQC.pdf", sep = ""))
+pdf(file = paste(output_dir, "NUSE_RLE_preQC.pdf", sep = ""))
 par(mfrow = c(1,2))
 RLE(plm, ylim = c(-4,4))
 title("RLE")
-NUSE(plm, ylim = c(0.75,1.8)) # Patient 50 array time 2 array stands out. Should be removed.
+NUSE(plm, ylim = c(0.75,1.8)) # Patient 50 array time 2 array stands out.
 title("NUSE")
 dev.off()
 pheno_data[nrow(pheno_data),]
@@ -95,7 +104,7 @@ pheno_data[nrow(pheno_data),]
 
 # Last sample has artifacts
 which(pheno_data$id == 50) # [1] 23 47
-pdf(file = paste(output_plot, "subject_50_pseudoimages.pdf", sep = ""))
+pdf(file = paste(output_dir, "subject_50_pseudoimages.pdf", sep = ""))
 par(mfrow = c(1,2))
 image(plm, which = 23) # some spotting
 image(plm, which = 47) # very intense
@@ -111,7 +120,7 @@ loads <- rownames(p$loadings)
 loads <- mapIds(hgu133plus2.db, loads, "SYMBOL", "PROBEID")
 loads <- make.names(ifelse(is.na(loads), names(loads), unname(loads)), unique = T)
 rownames(p$loadings) <- loads
-pdf(file = paste(output_plot, "filter_preQC_pca.pdf", sep = ""))
+pdf(file = paste(output_dir, "filter_preQC_pca.pdf", sep = ""))
 biplot(p, showLoadings = T, colby = "time", shape = "sex", encircle = T, lab = pheno_data$id, legendPosition = "right")
 dev.off()
 
@@ -135,11 +144,14 @@ loads <- rownames(p$loadings)
 loads <- mapIds(hgu133plus2.db, loads, "SYMBOL", "PROBEID")
 loads <- make.names(ifelse(is.na(loads), names(loads), unname(loads)), unique = T)
 rownames(p$loadings) <- loads
-pdf(file = paste(output_plot, "NOfilter_preQC_pca.pdf", sep = ""))
+pdf(file = paste(output_dir, "NOfilter_preQC_pca.pdf", sep = ""))
 biplot(p, showLoadings = T, colby = "time", shape = "sex", encircle = T, lab = pheno_data$id, legendPosition = "right")
 dev.off()
 
-# Import the CEL data ----
+## In this analysis, we removed GSM253709, GSM253667, GSM253695. Full explanations can be found in Supplementary
+## Data File 1 of our paper.
+
+# Import the CEL data for limma analysis ----
 files <- files[-grep("GSM253709|GSM253667|GSM253695", files)]
 pheno_data <- pheno_data[-grep("GSM253709|GSM253667|GSM253695", pheno_data$geo_accession),]
 data <- ReadAffy(filenames = files)
@@ -195,14 +207,13 @@ identical(pheno_data$geo_accession, colnames(normalized_expression))
 df <- data.frame(normalized_expression)
 
 # Annotate sex
-xist_vals <- normalized_expression["227671_at",]
-plot(xist_vals)
+rps4y1_vals <- norm_expr["201909_at",]
 pheno_data$sex <- NA
-for (i in 1:length(xist_vals)) {
-  if (xist_vals[i] > 8) {
-    pheno_data$sex[i] <- "Female"
-  } else {
+for (i in 1:length(rps4y1_vals)) {
+  if (rps4y1_vals[i] > 8) {
     pheno_data$sex[i] <- "Male"
+  } else {
+    pheno_data$sex[i] <- "Female"
   }
 }
 
@@ -277,31 +288,9 @@ pdf(file = paste(output_dir, "pca.pdf", sep = ""), height = 12, width = 16)
 plot_grid(toprow, botrow, ncol = 1, align = 'v')
 dev.off()
 
-# MDS plot
-qual_col_pals <- brewer.pal.info[brewer.pal.info$category == 'qual',]
-col_vector <- unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
-colors <- sample(col_vector, 23)
-new_colors <- c()
-for (i in 1:length(pheno_data$id)) {
-  new_colors[i] <- switch(pheno_data$id[i],
-                          "01" = colors[1], "02" = colors[2], "03" = colors[3], "06" = colors[4], "07" = colors[5], "59" = colors[6],
-                          "11" = colors[7], "12" = colors[8], "14" = colors[9], "23" = colors[10], "32" = colors[11], "33" = colors[12],
-                          "34" = colors[13], "35" = colors[14], "36" = colors[15], "39" = colors[16], "40" = colors[17], "41" = colors[18],
-                          "46" = colors[19], "47" = colors[20], "49" = colors[21], "50" = colors[22], "51" = colors[23],
-  )
-}
-pdf(file = paste(output_dir, "mds.pdf", sep = ""))
-limma::plotMDS(x = df, 
-               cex = 1, 
-               var.explained = T, 
-               col = new_colors,
-               labels = paste("P", pheno_data$id, sep = "-"))
-title("MDS Plot")
-dev.off()
-
 # limma analysis ----
 
-# Remove spike-in probes (AFFX hybridization and polyA probes)
+# Remove spike-in control probes (AFFX hybridization and polyA probes)
 control_index <- grep("lys|Lys|thr|Thr|dap|Dap|phe|Phe|Trp|bioB|BioB|BioC|bioC|bioD|BioD|cre|Cre", x = row.names(df))
 rownames(df)[control_index]
 df <- df[-control_index,]
@@ -343,14 +332,14 @@ dt <- decideTests(x)
 summary(dt)
 #         Time Time_sex
 # Down       0        0
-# NotSig 15607    15607
+# NotSig 15945    15945
 # Up         0        0
 dt <- decideTests(x, adjust.method = "none")
 summary(dt)
 #         Time Time_sex
-# Down      86      459
-# NotSig 15353    14398
-# Up       168      750
+# Down      87      470
+# NotSig 15684    14708
+# Up       174      767
 tables <- list(time = topTable(x, coef = 1, number = Inf, adjust.method = "fdr"),
                interaction = topTable(x, coef = 2, number = Inf, adjust.method = "fdr"))
 tables <- lapply(tables, function(x) {

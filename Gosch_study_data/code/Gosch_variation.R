@@ -1,4 +1,4 @@
-## Date: Jul 11 2024
+## Date: Jan 17 2025
 
 ## Calculate statistics for stability in Gosch study
 ## INPUT: Raw count file from GSE223613
@@ -100,13 +100,7 @@ param <- SnowParam(4, "SOCK", progressbar = TRUE)
 varPart <- fitExtractVarPartModel(exprObj = norm_expr, formula = formula, data = pheno_data, BPPARAM = param)
 vp <- sortCols(varPart)
 pdf(paste(output_dir, "vp_violin_plot.pdf", sep = ""))
-plotVarPart(vp)
-dev.off()
-# Canonical Correlation Analysis
-form <- ~ subject + time + as.numeric(age) + sex
-C <- canCorPairs(form, pheno_data)
-pdf(paste(output_dir, "cca.pdf", sep = ""))
-plotCorrMatrix(C)
+plotVarPart(vp) + theme(axis.text.x = element_text(size = 10.5))
 dev.off()
 
 ## standard deviation ----
@@ -169,8 +163,8 @@ genenames <- make.names(ifelse(is.na(genenames), names(genenames), unname(genena
 data_var$Symbol <- rownames(data_var)
 
 ## Heatmap ----
-pdf(paste(output_dir, "statistic_correlations.pdf", sep = ""))
-pheatmap(cor(data_var[,-length(names(data_var))]), display_numbers = T)
+pdf(paste(output_dir, "statistic_heatmap.pdf", sep = ""))
+pheatmap(cor(data_var[,-length(names(data_var))]), display_numbers = T, fontsize = 8)
 dev.off()
 ## Save ----
 write.csv(data_var, paste(output_dir, "Gosch_variation.csv", sep = ""), row.names = T)

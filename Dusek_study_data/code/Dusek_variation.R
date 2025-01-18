@@ -1,14 +1,12 @@
-## Date: Jul 11 2024
-
-## You should run "pre_QC_Dusek.R" before running this script to remove poor quality arrays from input directory.
+## Date: Jan 17 2025
 
 ## Calculate statistics for stability in Dusek study
 ## INPUT: Expr and pheno data
 ## OUTPUT: .csv file of heritability, standard deviation, and variancePartition statistics
 
 ### SUMMARY: Healthy adults took 8 weeks eliciting the relaxation response. They were inexperienced
-# and meditated with the help of a 20 minute guided exercise. Blood was drawn before and after the
-# intervention period and hybridized to Affymetrix arrays for comparison.
+# and meditated with the help of a 20 minute guided exercise over the study period. Blood was drawn
+# before and after the intervention period and hybridized to Affymetrix arrays for comparison.
 
 ## Load libraries ----
 
@@ -25,7 +23,7 @@ library(affy)
 library(affycoretools)
 library(hgu133plus2.db)
 
-## INPUT: pre-QC'd .CEL files
+## INPUT: Raw, unzipped .CEL files
 input_dir <- "~/Desktop/work_repo/data/GSE10041_RAW/"
 ## OUTPUT: tables and graphics
 output_dir <- "~/Desktop/work_repo/github/Dusek_study_data/output/"
@@ -45,12 +43,16 @@ length(grep("M", pheno_data$title)) # [1] 25 This is the correct number in the o
 pheno_data <- pheno_data[-grep("M", pheno_data$title),]
 dim(pheno_data)
 # [1] 47  4
-pheno_data <- pheno_data[pheno_data$geo_accession %in% str_extract(list.files(input_dir), "GSM\\d+"),]
+pheno_data <- pheno_data <- pheno_data[-grep("GSM253709|GSM253667|GSM253695", pheno_data$geo_accession),]
 dim(pheno_data)
 # [1] 44  4
 
 # Load in data ----
-data <- ReadAffy(celfile.path = input_dir)
+files <- list.files(input_dir, full.names = T)
+files <- files[grep(paste(pheno_data$geo_accession, collapse = "|"), files)]
+length(files)
+# [1] 44
+data <- ReadAffy(filenames = files)
 calls <- mas5calls.AffyBatch(data)
 probe_pval <- assayData(calls)[["se.exprs"]] ## Returns p-values
 minSamples <- min(colSums(table(pheno_data$id, pheno_data$time)))
@@ -63,16 +65,16 @@ dim(norm_expr)
 # [1] 15963    44
 colnames(norm_expr) <- gsub(pattern = "(.CEL.gz)", replacement = "", x = colnames(norm_expr))
 identical(pheno_data$geo_accession, colnames(norm_expr))
+# [1] TRUE
 
 # Annotate sex
-xist_vals <- norm_expr["227671_at",]
-plot(xist_vals)
+rps4y1_vals <- norm_expr["201909_at",]
 pheno_data$sex <- NA
-for (i in 1:length(xist_vals)) {
-  if (xist_vals[i] > 8) {
-    pheno_data$sex[i] <- "Female"
-  } else {
+for (i in 1:length(rps4y1_vals)) {
+  if (rps4y1_vals[i] > 8) {
     pheno_data$sex[i] <- "Male"
+  } else {
+    pheno_data$sex[i] <- "Female"
   }
 }
 table(pheno_data$sex, pheno_data$id)
@@ -93,14 +95,8 @@ vp <- sortCols(varPart)
 pdf(paste(output_dir, "vp_violin_plot.pdf", sep = ""))
 plotVarPart(vp)
 dev.off()
-# Canonical Correlation Analysis
-form <- ~ subject + time + sex
-C <- canCorPairs(form, pheno_data)
-pdf(paste(output_dir, "cca.pdf", sep = ""))
-plotCorrMatrix(C)
-dev.off()
 
-## standard deviation ----
+## standard deviation method ----
 avgexpr <- rowMeans(norm_expr)
 sd_total <- apply(norm_expr, 1, sd)
 
@@ -122,8 +118,8 @@ names(within_person_sd2) <- levels(person)
 within_person_sd2
 sd_within <- rowMeans(within_person_sd2, na.rm = TRUE)
 head(sd_within)
-# 1007_s_at   1053_at    117_at    121_at 1255_g_at   1294_at 
-# 0.1307575 0.1623192 0.2389176 0.1488751 0.1056966 0.2072298
+#   1053_at    117_at    121_at   1294_at   1316_at 1405_i_at 
+# 0.1623192 0.2389176 0.1488751 0.2072298 0.1383339 0.1570317 
 data_var <- as.data.frame(matrix(cbind(sd_within, sd_total), nrow = length(sd_within)))
 rownames(data_var) <- rownames(norm_expr)
 names(data_var) <- c("Within Variation (SD)", "Total Variation (SD)")
@@ -159,7 +155,7 @@ genenames <- make.names(ifelse(is.na(genenames), names(genenames), unname(genena
 data_var$Symbol <- genenames
 
 ## Heatmap ----
-pdf(paste(output_dir, "statistic_correlations.pdf", sep = ""))
+pdf(paste(output_dir, "statistic_heatmap.pdf", sep = ""))
 pheatmap(cor(data_var[,-length(names(data_var))]), display_numbers = T)
 dev.off()
 ## Save ----

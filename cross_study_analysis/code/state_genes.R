@@ -155,8 +155,8 @@ symbol_find <- function(x) {
 
 ## To have a common gene naming system, here are the str replacement tools we use:
 ## str_replace_all(x, "\\.(?!\\d$)", "-") replace dots with dashes only if they are not followed by a digit.
-## RATIONALE: Genes like HLA.DRB4 should be changed to HLA-DRB4, but not genes like GSTM1.1. A name like
-## GSTM1.1 appears in probe-based platforms where a transcript is targeted by multiple different probes.
+## RATIONALE: Genes like HLA.DRB4 should be changed to HLA-DRB4, but not genes like RP11-641D5.1. A name like
+## RP11-641D5.1 represents something like a version number for a gene region / pseudogene / lncRNA.
 ## Certain transcripts (like those identified in RNA-seq) will lose their specificity using this method.
 ## When we map the gene symbol to the Probe ID, we use make.names with unique = T, which appends a ".X" for
 ## the Xth repeat name of that symbol. To correct for that, we use this function:
@@ -176,26 +176,27 @@ adjpfilt_symbols <- lapply(adjpfilt_symbols, unique)
 
 all_symbols <- unique(unname(unlist(all_symbols)))
 length(all_symbols)
-# [1] 23879
+# [1] 23883
 
 ## Test concept
-all_symbols[1] # [1] "NEK8"
+all_symbols[1]
+# [1] "RP11-346C20"
 sum(unlist(lapply(pfilt_symbols, function(x) {all_symbols[1] %in% x})))
-# [1] 9
+# [1] 1
 names(unlist(lapply(pfilt_symbols, function(x) {all_symbols[1] %in% x})))[unlist(lapply(pfilt_symbols, function(x) {all_symbols[1] %in% x}))]
-# [1] "gomez"                            "goschFifteenHrMain"               "goschNineHrMain"                 
-# [4] "goschSixHrMain"                   "goschTwelveHrMain"                "obermoser4BaselineVSfifteenAll"  
-# [7] "obermoser4BaselineVSthirtySixAll" "obermoser4BaselineVStwelveAll"    "rusch"
+# [1] "gomez"
 deg_results <- data.frame(Symbol = all_symbols, `P_counts` = 0, `P_study_names` = 0, `AdjP_counts` = 0,
                           `AdjP_study_names` = 0)
 head(deg_results)
-#        Symbol P_counts P_study_names AdjP_counts AdjP_study_names
-# 1        NEK8        0             0           0                0
-# 2         IPP        0             0           0                0
-# 3  CDKN2AIPNL        0             0           0                0
-# 4 RP11-346C20        0             0           0                0
-# 5       MAPK7        0             0           0                0
-# 6  CTC-523E23        0             0           0                0
+# Symbol P_counts P_study_names AdjP_counts AdjP_study_names
+# 1 RP11-346C20        0             0           0                0
+# 2      ZNF491        0             0           0                0
+# 3  RP11-398A8        0             0           0                0
+# 4  CTC-523E23        0             0           0                0
+# 5        KRT5        0             0           0                0
+# 6    C1orf220        0             0           0                0
+dim(deg_results)
+# [1] 23883     5
 for (i in 1:5) {
   deg_results[i,2] <- sum(unlist(lapply(pfilt_symbols, function(x) {deg_results$Symbol[i] %in% x})))
   deg_results[i,3] <- paste(names(unlist(lapply(pfilt_symbols, function(x) {all_symbols[i] %in% x})))[unlist(lapply(pfilt_symbols, function(x) {all_symbols[i] %in% x}))], collapse = " ")
@@ -268,7 +269,7 @@ head(deg_results[order(deg_results$P_value_study_count, decreasing = T), c("Symb
 # 370     BIVM                   6
 # 397     MZF1                   6
 dim(deg_results[deg_results$P_value_study_count >= 6,])
-# [1] 45 16
+# [1] 46 16
 supp_table <- deg_results[deg_results$P_value_study_count >= 6,"Symbol"]
 library(biomaRt)
 mart <- useDataset(dataset = "hsapiens_gene_ensembl", mart = useMart("ENSEMBL_MART_ENSEMBL"))

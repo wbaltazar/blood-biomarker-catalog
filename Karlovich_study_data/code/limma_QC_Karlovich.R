@@ -1,12 +1,12 @@
-# Date: October 25 2024
+# Date: January 17 2025
 
+## This script performs limma differential expression analysis of data from the following study:
 # Karlovich, Chris, Guillemette Duchateau-Nguyen, Andrea Johnson, Patricia McLoughlin, Mercidita Navarro, Carole 
 # Fleurbaey, Lori Steiner, et al. “A Longitudinal Study of Gene Expression in Healthy Individuals.” BMC Medical 
 # Genomics 2 (June 7, 2009): 33. https://doi.org/10.1186/1755-8794-2-33.
 
-
 ## Note that the first timepoints of this study were hybridized in one batch, while the last two timepoints were
-## hybridized in another batch. We do not compare these groups of times. See paper.
+## hybridized in another batch. We separate these batches for limma analysis. You can read their paper for more details.
 
 # Load libraries -----
 
@@ -49,6 +49,7 @@ head(pheno_data)
 # GSM401063 Blood sample from patient 106 at Day 180     GSM401063     106  40 Male Day 180
 # GSM401064   Blood sample from patient 108 at Day 1     GSM401064     108  24 Male   Day 1
 
+# Divide the metadata into batches
 p1 <- pheno_data[-grep("Day 90|Day 180", pheno_data$time), ]
 dim(p1)
 # [1] 66  6
@@ -205,28 +206,6 @@ pdf(file = paste(output_dir, "pca_batch1.pdf", sep = ""), height = 12, width = 1
 plot_grid(toprow, botrow, ncol = 1, align = 'v')
 dev.off()
 
-# MDS plot
-qual_col_pals <- brewer.pal.info[brewer.pal.info$category == 'qual',]
-col_vector <- unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
-colors <- sample(col_vector, 22)
-new_colors <- c()
-for (i in 1:length(p1$subject)) {
-  new_colors[i] <- switch(p1$subject[i],
-                          "106" = colors[1], "108" = colors[2], "113" = colors[3], "114" = colors[4], "117" = colors[5], 
-                          "121" = colors[6], "123" = colors[7], "131" = colors[8], "135" = colors[9], "138" = colors[10], 
-                          "147" = colors[11], "148" = colors[12], "173" = colors[13], "174" = colors[14], "179" = colors[15],
-                          "180" = colors[16], "154" = colors[17], "159" = colors[18], "160" = colors[19], "163" = colors[20],
-                          "165" = colors[21], "172" = colors[22],
-  )
-}
-pdf(file = paste(output_dir, "mds_batch1.pdf", sep = ""))
-limma::plotMDS(x = df, 
-               cex = 1, 
-               var.explained = T, 
-               col = new_colors,
-               labels = p1$subject)
-title("MDS Plot (Batch 1)")
-dev.off()
 
 # limma analysis ----
 
@@ -237,6 +216,7 @@ rownames(df)[control_index]
 # already removed
 rownames(df)[grep("AFFX", x = rownames(df))]
 dim(df)
+# [1] 17635    66
 
 # [1] "AFFX-HSAC07/X00351_3_at"     "AFFX-HSAC07/X00351_5_at"     "AFFX-HSAC07/X00351_M_at"    
 # [4] "AFFX-hum_alu_at"             "AFFX-HUMGAPDH/M33197_3_at"   "AFFX-HUMGAPDH/M33197_5_at"  
@@ -257,7 +237,7 @@ design <- model.matrix(~0+TS, df) # 0 indicates y-intercept
 colnames(design) <- make.names(levels(TS))
 cor <- duplicateCorrelation(df, design, block=id) # here, ID identifies which samples correlate
 cor$consensus.correlation
-# [1] 0.168133
+# [1] 0.3054105
 
 fit <- lmFit(object=df, design=design, block=id, correlation=cor$consensus.correlation)
 
@@ -281,16 +261,16 @@ write.csv(y, file = paste(batch_dir, "limma_F.csv", sep = ""), row.names = T)
 
 dt <- decideTests(x)
 summary(dt)
-#         Time Time_sex
-# Down       0        0
-# NotSig 54630    54630
-# Up         0        0
+#        Day14 Day28 IMaleDay14 IMaleDay28
+# Down       0     0          0          0
+# NotSig 17635 17635      17635      17635
+# Up         0     0          0          0
 dt <- decideTests(x, adjust.method = "none")
 summary(dt)
-#         Time Time_sex
-# Down     874     3399
-# NotSig 52928    49655
-# Up       828     1576
+#        Day14 Day28 IMaleDay14 IMaleDay28
+# Down     555   353        324        324
+# NotSig 16096 16762      16823      16823
+# Up       984   520        488        488
 names(y)
 # [1] "Day14"      "Day28"      "IMaleDay14" "IMaleDay28" "AveExpr"    "F"          "P.Value"    "adj.P.Val"  "Symbol"    
 tables <- list()
@@ -333,7 +313,7 @@ for (i in 1:4) {
                                    lab = tables[[i]]$Symbol,
                                    x = "logFC",
                                    y = "P.Value",
-                                   title = "", titleLabSize = 8,
+                                   title = ifelse(i == 1, "Karlovich: Batch 1", ""), titleLabSize = 8,
                                    subtitle = names(tables)[i], subtitleLabSize = 12,
                                    caption = "",
                                    col = c("black","lightblue","royalblue","blue"),
@@ -525,28 +505,6 @@ dev.off()
 # Day 90 subject 121 (GSM401087) and Day 180 subject 172 (GSM401148) both had elevated NUSEs and
 # drive PC1 and PC2. Removing both of these samples later.
 
-# MDS plot
-qual_col_pals <- brewer.pal.info[brewer.pal.info$category == 'qual',]
-col_vector <- unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
-colors <- sample(col_vector, 22)
-new_colors <- c()
-for (i in 1:length(p2$subject)) {
-  new_colors[i] <- switch(p2$subject[i],
-                          "106" = colors[1], "108" = colors[2], "113" = colors[3], "114" = colors[4], "117" = colors[5], 
-                          "121" = colors[6], "123" = colors[7], "131" = colors[8], "135" = colors[9], "138" = colors[10], 
-                          "147" = colors[11], "148" = colors[12], "173" = colors[13], "174" = colors[14], "179" = colors[15],
-                          "180" = colors[16], "154" = colors[17], "159" = colors[18], "160" = colors[19], "163" = colors[20],
-                          "165" = colors[21], "172" = colors[22],
-  )
-}
-pdf(file = paste(output_dir, "mds_batch2.pdf", sep = ""))
-limma::plotMDS(x = df, 
-               cex = 1, 
-               var.explained = T, 
-               col = new_colors,
-               labels = paste(p2$subject, p2$time))
-title("MDS Plot (batch 2)")
-dev.off()
 
 # limma analysis ----
 # Remove spike-in probes (AFFX hybridization and polyA probes)
@@ -648,7 +606,7 @@ for (i in 1:2) {
                                    lab = tables[[i]]$Symbol,
                                    x = "logFC",
                                    y = "P.Value",
-                                   title = "", titleLabSize = 8,
+                                   title = ifelse(i == 1, "Karlovich: Batch 2", ""), titleLabSize = 14,
                                    subtitle = names(tables)[i], subtitleLabSize = 12,
                                    caption = "",
                                    col = c("black","lightblue","royalblue","blue"),
@@ -661,6 +619,6 @@ for (i in 1:2) {
                                    drawConnectors = TRUE,
                                    max.overlaps = 50)
 }
-pdf(paste(batch_dir, "volcanos.pdf", sep = ""))
+pdf(paste(batch_dir, "volcanos.pdf", sep = ""), width = 11)
 plot_grid(plotlist = volcanos, nrow = 1)
 dev.off()

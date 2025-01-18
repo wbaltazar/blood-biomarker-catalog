@@ -1,6 +1,15 @@
+## Jan 17 2025
+
+# The following code contains a standard limma analysis for the following study:
+# Obermoser, Gerlinde, Scott Presnell, Kelly Domico, Hui Xu, Yuanyuan Wang, Esperanza Anguiano, 
+# LuAnn Thompson-Snipes, et al. “Systems Scale Interactive Exploration Reveals Quantitative and Qualitative 
+# Differences in Response to Influenza and Pneumococcal Vaccines.” Immunity 38, no. 4 
+# (April 18, 2013): 831–44. https://doi.org/10.1016/j.immuni.2012.12.008.
+
+
 ### SUMMARY: Do vaccine injections induce changes in gene expression?
-# Data from multiple healthy patients sampled before, baseline, and after vaccination (w/ saline controls)
-# We include the type of vaccination in this analysis to potentially explain the variability
+# Data from multiple healthy patients sampled before, baseline, and multiple timepoints after vaccination 
+# Subjects received either pneumococcal vaccine, influenza vaccine, or saline injections
 
 # The data was collected in three cohorts from either the vein or the finger. Additionally, the data collected
 # across cohorts measures different time intervals, including an hour-by-hour measurement.
@@ -374,30 +383,6 @@ biplot(p,
        legendPosition = 'right', legendLabSize = 9, legendIconSize = 3)
 dev.off()
 
-### MDS ----
-### MDS can be good for getting really nice separation and pulling out outliers.
-qual_col_pals <- brewer.pal.info
-col_vector <- unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
-colors <- sample(col_vector, length(unique(p1v$subject)))
-new_colors <- c()
-for (i in 1:length(p1v$subject)) {
-  new_colors[i] <- switch(p1v$subject[i],
-                          "2" = colors[1], "9" = colors[2], "10" = colors[3], "12" = colors[4], 
-                          "15" = colors[5], "16" = colors[6], "20" = colors[7], "21" = colors[8],
-                          "22" = colors[9], "23" = colors[10], "24" = colors[11], "25" = colors[12],
-                          "1" = colors[13], "3" = colors[14], "5" = colors[15], "6" = colors[16],
-                          "13" = colors[17], "18" = colors[18]
-  )
-}
-pdf(file = paste(output_dir, "mds_p1v_qc.pdf", sep = ""))
-limma::plotMDS(x = data_norm$E, 
-               cex = 1, 
-               var.explained = T, 
-               col = new_colors,
-               labels = paste(p1v$subject, p1v$sex, p1v$treat, sep = ", "))
-title("MDS Plot- training set vein")
-dev.off()
-
 #~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#
 #~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#
 #
@@ -602,7 +587,7 @@ fit2 <- contrasts.fit(fit, my_contrasts)
 x <- eBayes(fit2)
 
 ### Results tables ----
-y <- topTable(x, number = Inf, adjust.method = "fdr")
+y <- topTable(x, number = Inf, adjust.method = "fdr", sort.by = "F")
 y$Symbol <- mapIds(x = illuminaHumanv3.db, keys = row.names(y), column = "SYMBOL", keytype = "PROBEID")
 dir.create(paste(output_dir, "training_vein_limma", sep = ""))
 write.csv(y, file = paste(output_dir, "training_vein_limma/limma_F.csv", sep = ""), row.names = TRUE)
@@ -663,7 +648,7 @@ for (i in 1:8) {
                                    lab = tables[[i]]$Symbol,
                                    x = "logFC",
                                    y = "P.Value",
-                                   title = (paste("Training_Vein:", names(y)[i])), titleLabSize = 6,
+                                   title = (paste("Training_Vein:", names(y)[i])), titleLabSize = 8,
                                    subtitle = "",
                                    labSize = (4.0),
                                    colAlpha = 1,
@@ -852,30 +837,6 @@ biplot(p,
        legendPosition = 'right', legendLabSize = 9, legendIconSize = 3)
 dev.off()
 
-### MDS ----
-### MDS can be good for getting really nice separation and pulling out outliers.
-qual_col_pals <- brewer.pal.info
-col_vector <- unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
-colors <- sample(col_vector, length(unique(p1f$subject)))
-new_colors <- c()
-for (i in 1:length(p1f$subject)) {
-  new_colors[i] <- switch(p1f$subject[i],
-                          "18" = colors[1], "10" = colors[2], "24" = colors[3], "1" = colors[4], 
-                          "22" = colors[5], "8" = colors[6], "6" = colors[7], "13" = colors[8],
-                          "3" = colors[9], "14" = colors[10], "20" = colors[11], "7" = colors[12],
-                          "4" = colors[13], "15" = colors[14], "21" = colors[15], "26" = colors[16],
-                          "11" = colors[17]
-  )
-}
-pdf(file = paste(output_dir, "mds_p1f_qc.pdf", sep = ""))
-limma::plotMDS(x = data_norm$E, 
-               cex = 1, 
-               var.explained = T, 
-               col = new_colors,
-               labels = paste(p1f$subject, p1f$sex, p1f$treat, sep = ", "))
-title("MDS Plot - test set finger")
-dev.off()
-
 #~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#
 #~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#
 #
@@ -957,7 +918,7 @@ x <- eBayes(fit2)
 
 ### Results tables ----
 
-y <- topTable(x, number = Inf, adjust.method = "fdr")
+y <- topTable(x, number = Inf, adjust.method = "fdr", sort.by = "F")
 y$Symbol <- mapIds(x = illuminaHumanv3.db, keys = row.names(y), column = "SYMBOL", keytype = "PROBEID")
 dir.create(paste(output_dir, "test_finger_limma", sep = ""))
 write.csv(y, file = paste(output_dir, "test_finger_limma/limma_F.csv", sep = ""), row.names = TRUE)
@@ -1212,29 +1173,6 @@ biplot(p,
        legendPosition = 'right', legendLabSize = 9, legendIconSize = 3)
 dev.off()
 
-### MDS ----
-qual_col_pals <- brewer.pal.info[brewer.pal.info$category == 'qual',]
-col_vector <- unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
-colors <- sample(col_vector, length(unique(p2v$subject)))
-new_colors <- c()
-for (i in 1:length(p2v$subject)) {
-  new_colors[i] <- switch(p2v$subject[i],
-                          "18" = colors[1], "10" = colors[2], "24" = colors[3], "1" = colors[4], 
-                          "22" = colors[5], "8" = colors[6], "6" = colors[7], "13" = colors[8],
-                          "3" = colors[9], "14" = colors[10], "20" = colors[11], "7" = colors[12],
-                          "4" = colors[13], "15" = colors[14], "21" = colors[15], "26" = colors[16],
-                          "11" = colors[17], "12" = colors[18]
-  )
-}
-pdf(file = paste(output_dir, "mds_p2v_qc.pdf", sep = ""))
-limma::plotMDS(x = data_norm$E, 
-               cex = 1, 
-               var.explained = T, 
-               col = new_colors,
-               labels = paste(p2v$subject, p2v$sex, p2v$treat, sep = ", "))
-title("MDS Plot - test set vein")
-dev.off()
-
 #~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#
 #~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#
 #
@@ -1411,7 +1349,7 @@ x <- eBayes(fit2)
 
 ### Results tables ----
 
-y <- topTable(x, number = Inf, adjust.method = "fdr")
+y <- topTable(x, number = Inf, adjust.method = "fdr", sort.by = "F")
 y$Symbol <- mapIds(x = illuminaHumanv3.db, keys = row.names(y), column = "SYMBOL", keytype = "PROBEID")
 dir.create(paste(output_dir, "test_vein_limma", sep = ""))
 write.csv(y, file = ,paste(output_dir, "test_vein_limma/limma_F.csv", sep = ""), row.names = TRUE)
@@ -1687,29 +1625,6 @@ biplot(p,
        legendPosition = 'right', legendLabSize = 10, legendIconSize = 3)
 dev.off()
 
-### MDS ----
-qual_col_pals <- brewer.pal.info[brewer.pal.info$category == 'qual',]
-col_vector <- unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
-colors <- sample(col_vector, length(unique(p2f$subject)))
-new_colors <- c()
-for (i in 1:length(p2f$subject)) {
-  new_colors[i] <- switch(p2f$subject[i],
-                          "18" = colors[1], "10" = colors[2], "24" = colors[3], "1" = colors[4], 
-                          "22" = colors[5], "8" = colors[6], "6" = colors[7], "13" = colors[8],
-                          "3" = colors[9], "14" = colors[10], "20" = colors[11], "7" = colors[12],
-                          "4" = colors[13], "15" = colors[14], "21" = colors[15], "26" = colors[16],
-                          "11" = colors[17], "12" = colors[18]
-  )
-}
-pdf(file = paste(output_dir, "mds_p2f_qc.pdf", sep = ""))
-limma::plotMDS(x = data_norm$E, 
-               cex = 1, 
-               var.explained = T, 
-               col = new_colors,
-               labels = paste(p2v$subject, p2v$sex, p2v$treat, sep = ", "))
-title("MDS Plot - training set finger")
-dev.off()
-
 #~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#
 #~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#
 #
@@ -1944,7 +1859,7 @@ x <- eBayes(fit2)
 
 ### Results tables ----
 
-y <- topTable(x, number = Inf, adjust.method = "fdr")
+y <- topTable(x, number = Inf, adjust.method = "fdr", sort.by = "F")
 y$Symbol <- mapIds(x = illuminaHumanv3.db, keys = row.names(y), column = "SYMBOL", keytype = "PROBEID")
 dir.create(paste(output_dir, "training_finger_limma", sep = ""))
 write.csv(y, file = paste(output_dir, "training_finger_limma/limma_F.csv", sep = ""), row.names = TRUE)
@@ -2076,7 +1991,7 @@ x <- eBayes(fit2)
 
 ### Print results to new directory ----
 dir.create(path = paste(output_dir, "diurnal_genes", sep = ""))
-y <- topTable(x, number = Inf, adjust.method = "fdr")
+y <- topTable(x, number = Inf, adjust.method = "fdr", sort.by = "F")
 y$Symbol <- mapIds(x = illuminaHumanv3.db, keys = row.names(y), column = "SYMBOL", keytype = "PROBEID")
 write.csv(y, file = paste(output_dir, "diurnal_genes/diurnal_limma_F.csv", sep = ""), row.names = TRUE)
 
@@ -2093,7 +2008,7 @@ for (i in 1:7) {
   tables[[i]] <- topTable(x, coef = i, number = Inf, adjust.method = "fdr")
 }
 degs <- lapply(tables, function(x){
-  x %>% filter(P.Value < 0.05) %>% nrow() %>% return()
+  x %>% dplyr::filter(P.Value < 0.05) %>% nrow() %>% return()
 })
 degstb <- tibble(time = factor(c(1.5,3,6,9,12,15,24), levels = c(1.5,3,6,9,12,15,24), ordered = T), nums = unlist(degs))
 pdf(file = paste(output_dir, "figureS5A.pdf", sep = ""), width = 8, height = 8)

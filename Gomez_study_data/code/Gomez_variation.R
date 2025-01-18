@@ -1,4 +1,4 @@
-## Date: Jul 11 2024
+## Date: Jan 17 2025
 
 ## Calculate statistics for stability in Gomez study
 ## INPUT: Raw count file from GSE239282
@@ -97,8 +97,8 @@ colnames(norm_expr) <- rownames(pheno_data)
 
 ## variancePartition ----
 names(pheno_data)
-# [1] "title"         "geo_accession" "age"           "condition"     "participant"   "sex"          
-# [7] "match"         "time"  
+# [1] "title"         "geo_accession" "age"           "condition"     "participant"   "sex"           
+# "time"          "match"    
 names(pheno_data)[5] <- "subject"
 pheno_data$time <- ifelse(pheno_data$time, "Followup", "Baseline")
 ## (1|) notation models variables as a random variable rather than a fixed effect. 
@@ -109,13 +109,7 @@ param <- SnowParam(4, "SOCK", progressbar = TRUE)
 varPart <- fitExtractVarPartModel(exprObj = norm_expr, formula = formula, data = pheno_data, BPPARAM = param)
 vp <- sortCols(varPart)
 pdf(paste(output_dir, "vp_violin_plot.pdf", sep = ""))
-plotVarPart(vp)
-dev.off()
-# Canonical Correlation Analysis
-form <- ~ subject + time + as.numeric(age) + sex
-C <- canCorPairs(form, pheno_data)
-pdf(paste(output_dir, "cca.pdf", sep = ""))
-plotCorrMatrix(C)
+plotVarPart(vp) + theme(axis.text.x = element_text(size = 11))
 dev.off()
 
 ## standard deviation and average expression ----
@@ -178,7 +172,7 @@ genenames <- make.names(ifelse(is.na(genenames), names(genenames), unname(genena
 data_var$Symbol <- genenames
 
 ## Heatmap of all statistical values ----
-pdf(paste(output_dir, "statistic_correlations.pdf", sep = ""))
+pdf(paste(output_dir, "statistic_heatmap.pdf", sep = ""))
 pheatmap(cor(data_var[,-length(names(data_var))]), display_numbers = T, fontsize_number = 4)
 dev.off()
 ## Save ----

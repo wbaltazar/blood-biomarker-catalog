@@ -1,6 +1,11 @@
-## Date: October 24 2024
+## Date: January 17 2025
 
-# The following code contains a standard limma analysis and some quality control calculations we generated.
+# The following code contains a standard limma analysis for the following study:
+# Rusch, Heather L., Jeffrey Robinson, Sijung Yun, Nicole D. Osier, Christiana Martin, Chris R. Brewin,
+# and Jessica M. Gill. “Gene Expression Differences in PTSD Are Uniquely Related to the Intrusion Symptom
+# Cluster: A Transcriptome-Wide Analysis in Military Service Members.” Brain, Behavior, and Immunity 80
+# (August 1, 2019): 904–8. https://doi.org/10.1016/j.bbi.2019.04.039.
+
 
 # Load libraries ----
 
@@ -175,15 +180,12 @@ image(Pset, which = 18)
 dev.off()
 ## Clear strip pattern on the array, plus the variation in PCA, we removed this sample as well.
 
-files <- list.files(input_dir)
-files <- files[grep("GSM2175214", files)]
-file.remove(paste(input_dir, files, sep = ""))
-
-# IF YOU HAVE RUN THIS FILE BEFORE, START HERE AFTER RUNNING LIBRARIES AND getGEO. ----
-pheno_data <- pheno_data[pheno_data$geo_accession %in% str_extract(list.files(input_dir), "GSM\\d+"),]
+# For analysis ----
+files <- files[-grep("GSM2175214", files)]
+data <- ReadAffy(filenames = files)
+pheno_data <- pheno_data[pheno_data$geo_accession %in% str_extract(colnames(exprs(data)), pattern = "GSM\\d+"),]
 dim(pheno_data)
 # [1] 38  9
-data <- ReadAffy(celfile.path = input_dir)
 pheno_data$time[pheno_data$time != "Baseline"] <- rep(x = "Followup", times = length(pheno_data$time[pheno_data$time != "Baseline"]))
 table(pheno_data$patient_ID, pheno_data$time)
 #             Baseline Followup
@@ -336,29 +338,6 @@ pdf(file = paste(output_dir, "pca.pdf", sep = ""), height = 12, width = 16)
 plot_grid(toprow, botrow, ncol = 1, align = 'v')
 dev.off()
 
-# MDS plot
-qual_col_pals <- brewer.pal.info[brewer.pal.info$category == 'qual',]
-col_vector <- unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
-colors <- sample(col_vector, length(unique(pheno_data$patient_ID)))
-new_colors <- c()
-for (i in 1:length(pheno_data$patient_ID)) {
-  new_colors[i] <- switch(pheno_data$patient_ID[i],
-                          "Subject 10" = colors[1], "Subject 108" = colors[2], "Subject 117" = colors[3], "Subject 37" = colors[4], 
-                          "Subject 38" = colors[5], "Subject 46" = colors[6], "Subject 49" = colors[7], "Subject 53" = colors[8],
-                          "Subject 63" = colors[9], "Subject 66" = colors[10], "Subject 69" = colors[11], "Subject 72" = colors[12],
-                          "Subject 73" = colors[13], "Subject 76" = colors[14], "Subject 80" = colors[15], "Subject 9" = colors[16],
-                          "Subject 94" = colors[17], "Subject 95" = colors[18], "Subject 98" = colors[19], "Subject 68" = colors[20]
-  )
-}
-pdf(file = paste(output_dir, "mds.pdf", sep = ""))
-limma::plotMDS(x = df, 
-               cex = 1, 
-               var.explained = T, 
-               col = new_colors,
-               labels = pheno_data$patient_ID)
-title("MDS Plot")
-dev.off()
-
 # limma analysis ----
 
 # Remove spike-in probes (AFFX hybridization and polyA probes)
@@ -440,8 +419,8 @@ for (i in 1:5) {
     theme_cowplot() +
     ggtitle("", subtitle = names(y)[i]) +
     theme(title = element_text(size = 7.5))
-  pdf(file = paste(output_dir, names(y)[i], "p_value_histograms.pdf", sep = ""))
-  plot_grid(a, b, labels = c('A. P-value histogram', 'B. BH-adjusted'))
+  pdf(file = paste(output_dir, names(y)[i], "_p_value_histograms.pdf", sep = ""), width = 10)
+  plot_grid(a, b, labels = c('A. P-value histogram', 'B. BH-adjusted'), nrow = 1)
   dev.off()
 }
 
@@ -453,7 +432,7 @@ for (i in 1:5) {
                               lab = tables[[1]][,7],
                               x = "logFC",
                               y = "P.Value",
-                              title = ("Baseline vs. 3mo"),
+                              title = ifelse(i == 1, "Baseline vs. 3mo", ""),
                               subtitle = names(y)[i],
                               caption = "baseline vs. followup", captionLabSize = 5,
                               col = c("black","lightblue","royalblue","blue"),
@@ -464,7 +443,7 @@ for (i in 1:5) {
                               colAlpha = 1,
                               pointSize = 1.0,
                               drawConnectors = TRUE,
-                              max.overlaps = 50)
+                              max.overlaps = 20)
 }
 pdf(paste(output_dir, "volcanos.pdf", sep = ""), width = 12, height = 10)
 plot_grid(plotlist = volcanos, nrow = 2, align = 'h')

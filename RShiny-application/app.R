@@ -22,16 +22,13 @@ e12 <- read_rds("./data/expr/Karlovich1.rds")
 e13 <- read_rds("./data/expr/Karlovich2.rds")
 symbolOptions <- read.table("./data/symbol.txt")
 symbolOptions <- symbolOptions$x
-eqtlOptionsGene <- unique(gtex$`Symbol`)
-eqtlOptionsTrait <- unique(gtex$`GWAS Trait`)
-eqtlOptionsIds <- unique(gtex$`rsID of eQTL`)
 
 tutorial <- function(text) {
   tooltip(icon("comments"), paste(text), placement = "top")
-}
+} # Creates the text bubble icon for the tutorial.
 info <- function(text) {
   tooltip(icon("circle-info"), paste(text), placement = "top")
-}
+} # Creates the information bubble icon.
 
 # Build ui ----
 ui <- fluidPage(
@@ -273,7 +270,7 @@ Nucleic Acids Res. 2022 Nov 9:gkac1010. doi: 10.1093/nar/gkac1010. Epub ahead of
              sidebarLayout(
                sidebarPanel = sidebarPanel(width = 3,
                                            radioButtons(inputId = "gtexFilter", label = "Filter by", 
-                                                        choices = c("Gene", "Disease/Trait","rsID", "No filter"), selected = "No filter"),
+                                                        choices = c("Gene", "Disease/Trait","rsID", "No filter"), selected = NULL),
                                            selectizeInput(inputId = "eqtlChoiceGene",
                                                           selected = NULL,
                                                           label = "Symbol to filter by",
@@ -370,8 +367,10 @@ Nucleic Acids Res. 2022 Nov 9:gkac1010. doi: 10.1093/nar/gkac1010. Epub ahead of
                         )),
                    card(
                      card_body(
-                       plotOutput("genePlot")
-                       
+                       plotOutput("genePlot"),
+                       sliderInput(inputId = "adjustYlim", label = "Adjust y-axis", 
+                                   min = -6, max = 20, value = c(0,12)),
+                       tags$i("Note: if you don't see anything, adjust the y-limits.", style = "font-size:12px")
                      )
                    )
                  ),
@@ -436,6 +435,8 @@ Nucleic Acids Res. 2022 Nov 9:gkac1010. doi: 10.1093/nar/gkac1010. Epub ahead of
                                          "LaRocca 16 week transcript statistics (3.4 MB)" = "larocca",
                                          "Karlovich 4 week transcript statistics (14.6 MB)" = "k1",
                                          "Karlovich 90 day transcript statistics (13.1 MB)" = "k2",
+                                         "Trait genes (19 KB)" = "trait",
+                                         "State genes (19 KB)" = "state",
                                          "Trait scores (2.6 MB)" = "stable",
                                          "State scores (4 MB)" = "flex",
                                          "Median gene statistics (4.2 MB)" = "median",
@@ -459,11 +460,11 @@ header.append('<div style=\"float:right\"><img src=\"logo.jpg\" alt=\"alt\" styl
 # Define the server logic ----
 server <- function(input, output, session) {
   
-  ## Search bar options ----
+  ## Create all search bar options ----
   updateSelectizeInput(session, inputId = "geneName", choices = symbolOptions, server = TRUE)
-  updateSelectizeInput(session, inputId = "eqtlChoiceGene", choices = eqtlOptionsGene, server = TRUE)
-  updateSelectizeInput(session, inputId = "eqtlChoiceTrait", choices = eqtlOptionsTrait, server = TRUE)
-  updateSelectizeInput(session, inputId = "eqtlChoiceId", choices = eqtlOptionsIds, server = TRUE)
+  updateSelectizeInput(session, inputId = "eqtlChoiceGene", choices = eqtlOptionsGene(), server = TRUE)
+  updateSelectizeInput(session, inputId = "eqtlChoiceTrait", choices = eqtlOptionsTrait(), server = TRUE)
+  updateSelectizeInput(session, inputId = "eqtlChoiceId", choices = eqtlOptionsIds(), server = TRUE)
   
   ## Gene symbol search code----
   ### Conditional UI for if there are multiple probes for a gene ----
@@ -541,11 +542,11 @@ server <- function(input, output, session) {
     if (checkprobe) {
       plot <- gene_graph_p(probeName = as.character(input$probeInput), pData = pdata,
                            column = input$column,
-                           expr = expr) # Plot function for Illumina and Affymetrix microarrays
+                           expr = expr, ylim = input$adjustYlim) # Plot function for Illumina and Affymetrix microarrays
     } else {
       plot <- gene_graph(geneName = as.character(input$geneName), pData = pdata,
                          column = input$column,
-                         expr = expr) # Plot function for RNA-seq experiments
+                         expr = expr, ylim = input$adjustYlim) # Plot function for RNA-seq experiments
     }
     
     # Return the generated plot
@@ -606,6 +607,7 @@ server <- function(input, output, session) {
     return(t(as.data.frame(result)))
   })
   
+  ### Provide updated coloring options for each dataset ----
   output$columnSelector <- renderUI({
     pdata <- switch(input$pData,
                     "pheno_gomez" = pheno_data[[1]],
@@ -622,6 +624,7 @@ server <- function(input, output, session) {
                     "pheno_karlovich1" = pheno_data[[12]],
                     "pheno_karlovich2" = pheno_data[[13]]
     )
+    ## Only return the column names which can color the spaghetti plot
     return(span(selectInput(inputId = "column", label = "Select variable to color by:", selected = "subject",
                             choices = colnames(pdata)[colnames(pdata) %in% c("age", "condition", "subject", "sex", "treat", "race", "ethnicity", "response", "source")])))
   })
@@ -643,6 +646,7 @@ server <- function(input, output, session) {
                     "pheno_karlovich1" = variation_tables[[12]],
                     "pheno_karlovich2" = variation_tables[[13]]
     )
+    ## Choose whether the name is by probe or symbol (mircoarray or RNA-seq)
     checkprobe <- (isMicroarray() | isBeadChip()) & !is.null(input$probeInput)
     if (checkprobe) {
       return(t(vdata[which(vdata$`Probe ID` == input$probeInput),]))
@@ -653,12 +657,14 @@ server <- function(input, output, session) {
   
   ### Selected statistic and score outputs ----
   
+  ## Create a number for the trait genes
   output$stableNum <- renderText({
     stable %>%
       dplyr::filter(Symbol == input$geneName) %>%
       dplyr::select(`Study_counts`) %>%
       paste(.data, "studies", sep = " ")
   })
+  ## List the filters through which the gene was considered trait
   output$stableStudies <- renderText({
     stable %>%
       dplyr::filter(Symbol == input$geneName) %>%
@@ -666,12 +672,14 @@ server <- function(input, output, session) {
       paste()
   })
   
+  ## Create a number for the trait genes
   output$dynamicNum <- renderText({
     dynamic %>%
       dplyr::filter(Symbol == input$geneName) %>%
       dplyr::select(P_value_study_count) %>%
       paste(.data, "studies", sep = " ")
   })
+  ## List the filters through which the gene was considered trait
   output$dynamicStudies <- renderText({
     dynamic %>%
       dplyr::filter(Symbol == input$geneName) %>%
@@ -731,7 +739,7 @@ server <- function(input, output, session) {
       labs(x = "Number of 'state' studies", y = "All measured genes")
   })
   
-  
+  ## Outputs a plot showing the user's selected statistic on a density plot of all genes.
   output$statDensityPlot <- renderPlot({
     vdata <- switch(input$pData,
                     "pheno_gomez" = variation_tables[[1]],
@@ -769,6 +777,7 @@ server <- function(input, output, session) {
     }
   })
   
+  ## Outputs a plot showing the user's selected statistic on a box-and-whiskers plot of all genes.
   output$statBoxplot <- renderPlot({
     vdata <- switch(input$pData,
                     "pheno_gomez" = variation_tables[[1]],
@@ -810,7 +819,7 @@ server <- function(input, output, session) {
   ### Filter and display table ----
   output$gtexTable <- DT::renderDataTable({
     dynamicSliderOption <- if (input$dynamicTableSlider >= 0) {input$dynamicTableSlider} else {0:6}
-    
+    gtex <- load_gtex()
     ## If gene is selected, return with no filtering by slider. Otherwise, filter by slider.
     if (input$gtexFilter == "Gene") {
       result <- gtex %>% 
@@ -873,7 +882,7 @@ server <- function(input, output, session) {
   ### Download filtered table ----
   downloadGtexTable <- reactive({
     dynamicSliderOption <- if (input$dynamicTableSlider >= 0) {input$dynamicTableSlider} else {0:6}
-    
+    gtex <- load_gtex()
     ## If gene is selected, return with no filtering by slider. Otherwise, filter by slider.
     if (input$gtexFilter == "Gene") {
       result <- gtex %>% 
@@ -917,6 +926,7 @@ server <- function(input, output, session) {
     }
   })
   
+  ## Outputs a plot showing the user's selected gene and the number of traits it's associated with
   output$geneTraitAssoc <- renderUI({
     if (input$gtexFilter == "Gene") {
       return(span("Plot Number of GWAS Associations"))
@@ -925,12 +935,9 @@ server <- function(input, output, session) {
     }
   })
   
-  output$downloadGtex <- downloadHandler(
-    filename = function() {paste("filtered_gtex_gwas_table.csv")},
-    content = function(file) {write.csv(downloadGtexTable(), file, row.names = FALSE)}
-  )
-  
+  ## Outputs a plot showing the user's selected gene and the number of GTEx-GWAS colocalizations it is associated with
   output$geneTraitAssocPlot <- renderPlot({
+    gtex_gene_trait <- load_gtex_gene_trait()
     ggplot(gtex_gene_trait, aes(x = index, y = Freq)) +
       geom_smooth(se = F) +
       geom_vline(xintercept = gtex_gene_trait[gtex_gene_trait$Var1 == input$eqtlChoiceGene,"index"]) +
@@ -943,6 +950,7 @@ server <- function(input, output, session) {
   ### Count the number of variants for gene / trait ----
   output$gtexGraph <- renderPlot({
     if (input$gtexFilter %in% c("Gene", "No filter")) {
+      gtex_gene <- load_gtex_gene()
       ggplot(gtex_gene, aes(x = index, y = Freq)) +
         geom_smooth(se = F) +
         geom_vline(xintercept = gtex_gene[gtex_gene$Var1 == input$eqtlChoiceGene,"index"]) +
@@ -951,6 +959,7 @@ server <- function(input, output, session) {
         theme_minimal_hgrid() +
         theme(axis.text.x = element_text(angle = 75, vjust = 0.5, color = "grey30", size = input$gtexGraphSlider2))
     } else if (input$gtexFilter == "rsID") {
+      gtex_rsID <- load_gtex_rsID()
       ggplot(gtex_rsID, aes(x = index, y = Freq)) +
         geom_smooth(se = F, method = "lm", formula = y ~ poly(x, 7)) +
         geom_vline(xintercept = gtex_rsID[which(gtex_rsID$Var1 == input$eqtlChoiceId),"index"]) +
@@ -959,6 +968,7 @@ server <- function(input, output, session) {
         theme_minimal_hgrid() +
         theme(axis.text.x = element_text(angle = 75, vjust = 0.5, color = "grey30", size = input$gtexGraphSlider2))
     } else {
+      gtex_trait <- load_gtex_trait()
       ggplot(gtex_trait, aes(x = index, y = Freq)) +
         geom_smooth(se = F) +
         geom_vline(xintercept = gtex_trait[gtex_trait$Var1 == input$eqtlChoiceTrait,"index"]) +
@@ -968,6 +978,12 @@ server <- function(input, output, session) {
         theme(axis.text.x = element_text(angle = 75, vjust = 0.5, color = "grey30", size = input$gtexGraphSlider2))
     }
   })
+  
+  ## Allows the user to download the table that is displayed as a CSV
+  output$downloadGtex <- downloadHandler(
+    filename = function() {paste("filtered_gtex_gwas_table.csv")},
+    content = function(file) {write.csv(downloadGtexTable(), file, row.names = FALSE)}
+  )
   
   
   ## Downloads ----
@@ -988,6 +1004,8 @@ server <- function(input, output, session) {
            "larocca" = variation_tables[[11]],
            "k1" = variation_tables[[12]],
            "k2" = variation_tables[[13]],
+           "trait" = read.table("./data/trait_gene_list.txt"),
+           "state" = read.table("./data/state_gene_list.txt"),
            "stable" = stable,
            "flex" = dynamic,
            "median" = read_parquet("./data/median_stability_statistics_all.parquet"),
@@ -1009,8 +1027,10 @@ server <- function(input, output, session) {
            "larocca" = "larocca_variation",
            "k1" = "karlovich_batch1_variation",
            "k2" = "karlovich_batch2_variation",
-           "stable" = "state_genes",
-           "flex" = "trait_genes",
+           "trait" = "trait_gene_list",
+           "state" = "state_gene_list",
+           "stable" = "trait_gene_scores",
+           "flex" = "state_genes_scores",
            "median" = "median_stability_statistics",
            "sdf2" = "functional_categories")
   })

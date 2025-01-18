@@ -1,3 +1,9 @@
+## January 5 2025
+## Will Baltazar
+## Our RShiny Application uses parquet files to load large tables in faster. This script tests file
+## loading times in their original format and parquet format. Where time improvements were noted, files
+## were rewrtiten to the application folder from this code.
+
 setwd("~/Desktop/work_repo/Box organization/1results/RShiny-application/")
 library(tidyverse)
 library(nanoparquet)

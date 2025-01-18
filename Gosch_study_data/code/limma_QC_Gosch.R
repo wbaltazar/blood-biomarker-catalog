@@ -1,8 +1,10 @@
-## Date: Jul 11 2024
+## Date: Jan 17 2025
 
-### SUMMARY: Traces of Time paper, Gosch et al 2023
+## This script performs limma differential expression analysis of data from the following study:
+# Gosch, A., A. Bhardwaj, and C. Courts. “TrACES of Time: Transcriptomic Analyses for the Contextualization
+# of Evidential Stains – Identification of RNA Markers for Estimating Time-of-Day of Bloodstain Deposition.”
+# Forensic Science International: Genetics 67 (November 1, 2023): 102915. https://doi.org/10.1016/j.fsigen.2023.102915.
 
-# Updated May 13 2024: Removing sample from Patient J at 23 hours.
 
 ## Load libraries ----
 library(edgeR)
@@ -150,11 +152,11 @@ range(x$samples$norm.factors)
 # [1] 0.778532 1.175179
 
 ## Create a barplot of library sizes
-pdf(file = paste(output_dir, "lib_size_after.pdf", sep = ""))
+pdf(file = paste(output_dir, "lib_size_after.pdf", sep = ""), height = 9, width = 9)
 par(mfrow = c(1,2))
-barplot(x$samples$lib.size, names=substr(colnames(x$counts), start = 19, stop = 28), las=2)
+barplot(x$samples$lib.size, names=substr(colnames(x$counts), start = 19, stop = 28), las=2, cex.names = 0.5)
 title("Barplot of library sizes")
-barplot(colSums(lcpm), names=substr(colnames(x$counts), start = 19, stop = 28), las=2)
+barplot(colSums(lcpm), names=substr(colnames(x$counts), start = 19, stop = 28), las=2, cex.names = 0.5)
 title("lcpm library sizes")
 dev.off()
 
@@ -200,19 +202,6 @@ toprow <- plot_grid(ptime, psex, psub, align = 'h', nrow = 1)
 botrow <- plot_grid(scree, peigencor, align = 'h', nrow = 1)
 pdf(file = paste(output_dir, "pca.pdf", sep = ""), height = 12, width = 16)
 plot_grid(toprow, botrow, ncol = 1, align = 'v')
-dev.off()
-
-# MDS plot
-colors <- brewer.pal(n = 10, name = "Paired")
-colors <- rep(colors, times = 8)
-colors <- colors[-60] # Since patient sample was removed
-pdf(file = paste(output_dir, "mds.pdf", sep = ""))
-limma::plotMDS(x = lcpm, 
-               cex = 1, 
-               var.explained = T, 
-               col = colors,
-               labels = x$samples$participant)
-title("MDS Plot")
 dev.off()
 
 # Step 5: voom transform the data for limma ----
@@ -397,7 +386,7 @@ pdf(file = paste(output_dir, "time_sex_volcanos.pdf", sep = ""), width = 12, hei
 plot_grid(toprow, botrow, nrow = 2)
 dev.off()
 
-### Supplementary Figure S3-A ----
+### Supplementary Figure S4-A ----
 volcanos <- list()
 for (i in 1:7) {
   volcanos[[i]] <- EnhancedVolcano(toptable = tables[[i]], 
@@ -421,10 +410,11 @@ pdf(file = paste(output_dir, "figureS3A.pdf", sep = ""), width = 12, height = 10
 plot_grid(toprow, botrow, nrow = 2, align = 'hv')
 dev.off()
 
-### Supplementary Figure S3-B ----
+### Supplementary Figure S4-B ----
+
 tables <- tables[1:7]
 degs <- lapply(tables, function(x){
-  x %>% filter(P.Value < 0.05) %>% nrow() %>% return()
+  x %>% dplyr::filter(P.Value < 0.05) %>% nrow() %>% return()
 })
 degstb <- tibble(time = factor(c(3,6,9,12,15,18,21), levels = c(3,6,9,12,15,18,21), ordered = T), nums = unlist(degs))
 pdf(file = paste(output_dir, "figureS3B.pdf", sep = ""), width = 8, height = 8)

@@ -1,4 +1,4 @@
-## Date: Jul 11 2024
+## Date: Jan 17 2025
 
 ## Calculate statistics for stability in LaRocca study
 ## INPUT: Expr and pheno data
@@ -94,12 +94,6 @@ vp <- sortCols(varPart)
 pdf(paste(output_dir, "vp_violin_plot.pdf", sep = ""))
 plotVarPart(vp)
 dev.off()
-# Canonical Correlation Analysis
-form <- ~ subject + time + response
-C <- canCorPairs(form, pheno_data)
-pdf(paste(output_dir, "cca.pdf", sep = ""))
-plotCorrMatrix(C)
-dev.off()
 
 ## standard deviation ----
 avgexpr <- rowMeans(norm_expr)
@@ -157,8 +151,8 @@ data_var <- data_var[,-1]
 data_var$Symbol <- rownames(data_var)
 
 ## Heatmap ----
-pdf(paste(output_dir, "statistic_correlations.pdf", sep = ""))
-pheatmap(cor(data_var[,-length(names(data_var))]), display_numbers = T, fontsize_number = 4)
+pdf(paste(output_dir, "statistic_heatmap.pdf", sep = ""))
+pheatmap(cor(data_var[,-length(names(data_var))]), display_numbers = T, fontsize_number = 7)
 dev.off()
 ## Save ----
 write.csv(data_var, paste(output_dir, "LaRocca_variation.csv", sep = ""), row.names = T)
