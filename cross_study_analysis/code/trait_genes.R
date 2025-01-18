@@ -235,4 +235,4 @@ supp_table <- getBM(attributes = c("hgnc_symbol","description"),
                     filters = "hgnc_symbol",
                     values = supp_table,
                     mart = mart)
-write.csv(supp_table, file = paste(output_dir, "NEW_supplementary_table_1.csv", sep = ""))
+write.csv(supp_table, file = paste(output_dir, "supplementary_table_1.csv", sep = ""))

@@ -1,4 +1,4 @@
-## Dec 8 2024
+## Jan 18 2025
 ## New functional enrichment: don't do row by row, but score by score correlations.
 ## Also, only analyze genes in the common symbols.
 
@@ -17,49 +17,49 @@ input_dir <- "~/Desktop/work_repo/github/cross_study_analysis/output/"
 output_dir <- "~/Desktop/work_repo/github/cross_study_analysis/output/"
 
 # First, load in all data ----
-characteristic <- read.csv(file = paste(input_dir, "/characteristic_scores.csv", sep = ""))
+trait <- read.csv(file = paste(input_dir, "/trait_scores.csv", sep = ""))
 ## Contents: the .sd, .vp, .rp analysis from July 1st, described in the Methods section
-head(characteristic)
-dim(characteristic)
-# [1] 23883    13
-flexible <- read.csv(file = paste(input_dir, "/flexible_gene_scores.csv", sep = ""))
-head(flexible)
-dim(flexible)
+head(trait)
+dim(trait)
+# [1] 23883    14
+state <- read.csv(file = paste(input_dir, "/state_gene_scores.csv", sep = ""))
+head(state)
+dim(state)
 # [1] 23883    16
 
 symbols <- read.table(file = paste(input_dir, "common_symbols6099.txt", sep = ""))
 symbols <- symbols$x
-characteristic <- characteristic[which(characteristic$Symbol %in% symbols),]
-dim(characteristic)
-# [1] 6099   13
-flexible <- flexible[which(flexible$Symbol %in% symbols),]
+trait <- trait[which(trait$Symbol %in% symbols),]
+dim(trait)
+# [1] 6099   14
+state <- state[which(state$Symbol %in% symbols),]
 
 # Count the number of microarray and RNA-seq ----
-characteristic <- characteristic %>% 
+trait <- trait %>% 
   mutate(RNAseq = gosch + gomez + larocca) %>% 
   mutate(Microarray = obermoser + meaburn + dusek + rusch + karlovich)
 
-flexible <- flexible %>% 
+state <- state %>% 
   mutate(RNAseq = gomez + gosch + larocca) %>% 
   mutate(Microarray = meaburn + obermoser + dusek + rusch + karlovich)
 
 # Create enrichment categories ----
-stable_enrich <- characteristic %>% 
+trait_enrich <- trait %>% 
   filter(Study_counts >= 4, Microarray > 0, RNAseq > 0) %>% 
   dplyr::select(Symbol) %>% 
   unlist()
-length(stable_enrich)
+length(trait_enrich)
 # [1] 1934
 
-dynamic_enrich <- flexible %>% 
+state_enrich <- state %>% 
   filter(P_value_study_count >= 4, Microarray > 0, RNAseq > 0) %>% 
   dplyr::select(Symbol) %>% 
   unlist()
-length(dynamic_enrich)
+length(state_enrich)
 # [1] 1905
 
 ## Create the Venn Diagram before removing intersections ----
-venn.diagram(x = list(stable_enrich, dynamic_enrich), 
+venn.diagram(x = list(trait_enrich, state_enrich), 
              category.names = c("Trait", "State"),
              fill = c("#84cbeb", "#f6c6ad"), col = "black", alpha = c(0.8,0.8),
              main = "Gene categories", imagetype = "png", cex = 1.5,
@@ -67,7 +67,7 @@ venn.diagram(x = list(stable_enrich, dynamic_enrich),
              cat.fontfamily = "Arial", cat.fontface = "bold", cat.dist = c(-0.075,-0.05), cat.cex = c(1.1,1.2),
              disable.logging = T,
              filename = paste(output_dir, "venn_diagram_overlap.png", sep = ""))
-venn.diagram(x = list(stable_enrich, dynamic_enrich), 
+venn.diagram(x = list(trait_enrich, state_enrich), 
              category.names = c("", ""),
              fill = c("#84cbeb", "#f6c6ad"), col = "black", alpha = c(0.8,0.8),
              main = "Gene categories", imagetype = "png", cex = 1.5,
@@ -77,12 +77,12 @@ venn.diagram(x = list(stable_enrich, dynamic_enrich),
              filename = paste(output_dir, "venn_diagram_overlap_nolabels.png", sep = ""))
 
 ## Remove intersections and create new Venn diagram ----
-stable_enrich2 <- setdiff(stable_enrich, dynamic_enrich)
-length(stable_enrich2) # 1356
-dynamic_enrich2 <- setdiff(dynamic_enrich, stable_enrich)
-length(dynamic_enrich2) # 1327
-write.table(stable_enrich2, paste(output_dir, "trait_gene_list.txt", sep = ""))
-write.table(dynamic_enrich2, paste(output_dir, "state_gene_list.txt", sep = ""))
+trait_enrich2 <- setdiff(trait_enrich, state_enrich)
+length(trait_enrich2) # 1356
+state_enrich2 <- setdiff(state_enrich, trait_enrich)
+length(state_enrich2) # 1327
+write.table(trait_enrich2, paste(output_dir, "trait_gene_list.txt", sep = ""))
+write.table(state_enrich2, paste(output_dir, "state_gene_list.txt", sep = ""))
 
 # In silico validation of gene sets ----
 ## Dynamic and DeBoever seasonal gene enrichment ----
@@ -95,13 +95,13 @@ deboever_between <- readxl::read_xlsx(paste(input_dir, "1-s2.0-S088875431300222X
 deboever <- na.omit(c(deboever_between$GeneSymbol, deboever_within$GeneSymbol))
 length(unique(deboever))
 # [1] 1495
-phyper(q = length(intersect(dynamic_enrich2, unique(deboever))) - 1, #186 - 1
+phyper(q = length(intersect(state_enrich2, unique(deboever))) - 1, #186 - 1
        m = length(intersect(unique(deboever), symbols)), #681
        n = length(setdiff(symbols, unique(deboever))), #5418
-       k = length(dynamic_enrich2), #1327
+       k = length(state_enrich2), #1327
        lower.tail = F)
 # [1] 0.0001598957 (148 expected)
-venn.diagram(x = list(dynamic_enrich2, intersect(deboever, symbols)), 
+venn.diagram(x = list(state_enrich2, intersect(deboever, symbols)), 
              category.names = c("State genes", "DeBoever et al."),
              fill = c("#f6c6ad", "#fba200"), col = "black", cex = 1.4, alpha = c(0.8,0.8),
              main = "Previously identified flexible genes", imagetype = "png", 
@@ -109,7 +109,7 @@ venn.diagram(x = list(dynamic_enrich2, intersect(deboever, symbols)),
              cat.fontfamily = "Arial", cat.dist = c(-0.056,-0.07), cat.cex = c(1.2,1.2),
              disable.logging = T, force.unique = T,
              filename = paste(output_dir, "in_silico_validation/flexible_deboever_validation.png", sep = ""))
-venn.diagram(x = list(dynamic_enrich2, intersect(deboever, symbols)), 
+venn.diagram(x = list(state_enrich2, intersect(deboever, symbols)), 
              category.names = c("", ""),
              fill = c("#f6c6ad", "#fba200"), col = "black", cex = 1.4, alpha = c(0.8,0.8),
              main = "Previously identified flexible genes", imagetype = "png", 
@@ -130,13 +130,13 @@ length(intersect(gtex$gene_name, symbols))
 lintersect <- function(x,y) {
   length(intersect(unique(x),unique(y)))
 }
-phyper(q = lintersect(stable_enrich2, gtex$gene_name) - 1, #983 - 1
+phyper(q = lintersect(trait_enrich2, gtex$gene_name) - 1, #983 - 1
        m = lintersect(gtex$gene_name, symbols), #3781
        n = length(setdiff(symbols, gtex$gene_name)), #2318
-       k = length(stable_enrich2), #1356
+       k = length(trait_enrich2), #1356
        lower.tail = F)
 # [1] 2.8339e-20 (840 expected)
-venn.diagram(x = list(stable_enrich2, intersect(gtex$gene_name, symbols)), 
+venn.diagram(x = list(trait_enrich2, intersect(gtex$gene_name, symbols)), 
              category.names = c("Trait genes", "GTEx eGenes (q < 0.01)"),
              fill = c("#84cbeb", "#005fbf"), col = "black", cex = 1.4, alpha = c(0.8,0.8),
              main = "Previously identified GTEx eQTLs", imagetype = "png", 
@@ -144,7 +144,7 @@ venn.diagram(x = list(stable_enrich2, intersect(gtex$gene_name, symbols)),
              cat.fontfamily = "Arial", cat.dist = c(0.035,-0.08), cat.pos = c(200,45), cat.cex = c(1.3, 1.2),
              disable.logging = T, force.unique = T,
              filename = paste(output_dir, "in_silico_validation/characteristic_GTEx_validation.png", sep = ""))
-venn.diagram(x = list(stable_enrich2, intersect(gtex$gene_name, symbols)), 
+venn.diagram(x = list(trait_enrich2, intersect(gtex$gene_name, symbols)), 
              category.names = c("", ""),
              fill = c("#84cbeb", "#005fbf"), col = "black", cex = 1.4, alpha = c(0.8,0.8),
              main = "Previously identified GTEx eQTLs", imagetype = "png", 
@@ -158,24 +158,24 @@ venn.diagram(x = list(stable_enrich2, intersect(gtex$gene_name, symbols)),
 ## Lower tail is true
 ## You can see expected values at https://systems.crump.ucla.edu/hypergeometric/index.php 
 ## Stable-polymorphic with DeBoever
-phyper(q = lintersect(stable_enrich2, deboever), #107
+phyper(q = lintersect(trait_enrich2, deboever), #107
        m = lintersect(deboever, symbols), #681
        n = length(setdiff(symbols, deboever)), #5418
-       k = length(stable_enrich2), #1356
+       k = length(trait_enrich2), #1356
        lower.tail = T)
 # [1] 4.541019e-06, expected 151 overlaps
 
 ## Dynamic with GTEx
-phyper(q = lintersect(dynamic_enrich2, gtex$gene_name), #741
+phyper(q = lintersect(state_enrich2, gtex$gene_name), #741
        m = lintersect(gtex$gene_name, symbols), #3781
        n = length(setdiff(symbols, gtex$gene_name)), #2318
-       k = length(dynamic_enrich2), #1327
+       k = length(state_enrich2), #1327
        lower.tail = T)
 # [1] 1.251241e-07, 822 expected
 
 # Functional enrichment analysis ----
 ## Get entrez IDs for enrichKEGG
-categories <- list(stable_enrich2, dynamic_enrich2)
+categories <- list(trait_enrich2, state_enrich2)
 names(categories) <- c("trait", "state")
 ## biomaRt
 mart <- useDataset(dataset = "hsapiens_gene_ensembl", mart = useMart("ENSEMBL_MART_ENSEMBL"))
@@ -326,14 +326,14 @@ sdf2 <- lapply(sdf2, function(x) {
 })
 lapply(sdf2, head)
 ## First list
-# $characteristic
-# hgnc_symbol                                                                description
-# 1        ABAT          4-aminobutyrate aminotransferase [Source:HGNC Symbol;Acc:HGNC:23]
-# 2       ABCA1 ATP binding cassette subfamily A member 1 [Source:HGNC Symbol;Acc:HGNC:29]
-# 3       ABCA2 ATP binding cassette subfamily A member 2 [Source:HGNC Symbol;Acc:HGNC:32]
-# 4       ABCA5 ATP binding cassette subfamily A member 5 [Source:HGNC Symbol;Acc:HGNC:35]
-# 5       ABCA7 ATP binding cassette subfamily A member 7 [Source:HGNC Symbol;Acc:HGNC:37]
-# 6       ABCB1 ATP binding cassette subfamily B member 1 [Source:HGNC Symbol;Acc:HGNC:40]
+# $trait
+# hgnc_symbol                                                                                  description
+# 1       ABCA1                   ATP binding cassette subfamily A member 1 [Source:HGNC Symbol;Acc:HGNC:29]
+# 2       ABCB1                   ATP binding cassette subfamily B member 1 [Source:HGNC Symbol;Acc:HGNC:40]
+# 3       ABCC5                   ATP binding cassette subfamily C member 5 [Source:HGNC Symbol;Acc:HGNC:56]
+# 4       ABCG1                   ATP binding cassette subfamily G member 1 [Source:HGNC Symbol;Acc:HGNC:73]
+# 5      ABLIM1                                 actin binding LIM protein 1 [Source:HGNC Symbol;Acc:HGNC:78]
+# 6       ACAP2 ArfGAP with coiled-coil, ankyrin repeat and PH domains 2 [Source:HGNC Symbol;Acc:HGNC:16469]
 writexl::write_xlsx(x = sdf2, path = paste(output_dir, "supplementary_data_2.xlsx", sep = ""))
 
 # Supplementary data file 3 ----

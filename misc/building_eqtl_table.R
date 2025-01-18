@@ -1,4 +1,4 @@
-## Date: Nov 3 2024
+## Date: Jan 18 2025
 
 ## Building a tool for querying your rsIDs!
 ## Set input directory to where GTEx variants and rsID lookup table are
@@ -163,7 +163,11 @@ for (i in 1:ncol(gtex)) {
     gtex[,i] <- signif(gtex[,i], digits = 2)
   } else next
 }
-  
+trait <- read.table("~/Desktop/work_repo/github/cross_study_analysis/output/trait_gene_list.txt")[[1]]
+state <- read.table("~/Desktop/work_repo/github/cross_study_analysis/output/state_gene_list.txt")[[1]]
+gtex$`Trait gene?` <- gtex$`Symbol of blood RNA` %in% trait
+gtex$`State gene?` <- gtex$`Symbol of blood RNA` %in% state
+ 
 library(nanoparquet)
 nanoparquet::write_parquet(gtex, file = paste(output_dir, "gtex_variants_and_phenotypes_whole_blood.parquet", sep = ""))
 

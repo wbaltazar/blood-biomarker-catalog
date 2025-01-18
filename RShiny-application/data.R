@@ -119,8 +119,8 @@ variation_tables[[13]] <- variation_tables[[13]][,c("Probe ID", "Symbol", "Repea
 
 
 ## Stability and dynamic data
-stable <- read.csv("./data/characteristic_scores.csv")
-dynamic <-  read.csv("./data/flexible_gene_scores.csv")
+stable <- read.csv("./data/trait_scores.csv")
+dynamic <-  read.csv("./data/state_gene_scores.csv")
 
 ## Phenotype data
 pheno_data <- list()
@@ -159,7 +159,9 @@ gtexColumnNames <- c(
   '<span title="The number of unique traits associated with the eQTLs of this gene.">Number of trait associations in GWAS</span>',
   '<span title="The percentile of the median RNA average expression level across studies among the 6,099 genes.">Median Average Normalized Expression Percentile</span>',
   '<span title="The percentile of the median repeatability across studies among the 6,099 genes.">Median Repeatability Percentile</span>',
-  '<span title="The percentile of the median genetic variance across studies among the 6,099 genes.">Median Genetic Variance Percentile</span>'
+  '<span title="The percentile of the median genetic variance across studies among the 6,099 genes.">Median Genetic Variance Percentile</span>',
+  '<span title="Was this gene a trait gene in our study?">Trait gene?</span>',
+  '<span title="Was this gene a state gene in our study?">State gene?</span>'
 )
 
 eqtlOptionsGene <- function() {
