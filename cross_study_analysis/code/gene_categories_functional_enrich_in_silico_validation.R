@@ -218,7 +218,7 @@ for (i in 1:2) {
                         pvalueCutoff = 1,
                         qvalueCutoff = 1,
                         universe = as.character(entrez_universe$entrezgene_id))
-  rkf <- as.data.frame(resKEGG)
+  rkf <- as.data.frame(setReadable(resKEGG, OrgDb = org.Hs.eg.db, keyType="ENTREZID"))
   rkf <- rkf[order(rkf$pvalue),]
   resultsKEGG[[i]] <- rkf
   write.csv(rkf, paste(output_dir, "functional_enrichment/",names(categories)[i],"_KEGG.csv", sep = ""))
@@ -337,10 +337,11 @@ lapply(sdf2, head)
 writexl::write_xlsx(x = sdf2, path = paste(output_dir, "supplementary_data_2.xlsx", sep = ""))
 
 # Supplementary data file 3 ----
-cgo <- read.csv(paste(output_dir, "/functional_enrichment/characteristic_GO.csv", sep = ""))
-ckg <- read.csv(paste(output_dir, "/functional_enrichment/characteristic_KEGG.csv", sep = ""))
-fgo <- read.csv(paste(output_dir, "/functional_enrichment/flexible_GO.csv", sep = ""))
-fkg <- read.csv(paste(output_dir, "/functional_enrichment/flexible_KEGG.csv", sep = ""))
+cgo <- read.csv(paste(output_dir, "/functional_enrichment/trait_GO.csv", sep = ""))
+ckg <- read.csv(paste(output_dir, "/functional_enrichment/trait_KEGG.csv", sep = ""))
+fgo <- read.csv(paste(output_dir, "/functional_enrichment/state_GO.csv", sep = ""))
+fkg <- read.csv(paste(output_dir, "/functional_enrichment/state_KEGG.csv", sep = ""))
 sdf3 <- list(cgo, ckg, fgo, fkg)
-names(sdf3) <- c("Characteristic GO", "Characteristic KEGG", "Flexible GO", "Flexible KEGG")
+names(sdf3) <- c("Trait GO", "Trait KEGG", "State GO", "State KEGG")
+lapply(sdf3, head)
 writexl::write_xlsx(x = sdf3, path = paste(output_dir, "supplementary_data_3.xlsx", sep = ""))
