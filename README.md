@@ -36,19 +36,23 @@ These folders contain the raw data and code used to preprocess and perform analy
 
     -   Contains all outputs from the R code. PDFs, CSVs, PNGs, and TXT files. Includes supplementary data files.
 
-### misc
+### fig6_analysis
 
--   building_eqtl_table.R contains code used to format the eQTL search table utilized by the eQTL variant search tab in the RShiny application. It requires the significant variant-gene pairs file from GTEx v10, the lookup table for the rsIDs from GTEx, and the most up-to-date version of the GWAS associations table as of December 14, 2024.
+-   code folder
 
--   biomaRt_all_transcripts.R contains code used to download gene information data used for the gene search tab in the RShiny application
+    -   cad_biomarkers_heatmap_and_scores.R calculates and organizes the parameters used for our prioritization of biomarker candidates for coronary artery disease (CAD) using outputs from the RShiny application.
 
--   The diurnal_gene_analysis folder contains diurnal_genes.R and outputs. It compares the genes studied across 24 hours for two different datasets we used for this study.
+    -   gene_categories_functional_enrich_in_silico_validation.R finds genes which meet their respective categories criteria in 4 or more studies (one microarray, one RNA-seq) and creates a list of those genes in the form of a TXT file. Creates sub-directories in output for storing the outputs of in silico validation analysis and functional enrichment analysis. Performs functional enrichment analysis using clusterProfiler and produces all figures.
 
--   formatting_expr_for_app.R contains code used to create RDS files used for RShiny app spaghetti plots. It matches gene names to Probe IDs and Gene IDs for the Gene Info application function.
+-   input folder
 
--   for_common_symbols_in_app.R contains code used to create RDS files used in RShiny app spaghetti plots as well. It filters the genes in the RDS files so that only the 6,099 common symbols are used in the analysis.
+    -   filtered_gtex_gwas_table.csv contains the filtered GTEx-GWAS pairs and calculated state and trait values for RNAs with "Coronary artery disease" as the filter. To replicate this using the application, navigate to the “Discover RNA Biomarker Candidates” page of the RShiny application and search for “Coronary artery disease” (CAD) with the “Disease/trait” radio button activated.
 
--   writing_parquet_files.R contains code that transforms files for the RShiny application into parquet files for faster loading.
+    -   state_gene_list.csv and trait_gene_list.csv can be downloaded from the "Download" page of the RShiny application.
+
+-   output folder
+
+    -   Contains all outputs from the R code. PNG and PDF for figure 6, plus the table used to generate these data in CSV format.
 
 ### RShiny-application
 
@@ -58,7 +62,21 @@ These folders contain the raw data and code used to preprocess and perform analy
 
     -   Alternatively, the code in the misc directory and study_data folders can be used to produce the necessary data and results used in the application. The folders should be organized such that the data is accessible in directories called by app.R and data.R (functions.R does not require any files).
 
--   As of January 5, 2025, this RShiny code is up to date.
+-   misc
+
+    -   building_eqtl_table.R contains code used to format the eQTL search table utilized by the eQTL variant search tab in the RShiny application. It requires the significant variant-gene pairs file from GTEx v10, the lookup table for the rsIDs from GTEx, and the most up-to-date version of the GWAS associations table as of December 14, 2024.
+
+    -   biomaRt_all_transcripts.R contains code used to download gene information data used for the gene search tab in the RShiny application
+
+    -   The diurnal_gene_analysis folder contains diurnal_genes.R and outputs. It compares the genes studied across 24 hours for two different datasets we used for this study.
+
+    -   formatting_expr_for_app.R contains code used to create RDS files used for RShiny app spaghetti plots. It matches gene names to Probe IDs and Gene IDs for the Gene Info application function.
+
+    -   for_common_symbols_in_app.R contains code used to create RDS files used in RShiny app spaghetti plots as well. It filters the genes in the RDS files so that only the 6,099 common symbols are used in the analysis.
+
+    -   writing_parquet_files.R contains code that transforms files for the RShiny application into parquet files for faster loading.
+
+-   As of February 18, 2025, this RShiny code is up to date.
 
 ## Session Info
 

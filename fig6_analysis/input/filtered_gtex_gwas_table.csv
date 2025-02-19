@@ -1,0 +1,618 @@
+"Symbol of blood RNA","Ensembl ID","rsID of eQTL","GTEx variant ID","Alt allele frequency in GTEx WB","eQTL slope","eQTL nominal p_val","eQTL beta p_value","GWAS Trait","GWAS Catalog Mapping","Reported Mapping","OR or BETA","GWAS p_value","Genomic Context","Trait 4+ filter studies","Studies below 0.05 p_value","Number of eQTL associations in GTEx","Number of trait associations in GWAS","Median Average Normalized Expression Percentile","Median Repeatability Percentile","Median Genetic Variance Percentile","Trait gene?","State gene?"
+"SNX1","ENSG00000028528","rs6494488","chr15_64732005_G_A_b38",0.79,-0.086,2.5e-06,1.8e-14,"Coronary artery disease","OAZ2 - RBPMS2","RBPMS2",0.038,4e-08,"regulatory_region_variant",3,5,715,32,61,46,39,FALSE,TRUE
+"SNX1","ENSG00000028528","rs6494488","chr15_64732005_G_A_b38",0.79,-0.086,2.5e-06,1.8e-14,"Coronary artery disease","OAZ2 - RBPMS2","RBPMS2",0.043,1e-08,"regulatory_region_variant",3,5,715,32,61,46,39,FALSE,TRUE
+"SNX1","ENSG00000028528","rs6494488","chr15_64732005_G_A_b38",0.79,-0.086,2.5e-06,1.8e-14,"Coronary artery disease","OAZ2 - RBPMS2",NA,NA,8e-07,"regulatory_region_variant",3,5,715,32,61,46,39,FALSE,TRUE
+"TRIP4","ENSG00000103671","rs6494488","chr15_64732005_G_A_b38",0.79,-0.12,1.9e-10,4.3e-14,"Coronary artery disease","OAZ2 - RBPMS2","RBPMS2",0.038,4e-08,"regulatory_region_variant",0,3,851,33,60,12,8.3,FALSE,FALSE
+"TRIP4","ENSG00000103671","rs6494488","chr15_64732005_G_A_b38",0.79,-0.12,1.9e-10,4.3e-14,"Coronary artery disease","OAZ2 - RBPMS2","RBPMS2",0.043,1e-08,"regulatory_region_variant",0,3,851,33,60,12,8.3,FALSE,FALSE
+"TRIP4","ENSG00000103671","rs6494488","chr15_64732005_G_A_b38",0.79,-0.12,1.9e-10,4.3e-14,"Coronary artery disease","OAZ2 - RBPMS2",NA,NA,8e-07,"regulatory_region_variant",0,3,851,33,60,12,8.3,FALSE,FALSE
+"CSNK1G1","ENSG00000169118","rs6494488","chr15_64732005_G_A_b38",0.79,-0.19,4e-13,3.7e-22,"Coronary artery disease","OAZ2 - RBPMS2",NA,NA,8e-07,"regulatory_region_variant",3,1,1001,44,13,11,20,FALSE,FALSE
+"CSNK1G1","ENSG00000169118","rs6494488","chr15_64732005_G_A_b38",0.79,-0.19,4e-13,3.7e-22,"Coronary artery disease","OAZ2 - RBPMS2","RBPMS2",0.043,1e-08,"regulatory_region_variant",3,1,1001,44,13,11,20,FALSE,FALSE
+"CSNK1G1","ENSG00000169118","rs6494488","chr15_64732005_G_A_b38",0.79,-0.19,4e-13,3.7e-22,"Coronary artery disease","OAZ2 - RBPMS2","RBPMS2",0.038,4e-08,"regulatory_region_variant",3,1,1001,44,13,11,20,FALSE,FALSE
+"GSTM3","ENSG00000134202","rs602633","chr1_109278889_T_G_b38",0.72,-0.22,7.5e-06,1e-101,"Coronary artery disease","CELSR2 - PSRC1","CELSR2, PSRC1",0.1,4e-58,"intergenic_variant",8,2,247,206,2.8,99,99,TRUE,FALSE
+"GSTM3","ENSG00000134202","rs602633","chr1_109278889_T_G_b38",0.72,-0.22,7.5e-06,1e-101,"Coronary artery disease","CELSR2 - PSRC1","CELSR2, PSRC1",0.11,2e-59,"intergenic_variant",8,2,247,206,2.8,99,99,TRUE,FALSE
+"GSTM3","ENSG00000134202","rs602633","chr1_109278889_T_G_b38",0.72,-0.22,7.5e-06,1e-101,"Coronary artery disease","CELSR2 - PSRC1",NA,0.098,7e-08,"intergenic_variant",8,2,247,206,2.8,99,99,TRUE,FALSE
+"GSTM3","ENSG00000134202","rs599839","chr1_109279544_G_A_b38",0.71,-0.21,2.2e-05,1e-101,"Coronary artery disease","CELSR2 - PSRC1","NR",1.1,2e-07,"intergenic_variant",8,2,247,206,2.8,99,99,TRUE,FALSE
+"GSTM3","ENSG00000134202","rs602633","chr1_109278889_T_G_b38",0.72,-0.22,7.5e-06,1e-101,"Coronary artery disease","CELSR2 - PSRC1","SORT1",1.1,1e-08,"intergenic_variant",8,2,247,206,2.8,99,99,TRUE,FALSE
+"AP4B1","ENSG00000134262","rs11552449","chr1_113905767_C_T_b38",0.15,-0.19,6.8e-07,4e-33,"Coronary artery disease","DCLRE1B",NA,NA,6e-12,"missense_variant",1,3,376,32,29,42,11,FALSE,FALSE
+"AP4B1","ENSG00000134262","rs11552449","chr1_113905767_C_T_b38",0.15,-0.19,6.8e-07,4e-33,"Coronary artery disease","DCLRE1B","DCLRE1B",0.037,4e-10,"missense_variant",1,3,376,32,29,42,11,FALSE,FALSE
+"AP4B1","ENSG00000134262","rs12144309","chr1_113772871_C_T_b38",0.19,-0.13,0.00015,4e-33,"Coronary artery disease","RSBN1","RSBN1",0.037,6e-06,"intron_variant",1,3,376,32,29,42,11,FALSE,FALSE
+"MTHFR","ENSG00000177000","rs17037390","chr1_11800786_G_A_b38",0.17,0.27,3.2e-13,4.4e-40,"Coronary artery disease","MTHFR","CLCN6, MTHFR",0.04,2e-07,"non_coding_transcript_exon_variant",6,2,413,72,37,83,51,TRUE,FALSE
+"PSMA4","ENSG00000041357","rs8027011","chr15_78730274_G_A_b38",0.38,0.058,9.9e-06,1.1e-15,"Coronary artery disease","GOLGA6GP","CHRNB4, LOC646938",0.089,6e-18,"intron_variant",3,3,425,137,85,49,67,FALSE,FALSE
+"MCL1","ENSG00000143384","rs11585169","chr1_150599561_T_A_b38",0.51,-0.056,4.3e-05,3.8e-16,"Coronary artery disease","MCL1 - ENSA",NA,1,1e-14,"intergenic_variant",3,5,387,87,95,52,63,FALSE,TRUE
+"MCL1","ENSG00000143384","rs6587520","chr1_150737247_C_T_b38",0.46,-0.068,8.7e-07,3.8e-16,"Coronary artery disease","CTSS","CTSS",1,9e-09,"intron_variant",3,5,387,87,95,52,63,FALSE,TRUE
+"MCL1","ENSG00000143384","rs6587520","chr1_150737247_C_T_b38",0.46,-0.068,8.7e-07,3.8e-16,"Coronary artery disease","CTSS",NA,NA,9e-14,"intron_variant",3,5,387,87,95,52,63,FALSE,TRUE
+"ARNT","ENSG00000143437","rs11585169","chr1_150599561_T_A_b38",0.51,-0.16,5.1e-15,2.9e-27,"Coronary artery disease","MCL1 - ENSA",NA,1,1e-14,"intergenic_variant",2,0,503,168,19,4.8,16,FALSE,FALSE
+"ARNT","ENSG00000143437","rs6587520","chr1_150737247_C_T_b38",0.46,-0.18,2.9e-18,2.9e-27,"Coronary artery disease","CTSS","CTSS",1,9e-09,"intron_variant",2,0,503,168,19,4.8,16,FALSE,FALSE
+"ARNT","ENSG00000143437","rs6587520","chr1_150737247_C_T_b38",0.46,-0.18,2.9e-18,2.9e-27,"Coronary artery disease","CTSS",NA,NA,9e-14,"intron_variant",2,0,503,168,19,4.8,16,FALSE,FALSE
+"CTSS","ENSG00000163131","rs6587520","chr1_150737247_C_T_b38",0.46,-0.089,3.8e-09,4.4e-14,"Coronary artery disease","CTSS","CTSS",1,9e-09,"intron_variant",7,5,774,175,98,83,58,FALSE,FALSE
+"CTSS","ENSG00000163131","rs6587520","chr1_150737247_C_T_b38",0.46,-0.089,3.8e-09,4.4e-14,"Coronary artery disease","CTSS",NA,NA,9e-14,"intron_variant",7,5,774,175,98,83,58,FALSE,FALSE
+"CTSS","ENSG00000163131","rs11585169","chr1_150599561_T_A_b38",0.51,-0.064,2.8e-05,4.4e-14,"Coronary artery disease","MCL1 - ENSA",NA,1,1e-14,"intergenic_variant",7,5,774,175,98,83,58,FALSE,FALSE
+"CTSK","ENSG00000143387","rs6587520","chr1_150737247_C_T_b38",0.46,-0.33,2.6e-50,4.3e-53,"Coronary artery disease","CTSS","CTSS",1,9e-09,"intron_variant",3,1,867,201,7.9,42,53,FALSE,FALSE
+"CTSK","ENSG00000143387","rs6587520","chr1_150737247_C_T_b38",0.46,-0.33,2.6e-50,4.3e-53,"Coronary artery disease","CTSS",NA,NA,9e-14,"intron_variant",3,1,867,201,7.9,42,53,FALSE,FALSE
+"CTSK","ENSG00000143387","rs11585169","chr1_150599561_T_A_b38",0.51,-0.28,2.2e-35,4.3e-53,"Coronary artery disease","MCL1 - ENSA",NA,1,1e-14,"intergenic_variant",3,1,867,201,7.9,42,53,FALSE,FALSE
+"CTSK","ENSG00000143387","rs11204666","chr1_150570652_C_T_b38",0.15,0.14,1.5e-05,4.3e-53,"Coronary artery disease","MCL1","ADAMTSL4, ADAMTSL4-AS1, MCL1",0.039,3e-07,"intron_variant",3,1,867,201,7.9,42,53,FALSE,FALSE
+"BLZF1","ENSG00000117475","rs12028817","chr1_169126880_A_G_b38",0.46,-0.075,5.8e-07,4.4e-18,"Coronary artery disease","ATP1B1",NA,NA,8e-11,"intron_variant",1,3,473,18,16,5.9,48,FALSE,FALSE
+"BLZF1","ENSG00000117475","rs1892094","chr1_169125221_C_T_b38",0.46,-0.072,1.6e-06,4.4e-18,"Coronary artery disease","ATP1B1","ATP1B1, NME7",0.036,3e-12,"intron_variant",1,3,473,18,16,5.9,48,FALSE,FALSE
+"BLZF1","ENSG00000117475","rs12753816","chr1_169183350_C_T_b38",0.29,-0.077,2.9e-06,4.4e-18,"Coronary artery disease","NME7, ATP1B1","NME7",0.036,4e-07,"intron_variant",1,3,473,18,16,5.9,48,FALSE,FALSE
+"BLZF1","ENSG00000117475","rs1892094","chr1_169125221_C_T_b38",0.46,-0.072,1.6e-06,4.4e-18,"Coronary artery disease","ATP1B1","ATP1B1, NME7",0.041,4e-13,"intron_variant",1,3,473,18,16,5.9,48,FALSE,FALSE
+"BLZF1","ENSG00000117475","rs61806987","chr1_169345595_A_G_b38",0.39,-0.11,4e-13,4.4e-18,"Coronary artery disease","NME7",NA,1,7e-12,"intron_variant",1,3,473,18,16,5.9,48,FALSE,FALSE
+"BLZF1","ENSG00000117475","rs12028817","chr1_169126880_A_G_b38",0.46,-0.075,5.8e-07,4.4e-18,"Coronary artery disease","ATP1B1","ATP1B1",0.031,5e-09,"intron_variant",1,3,473,18,16,5.9,48,FALSE,FALSE
+"DDX59","ENSG00000118197","rs6700559","chr1_200676945_C_T_b38",0.47,0.074,6.5e-10,1.7e-17,"Coronary artery disease","DDX59-AS1",NA,NA,1e-06,"intron_variant",2,5,186,6,23,46,38,FALSE,TRUE
+"DDX59","ENSG00000118197","rs6700559","chr1_200676945_C_T_b38",0.47,0.074,6.5e-10,1.7e-17,"Coronary artery disease","DDX59-AS1","DDX59, LOC101929224",0.028,2e-08,"intron_variant",2,5,186,6,23,46,38,FALSE,TRUE
+"DDX59","ENSG00000118197","rs6700559","chr1_200676945_C_T_b38",0.47,0.074,6.5e-10,1.7e-17,"Coronary artery disease","DDX59-AS1","DDX59, LOC101929224",0.032,4e-09,"intron_variant",2,5,186,6,23,46,38,FALSE,TRUE
+"TRAF3IP3","ENSG00000009790","rs60154123","chr1_210295654_C_T_b38",0.15,0.22,2.6e-09,1.3e-28,"Coronary artery disease","ST13P19 - HHAT","intergenic",0.044,3e-08,"intergenic_variant",5,5,524,44,85,69,37,FALSE,FALSE
+"TRAF3IP3","ENSG00000009790","rs60154123","chr1_210295654_C_T_b38",0.15,0.22,2.6e-09,1.3e-28,"Coronary artery disease","ST13P19 - HHAT",NA,1,2e-08,"intergenic_variant",5,5,524,44,85,69,37,FALSE,FALSE
+"TRAF3IP3","ENSG00000009790","rs116161686","chr1_210300277_G_A_b38",0.14,0.21,2e-08,1.3e-28,"Coronary artery disease","ST13P19 - HHAT","intergenic",0.05,9e-08,"regulatory_region_variant",5,5,524,44,85,69,37,FALSE,FALSE
+"ZDHHC18","ENSG00000204160","rs12046497","chr1_26521149_C_T_b38",0.24,-0.049,8.3e-06,1.5e-24,"Coronary artery disease","DPPA2P2 - RPS6KA1",NA,0.025,9e-09,"regulatory_region_variant",3,2,552,330,87,86,74,FALSE,FALSE
+"ZDHHC18","ENSG00000204160","rs79598313","chr1_26958422_C_T_b38",0.022,0.18,1.1e-08,1.5e-24,"Coronary artery disease","KDF1",NA,1.1,4e-08,"intron_variant",3,2,552,330,87,86,74,FALSE,FALSE
+"PIGV","ENSG00000060642","rs79598313","chr1_26958422_C_T_b38",0.022,-0.39,7.9e-10,4.3e-26,"Coronary artery disease","KDF1",NA,1.1,4e-08,"intron_variant",2,3,270,317,31,4.3,5.1,FALSE,FALSE
+"ARID1A","ENSG00000117713","rs79598313","chr1_26958422_C_T_b38",0.022,-0.15,0.00019,0.001,"Coronary artery disease","KDF1",NA,1.1,4e-08,"intron_variant",2,2,169,268,86,10,30,FALSE,FALSE
+"SF3A3","ENSG00000183431","rs4072980","chr1_37990434_G_A_b38",0.42,0.34,1e-37,2e-45,"Coronary artery disease","SF3A3 - RNU6-510P","FHL3, SF3A3",0.035,7e-10,"regulatory_region_variant",5,2,217,41,70,80,61,TRUE,FALSE
+"SF3A3","ENSG00000183431","rs4072980","chr1_37990434_G_A_b38",0.42,0.34,1e-37,2e-45,"Coronary artery disease","SF3A3 - RNU6-510P","FHL3, SF3A3",0.033,4e-10,"regulatory_region_variant",5,2,217,41,70,80,61,TRUE,FALSE
+"GBP3","ENSG00000117226","rs950037","chr1_88685915_T_G_b38",0.4,-0.11,2.3e-05,4.2e-91,"Coronary artery disease","PKN2","LOC101927891, PKN2",0.027,2e-06,"intron_variant",5,2,588,50,28,92,96,TRUE,FALSE
+"NT5C2","ENSG00000076685","rs7910601","chr10_102823638_T_G_b38",0.86,-0.11,2.1e-09,4.9e-09,"Coronary artery disease","WBP1L","WBP1L, CYP17A1",1.1,9e-10,"intron_variant",2,4,402,122,89,70,52,FALSE,TRUE
+"NT5C2","ENSG00000076685","rs77787671","chr10_103016448_C_T_b38",0.085,0.15,4.4e-12,4.9e-09,"Coronary artery disease","CNNM2",NA,0.93,3e-15,"intron_variant",2,4,402,122,89,70,52,FALSE,TRUE
+"NT5C2","ENSG00000076685","rs12414777","chr10_102938024_C_T_b38",0.19,0.06,0.00016,4.9e-09,"Coronary artery disease","CNNM2","CNNM2",0.055,2e-12,"intron_variant",2,4,402,122,89,70,52,FALSE,TRUE
+"NT5C2","ENSG00000076685","rs3740390","chr10_102878723_C_T_b38",0.086,0.15,1.2e-11,4.9e-09,"Coronary artery disease","BORCS7-ASMT, AS3MT","AS3MT, C10orf32-ASMT",0.072,4e-15,"intron_variant",2,4,402,122,89,70,52,FALSE,TRUE
+"NT5C2","ENSG00000076685","rs12414777","chr10_102938024_C_T_b38",0.19,0.06,0.00016,4.9e-09,"Coronary artery disease","CNNM2",NA,NA,3e-15,"intron_variant",2,4,402,122,89,70,52,FALSE,TRUE
+"NT5C2","ENSG00000076685","rs3740390","chr10_102878723_C_T_b38",0.086,0.15,1.2e-11,4.9e-09,"Coronary artery disease","BORCS7-ASMT, AS3MT","AS3MT, C10orf32-ASMT",0.066,5e-15,"intron_variant",2,4,402,122,89,70,52,FALSE,TRUE
+"NT5C2","ENSG00000076685","rs1926032","chr10_103069712_C_T_b38",0.06,0.17,7.1e-11,4.9e-09,"Coronary artery disease","CNNM2","CNNM2",0.089,7e-15,"intron_variant",2,4,402,122,89,70,52,FALSE,TRUE
+"NT5C2","ENSG00000076685","rs11191559","chr10_103107929_C_T_b38",0.084,0.16,5.8e-13,4.9e-09,"Coronary artery disease","NT5C2","NT5C2",1.1,2e-08,"intron_variant",2,4,402,122,89,70,52,FALSE,TRUE
+"NT5C2","ENSG00000076685","rs11191416","chr10_102845159_T_G_b38",0.086,0.15,6.8e-12,4.9e-09,"Coronary artery disease","PFN1P11","CYP17A1, CNNM2, NT5C2",1.1,5e-09,"intron_variant",2,4,402,122,89,70,52,FALSE,TRUE
+"NT5C2","ENSG00000076685","rs11191447","chr10_102892566_C_T_b38",0.086,0.15,1.2e-11,4.9e-09,"Coronary artery disease","BORCS7-ASMT, AS3MT","BORCS7-ASMT",0.074,1e-23,"intron_variant",2,4,402,122,89,70,52,FALSE,TRUE
+"NT5C2","ENSG00000076685","rs12413409","chr10_102959339_G_A_b38",0.084,0.15,7e-12,4.9e-09,"Coronary artery disease","CNNM2","NT5C2, CNNM2, CYP17A1",1.1,1e-06,"intron_variant",2,4,402,122,89,70,52,FALSE,TRUE
+"SH3PXD2A","ENSG00000107957","rs12765878","chr10_103909864_T_C_b38",0.46,0.1,4.4e-05,2.8e-05,"Coronary artery disease","STN1","OBFC1",0.033,3e-09,"intron_variant",3,3,136,51,16,56,37,FALSE,FALSE
+"CAMK1D","ENSG00000183049","rs17566555","chr10_12233948_G_A_b38",0.48,-0.17,2.8e-17,3.5e-26,"Coronary artery disease","CDC123",NA,0.97,4e-11,"intron_variant",5,1,130,42,70,92,77,TRUE,FALSE
+"CAMK1D","ENSG00000183049","rs61848342","chr10_12261814_T_C_b38",0.34,0.21,5.2e-22,3.5e-26,"Coronary artery disease","CDC123 - RN7SL198P","intergenic",0.036,6e-10,"intergenic_variant",5,1,130,42,70,92,77,TRUE,FALSE
+"CAMK1D","ENSG00000183049","rs7090277","chr10_12236022_T_A_b38",0.49,-0.18,2.7e-18,3.5e-26,"Coronary artery disease","CDC123","CDC123",0.036,8e-14,"intron_variant",5,1,130,42,70,92,77,TRUE,FALSE
+"CAMK1D","ENSG00000183049","rs7090277","chr10_12236022_T_A_b38",0.49,-0.18,2.7e-18,3.5e-26,"Coronary artery disease","CDC123",NA,NA,7e-11,"intron_variant",5,1,130,42,70,92,77,TRUE,FALSE
+"NUDT5","ENSG00000165609","rs7090277","chr10_12236022_T_A_b38",0.49,-0.089,2.5e-07,4.4e-05,"Coronary artery disease","CDC123","CDC123",0.036,8e-14,"intron_variant",5,3,69,29,65,86,60,FALSE,FALSE
+"NUDT5","ENSG00000165609","rs17566555","chr10_12233948_G_A_b38",0.48,-0.084,1.4e-06,4.4e-05,"Coronary artery disease","CDC123",NA,0.97,4e-11,"intron_variant",5,3,69,29,65,86,60,FALSE,FALSE
+"NUDT5","ENSG00000165609","rs61848342","chr10_12261814_T_C_b38",0.34,0.075,4.6e-05,4.4e-05,"Coronary artery disease","CDC123 - RN7SL198P","intergenic",0.036,6e-10,"intergenic_variant",5,3,69,29,65,86,60,FALSE,FALSE
+"NUDT5","ENSG00000165609","rs7090277","chr10_12236022_T_A_b38",0.49,-0.089,2.5e-07,4.4e-05,"Coronary artery disease","CDC123",NA,NA,7e-11,"intron_variant",5,3,69,29,65,86,60,FALSE,FALSE
+"CSTF2T","ENSG00000177613","rs2879627","chr10_51923587_C_A_b38",0.16,-0.15,1.2e-07,8.1e-10,"Coronary artery disease","PRKG1","PRKG1",0.035,3e-06,"intron_variant",1,3,271,9,19,2.4,45,FALSE,FALSE
+"DNAJB12","ENSG00000148719","rs11000448","chr10_72922875_T_G_b38",0.14,0.094,5.1e-05,8.6e-10,"Coronary artery disease","OIT3","OIT3",0.052,4e-11,"intron_variant",2,3,540,31,33,27,8.7,FALSE,FALSE
+"DNAJB12","ENSG00000148719","rs11000448","chr10_72922875_T_G_b38",0.14,0.094,5.1e-05,8.6e-10,"Coronary artery disease","OIT3",NA,NA,3e-06,"intron_variant",2,3,540,31,33,27,8.7,FALSE,FALSE
+"TSPAN14","ENSG00000108219","rs17680741","chr10_80491758_T_C_b38",0.26,0.11,1.5e-12,1.2e-08,"Coronary artery disease","TSPAN14",NA,1,2e-10,"intron_variant",2,3,517,42,72,16,5.6,FALSE,FALSE
+"TSPAN14","ENSG00000108219","rs17680741","chr10_80491758_T_C_b38",0.26,0.11,1.5e-12,1.2e-08,"Coronary artery disease","TSPAN14","TSPAN14",0.047,2e-11,"intron_variant",2,3,517,42,72,16,5.6,FALSE,FALSE
+"TSPAN14","ENSG00000108219","rs12264252","chr10_80517585_G_A_b38",0.18,0.11,7.1e-10,1.2e-08,"Coronary artery disease","TSPAN14","TSPAN14",0.044,2e-10,"intron_variant",2,3,517,42,72,16,5.6,FALSE,FALSE
+"TSPAN14","ENSG00000108219","rs7088704","chr10_80482174_T_C_b38",0.34,0.071,1.2e-06,1.2e-08,"Coronary artery disease","TSPAN14","TSPAN14",0.026,3e-06,"intron_variant",2,3,517,42,72,16,5.6,FALSE,FALSE
+"TSPAN14","ENSG00000108219","rs17680741","chr10_80491758_T_C_b38",0.26,0.11,1.5e-12,1.2e-08,"Coronary artery disease","TSPAN14","TSPAN14",0.042,2e-11,"intron_variant",2,3,517,42,72,16,5.6,FALSE,FALSE
+"NOC3L","ENSG00000173145","rs55753709","chr10_94269413_T_C_b38",0.36,0.09,9.2e-06,1.1e-05,"Coronary artery disease","PLCE1",NA,0.96,2e-13,"intron_variant",2,4,239,154,23,26,53,FALSE,TRUE
+"CWF19L2","ENSG00000152404","rs3758911","chr11_107326914_T_C_b38",0.33,0.12,7.1e-07,2.5e-17,"Coronary artery disease","CWF19L2","CWF19L2",0.036,9e-08,"missense_variant",3,4,630,22,25,24,33,FALSE,TRUE
+"CWF19L2","ENSG00000152404","rs7117780","chr11_107215397_G_A_b38",0.44,0.15,6.4e-11,2.5e-17,"Coronary artery disease","ASS1P13 - CWF19L2",NA,1,7e-10,"intergenic_variant",3,4,630,22,25,24,33,FALSE,TRUE
+"CWF19L2","ENSG00000152404","rs4753788","chr11_107221129_A_T_b38",0.43,0.15,3.2e-10,2.5e-17,"Coronary artery disease","ASS1P13 - CWF19L2","intergenic",0.034,7e-08,"intergenic_variant",3,4,630,22,25,24,33,FALSE,TRUE
+"RDX","ENSG00000137710","rs10488763","chr11_110373636_A_T_b38",0.12,-0.23,2.3e-12,1.9e-08,"Coronary artery disease","LINC02732","LOC105369486",0.057,3e-19,"intron_variant",2,4,164,22,3.5,33,49,FALSE,TRUE
+"RDX","ENSG00000137710","rs10488763","chr11_110373636_A_T_b38",0.12,-0.23,2.3e-12,1.9e-08,"Coronary artery disease","LINC02732","LOC105369486",0.079,2e-15,"intron_variant",2,4,164,22,3.5,33,49,FALSE,TRUE
+"RDX","ENSG00000137710","rs10488763","chr11_110373636_A_T_b38",0.12,-0.23,2.3e-12,1.9e-08,"Coronary artery disease","LINC02732","RDX, FDX1",1.1,9e-10,"intron_variant",2,4,164,22,3.5,33,49,FALSE,TRUE
+"RDX","ENSG00000137710","rs10488763","chr11_110373636_A_T_b38",0.12,-0.23,2.3e-12,1.9e-08,"Coronary artery disease","LINC02732",NA,0.96,1e-08,"intron_variant",2,4,164,22,3.5,33,49,FALSE,TRUE
+"RDX","ENSG00000137710","rs73562014","chr11_110401537_G_A_b38",0.13,0.16,5e-07,1.9e-08,"Coronary artery disease","LINC02732","intergenic",0.046,1e-06,"intron_variant",2,4,164,22,3.5,33,49,FALSE,TRUE
+"BUD13","ENSG00000137656","rs964184","chr11_116778201_G_C_b38",0.84,-0.14,0.00011,1.2e-08,"Coronary artery disease","ZPR1","BUD13, ZPR1",0.071,8e-15,"3_prime_UTR_variant",0,1,229,988,23,0.9,1.2,FALSE,FALSE
+"BUD13","ENSG00000137656","rs964184","chr11_116778201_G_C_b38",0.84,-0.14,0.00011,1.2e-08,"Coronary artery disease","ZPR1",NA,0.94,4e-17,"3_prime_UTR_variant",0,1,229,988,23,0.9,1.2,FALSE,FALSE
+"BUD13","ENSG00000137656","rs964184","chr11_116778201_G_C_b38",0.84,-0.14,0.00011,1.2e-08,"Coronary artery disease","ZPR1","BUD13, ZPR1",0.07,8e-15,"3_prime_UTR_variant",0,1,229,988,23,0.9,1.2,FALSE,FALSE
+"BUD13","ENSG00000137656","rs964184","chr11_116778201_G_C_b38",0.84,-0.14,0.00011,1.2e-08,"Coronary artery disease","ZPR1",NA,0.093,7e-08,"3_prime_UTR_variant",0,1,229,988,23,0.9,1.2,FALSE,FALSE
+"SIDT2","ENSG00000149577","rs2266788","chr11_116789970_G_A_b38",0.93,0.25,6.8e-06,7.5e-77,"Coronary artery disease","APOA5",NA,0.12,8e-08,"3_prime_UTR_variant",8,1,896,337,82,97,91,TRUE,FALSE
+"SIDT2","ENSG00000149577","rs10790162","chr11_116768388_A_G_b38",0.93,0.25,6e-06,7.5e-77,"Coronary artery disease","BUD13",NA,0.13,3e-08,"intron_variant",8,1,896,337,82,97,91,TRUE,FALSE
+"SIDT2","ENSG00000149577","rs9326246","chr11_116741017_C_G_b38",0.93,0.26,3.8e-06,7.5e-77,"Coronary artery disease","LINC02702 - BUD13",NA,0.13,2e-08,"intergenic_variant",8,1,896,337,82,97,91,TRUE,FALSE
+"SIDT2","ENSG00000149577","rs1558861","chr11_116736721_C_T_b38",0.93,0.26,3.8e-06,7.5e-77,"Coronary artery disease","LINC02702 - BUD13",NA,0.13,3e-08,"regulatory_region_variant",8,1,896,337,82,97,91,TRUE,FALSE
+"SIDT2","ENSG00000149577","rs9326246","chr11_116741017_C_G_b38",0.93,0.26,3.8e-06,7.5e-77,"Coronary artery disease","LINC02702 - BUD13","ZNF259, APOA1, APO5A",1.2,3e-07,"intergenic_variant",8,1,896,337,82,97,91,TRUE,FALSE
+"SIDT2","ENSG00000149577","rs6589566","chr11_116781707_G_A_b38",0.93,0.25,6e-06,7.5e-77,"Coronary artery disease","ZPR1",NA,0.12,6e-08,"intron_variant",8,1,896,337,82,97,91,TRUE,FALSE
+"BET1L","ENSG00000177951","rs73392700","chr11_224845_G_C_b38",0.047,0.24,8.8e-05,1.7e-42,"Coronary artery disease","SIRT3","SIRT3",0.064,3e-11,"intron_variant",3,2,260,110,38,44,22,FALSE,FALSE
+"BET1L","ENSG00000177951","rs73392700","chr11_224845_G_C_b38",0.047,0.24,8.8e-05,1.7e-42,"Coronary artery disease","SIRT3",NA,NA,2e-06,"intron_variant",3,2,260,110,38,44,22,FALSE,FALSE
+"BET1L","ENSG00000177951","rs73386640","chr11_203235_A_G_b38",0.047,0.24,5.8e-05,1.7e-42,"Coronary artery disease","BET1L","BET1L",0.092,2e-10,"3_prime_UTR_variant",3,2,260,110,38,44,22,FALSE,FALSE
+"HSD17B12","ENSG00000149084","rs7116641","chr11_43675367_T_G_b38",0.33,-0.5,1.2e-74,1.8e-133,"Coronary artery disease","MIR129-2 - HSD17B12","HSD17B12",0.031,1e-08,"intron_variant",3,3,428,65,61,76,66,FALSE,FALSE
+"HSD17B12","ENSG00000149084","rs7928523","chr11_43697551_C_T_b38",0.33,-0.52,2.8e-80,1.8e-133,"Coronary artery disease","HSD17B12","HSD17B12",0.031,3e-08,"intron_variant",3,3,428,65,61,76,66,FALSE,FALSE
+"HSD17B12","ENSG00000149084","rs7928523","chr11_43697551_C_T_b38",0.33,-0.52,2.8e-80,1.8e-133,"Coronary artery disease","HSD17B12",NA,NA,4e-06,"intron_variant",3,3,428,65,61,76,66,FALSE,FALSE
+"HSD17B12","ENSG00000149084","rs2679053","chr11_43583754_A_G_b38",0.57,0.34,2.6e-34,1.8e-133,"Coronary artery disease","MIR129-2 - HSD17B12","MIR129-2",0.034,1e-07,"intron_variant",3,3,428,65,61,76,66,FALSE,FALSE
+"RNASEH2C","ENSG00000172922","rs12801636","chr11_65623846_G_A_b38",0.23,0.084,4.9e-05,1.3e-28,"Coronary artery disease","PCNX3","MAP3K11, PCNXL3",0.04,2e-11,"intron_variant",2,3,351,187,38,27,26,FALSE,FALSE
+"RNASEH2C","ENSG00000172922","rs12801636","chr11_65623846_G_A_b38",0.23,0.084,4.9e-05,1.3e-28,"Coronary artery disease","PCNX3","MAP3K11, PCNXL3",0.044,3e-11,"intron_variant",2,3,351,187,38,27,26,FALSE,FALSE
+"RNASEH2C","ENSG00000172922","rs2306363","chr11_65638129_G_T_b38",0.17,0.12,3.1e-07,1.3e-28,"Coronary artery disease","SIPA1","SIPA1",0.068,9e-10,"5_prime_UTR_variant",2,3,351,187,38,27,26,FALSE,FALSE
+"RNASEH2C","ENSG00000172922","rs12801636","chr11_65623846_G_A_b38",0.23,0.084,4.9e-05,1.3e-28,"Coronary artery disease","PCNX3","MAP3K11, PCNXL3",0.042,4e-08,"intron_variant",2,3,351,187,38,27,26,FALSE,FALSE
+"RNASEH2C","ENSG00000172922","rs12801636","chr11_65623846_G_A_b38",0.23,0.084,4.9e-05,1.3e-28,"Coronary artery disease","PCNX3","PCNXL3",1,2e-08,"intron_variant",2,3,351,187,38,27,26,FALSE,FALSE
+"RNASEH2C","ENSG00000172922","rs2306363","chr11_65638129_G_T_b38",0.17,0.12,3.1e-07,1.3e-28,"Coronary artery disease","SIPA1",NA,0.96,1e-11,"5_prime_UTR_variant",2,3,351,187,38,27,26,FALSE,FALSE
+"MAP3K11","ENSG00000173327","rs12801636","chr11_65623846_G_A_b38",0.23,-0.09,2.6e-13,6.7e-47,"Coronary artery disease","PCNX3","MAP3K11, PCNXL3",0.042,4e-08,"intron_variant",1,3,408,221,72,15,22,FALSE,FALSE
+"MAP3K11","ENSG00000173327","rs12801636","chr11_65623846_G_A_b38",0.23,-0.09,2.6e-13,6.7e-47,"Coronary artery disease","PCNX3","MAP3K11, PCNXL3",0.04,2e-11,"intron_variant",1,3,408,221,72,15,22,FALSE,FALSE
+"MAP3K11","ENSG00000173327","rs12801636","chr11_65623846_G_A_b38",0.23,-0.09,2.6e-13,6.7e-47,"Coronary artery disease","PCNX3","PCNXL3",1,2e-08,"intron_variant",1,3,408,221,72,15,22,FALSE,FALSE
+"MAP3K11","ENSG00000173327","rs12801636","chr11_65623846_G_A_b38",0.23,-0.09,2.6e-13,6.7e-47,"Coronary artery disease","PCNX3","MAP3K11, PCNXL3",0.044,3e-11,"intron_variant",1,3,408,221,72,15,22,FALSE,FALSE
+"MAP3K11","ENSG00000173327","rs3741380","chr11_65581592_G_A_b38",0.47,0.058,2.2e-08,6.7e-47,"Coronary artery disease","EHBP1L1","EHBP1L1, FAM89B, SSSCA1",0.041,3e-10,"missense_variant",1,3,408,221,72,15,22,FALSE,FALSE
+"MAP3K11","ENSG00000173327","rs2306363","chr11_65638129_G_T_b38",0.17,-0.1,7.8e-13,6.7e-47,"Coronary artery disease","SIPA1",NA,0.96,1e-11,"5_prime_UTR_variant",1,3,408,221,72,15,22,FALSE,FALSE
+"MAP3K11","ENSG00000173327","rs2306363","chr11_65638129_G_T_b38",0.17,-0.1,7.8e-13,6.7e-47,"Coronary artery disease","SIPA1","SIPA1",0.068,9e-10,"5_prime_UTR_variant",1,3,408,221,72,15,22,FALSE,FALSE
+"MAP3K11","ENSG00000173327","rs3741380","chr11_65581592_G_A_b38",0.47,0.058,2.2e-08,6.7e-47,"Coronary artery disease","EHBP1L1","EHBP1L1",0.042,2e-17,"missense_variant",1,3,408,221,72,15,22,FALSE,FALSE
+"SF3B2","ENSG00000087365","rs12801636","chr11_65623846_G_A_b38",0.23,-0.066,5.7e-05,4.1e-52,"Coronary artery disease","PCNX3","MAP3K11, PCNXL3",0.044,3e-11,"intron_variant",1,0,378,98,78,17,5.1,FALSE,FALSE
+"SF3B2","ENSG00000087365","rs12801636","chr11_65623846_G_A_b38",0.23,-0.066,5.7e-05,4.1e-52,"Coronary artery disease","PCNX3","MAP3K11, PCNXL3",0.04,2e-11,"intron_variant",1,0,378,98,78,17,5.1,FALSE,FALSE
+"SF3B2","ENSG00000087365","rs12801636","chr11_65623846_G_A_b38",0.23,-0.066,5.7e-05,4.1e-52,"Coronary artery disease","PCNX3","PCNXL3",1,2e-08,"intron_variant",1,0,378,98,78,17,5.1,FALSE,FALSE
+"SF3B2","ENSG00000087365","rs12801636","chr11_65623846_G_A_b38",0.23,-0.066,5.7e-05,4.1e-52,"Coronary artery disease","PCNX3","MAP3K11, PCNXL3",0.042,4e-08,"intron_variant",1,0,378,98,78,17,5.1,FALSE,FALSE
+"PPFIA1","ENSG00000131626","rs72945132","chr11_70267795_G_C_b38",0.11,-0.18,2.8e-10,5.5e-13,"Coronary artery disease","FADD - PPFIA1","PPFIA1",0.047,2e-06,"intergenic_variant",2,5,256,7,35,40,34,FALSE,TRUE
+"TMEM9B","ENSG00000175348","rs4537761","chr11_9301806_T_C_b38",0.11,0.12,6.8e-05,1.9e-20,"Coronary artery disease","TMEM41B",NA,0.95,2e-09,"intron_variant",2,4,159,9,77,64,25,FALSE,TRUE
+"SSH1","ENSG00000084112","rs1558802","chr12_108642472_T_A_b38",0.38,0.053,8.4e-05,0.00021,"Coronary artery disease","MIR4496 - CORO1C",NA,0.025,6e-10,"intergenic_variant",2,3,161,18,28,57,73,FALSE,FALSE
+"SH2B3","ENSG00000111252","rs3184504","chr12_111446804_T_C_b38",0.55,-0.062,4.9e-05,0.021,"Coronary artery disease","SH2B3, ATXN2","SH2B3",1.1,1e-09,"missense_variant",1,3,76,522,81,59,18,FALSE,FALSE
+"SH2B3","ENSG00000111252","rs3184504","chr12_111446804_T_C_b38",0.55,-0.062,4.9e-05,0.021,"Coronary artery disease","SH2B3, ATXN2","SH2B3",1.1,9e-07,"missense_variant",1,3,76,522,81,59,18,FALSE,FALSE
+"SH2B3","ENSG00000111252","rs4766566","chr12_111269073_C_T_b38",0.31,-0.065,0.00029,0.021,"Coronary artery disease","CUX2","CUX2",1.2,2e-25,"intron_variant",1,3,76,522,81,59,18,FALSE,FALSE
+"SH2B3","ENSG00000111252","rs3184504","chr12_111446804_T_C_b38",0.55,-0.062,4.9e-05,0.021,"Coronary artery disease","SH2B3, ATXN2","ATXN2, SH2B3",0.074,5e-30,"missense_variant",1,3,76,522,81,59,18,FALSE,FALSE
+"SH2B3","ENSG00000111252","rs3858704","chr12_111268089_A_G_b38",0.31,-0.066,0.00021,0.021,"Coronary artery disease","CUX2","CUX2",1.1,3e-13,"intron_variant",1,3,76,522,81,59,18,FALSE,FALSE
+"SH2B3","ENSG00000111252","rs4766578","chr12_111466567_T_A_b38",0.54,-0.064,3e-05,0.021,"Coronary artery disease","ATXN2",NA,NA,2e-28,"intron_variant",1,3,76,522,81,59,18,FALSE,FALSE
+"SH2B3","ENSG00000111252","rs4766578","chr12_111466567_T_A_b38",0.54,-0.064,3e-05,0.021,"Coronary artery disease","ATXN2","ATXN2",0.059,6e-20,"intron_variant",1,3,76,522,81,59,18,FALSE,FALSE
+"SH2B3","ENSG00000111252","rs7137828","chr12_111494996_C_T_b38",0.55,-0.06,8.2e-05,0.021,"Coronary artery disease","ATXN2","ATXN2",0.064,4e-27,"intron_variant",1,3,76,522,81,59,18,FALSE,FALSE
+"SH2B3","ENSG00000111252","rs10774625","chr12_111472415_A_G_b38",0.55,-0.065,2.1e-05,0.021,"Coronary artery disease","ATXN2",NA,1.1,1e-28,"intron_variant",1,3,76,522,81,59,18,FALSE,FALSE
+"ALDH2","ENSG00000111275","rs3858704","chr12_111268089_A_G_b38",0.31,0.11,9.7e-05,2.8e-09,"Coronary artery disease","CUX2","CUX2",1.1,3e-13,"intron_variant",4,2,518,92,82,97,82,TRUE,FALSE
+"ALDH2","ENSG00000111275","rs11066028","chr12_111807366_A_C_b38",0.33,0.13,2.9e-06,2.8e-09,"Coronary artery disease","ALDH2","ALDH2",0.085,9e-08,"intron_variant",4,2,518,92,82,97,82,TRUE,FALSE
+"ALDH2","ENSG00000111275","rs4766566","chr12_111269073_C_T_b38",0.31,0.11,7.5e-05,2.8e-09,"Coronary artery disease","CUX2","CUX2",1.2,2e-25,"intron_variant",4,2,518,92,82,97,82,TRUE,FALSE
+"MAPKAPK5-AS1","ENSG00000234608","rs11066028","chr12_111807366_A_C_b38",0.33,0.15,8.6e-09,5.3e-10,"Coronary artery disease","ALDH2","ALDH2",0.085,9e-08,"intron_variant",3,5,823,102,71,61,43,FALSE,TRUE
+"NAA25","ENSG00000111300","rs3858704","chr12_111268089_A_G_b38",0.31,0.08,9.9e-05,5.4e-05,"Coronary artery disease","CUX2","CUX2",1.1,3e-13,"intron_variant",1,5,806,112,14,8.5,16,FALSE,TRUE
+"NAA25","ENSG00000111300","rs4766566","chr12_111269073_C_T_b38",0.31,0.081,8.4e-05,5.4e-05,"Coronary artery disease","CUX2","CUX2",1.2,2e-25,"intron_variant",1,5,806,112,14,8.5,16,FALSE,TRUE
+"NAA25","ENSG00000111300","rs11066028","chr12_111807366_A_C_b38",0.33,0.079,8.9e-05,5.4e-05,"Coronary artery disease","ALDH2","ALDH2",0.085,9e-08,"intron_variant",1,5,806,112,14,8.5,16,FALSE,TRUE
+"OASL","ENSG00000135114","rs2244608","chr12_120979185_A_G_b38",0.32,0.13,4.8e-06,2.6e-19,"Coronary artery disease","HNF1A, HNF1A-AS1",NA,0.95,2e-20,"intron_variant",6,3,466,221,44,97,99,TRUE,FALSE
+"OASL","ENSG00000135114","rs2244608","chr12_120979185_A_G_b38",0.32,0.13,4.8e-06,2.6e-19,"Coronary artery disease","HNF1A, HNF1A-AS1","HNF1A, HNF1A-AS1",0.052,7e-19,"intron_variant",6,3,466,221,44,97,99,TRUE,FALSE
+"OASL","ENSG00000135114","rs2244608","chr12_120979185_A_G_b38",0.32,0.13,4.8e-06,2.6e-19,"Coronary artery disease","HNF1A, HNF1A-AS1","HNF1A",1,2e-08,"intron_variant",6,3,466,221,44,97,99,TRUE,FALSE
+"OASL","ENSG00000135114","rs2244608","chr12_120979185_A_G_b38",0.32,0.13,4.8e-06,2.6e-19,"Coronary artery disease","HNF1A, HNF1A-AS1","HNF1A",1,2e-08,"intron_variant",6,3,466,221,44,97,99,TRUE,FALSE
+"PPHLN1","ENSG00000134283","rs12826942","chr12_42402498_A_G_b38",0.21,-0.12,2e-07,5e-12,"Coronary artery disease","PPHLN1","PPHLN1",0.035,2e-06,"intron_variant",2,4,520,29,40,44,37,FALSE,FALSE
+"PPHLN1","ENSG00000134283","rs12820154","chr12_42389305_G_A_b38",0.35,-0.11,6.2e-09,5e-12,"Coronary artery disease","PPHLN1",NA,0.021,3e-08,"intron_variant",2,4,520,29,40,44,37,FALSE,FALSE
+"POC1B","ENSG00000139323","rs2681472","chr12_89615182_A_G_b38",0.17,-0.1,6.2e-07,1.1e-06,"Coronary artery disease","ATP2B1","ATP2B1",0.06,7e-25,"intron_variant",5,4,129,74,40,81,88,FALSE,FALSE
+"POC1B","ENSG00000139323","rs2681472","chr12_89615182_A_G_b38",0.17,-0.1,6.2e-07,1.1e-06,"Coronary artery disease","ATP2B1","ATP2B1",1.1,6e-11,"intron_variant",5,4,129,74,40,81,88,FALSE,FALSE
+"POC1B","ENSG00000139323","rs2681472","chr12_89615182_A_G_b38",0.17,-0.1,6.2e-07,1.1e-06,"Coronary artery disease","ATP2B1","ATP2B1",0.068,3e-11,"intron_variant",5,4,129,74,40,81,88,FALSE,FALSE
+"POC1B","ENSG00000139323","rs2681472","chr12_89615182_A_G_b38",0.17,-0.1,6.2e-07,1.1e-06,"Coronary artery disease","ATP2B1",NA,0.95,2e-18,"intron_variant",5,4,129,74,40,81,88,FALSE,FALSE
+"POC1B","ENSG00000139323","rs117742247","chr12_89597536_C_T_b38",0.15,-0.12,2.4e-08,1.1e-06,"Coronary artery disease","ATP2B1","ATP2B1",1.1,3e-08,"intron_variant",5,4,129,74,40,81,88,FALSE,FALSE
+"POC1B","ENSG00000139323","rs2681492","chr12_89619312_T_C_b38",0.17,-0.1,1.4e-06,1.1e-06,"Coronary artery disease","ATP2B1","ATP2B1",0.063,3e-15,"intron_variant",5,4,129,74,40,81,88,FALSE,FALSE
+"POC1B","ENSG00000139323","rs57481061","chr12_89625401_C_G_b38",0.16,-0.11,3.7e-07,1.1e-06,"Coronary artery disease","ATP2B1","ATP2B1",0.061,9e-14,"intron_variant",5,4,129,74,40,81,88,FALSE,FALSE
+"POC1B","ENSG00000139323","rs2681492","chr12_89619312_T_C_b38",0.17,-0.1,1.4e-06,1.1e-06,"Coronary artery disease","ATP2B1","ATP2B1",0.056,9e-15,"intron_variant",5,4,129,74,40,81,88,FALSE,FALSE
+"ING1","ENSG00000153487","rs9583531","chr13_110732814_T_G_b38",0.21,-0.089,2.2e-05,1.5e-06,"Coronary artery disease","ING1 - RPL21P107","intergenic",0.045,5e-08,"regulatory_region_variant",3,3,147,10,25,17,8.5,FALSE,FALSE
+"KLC1","ENSG00000126214","rs4906332","chr14_103513797_A_T_b38",0.33,0.13,3.8e-11,2.9e-30,"Coronary artery disease","MARK3 - CKB","CKB, MARK3",0.032,2e-06,"regulatory_region_variant",1,3,826,104,37,7.3,9.6,FALSE,FALSE
+"KLC1","ENSG00000126214","rs35224956","chr14_103434144_A_G_b38",0.33,0.13,1.9e-11,2.9e-30,"Coronary artery disease","MARK3","MARK3",0.031,3e-09,"intron_variant",1,3,826,104,37,7.3,9.6,FALSE,FALSE
+"KLC1","ENSG00000126214","rs35224956","chr14_103434144_A_G_b38",0.33,0.13,1.9e-11,2.9e-30,"Coronary artery disease","MARK3",NA,NA,1e-06,"intron_variant",1,3,826,104,37,7.3,9.6,FALSE,FALSE
+"TDRD9","ENSG00000156414","rs4906332","chr14_103513797_A_T_b38",0.33,-0.069,6.6e-05,2.5e-57,"Coronary artery disease","MARK3 - CKB","CKB, MARK3",0.032,2e-06,"regulatory_region_variant",7,2,702,98,1.1,99,99,TRUE,FALSE
+"TDRD9","ENSG00000156414","rs35224956","chr14_103434144_A_G_b38",0.33,-0.069,5.8e-05,2.5e-57,"Coronary artery disease","MARK3","MARK3",0.031,3e-09,"intron_variant",7,2,702,98,1.1,99,99,TRUE,FALSE
+"TDRD9","ENSG00000156414","rs35224956","chr14_103434144_A_G_b38",0.33,-0.069,5.8e-05,2.5e-57,"Coronary artery disease","MARK3",NA,NA,1e-06,"intron_variant",7,2,702,98,1.1,99,99,TRUE,FALSE
+"NAGK","ENSG00000124357","rs898123","chr2_71152220_C_G_b38",0.33,0.13,1.1e-09,1e-122,"Coronary artery disease","MPHOSPH10 - PAIP2B","MPHOSPH10",0.029,3e-06,"intergenic_variant",4,1,308,20,96,94,75,TRUE,FALSE
+"EIF2B2","ENSG00000119718","rs7145159","chr14_75116565_T_C_b38",0.43,0.24,1.7e-32,1.7e-36,"Coronary artery disease","HIF1AP1, ZC2HC1C, NEK9","NEK9",0.032,4e-10,"non_coding_transcript_exon_variant",4,1,453,58,39,29,5.5,TRUE,FALSE
+"EIF2B2","ENSG00000119718","rs10131894","chr14_74980176_C_G_b38",0.51,0.25,7.5e-35,1.7e-36,"Coronary artery disease","PGF - EIF2B2","intergenic",0.038,4e-09,"regulatory_region_variant",4,1,453,58,39,29,5.5,TRUE,FALSE
+"EIF2B2","ENSG00000119718","rs2098297","chr14_75152415_T_G_b38",0.45,0.24,3.3e-32,1.7e-36,"Coronary artery disease","TMED10","TMED10",1,4e-08,"intron_variant",4,1,453,58,39,29,5.5,TRUE,FALSE
+"EIF2B2","ENSG00000119718","rs10131894","chr14_74980176_C_G_b38",0.51,0.25,7.5e-35,1.7e-36,"Coronary artery disease","PGF - EIF2B2",NA,0.96,8e-13,"regulatory_region_variant",4,1,453,58,39,29,5.5,TRUE,FALSE
+"EIF2B2","ENSG00000119718","rs7145159","chr14_75116565_T_C_b38",0.43,0.24,1.7e-32,1.7e-36,"Coronary artery disease","HIF1AP1, ZC2HC1C, NEK9","NEK9",0.035,4e-10,"non_coding_transcript_exon_variant",4,1,453,58,39,29,5.5,TRUE,FALSE
+"EIF2B2","ENSG00000119718","rs175040","chr14_75002852_A_G_b38",0.49,-0.26,1.8e-41,1.7e-36,"Coronary artery disease","PGF - EIF2B2","EIF2B2",0.036,1e-12,"TF_binding_site_variant",4,1,453,58,39,29,5.5,TRUE,FALSE
+"MLH3","ENSG00000119684","rs10131894","chr14_74980176_C_G_b38",0.51,0.13,1.6e-06,8.2e-08,"Coronary artery disease","PGF - EIF2B2","intergenic",0.038,4e-09,"regulatory_region_variant",4,3,260,17,18,75,73,TRUE,FALSE
+"MLH3","ENSG00000119684","rs2098297","chr14_75152415_T_G_b38",0.45,0.12,4.3e-06,8.2e-08,"Coronary artery disease","TMED10","TMED10",1,4e-08,"intron_variant",4,3,260,17,18,75,73,TRUE,FALSE
+"MLH3","ENSG00000119684","rs10131894","chr14_74980176_C_G_b38",0.51,0.13,1.6e-06,8.2e-08,"Coronary artery disease","PGF - EIF2B2",NA,0.96,8e-13,"regulatory_region_variant",4,3,260,17,18,75,73,TRUE,FALSE
+"MLH3","ENSG00000119684","rs7145159","chr14_75116565_T_C_b38",0.43,0.11,7.2e-05,8.2e-08,"Coronary artery disease","HIF1AP1, ZC2HC1C, NEK9","NEK9",0.032,4e-10,"non_coding_transcript_exon_variant",4,3,260,17,18,75,73,TRUE,FALSE
+"MLH3","ENSG00000119684","rs7145159","chr14_75116565_T_C_b38",0.43,0.11,7.2e-05,8.2e-08,"Coronary artery disease","HIF1AP1, ZC2HC1C, NEK9","NEK9",0.035,4e-10,"non_coding_transcript_exon_variant",4,3,260,17,18,75,73,TRUE,FALSE
+"MLH3","ENSG00000119684","rs175040","chr14_75002852_A_G_b38",0.49,-0.15,7.5e-09,8.2e-08,"Coronary artery disease","PGF - EIF2B2","EIF2B2",0.036,1e-12,"TF_binding_site_variant",4,3,260,17,18,75,73,TRUE,FALSE
+"RTF1","ENSG00000137815","rs111684993","chr15_41144539_A_G_b38",0.36,0.075,0.00012,1.7e-08,"Coronary artery disease","INO80 - CIBAR1P1","intergenic",0.034,3e-07,"intergenic_variant",2,3,488,60,45,32,51,FALSE,FALSE
+"RTF1","ENSG00000137815","rs12440045","chr15_41490486_A_C_b38",0.59,0.13,8.3e-11,1.7e-08,"Coronary artery disease","RTF1 - ITPKA","ITPKA, RTF1",0.034,2e-07,"TF_binding_site_variant",2,3,488,60,45,32,51,FALSE,FALSE
+"CHP1","ENSG00000187446","rs111684993","chr15_41144539_A_G_b38",0.36,-0.11,4.3e-11,1.9e-07,"Coronary artery disease","INO80 - CIBAR1P1","intergenic",0.034,3e-07,"intergenic_variant",1,2,439,49,81,51,20,FALSE,FALSE
+"CHP1","ENSG00000187446","rs3959554","chr15_41151726_A_G_b38",0.41,-0.096,1.9e-08,1.9e-07,"Coronary artery disease","INO80 - CIBAR1P1",NA,0.97,7e-09,"intergenic_variant",1,2,439,49,81,51,20,FALSE,FALSE
+"CHP1","ENSG00000187446","rs12440045","chr15_41490486_A_C_b38",0.59,-0.086,1.1e-06,1.9e-07,"Coronary artery disease","RTF1 - ITPKA","ITPKA, RTF1",0.034,2e-07,"TF_binding_site_variant",1,2,439,49,81,51,20,FALSE,FALSE
+"SORD","ENSG00000140263","rs57659670","chr15_45106240_T_C_b38",0.11,-0.21,0.00019,1.3e-10,"Coronary artery disease","DUOX2",NA,0.1,2e-06,"missense_variant",3,1,195,13,15,87,77,FALSE,FALSE
+"SORD","ENSG00000140263","rs269862","chr15_45106767_G_T_b38",0.89,0.21,0.00012,1.3e-10,"Coronary artery disease","DUOX2",NA,0.1,2e-06,"intron_variant",3,1,195,13,15,87,77,FALSE,FALSE
+"SORD","ENSG00000140263","rs56833067","chr15_45099257_A_G_b38",0.13,-0.28,1.7e-07,1.3e-10,"Coronary artery disease","DUOX2",NA,0.1,5e-06,"non_coding_transcript_exon_variant",3,1,195,13,15,87,77,FALSE,FALSE
+"SORD","ENSG00000140263","rs269863","chr15_45105368_G_C_b38",0.83,0.28,1.2e-06,1.3e-10,"Coronary artery disease","DUOX2",NA,0.096,5e-06,"intron_variant",3,1,195,13,15,87,77,FALSE,FALSE
+"SORD","ENSG00000140263","rs73406330","chr15_45105633_G_A_b38",0.11,-0.23,5.1e-05,1.3e-10,"Coronary artery disease","DUOX2",NA,0.1,2e-06,"intron_variant",3,1,195,13,15,87,77,FALSE,FALSE
+"SORD","ENSG00000140263","rs166574","chr15_45107794_T_C_b38",0.82,0.25,1.9e-06,1.3e-10,"Coronary artery disease","DUOX2",NA,0.097,3e-06,"intron_variant",3,1,195,13,15,87,77,FALSE,FALSE
+"SORD","ENSG00000140263","rs190599","chr15_45107269_A_G_b38",0.89,0.22,9.6e-05,1.3e-10,"Coronary artery disease","DUOX2",NA,0.1,2e-06,"intron_variant",3,1,195,13,15,87,77,FALSE,FALSE
+"CTSA","ENSG00000064601","rs3827066","chr20_45957384_C_T_b38",0.13,-0.11,8.4e-06,2.9e-06,"Coronary artery disease","ZNF335","PCIF1, ZNF335",0.047,3e-09,"intron_variant",3,2,108,8,88,83,57,FALSE,FALSE
+"CTSA","ENSG00000064601","rs3827066","chr20_45957384_C_T_b38",0.13,-0.11,8.4e-06,2.9e-06,"Coronary artery disease","ZNF335","PCIF1, ZNF335",0.042,4e-09,"intron_variant",3,2,108,8,88,83,57,FALSE,FALSE
+"IREB2","ENSG00000136381","rs112238647","chr15_78759363_C_T_b38",0.059,0.14,1.6e-05,1.4e-36,"Coronary artery disease","ADAMTS7",NA,0.93,1e-09,"3_prime_UTR_variant",1,5,375,110,21,17,55,FALSE,TRUE
+"CTSH","ENSG00000103811","rs7178750","chr15_78834567_G_A_b38",0.52,-0.099,6.2e-05,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.076,6e-07,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs8024048","chr15_78835565_G_A_b38",0.49,-0.11,1e-05,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.073,2e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7165042","chr15_78830996_C_G_b38",0.56,-0.11,1.8e-06,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.094,1e-09,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs8027833","chr15_78820495_T_C_b38",0.59,-0.12,3.5e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.075,2e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs10083697","chr15_78831697_G_A_b38",0.4,0.12,5.6e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.072,5e-06,"non_coding_transcript_exon_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs9920493","chr15_78821504_A_C_b38",0.59,-0.12,3.5e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.075,2e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs8035093","chr15_78828328_T_C_b38",0.59,-0.12,4.1e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.076,1e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7164479","chr15_78830712_C_T_b38",0.55,-0.11,1.7e-06,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.095,8e-10,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs4468572","chr15_78832133_T_C_b38",0.56,-0.11,2.1e-06,2.5e-48,"Coronary artery disease","MORF4L1","ADAMTS7",1.1,4e-16,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs6495340","chr15_78836054_A_G_b38",0.52,-0.1,3.3e-05,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.075,8e-07,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs62011004","chr15_78834194_C_T_b38",0.52,-0.098,6.4e-05,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.076,6e-07,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs56076311","chr15_78822778_A_G_b38",0.4,0.12,5.3e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.069,9e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs8032908","chr15_78825094_G_C_b38",0.49,-0.095,9.5e-05,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.081,1e-07,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs28455815","chr15_78822111_C_T_b38",0.56,-0.12,1.5e-06,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.093,2e-09,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs58021857","chr15_78826887_C_A_b38",0.4,0.12,4.6e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.071,6e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs6495339","chr15_78835930_T_C_b38",0.52,-0.1,3.3e-05,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.075,8e-07,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7182529","chr15_78831289_T_C_b38",0.56,-0.11,1.8e-06,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.094,1e-09,"non_coding_transcript_exon_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs6495337","chr15_78833347_C_G_b38",0.52,-0.1,2.8e-05,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.08,2e-07,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs8032771","chr15_78833717_A_G_b38",0.52,-0.098,6.4e-05,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.077,5e-07,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs67745769","chr15_78832490_G_A_b38",0.39,0.12,2e-06,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.071,6e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs8035039","chr15_78837481_A_G_b38",0.54,-0.1,5e-05,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.07,9e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs12915192","chr15_78823243_G_A_b38",0.59,-0.12,3.5e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.075,1e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs4387568","chr15_78817172_C_G_b38",0.4,0.12,4.3e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.07,7e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs6495335","chr15_78824791_G_T_b38",0.59,-0.12,3.5e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.075,2e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs6495333","chr15_78820873_G_A_b38",0.59,-0.12,3.5e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.074,2e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs28455815","chr15_78822111_C_T_b38",0.56,-0.12,1.5e-06,2.5e-48,"Coronary artery disease","MORF4L1","ADAMTS7, MORF4L1",1.1,1e-08,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs12909317","chr15_78822077_G_T_b38",0.4,0.12,4.6e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.07,7e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7179953","chr15_78829434_C_T_b38",0.56,-0.11,1.8e-06,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.094,1e-09,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs61043060","chr15_78827935_T_C_b38",0.4,0.12,5.4e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.072,5e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7178051","chr15_78825954_C_T_b38",0.4,0.12,4.6e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.071,6e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs4073322","chr15_78830199_G_C_b38",0.59,-0.12,4.3e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.076,1e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs9806363","chr15_78817960_A_G_b38",0.4,0.12,4.6e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.071,6e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7166340","chr15_78820951_C_T_b38",0.59,-0.12,3.5e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.074,2e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs28513584","chr15_78817514_G_A_b38",0.58,-0.13,2e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.075,1e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7165902","chr15_78823530_T_G_b38",0.59,-0.12,3.5e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.075,2e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7182716","chr15_78831411_T_C_b38",0.56,-0.11,1.8e-06,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.094,1e-09,"non_coding_transcript_exon_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs10083696","chr15_78831674_G_A_b38",0.4,0.12,5.6e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.072,5e-06,"non_coding_transcript_exon_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs11398961","chr15_78831219_G_GT_b38",0.56,-0.11,1.8e-06,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.1,1e-08,"non_coding_transcript_exon_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7176187","chr15_78829031_T_C_b38",0.59,-0.12,4.3e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.076,1e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs8041064","chr15_78823046_A_G_b38",0.59,-0.12,3.5e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.075,1e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7167853","chr15_78820976_T_C_b38",0.59,-0.12,3.5e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.074,2e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs12908341","chr15_78834219_T_G_b38",0.52,-0.098,6.4e-05,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.076,6e-07,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs12442476","chr15_78825514_G_A_b38",0.59,-0.12,3.5e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.075,2e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs11637783","chr15_78846658_T_C_b38",0.41,0.12,2.8e-06,2.5e-48,"Coronary artery disease","MORF4L1","intergenic",0.074,1e-30,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs12898293","chr15_78820226_C_A_b38",0.59,-0.12,4.2e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.072,9e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7173743","chr15_78849442_T_C_b38",0.45,0.12,1.7e-06,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.079,2e-07,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7403593","chr15_78819620_A_G_b38",0.4,0.12,4.6e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.07,7e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs4344704","chr15_78849361_T_A_b38",0.45,0.12,1.8e-06,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.079,2e-07,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs62011001","chr15_78828125_G_A_b38",0.59,-0.12,4.1e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.076,1e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs12898452","chr15_78820286_C_A_b38",0.59,-0.12,4.5e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.074,3e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs8032842","chr15_78833507_G_A_b38",0.52,-0.098,7.3e-05,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.077,5e-07,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7167056","chr15_78821142_G_T_b38",0.59,-0.12,3.5e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.074,2e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7169511","chr15_78836323_T_C_b38",0.52,-0.1,3.3e-05,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.075,8e-07,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs3890715","chr15_78815520_C_A_b38",0.59,-0.13,1.7e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.072,5e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs6495335","chr15_78824791_G_T_b38",0.59,-0.12,3.5e-07,2.5e-48,"Coronary artery disease","MORF4L1","intergenic",0.069,2e-30,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs12899452","chr15_78820208_T_A_b38",0.59,-0.12,4.2e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.075,2e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs11072810","chr15_78839864_T_C_b38",0.5,-0.1,4.6e-05,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.074,1e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs12898712","chr15_78820280_G_T_b38",0.59,-0.12,4e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.074,3e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7173743","chr15_78849442_T_C_b38",0.45,0.12,1.7e-06,2.5e-48,"Coronary artery disease","MORF4L1","intergenic",0.064,5e-36,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs28505515","chr15_78822135_C_G_b38",0.48,-0.098,5.4e-05,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.08,2e-07,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs4539564","chr15_78836157_G_A_b38",0.52,-0.1,3.3e-05,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.075,8e-07,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7165075","chr15_78823623_G_A_b38",0.59,-0.12,3.5e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.075,2e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7165081","chr15_78831054_C_G_b38",0.56,-0.11,1.8e-06,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.094,1e-09,"non_coding_transcript_exon_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7173743","chr15_78849442_T_C_b38",0.45,0.12,1.7e-06,2.5e-48,"Coronary artery disease","MORF4L1","ADAMTS7",1.1,7e-08,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs8026598","chr15_78820596_A_G_b38",0.59,-0.12,3.5e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.074,2e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs4433781","chr15_78829493_A_T_b38",0.4,0.12,5.6e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.072,5e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs62011002","chr15_78828236_C_T_b38",0.59,-0.12,4.1e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.076,1e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs4468572","chr15_78832133_T_C_b38",0.56,-0.11,2.1e-06,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.094,1e-09,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs11072807","chr15_78819175_A_G_b38",0.6,-0.12,4.3e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.072,3e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs6495338","chr15_78835688_C_T_b38",0.4,-0.19,6.4e-14,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.074,5e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7173743","chr15_78849442_T_C_b38",0.45,0.12,1.7e-06,2.5e-48,"Coronary artery disease","MORF4L1","ADAMTS7, MORF4L1",0.068,4e-44,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7181432","chr15_78831437_C_T_b38",0.56,-0.11,1.8e-06,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.094,1e-09,"non_coding_transcript_exon_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs8030937","chr15_78837245_G_T_b38",0.48,-0.12,2.6e-06,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.073,2e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs12898392","chr15_78820090_G_A_b38",0.59,-0.12,3.5e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.076,1e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7165733","chr15_78831163_G_A_b38",0.56,-0.11,1.8e-06,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.094,1e-09,"non_coding_transcript_exon_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs12898292","chr15_78820261_A_G_b38",0.59,-0.12,4e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.074,2e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs55870734","chr15_78825575_A_T_b38",0.4,0.12,4.6e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.071,6e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs4551997","chr15_78838091_G_A_b38",0.53,-0.1,4.3e-05,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.072,3e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs11852830","chr15_78833087_A_T_b38",0.52,-0.11,9.8e-06,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.085,4e-08,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7403708","chr15_78831543_T_C_b38",0.4,0.12,5.6e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.072,5e-06,"non_coding_transcript_exon_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs4380028","chr15_78818751_C_T_b38",0.4,0.12,4.6e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.069,8e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7173743","chr15_78849442_T_C_b38",0.45,0.12,1.7e-06,2.5e-48,"Coronary artery disease","MORF4L1",NA,1.1,3e-44,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7167242","chr15_78821199_G_A_b38",0.59,-0.12,3.5e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.074,2e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs3825807","chr15_78796769_A_G_b38",0.41,0.11,2.2e-05,2.5e-48,"Coronary artery disease","ADAMTS7","NR",1.1,2e-06,"missense_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7403728","chr15_78819674_T_G_b38",0.4,0.12,4.6e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.071,6e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs11632963","chr15_78840302_G_A_b38",0.49,-0.1,3.5e-05,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.073,2e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs1994016","chr15_78787892_C_T_b38",0.39,0.11,4.1e-05,2.5e-48,"Coronary artery disease","ADAMTS7","ADAMTS7",1.2,5e-13,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7182103","chr15_78831604_G_T_b38",0.56,-0.11,1.8e-06,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.094,1e-09,"non_coding_transcript_exon_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7403608","chr15_78823228_A_G_b38",0.4,0.12,4.6e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.071,6e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7166770","chr15_78821226_A_G_b38",0.59,-0.12,3.5e-07,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.074,2e-06,"intron_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"CTSH","ENSG00000103811","rs7166764","chr15_78831167_T_G_b38",0.56,-0.11,1.8e-06,2.5e-48,"Coronary artery disease","MORF4L1",NA,0.094,1e-09,"non_coding_transcript_exon_variant",6,1,393,57,88,91,82,TRUE,FALSE
+"AKAP13","ENSG00000170776","rs2880765","chr15_85513231_A_T_b38",0.54,0.067,6.6e-05,7.4e-21,"Coronary artery disease","AKAP13","AKAP13",0.028,6e-07,"intron_variant",3,4,392,16,79,30,34,FALSE,TRUE
+"XPO6","ENSG00000169180","rs111806192","chr16_28241061_G_T_b38",0.27,0.085,1.7e-15,7.6e-13,"Coronary artery disease","GAPDHP35 - SBK1",NA,0.97,2e-08,"intergenic_variant",3,3,189,12,97,88,58,FALSE,FALSE
+"HLA-DQA1","ENSG00000196735","rs3130342","chr6_32112369_A_C_b38",0.87,-0.13,1.4e-05,1e-70,"Coronary artery disease","TNXB","TNXB, ATF6B",1.1,3e-09,"non_coding_transcript_exon_variant",8,2,6979,1009,89,100,100,TRUE,FALSE
+"HLA-DQA1","ENSG00000196735","rs204993","chr6_32187804_A_G_b38",0.26,-0.098,2.7e-05,1e-70,"Coronary artery disease","PBX2","PBX2",0.06,6e-09,"intron_variant",8,2,6979,1009,89,100,100,TRUE,FALSE
+"HLA-DRB5","ENSG00000198502","rs204993","chr6_32187804_A_G_b38",0.26,-0.16,2.7e-05,2.2e-132,"Coronary artery disease","PBX2","PBX2",0.06,6e-09,"intron_variant",8,0,6907,1197,97,100,100,TRUE,FALSE
+"HLA-DRB5","ENSG00000198502","rs644045","chr6_31916180_A_G_b38",0.69,-0.14,5.7e-05,2.2e-132,"Coronary artery disease","C2","C2",0.041,3e-13,"intron_variant",8,0,6907,1197,97,100,100,TRUE,FALSE
+"HLA-DRB5","ENSG00000198502","rs685031","chr6_31913954_G_A_b38",0.69,-0.14,5.7e-05,2.2e-132,"Coronary artery disease","C2","C2",0.043,5e-10,"intron_variant",8,0,6907,1197,97,100,100,TRUE,FALSE
+"HLA-DRB5","ENSG00000198502","rs685031","chr6_31913954_G_A_b38",0.69,-0.14,5.7e-05,2.2e-132,"Coronary artery disease","C2",NA,NA,6e-09,"intron_variant",8,0,6907,1197,97,100,100,TRUE,FALSE
+"HLA-DRB5","ENSG00000198502","rs3130342","chr6_32112369_A_C_b38",0.87,-0.69,6e-49,2.2e-132,"Coronary artery disease","TNXB","TNXB, ATF6B",1.1,3e-09,"non_coding_transcript_exon_variant",8,0,6907,1197,97,100,100,TRUE,FALSE
+"PSMB9","ENSG00000240065","rs3130342","chr6_32112369_A_C_b38",0.87,0.11,5.5e-05,3.1e-85,"Coronary artery disease","TNXB","TNXB, ATF6B",1.1,3e-09,"non_coding_transcript_exon_variant",5,2,2267,434,94,93,85,TRUE,FALSE
+"RPL7L1","ENSG00000146223","rs9471959","chr6_42916779_A_G_b38",0.28,-0.074,2.6e-06,1.6e-08,"Coronary artery disease","PTCRA",NA,0.056,3e-07,"intron_variant",1,3,87,9,78,22,14,FALSE,FALSE
+"RPL7L1","ENSG00000146223","rs2395938","chr6_42882921_C_A_b38",0.28,-0.078,4.7e-07,1.6e-08,"Coronary artery disease","RPL7L1",NA,0.058,1e-07,"non_coding_transcript_exon_variant",1,3,87,9,78,22,14,FALSE,FALSE
+"RPL7L1","ENSG00000146223","rs7757363","chr6_42908648_C_T_b38",0.29,-0.076,8.6e-07,1.6e-08,"Coronary artery disease","C6orf226 - PTCRA",NA,0.055,5e-07,"intergenic_variant",1,3,87,9,78,22,14,FALSE,FALSE
+"WWP2","ENSG00000198373","rs9302604","chr16_69542991_A_G_b38",0.45,-0.048,4.6e-05,4.7e-11,"Coronary artery disease","CYB5B - NFAT5",NA,0.97,1e-11,"intergenic_variant",1,4,241,30,41,13,10,FALSE,TRUE
+"CFDP1","ENSG00000153774","rs8046696","chr16_75408245_T_G_b38",0.55,-0.17,2.8e-16,4e-28,"Coronary artery disease","CFDP1","CFDP1",0.048,2e-16,"intron_variant",1,4,601,120,21,6.8,19,FALSE,FALSE
+"CFDP1","ENSG00000153774","rs999675","chr16_75272504_C_T_b38",0.63,-0.13,1.1e-09,4e-28,"Coronary artery disease","BCAR1 - RNU6-758P","BCAR1, CFDP1",0.07,1e-12,"regulatory_region_variant",1,4,601,120,21,6.8,19,FALSE,FALSE
+"CFDP1","ENSG00000153774","rs8046696","chr16_75408245_T_G_b38",0.55,-0.17,2.8e-16,4e-28,"Coronary artery disease","CFDP1",NA,0.95,2e-20,"intron_variant",1,4,601,120,21,6.8,19,FALSE,FALSE
+"CFDP1","ENSG00000153774","rs8046696","chr16_75408245_T_G_b38",0.55,-0.17,2.8e-16,4e-28,"Coronary artery disease","CFDP1","CFDP1",0.052,1e-25,"intron_variant",1,4,601,120,21,6.8,19,FALSE,FALSE
+"CFDP1","ENSG00000153774","rs8057203","chr16_75371076_T_C_b38",0.55,-0.17,6.4e-17,4e-28,"Coronary artery disease","CFDP1","CFDP1",1,4e-08,"intron_variant",1,4,601,120,21,6.8,19,FALSE,FALSE
+"CFDP1","ENSG00000153774","rs4888378","chr16_75298143_A_G_b38",0.55,-0.16,1.4e-15,4e-28,"Coronary artery disease","CFDP1","CFDP1",0.044,6e-15,"intron_variant",1,4,601,120,21,6.8,19,FALSE,FALSE
+"CFDP1","ENSG00000153774","rs12930452","chr16_75428157_A_G_b38",0.54,-0.17,3.5e-16,4e-28,"Coronary artery disease","CFDP1","CFDP1",0.052,1e-15,"intron_variant",1,4,601,120,21,6.8,19,FALSE,FALSE
+"CFDP1","ENSG00000153774","rs3851738","chr16_75353635_G_C_b38",0.55,-0.16,9.5e-16,4e-28,"Coronary artery disease","CFDP1","CFDP1",1,2e-08,"intron_variant",1,4,601,120,21,6.8,19,FALSE,FALSE
+"ANAPC13","ENSG00000129055","rs13088645","chr3_134438421_T_A_b38",0.46,-0.24,5e-33,1.3e-69,"Coronary artery disease","HMGB3P13 - ANAPC13","MIR4788",0.033,5e-07,"intergenic_variant",2,4,528,21,87,52,18,FALSE,TRUE
+"CEP63","ENSG00000182923","rs13088645","chr3_134438421_T_A_b38",0.46,-0.16,7.1e-18,1.5e-43,"Coronary artery disease","HMGB3P13 - ANAPC13","MIR4788",0.033,5e-07,"intergenic_variant",3,4,484,20,39,43,58,FALSE,TRUE
+"TOM1L2","ENSG00000175662","rs12936927","chr17_17823651_C_T_b38",0.58,0.086,1.6e-05,0.00021,"Coronary artery disease","SREBF1",NA,0.96,3e-10,"intron_variant",1,3,294,40,20,8.8,2.4,FALSE,FALSE
+"SSH2","ENSG00000141298","rs11080107","chr17_29611406_T_C_b38",0.54,-0.069,2.3e-12,5.4e-16,"Coronary artery disease","ABHD15-AS1, ANKRD13B","ANKRD13B",0.034,1e-11,"intron_variant",5,4,587,63,73,76,64,FALSE,FALSE
+"SSH2","ENSG00000141298","rs11080107","chr17_29611406_T_C_b38",0.54,-0.069,2.3e-12,5.4e-16,"Coronary artery disease","ABHD15-AS1, ANKRD13B","ANKRD13B, CORO6",0.036,3e-10,"intron_variant",5,4,587,63,73,76,64,FALSE,FALSE
+"SSH2","ENSG00000141298","rs11080107","chr17_29611406_T_C_b38",0.54,-0.069,2.3e-12,5.4e-16,"Coronary artery disease","ABHD15-AS1, ANKRD13B",NA,0.97,6e-12,"intron_variant",5,4,587,63,73,76,64,FALSE,FALSE
+"SSH2","ENSG00000141298","rs13723","chr17_29614868_A_G_b38",0.56,-0.059,1.6e-09,5.4e-16,"Coronary artery disease","CORO6, ABHD15-AS1","ANKRD13B, CORO6",0.04,6e-10,"3_prime_UTR_variant",5,4,587,63,73,76,64,FALSE,FALSE
+"SSH2","ENSG00000141298","rs7220401","chr17_29608670_T_C_b38",0.53,-0.061,2.3e-10,5.4e-16,"Coronary artery disease","ANKRD13B, ABHD15-AS1","ANKRD13B, CORO6",0.04,5e-10,"non_coding_transcript_exon_variant",5,4,587,63,73,76,64,FALSE,FALSE
+"CCR3","ENSG00000183625","rs112043140","chr3_46543532_C_T_b38",0.21,0.12,0.00015,9.6e-31,"Coronary artery disease","LRRC2",NA,NA,2e-06,"intron_variant",8,3,1280,111,67,100,99,TRUE,FALSE
+"ORMDL3","ENSG00000172057","rs1077715","chr17_39527295_A_T_b38",0.67,-0.18,3.5e-11,1.2e-60,"Coronary artery disease","CDK12",NA,1,4e-08,"intron_variant",6,1,912,288,69,98,89,TRUE,FALSE
+"MAP4","ENSG00000047849","rs7617773","chr3_48152025_C_T_b38",0.68,0.11,1.1e-11,1.9e-11,"Coronary artery disease","RPL17P16 - CDC25A","CDC25A",0.039,2e-11,"TF_binding_site_variant",0,4,798,57,24,13,21,FALSE,TRUE
+"MAP4","ENSG00000047849","rs7617773","chr3_48152025_C_T_b38",0.68,0.11,1.1e-11,1.9e-11,"Coronary artery disease","RPL17P16 - CDC25A","CDC25A",0.036,3e-11,"TF_binding_site_variant",0,4,798,57,24,13,21,FALSE,TRUE
+"MAP4","ENSG00000047849","rs12495221","chr3_48137688_C_T_b38",0.65,0.084,8.7e-08,1.9e-11,"Coronary artery disease","RPL17P16 - CDC25A","intergenic",0.035,2e-07,"regulatory_region_variant",0,4,798,57,24,13,21,FALSE,TRUE
+"NME6","ENSG00000172113","rs7617773","chr3_48152025_C_T_b38",0.68,0.2,1.1e-19,4.3e-44,"Coronary artery disease","RPL17P16 - CDC25A","CDC25A",0.036,3e-11,"TF_binding_site_variant",1,2,1098,99,23,39,16,FALSE,FALSE
+"NME6","ENSG00000172113","rs7617773","chr3_48152025_C_T_b38",0.68,0.2,1.1e-19,4.3e-44,"Coronary artery disease","RPL17P16 - CDC25A","CDC25A",0.039,2e-11,"TF_binding_site_variant",1,2,1098,99,23,39,16,FALSE,FALSE
+"NME6","ENSG00000172113","rs12495221","chr3_48137688_C_T_b38",0.65,0.17,3.6e-16,4.3e-44,"Coronary artery disease","RPL17P16 - CDC25A","intergenic",0.035,2e-07,"regulatory_region_variant",1,2,1098,99,23,39,16,FALSE,FALSE
+"ATP6V0A1","ENSG00000033627","rs2074164","chr17_42118220_G_C_b38",0.26,0.1,2.7e-05,1.1e-08,"Coronary artery disease","KAT2A","DHX58, HSPB9, KAT2A, RAB5C",0.042,7e-09,"intron_variant",2,3,108,12,70,52,8.2,FALSE,FALSE
+"ATP6V0A1","ENSG00000033627","rs2074158","chr17_42105145_T_C_b38",0.23,0.1,2.8e-05,1.1e-08,"Coronary artery disease","DHX58","DHX58, KAT2A",0.054,2e-10,"missense_variant",2,3,108,12,70,52,8.2,FALSE,FALSE
+"ATP6V0A1","ENSG00000033627","rs2074164","chr17_42118220_G_C_b38",0.26,0.1,2.7e-05,1.1e-08,"Coronary artery disease","KAT2A","KAT2A",0.043,3e-12,"intron_variant",2,3,108,12,70,52,8.2,FALSE,FALSE
+"ATP6V0A1","ENSG00000033627","rs2074164","chr17_42118220_G_C_b38",0.26,0.1,2.7e-05,1.1e-08,"Coronary artery disease","KAT2A",NA,NA,1e-09,"intron_variant",2,3,108,12,70,52,8.2,FALSE,FALSE
+"ATP6V0A1","ENSG00000033627","rs12952244","chr17_42118063_A_G_b38",0.17,0.12,3e-05,1.1e-08,"Coronary artery disease","KAT2A",NA,0.95,2e-10,"intron_variant",2,3,108,12,70,52,8.2,FALSE,FALSE
+"ATP6V0A1","ENSG00000033627","rs34891485","chr17_42111440_T_C_b38",0.042,0.21,1.4e-05,1.1e-08,"Coronary artery disease","DHX58","DHX58, KAT2A",0.074,3e-07,"missense_variant",2,3,108,12,70,52,8.2,FALSE,FALSE
+"KAT2A","ENSG00000108773","rs2074164","chr17_42118220_G_C_b38",0.26,-0.069,3.5e-05,0.0053,"Coronary artery disease","KAT2A",NA,NA,1e-09,"intron_variant",2,1,49,9,47,57,15,FALSE,FALSE
+"KAT2A","ENSG00000108773","rs2074164","chr17_42118220_G_C_b38",0.26,-0.069,3.5e-05,0.0053,"Coronary artery disease","KAT2A","KAT2A",0.043,3e-12,"intron_variant",2,1,49,9,47,57,15,FALSE,FALSE
+"KAT2A","ENSG00000108773","rs2074158","chr17_42105145_T_C_b38",0.23,-0.07,2.9e-05,0.0053,"Coronary artery disease","DHX58","DHX58, KAT2A",0.054,2e-10,"missense_variant",2,1,49,9,47,57,15,FALSE,FALSE
+"KAT2A","ENSG00000108773","rs2074164","chr17_42118220_G_C_b38",0.26,-0.069,3.5e-05,0.0053,"Coronary artery disease","KAT2A","DHX58, HSPB9, KAT2A, RAB5C",0.042,7e-09,"intron_variant",2,1,49,9,47,57,15,FALSE,FALSE
+"KAT2A","ENSG00000108773","rs12952244","chr17_42118063_A_G_b38",0.17,-0.087,1.3e-05,0.0053,"Coronary artery disease","KAT2A",NA,0.95,2e-10,"intron_variant",2,1,49,9,47,57,15,FALSE,FALSE
+"QRICH1","ENSG00000198218","rs11718165","chr3_49659364_A_G_b38",0.29,-0.066,0.00011,1.8e-10,"Coronary artery disease","BSN","BSN",0.033,6e-08,"intron_variant",1,3,629,196,68,23,0.67,FALSE,FALSE
+"IP6K2","ENSG00000068745","rs34759087","chr3_49124851_C_T_b38",0.11,-0.15,8.7e-08,4.9e-11,"Coronary artery disease","LAMB2",NA,0.95,6e-11,"missense_variant",3,3,319,153,42,69,28,FALSE,FALSE
+"IP6K2","ENSG00000068745","rs7623687","chr3_49411133_A_C_b38",0.14,-0.16,7.2e-10,4.9e-11,"Coronary artery disease","RHOA","RHOA",1.1,2e-08,"intron_variant",3,3,319,153,42,69,28,FALSE,FALSE
+"IP6K2","ENSG00000068745","rs11718165","chr3_49659364_A_G_b38",0.29,-0.09,6.8e-06,4.9e-11,"Coronary artery disease","BSN","BSN",0.033,6e-08,"intron_variant",3,3,319,153,42,69,28,FALSE,FALSE
+"IP6K2","ENSG00000068745","rs7623687","chr3_49411133_A_C_b38",0.14,-0.16,7.2e-10,4.9e-11,"Coronary artery disease","RHOA",NA,NA,8e-11,"intron_variant",3,3,319,153,42,69,28,FALSE,FALSE
+"IP6K2","ENSG00000068745","rs7623687","chr3_49411133_A_C_b38",0.14,-0.16,7.2e-10,4.9e-11,"Coronary artery disease","RHOA","AMT, RHOA, TCTA",0.053,1e-08,"intron_variant",3,3,319,153,42,69,28,FALSE,FALSE
+"IP6K2","ENSG00000068745","rs73082363","chr3_49092945_T_C_b38",0.11,-0.15,8.7e-08,4.9e-11,"Coronary artery disease","QRICH1","MIR6890, QARS, QRICH1",0.061,6e-09,"intron_variant",3,3,319,153,42,69,28,FALSE,FALSE
+"RBM6","ENSG00000004534","rs73082363","chr3_49092945_T_C_b38",0.11,0.27,1.3e-11,1.4e-133,"Coronary artery disease","QRICH1","MIR6890, QARS, QRICH1",0.061,6e-09,"intron_variant",5,4,1621,368,56,62,45,TRUE,FALSE
+"RBM6","ENSG00000004534","rs34759087","chr3_49124851_C_T_b38",0.11,0.27,1.3e-11,1.4e-133,"Coronary artery disease","LAMB2",NA,0.95,6e-11,"missense_variant",5,4,1621,368,56,62,45,TRUE,FALSE
+"RBM6","ENSG00000004534","rs7623687","chr3_49411133_A_C_b38",0.14,0.2,3.8e-08,1.4e-133,"Coronary artery disease","RHOA","AMT, RHOA, TCTA",0.053,1e-08,"intron_variant",5,4,1621,368,56,62,45,TRUE,FALSE
+"RBM6","ENSG00000004534","rs11718165","chr3_49659364_A_G_b38",0.29,0.26,9.3e-21,1.4e-133,"Coronary artery disease","BSN","BSN",0.033,6e-08,"intron_variant",5,4,1621,368,56,62,45,TRUE,FALSE
+"RBM6","ENSG00000004534","rs7623687","chr3_49411133_A_C_b38",0.14,0.2,3.8e-08,1.4e-133,"Coronary artery disease","RHOA","RHOA",1.1,2e-08,"intron_variant",5,4,1621,368,56,62,45,TRUE,FALSE
+"RBM6","ENSG00000004534","rs7623687","chr3_49411133_A_C_b38",0.14,0.2,3.8e-08,1.4e-133,"Coronary artery disease","RHOA",NA,NA,8e-11,"intron_variant",5,4,1621,368,56,62,45,TRUE,FALSE
+"UBA7","ENSG00000182179","rs34759087","chr3_49124851_C_T_b38",0.11,0.18,5.3e-12,1.5e-60,"Coronary artery disease","LAMB2",NA,0.95,6e-11,"missense_variant",3,1,1534,333,81,74,22,FALSE,FALSE
+"UBA7","ENSG00000182179","rs11718165","chr3_49659364_A_G_b38",0.29,0.17,1.4e-21,1.5e-60,"Coronary artery disease","BSN","BSN",0.033,6e-08,"intron_variant",3,1,1534,333,81,74,22,FALSE,FALSE
+"UBA7","ENSG00000182179","rs7623687","chr3_49411133_A_C_b38",0.14,0.17,4.9e-14,1.5e-60,"Coronary artery disease","RHOA","RHOA",1.1,2e-08,"intron_variant",3,1,1534,333,81,74,22,FALSE,FALSE
+"UBA7","ENSG00000182179","rs7623687","chr3_49411133_A_C_b38",0.14,0.17,4.9e-14,1.5e-60,"Coronary artery disease","RHOA","AMT, RHOA, TCTA",0.053,1e-08,"intron_variant",3,1,1534,333,81,74,22,FALSE,FALSE
+"UBA7","ENSG00000182179","rs7623687","chr3_49411133_A_C_b38",0.14,0.17,4.9e-14,1.5e-60,"Coronary artery disease","RHOA",NA,NA,8e-11,"intron_variant",3,1,1534,333,81,74,22,FALSE,FALSE
+"UBA7","ENSG00000182179","rs73082363","chr3_49092945_T_C_b38",0.11,0.18,5.3e-12,1.5e-60,"Coronary artery disease","QRICH1","MIR6890, QARS, QRICH1",0.061,6e-09,"intron_variant",3,1,1534,333,81,74,22,FALSE,FALSE
+"PPA2","ENSG00000138777","rs17035270","chr4_105115388_T_C_b38",0.21,0.11,8.2e-06,1.6e-19,"Coronary artery disease","RNU6-351P - TET2","intergenic",0.036,4e-07,"intron_variant",7,4,689,53,68,69,73,TRUE,FALSE
+"NME1","ENSG00000239672","rs4794213","chr17_51231346_C_T_b38",0.34,-0.11,3.2e-09,2.5e-21,"Coronary artery disease","MBTD1","MBTD1",0.028,4e-08,"intron_variant",6,3,261,14,23,61,74,TRUE,FALSE
+"NME1","ENSG00000239672","rs4794213","chr17_51231346_C_T_b38",0.34,-0.11,3.2e-09,2.5e-21,"Coronary artery disease","MBTD1",NA,NA,1e-07,"intron_variant",6,3,261,14,23,61,74,TRUE,FALSE
+"LDLR","ENSG00000130164","rs72658867","chr19_11120527_G_A_b38",0.012,0.64,3.5e-07,0.0012,"Coronary artery disease","LDLR",NA,0.82,3e-14,"splice_donor_5th_base_variant",4,2,47,79,28,71,73,FALSE,FALSE
+"TMED9","ENSG00000184840","rs337366","chr5_177503650_G_A_b38",0.54,-0.085,5.3e-06,1.3e-29,"Coronary artery disease","DOK3","DDX41, DOK3, PDLIM7",0.035,1e-06,"3_prime_UTR_variant",2,1,362,29,74,33,13,FALSE,FALSE
+"PLEKHJ1","ENSG00000104886","rs191615952","chr19_2236098_A_G_b38",0.031,0.25,7.7e-12,9.1e-08,"Coronary artery disease","PLEKHJ1",NA,0.062,4e-09,"non_coding_transcript_exon_variant",1,1,131,18,34,3.1,3.4,FALSE,FALSE
+"ERAP1","ENSG00000164307","rs27660","chr5_97012071_C_G_b38",0.62,0.14,2.3e-06,6.9e-91,"Coronary artery disease","LNPEP",NA,0.022,3e-08,"intron_variant",7,2,842,75,12,88,92,TRUE,FALSE
+"ERAP2","ENSG00000164308","rs27660","chr5_97012071_C_G_b38",0.62,-0.91,2.6e-182,3.2e-270,"Coronary artery disease","LNPEP",NA,0.022,3e-08,"intron_variant",8,2,1068,61,74,100,100,TRUE,FALSE
+"LNPEP","ENSG00000113441","rs27660","chr5_97012071_C_G_b38",0.62,-0.1,4.7e-11,1.1e-07,"Coronary artery disease","LNPEP",NA,0.022,3e-08,"intron_variant",5,3,376,34,29,43,77,TRUE,FALSE
+"PRKD2","ENSG00000105287","rs425105","chr19_46705224_T_C_b38",0.16,0.22,5.7e-34,1.3e-34,"Coronary artery disease","PRKD2","MIR320E, PRKD2",0.038,8e-06,"intron_variant",4,3,246,20,66,60,52,TRUE,FALSE
+"TBC1D7","ENSG00000145979","rs2439557","chr6_13338763_C_G_b38",0.44,0.18,1.3e-11,1.1e-55,"Coronary artery disease","TBC1D7 - GFOD1","TBC1D7-LOC100130357, GFOD1",0.058,6e-06,"intergenic_variant",5,2,353,11,11,84,63,TRUE,FALSE
+"TMEM87B","ENSG00000153214","rs6736093","chr2_111897665_A_G_b38",0.28,-0.11,3.1e-06,1.8e-35,"Coronary artery disease","EEF1E1P1 - MERTK","MERTK",0.033,3e-06,"regulatory_region_variant",4,4,557,29,8.9,32,74,FALSE,FALSE
+"TMEM87B","ENSG00000153214","rs7604403","chr2_111899075_G_A_b38",0.28,-0.11,4.1e-06,1.8e-35,"Coronary artery disease","MERTK","MERTK",0.034,3e-09,"intron_variant",4,4,557,29,8.9,32,74,FALSE,FALSE
+"MCM6","ENSG00000076003","rs13035055","chr2_136240494_C_T_b38",0.64,-0.055,0.00021,1.8e-16,"Coronary artery disease","HNRNPKP2 - UBBP1","intergenic",0.033,4e-06,"intergenic_variant",4,4,726,173,56,88,77,FALSE,FALSE
+"TAF9B","ENSG00000187325","rs398484","chrX_78343972_C_T_b38",0.6,0.096,2.2e-11,9e-10,"Coronary artery disease","CYSLTR1 - HMGN1P34",NA,0.019,2e-08,"intergenic_variant",5,3,1030,8,7.7,53,76,FALSE,FALSE
+"PLCL1","ENSG00000115896","rs7421388","chr2_198223806_A_G_b38",0.81,-0.13,0.00024,8.9e-45,"Coronary artery disease","PLCL1","PLCL1",1.3,2e-10,"intron_variant",4,4,1067,108,0.48,54,74,FALSE,FALSE
+"FAM117B","ENSG00000138439","rs148812085","chr2_203012510_C_T_b38",0.11,-0.32,1.2e-14,4.8e-60,"Coronary artery disease","WDR12",NA,1.1,5e-50,"intron_variant",6,2,807,154,51,95,84,TRUE,FALSE
+"FAM117B","ENSG00000138439","rs140244541","chr2_202943809_G_A_b38",0.13,-0.24,8.6e-10,4.8e-60,"Coronary artery disease","CARF, WDR12","CARF",0.081,5e-27,"intron_variant",6,2,807,154,51,95,84,TRUE,FALSE
+"FAM117B","ENSG00000138439","rs6728861","chr2_203009020_G_A_b38",0.11,-0.33,2.3e-15,4.8e-60,"Coronary artery disease","WDR12","NBEAL1",0.11,1e-32,"intron_variant",6,2,807,154,51,95,84,TRUE,FALSE
+"FAM117B","ENSG00000138439","rs6725887","chr2_202881162_T_C_b38",0.11,-0.33,2.3e-15,4.8e-60,"Coronary artery disease","WDR12","WDR12",1.1,2e-08,"intron_variant",6,2,807,154,51,95,84,TRUE,FALSE
+"FAM117B","ENSG00000138439","rs35212307","chr2_202901033_T_C_b38",0.11,-0.33,2.3e-15,4.8e-60,"Coronary artery disease","WDR12",NA,NA,5e-49,"missense_variant",6,2,807,154,51,95,84,TRUE,FALSE
+"FAM117B","ENSG00000138439","rs72926772","chr2_202939566_C_T_b38",0.11,-0.33,2.3e-15,4.8e-60,"Coronary artery disease","WDR12, CARF","CARF",1.1,5e-18,"intron_variant",6,2,807,154,51,95,84,TRUE,FALSE
+"FAM117B","ENSG00000138439","rs115654617","chr2_203029276_C_A_b38",0.11,-0.32,1.2e-14,4.8e-60,"Coronary artery disease","NBEAL1","NBEAL1",0.12,2e-32,"intron_variant",6,2,807,154,51,95,84,TRUE,FALSE
+"FAM117B","ENSG00000138439","rs6725887","chr2_202881162_T_C_b38",0.11,-0.33,2.3e-15,4.8e-60,"Coronary artery disease","WDR12","NR",1.2,6e-08,"intron_variant",6,2,807,154,51,95,84,TRUE,FALSE
+"FAM117B","ENSG00000138439","rs72934535","chr2_203104250_T_C_b38",0.093,-0.31,3.7e-12,4.8e-60,"Coronary artery disease","NBEAL1","NBEAL1",0.13,2e-32,"intron_variant",6,2,807,154,51,95,84,TRUE,FALSE
+"ADCY3","ENSG00000138031","rs1550115","chr2_24818751_C_T_b38",0.74,-0.41,2.5e-18,2.4e-106,"Coronary artery disease","CENPO","ADCY3, CENPO",0.032,3e-07,"intron_variant",0,3,1266,142,18,37,26,FALSE,FALSE
+"HLA-C","ENSG00000204525","rs685031","chr6_31913954_G_A_b38",0.69,-0.11,0.00013,3.3e-60,"Coronary artery disease","C2","C2",0.043,5e-10,"intron_variant",6,3,5741,794,100,99,96,TRUE,FALSE
+"HLA-C","ENSG00000204525","rs685031","chr6_31913954_G_A_b38",0.69,-0.11,0.00013,3.3e-60,"Coronary artery disease","C2",NA,NA,6e-09,"intron_variant",6,3,5741,794,100,99,96,TRUE,FALSE
+"HLA-C","ENSG00000204525","rs644045","chr6_31916180_A_G_b38",0.69,-0.11,0.00013,3.3e-60,"Coronary artery disease","C2","C2",0.041,3e-13,"intron_variant",6,3,5741,794,100,99,96,TRUE,FALSE
+"MAT2A","ENSG00000168906","rs1058588","chr2_85581748_C_T_b38",0.43,-0.1,4.4e-07,1.5e-18,"Coronary artery disease","VAMP8","VAMP8",1,4e-11,"3_prime_UTR_variant",1,3,147,31,86,21,21,FALSE,FALSE
+"MAT2A","ENSG00000168906","rs10176176","chr2_85534925_A_T_b38",0.51,-0.1,4.6e-07,1.5e-18,"Coronary artery disease","RPSAP22 - PARTICL",NA,0.94,4e-31,"intergenic_variant",1,3,147,31,86,21,21,FALSE,FALSE
+"MAT2A","ENSG00000168906","rs7568458","chr2_85561052_T_A_b38",0.49,-0.11,1.6e-07,1.5e-18,"Coronary artery disease","GGCX","VAMP5, VAMP8, GGCX",1.1,4e-10,"intron_variant",1,3,147,31,86,21,21,FALSE,FALSE
+"MAT2A","ENSG00000168906","rs7591175","chr2_85511251_G_T_b38",0.49,-0.11,2.2e-07,1.5e-18,"Coronary artery disease","RPSAP22 - PARTICL","SH2D6, PARTICL",0.057,2e-30,"regulatory_region_variant",1,3,147,31,86,21,21,FALSE,FALSE
+"MAT2A","ENSG00000168906","rs2166529","chr2_85515052_G_T_b38",0.49,-0.1,2.3e-07,1.5e-18,"Coronary artery disease","RPSAP22 - PARTICL","intergenic",0.063,2e-22,"intergenic_variant",1,3,147,31,86,21,21,FALSE,FALSE
+"MAT2A","ENSG00000168906","rs6743030","chr2_85536397_C_T_b38",0.49,-0.11,4.5e-08,1.5e-18,"Coronary artery disease","RPSAP22 - PARTICL",NA,NA,9e-31,"intergenic_variant",1,3,147,31,86,21,21,FALSE,FALSE
+"MAT2A","ENSG00000168906","rs1561198","chr2_85582866_C_T_b38",0.5,-0.11,1.1e-07,1.5e-18,"Coronary artery disease","VAMP8 - VAMP5","VAMP5, VAMP8",0.055,2e-23,"intergenic_variant",1,3,147,31,86,21,21,FALSE,FALSE
+"MAT2A","ENSG00000168906","rs6743030","chr2_85536397_C_T_b38",0.49,-0.11,4.5e-08,1.5e-18,"Coronary artery disease","RPSAP22 - PARTICL","GGCX, LOC100630918, MAT2A",0.056,2e-23,"intergenic_variant",1,3,147,31,86,21,21,FALSE,FALSE
+"LY6G5C","ENSG00000204428","rs685031","chr6_31913954_G_A_b38",0.69,-0.14,3.3e-05,2.3e-125,"Coronary artery disease","C2",NA,NA,6e-09,"intron_variant",2,1,1738,592,2.6,41,54,FALSE,FALSE
+"LY6G5C","ENSG00000204428","rs11968400","chr6_31836952_C_T_b38",0.071,-0.29,3.8e-06,2.3e-125,"Coronary artery disease","SNHG32","C6orf48",0.066,6e-12,"non_coding_transcript_exon_variant",2,1,1738,592,2.6,41,54,FALSE,FALSE
+"LY6G5C","ENSG00000204428","rs685031","chr6_31913954_G_A_b38",0.69,-0.14,3.3e-05,2.3e-125,"Coronary artery disease","C2","C2",0.043,5e-10,"intron_variant",2,1,1738,592,2.6,41,54,FALSE,FALSE
+"LY6G5C","ENSG00000204428","rs644045","chr6_31916180_A_G_b38",0.69,-0.14,3.3e-05,2.3e-125,"Coronary artery disease","C2","C2",0.041,3e-13,"intron_variant",2,1,1738,592,2.6,41,54,FALSE,FALSE
+"RRBP1","ENSG00000125844","rs1132274","chr20_17615510_C_A_b38",0.13,0.1,2.2e-05,2.6e-12,"Coronary artery disease","RRBP1",NA,1,2e-08,"missense_variant",3,2,95,20,21,34,56,FALSE,FALSE
+"RRBP1","ENSG00000125844","rs1132274","chr20_17615510_C_A_b38",0.13,0.1,2.2e-05,2.6e-12,"Coronary artery disease","RRBP1",NA,0.027,4e-08,"missense_variant",3,2,95,20,21,34,56,FALSE,FALSE
+"RRBP1","ENSG00000125844","rs13734","chr20_17614084_G_A_b38",0.14,0.11,7e-07,2.6e-12,"Coronary artery disease","RRBP1","DSTN, RRBP1",0.038,1e-06,"3_prime_UTR_variant",3,2,95,20,21,34,56,FALSE,FALSE
+"CARD9","ENSG00000187796","rs3935875","chr9_136344372_G_A_b38",0.24,0.13,5.4e-10,5e-48,"Coronary artery disease","GPSM1",NA,0.97,2e-08,"intron_variant",3,0,332,110,43,61,54,FALSE,FALSE
+"MICA","ENSG00000204520","rs9266631","chr6_31379121_A_G_b38",0.81,0.18,1e-06,3e-38,"Coronary artery disease","FGFR3P1 - ZDHHC20P2",NA,0.96,6e-11,"intergenic_variant",6,0,1819,321,12,91,78,TRUE,FALSE
+"PIGU","ENSG00000101464","rs6088595","chr20_34770696_T_A_b38",0.33,0.067,0.00022,0.014,"Coronary artery disease","NCOA6",NA,1,1e-10,"intron_variant",2,3,386,47,13,52,20,FALSE,FALSE
+"PIGU","ENSG00000101464","rs11698996","chr20_34861936_C_G_b38",0.33,0.069,0.00015,0.014,"Coronary artery disease","GGT7","GGT7",0.034,2e-07,"intron_variant",2,3,386,47,13,52,20,FALSE,FALSE
+"EDEM2","ENSG00000088298","rs6088590","chr20_34725762_T_C_b38",0.38,-0.054,0.00012,1.6e-07,"Coronary artery disease","NCOA6","NCOA6",0.034,2e-09,"intron_variant",0,2,212,66,51,13,4.3,FALSE,FALSE
+"EDEM2","ENSG00000088298","rs6088595","chr20_34770696_T_A_b38",0.33,-0.051,5e-04,1.6e-07,"Coronary artery disease","NCOA6",NA,1,1e-10,"intron_variant",0,2,212,66,51,13,4.3,FALSE,FALSE
+"EDEM2","ENSG00000088298","rs11698996","chr20_34861936_C_G_b38",0.33,-0.054,0.00027,1.6e-07,"Coronary artery disease","GGT7","GGT7",0.034,2e-07,"intron_variant",0,2,212,66,51,13,4.3,FALSE,FALSE
+"EIF6","ENSG00000242372","rs6060235","chr20_35103849_A_G_b38",0.095,0.16,7e-11,1.4e-29,"Coronary artery disease","TRPC4AP - EDEM2","intergenic",0.055,2e-07,"intergenic_variant",3,2,693,60,65,64,24,FALSE,FALSE
+"EIF6","ENSG00000242372","rs867186","chr20_35176751_A_G_b38",0.094,0.17,4e-12,1.4e-29,"Coronary artery disease","PROCR",NA,NA,3e-09,"missense_variant",3,2,693,60,65,64,24,FALSE,FALSE
+"EIF6","ENSG00000242372","rs867186","chr20_35176751_A_G_b38",0.094,0.17,4e-12,1.4e-29,"Coronary artery disease","PROCR","PROCR",0.057,7e-12,"missense_variant",3,2,693,60,65,64,24,FALSE,FALSE
+"EIF6","ENSG00000242372","rs11167260","chr20_35187397_G_A_b38",0.091,0.18,6.7e-13,1.4e-29,"Coronary artery disease","PROCR","PROCR, MMP24",0.052,4e-09,"intron_variant",3,2,693,60,65,64,24,FALSE,FALSE
+"EIF6","ENSG00000242372","rs867186","chr20_35176751_A_G_b38",0.094,0.17,4e-12,1.4e-29,"Coronary artery disease","PROCR","PROCR",0.063,5e-12,"missense_variant",3,2,693,60,65,64,24,FALSE,FALSE
+"EIF6","ENSG00000242372","rs17406518","chr20_35211373_A_C_b38",0.081,0.24,8.8e-19,1.4e-29,"Coronary artery disease","PROCR, MMP24OS",NA,1,3e-09,"intron_variant",3,2,693,60,65,64,24,FALSE,FALSE
+"HLA-DRB6","ENSG00000229391","rs685031","chr6_31913954_G_A_b38",0.69,0.2,1.9e-05,2.3e-92,"Coronary artery disease","C2","C2",0.043,5e-10,"intron_variant",6,1,7202,1139,90,99,100,TRUE,FALSE
+"HLA-DRB6","ENSG00000229391","rs685031","chr6_31913954_G_A_b38",0.69,0.2,1.9e-05,2.3e-92,"Coronary artery disease","C2",NA,NA,6e-09,"intron_variant",6,1,7202,1139,90,99,100,TRUE,FALSE
+"HLA-DRB6","ENSG00000229391","rs204993","chr6_32187804_A_G_b38",0.26,0.26,2.1e-07,2.3e-92,"Coronary artery disease","PBX2","PBX2",0.06,6e-09,"intron_variant",6,1,7202,1139,90,99,100,TRUE,FALSE
+"HLA-DRB6","ENSG00000229391","rs644045","chr6_31916180_A_G_b38",0.69,0.2,1.9e-05,2.3e-92,"Coronary artery disease","C2","C2",0.041,3e-13,"intron_variant",6,1,7202,1139,90,99,100,TRUE,FALSE
+"HLA-DRB6","ENSG00000229391","rs3130342","chr6_32112369_A_C_b38",0.87,0.68,1.9e-26,2.3e-92,"Coronary artery disease","TNXB","TNXB, ATF6B",1.1,3e-09,"non_coding_transcript_exon_variant",6,1,7202,1139,90,99,100,TRUE,FALSE
+"DNTTIP1","ENSG00000101457","rs3827066","chr20_45957384_C_T_b38",0.13,-0.1,6.7e-09,4e-56,"Coronary artery disease","ZNF335","PCIF1, ZNF335",0.047,3e-09,"intron_variant",7,3,971,51,72,75,53,TRUE,FALSE
+"DNTTIP1","ENSG00000101457","rs3827066","chr20_45957384_C_T_b38",0.13,-0.1,6.7e-09,4e-56,"Coronary artery disease","ZNF335","PCIF1, ZNF335",0.042,4e-09,"intron_variant",7,3,971,51,72,75,53,TRUE,FALSE
+"DNTTIP1","ENSG00000101457","rs8124182","chr20_45980262_G_A_b38",0.15,-0.1,7.8e-10,4e-56,"Coronary artery disease","FTLP1 - MMP9",NA,1,4e-12,"intergenic_variant",7,3,971,51,72,75,53,TRUE,FALSE
+"DNTTIP1","ENSG00000101457","rs8124182","chr20_45980262_G_A_b38",0.15,-0.1,7.8e-10,4e-56,"Coronary artery disease","FTLP1 - MMP9","ZNF335, MMP9",0.045,7e-11,"intergenic_variant",7,3,971,51,72,75,53,TRUE,FALSE
+"HLA-DQB1","ENSG00000179344","rs204993","chr6_32187804_A_G_b38",0.26,-0.27,6.8e-13,4.7e-196,"Coronary artery disease","PBX2","PBX2",0.06,6e-09,"intron_variant",8,0,9371,1305,80,100,100,TRUE,FALSE
+"HLA-DQB1","ENSG00000179344","rs3130342","chr6_32112369_A_C_b38",0.87,-0.4,1.1e-16,4.7e-196,"Coronary artery disease","TNXB","TNXB, ATF6B",1.1,3e-09,"non_coding_transcript_exon_variant",8,0,9371,1305,80,100,100,TRUE,FALSE
+"HLA-DRB1","ENSG00000196126","rs644045","chr6_31916180_A_G_b38",0.69,-0.14,2.6e-14,4.1e-49,"Coronary artery disease","C2","C2",0.041,3e-13,"intron_variant",8,1,6967,1231,97,100,100,TRUE,FALSE
+"HLA-DRB1","ENSG00000196126","rs685031","chr6_31913954_G_A_b38",0.69,-0.14,2.6e-14,4.1e-49,"Coronary artery disease","C2","C2",0.043,5e-10,"intron_variant",8,1,6967,1231,97,100,100,TRUE,FALSE
+"HLA-DRB1","ENSG00000196126","rs685031","chr6_31913954_G_A_b38",0.69,-0.14,2.6e-14,4.1e-49,"Coronary artery disease","C2",NA,NA,6e-09,"intron_variant",8,1,6967,1231,97,100,100,TRUE,FALSE
+"HLA-DRB1","ENSG00000196126","rs2072633","chr6_31951801_A_G_b38",0.58,-0.11,6.9e-11,4.1e-49,"Coronary artery disease","CFB","C2, CFB, MIR1236, NELFE, SKIV2L",0.041,6e-13,"non_coding_transcript_exon_variant",8,1,6967,1231,97,100,100,TRUE,FALSE
+"HLA-DRB1","ENSG00000196126","rs3130342","chr6_32112369_A_C_b38",0.87,-0.16,4.2e-10,4.1e-49,"Coronary artery disease","TNXB","TNXB, ATF6B",1.1,3e-09,"non_coding_transcript_exon_variant",8,1,6967,1231,97,100,100,TRUE,FALSE
+"RRP1B","ENSG00000160208","rs60787346","chr21_43590437_A_C_b38",0.29,-0.069,1.9e-06,1.6e-09,"Coronary artery disease","HSF2BP","HSF2BP",0.032,5e-06,"intron_variant",3,2,180,13,50,57,67,FALSE,FALSE
+"RRP1B","ENSG00000160208","rs2838344","chr21_43669996_G_A_b38",0.59,-0.094,2.3e-12,1.6e-09,"Coronary artery disease","RRP1B","RRP1B",0.03,2e-07,"intron_variant",3,2,180,13,50,57,67,FALSE,FALSE
+"TMEM165","ENSG00000134851","rs11133381","chr4_55450812_T_C_b38",0.35,0.082,2e-10,5.5e-07,"Coronary artery disease","CLOCK, TMEM165","CLOCK",0.027,5e-08,"intron_variant",3,4,424,28,27,17,62,FALSE,TRUE
+"NPHP3","ENSG00000113971","rs10512861","chr3_132539117_G_T_b38",0.17,-0.2,1.1e-08,1.4e-85,"Coronary artery disease","DNAJC13 - ACAD11","DNAJC13",0.043,3e-09,"intergenic_variant",4,5,854,39,8.6,39,77,FALSE,TRUE
+"NPHP3","ENSG00000113971","rs10512861","chr3_132539117_G_T_b38",0.17,-0.2,1.1e-08,1.4e-85,"Coronary artery disease","DNAJC13 - ACAD11","DNAJC13",0.045,2e-08,"intergenic_variant",4,5,854,39,8.6,39,77,FALSE,TRUE
+"CCNL1","ENSG00000163660","rs4266144","chr3_157134803_C_G_b38",0.32,0.063,3.5e-07,1.4e-15,"Coronary artery disease","LINC00881","intergenic",0.038,3e-08,"intron_variant",2,4,437,18,58,26,60,FALSE,TRUE
+"CCNL1","ENSG00000163660","rs4561781","chr3_157135154_A_G_b38",0.33,0.061,5.6e-07,1.4e-15,"Coronary artery disease","LINC00881","LINC00880, CCNL1",0.036,3e-11,"intron_variant",2,4,437,18,58,26,60,FALSE,TRUE
+"CCNL1","ENSG00000163660","rs4266144","chr3_157134803_C_G_b38",0.32,0.063,3.5e-07,1.4e-15,"Coronary artery disease","LINC00881",NA,0.97,6e-09,"intron_variant",2,4,437,18,58,26,60,FALSE,TRUE
+"CCNL1","ENSG00000163660","rs4266144","chr3_157134803_C_G_b38",0.32,0.063,3.5e-07,1.4e-15,"Coronary artery disease","LINC00881","intergenic",0.035,1e-08,"intron_variant",2,4,437,18,58,26,60,FALSE,TRUE
+"COG5","ENSG00000164597","rs68170813","chr7_107619276_T_C_b38",0.22,-0.15,5.9e-07,8.7e-80,"Coronary artery disease","BCAP29, DUS4L-BCAP29","BCAP29",0.034,6e-06,"3_prime_UTR_variant",4,2,851,43,20,77,88,FALSE,FALSE
+"COG5","ENSG00000164597","rs2189839","chr7_107589581_A_G_b38",0.71,-0.36,1.7e-52,8.7e-80,"Coronary artery disease","DUS4L-BCAP29, BCAP29","BCAP29",0.034,5e-08,"intron_variant",4,2,851,43,20,77,88,FALSE,FALSE
+"COG5","ENSG00000164597","rs7809950","chr7_107597362_T_C_b38",0.73,-0.38,6.7e-54,8.7e-80,"Coronary artery disease","DUS4L-BCAP29, BCAP29","BCAP29",0.039,4e-08,"intron_variant",4,2,851,43,20,77,88,FALSE,FALSE
+"COG5","ENSG00000164597","rs12112877","chr7_107300879_T_C_b38",0.3,0.35,2.5e-49,8.7e-80,"Coronary artery disease","COG5",NA,0.97,4e-10,"intron_variant",4,2,851,43,20,77,88,FALSE,FALSE
+"COG5","ENSG00000164597","rs11977187","chr7_107569938_C_T_b38",0.71,-0.36,9.6e-51,8.7e-80,"Coronary artery disease","DUS4L-BCAP29, DUS4L",NA,NA,3e-09,"intron_variant",4,2,851,43,20,77,88,FALSE,FALSE
+"COG5","ENSG00000164597","rs11977187","chr7_107569938_C_T_b38",0.71,-0.36,9.6e-51,8.7e-80,"Coronary artery disease","DUS4L-BCAP29, DUS4L","DUS4L",0.033,8e-10,"intron_variant",4,2,851,43,20,77,88,FALSE,FALSE
+"COG5","ENSG00000164597","rs2107713","chr7_107591924_T_C_b38",0.7,-0.36,9.1e-53,8.7e-80,"Coronary artery disease","DUS4L-BCAP29, BCAP29","BCAP29",1,5e-08,"intron_variant",4,2,851,43,20,77,88,FALSE,FALSE
+"SEC16A","ENSG00000148396","rs3935875","chr9_136344372_G_A_b38",0.24,-0.16,4.1e-11,1.3e-73,"Coronary artery disease","GPSM1",NA,0.97,2e-08,"intron_variant",3,1,429,115,78,64,30,FALSE,FALSE
+"SFMBT1","ENSG00000163935","rs77347777","chr3_52814191_C_T_b38",0.12,-0.15,2.8e-06,3.1e-09,"Coronary artery disease","ITIH4",NA,0.95,2e-09,"non_coding_transcript_exon_variant",0,3,669,204,6.8,23,8.4,FALSE,FALSE
+"CLOCK","ENSG00000134852","rs11133381","chr4_55450812_T_C_b38",0.35,0.15,2.5e-10,5e-07,"Coronary artery disease","CLOCK, TMEM165","CLOCK",0.027,5e-08,"intron_variant",2,5,322,25,12,4.9,30,FALSE,TRUE
+"TRIM4","ENSG00000146833","rs6953441","chr7_100019444_G_A_b38",0.26,0.11,2.8e-06,3.3e-45,"Coronary artery disease","ZKSCAN1",NA,1,7e-09,"intron_variant",4,5,364,55,50,71,58,FALSE,TRUE
+"FBN2","ENSG00000138829","rs6883598","chr5_128590497_A_C_b38",0.32,0.38,5.1e-30,4.1e-65,"Coronary artery disease","FBN2, SLC27A6",NA,0.97,1e-09,"intron_variant",5,2,815,47,1.8,89,98,TRUE,FALSE
+"ADAM19","ENSG00000135074","rs11465228","chr5_157575687_C_T_b38",0.079,0.14,6.1e-06,1.7e-16,"Coronary artery disease","ADAM19",NA,0.045,3e-08,"missense_variant",5,2,503,36,81,70,66,TRUE,FALSE
+"SKP2","ENSG00000145604","rs5867305","chr5_36157160_C_CA_b38",0.83,-0.12,0.00021,1.1e-07,"Coronary artery disease","SKP2",NA,0.97,4e-08,"intron_variant",1,4,168,10,5.9,8.4,23,FALSE,TRUE
+"TP53INP1","ENSG00000164938","rs3019173","chr8_95008746_T_C_b38",0.42,-0.085,1.6e-11,6.9e-13,"Coronary artery disease","NDUFAF6",NA,0.023,3e-09,"intron_variant",3,3,422,52,89,80,56,FALSE,FALSE
+"SURF1","ENSG00000148290","rs579459","chr9_133278724_C_T_b38",0.79,0.094,2.3e-07,1.7e-18,"Coronary artery disease","ABO - Y_RNA","ABO",1.1,2e-07,"intergenic_variant",2,3,302,765,76,53,34,FALSE,FALSE
+"SURF1","ENSG00000148290","rs507666","chr9_133273983_A_G_b38",0.81,0.099,1.8e-07,1.7e-18,"Coronary artery disease","ABO","ABO",1.1,7e-10,"intron_variant",2,3,302,765,76,53,34,FALSE,FALSE
+"SURF1","ENSG00000148290","rs2519093","chr9_133266456_T_C_b38",0.81,0.099,2e-07,1.7e-18,"Coronary artery disease","ABO","ABO",0.055,2e-14,"intron_variant",2,3,302,765,76,53,34,FALSE,FALSE
+"SURF1","ENSG00000148290","rs507666","chr9_133273983_A_G_b38",0.81,0.099,1.8e-07,1.7e-18,"Coronary artery disease","ABO","ABO",0.055,2e-20,"intron_variant",2,3,302,765,76,53,34,FALSE,FALSE
+"SURF1","ENSG00000148290","rs2519093","chr9_133266456_T_C_b38",0.81,0.099,2e-07,1.7e-18,"Coronary artery disease","ABO","ABO",1.1,1e-11,"intron_variant",2,3,302,765,76,53,34,FALSE,FALSE
+"SURF1","ENSG00000148290","rs579459","chr9_133278724_C_T_b38",0.79,0.094,2.3e-07,1.7e-18,"Coronary artery disease","ABO - Y_RNA",NA,NA,2e-18,"intergenic_variant",2,3,302,765,76,53,34,FALSE,FALSE
+"SURF1","ENSG00000148290","rs507666","chr9_133273983_A_G_b38",0.81,0.099,1.8e-07,1.7e-18,"Coronary artery disease","ABO","ABO",0.073,5e-20,"intron_variant",2,3,302,765,76,53,34,FALSE,FALSE
+"SURF1","ENSG00000148290","rs495828","chr9_133279294_T_G_b38",0.79,0.093,2.5e-07,1.7e-18,"Coronary artery disease","ABO - Y_RNA","ABO",0.06,9e-12,"intergenic_variant",2,3,302,765,76,53,34,FALSE,FALSE
+"SURF1","ENSG00000148290","rs651007","chr9_133278431_T_C_b38",0.79,0.094,2.3e-07,1.7e-18,"Coronary artery disease","ABO - Y_RNA",NA,1.1,1e-18,"intergenic_variant",2,3,302,765,76,53,34,FALSE,FALSE
+"HCG27","ENSG00000206344","rs9266631","chr6_31379121_A_G_b38",0.81,0.13,6.5e-10,1.5e-34,"Coronary artery disease","FGFR3P1 - ZDHHC20P2",NA,0.96,6e-11,"intergenic_variant",5,3,4734,678,73,93,91,TRUE,FALSE
+"HCG27","ENSG00000206344","rs644045","chr6_31916180_A_G_b38",0.69,0.096,1.6e-07,1.5e-34,"Coronary artery disease","C2","C2",0.041,3e-13,"intron_variant",5,3,4734,678,73,93,91,TRUE,FALSE
+"HCG27","ENSG00000206344","rs685031","chr6_31913954_G_A_b38",0.69,0.096,1.6e-07,1.5e-34,"Coronary artery disease","C2","C2",0.043,5e-10,"intron_variant",5,3,4734,678,73,93,91,TRUE,FALSE
+"HCG27","ENSG00000206344","rs685031","chr6_31913954_G_A_b38",0.69,0.096,1.6e-07,1.5e-34,"Coronary artery disease","C2",NA,NA,6e-09,"intron_variant",5,3,4734,678,73,93,91,TRUE,FALSE
+"HCG27","ENSG00000206344","rs3130342","chr6_32112369_A_C_b38",0.87,0.15,5.7e-09,1.5e-34,"Coronary artery disease","TNXB","TNXB, ATF6B",1.1,3e-09,"non_coding_transcript_exon_variant",5,3,4734,678,73,93,91,TRUE,FALSE
+"LST1","ENSG00000204482","rs644045","chr6_31916180_A_G_b38",0.69,-0.056,0.00019,4.3e-06,"Coronary artery disease","C2","C2",0.041,3e-13,"intron_variant",4,2,242,159,95,75,70,FALSE,FALSE
+"LST1","ENSG00000204482","rs685031","chr6_31913954_G_A_b38",0.69,-0.056,0.00019,4.3e-06,"Coronary artery disease","C2",NA,NA,6e-09,"intron_variant",4,2,242,159,95,75,70,FALSE,FALSE
+"LST1","ENSG00000204482","rs685031","chr6_31913954_G_A_b38",0.69,-0.056,0.00019,4.3e-06,"Coronary artery disease","C2","C2",0.043,5e-10,"intron_variant",4,2,242,159,95,75,70,FALSE,FALSE
+"ANP32B","ENSG00000136938","rs4743150","chr9_97977842_C_T_b38",0.21,-0.087,1.1e-08,2.5e-05,"Coronary artery disease","HEMGN - ANP32B","ANP32B",0.036,4e-06,"intergenic_variant",5,4,81,13,97,93,66,FALSE,FALSE
+"PILRB","ENSG00000121716","rs6953441","chr7_100019444_G_A_b38",0.26,-0.14,6.2e-11,2e-106,"Coronary artery disease","ZKSCAN1",NA,1,7e-09,"intron_variant",5,2,962,139,46,91,91,TRUE,FALSE
+"SAYSD1","ENSG00000112167","rs55902013","chr6_39182881_C_G_b38",0.22,0.12,0.00011,1.2e-33,"Coronary artery disease","SAYSD1 - KCNK5","SAYSD1, KCNK5",1.1,4e-10,"intergenic_variant",4,3,223,35,19,94,75,TRUE,FALSE
+"SAYSD1","ENSG00000112167","rs10947789","chr6_39207146_T_C_b38",0.21,0.11,0.00019,1.2e-33,"Coronary artery disease","KCNK5","KCNK5",0.046,3e-12,"intron_variant",4,3,223,35,19,94,75,TRUE,FALSE
+"SAYSD1","ENSG00000112167","rs56336142","chr6_39166323_T_C_b38",0.19,0.18,3.3e-08,1.2e-33,"Coronary artery disease","SAYSD1 - KCNK5","KCNK5",1.1,2e-08,"TF_binding_site_variant",4,3,223,35,19,94,75,TRUE,FALSE
+"SAYSD1","ENSG00000112167","rs10947789","chr6_39207146_T_C_b38",0.21,0.11,0.00019,1.2e-33,"Coronary artery disease","KCNK5","KCNK5",0.041,3e-08,"intron_variant",4,3,223,35,19,94,75,TRUE,FALSE
+"SAYSD1","ENSG00000112167","rs10947789","chr6_39207146_T_C_b38",0.21,0.11,0.00019,1.2e-33,"Coronary artery disease","KCNK5","KCNK5",0.041,8e-12,"intron_variant",4,3,223,35,19,94,75,TRUE,FALSE
+"PEX6","ENSG00000124587","rs7757363","chr6_42908648_C_T_b38",0.29,0.27,1.7e-19,3.6e-191,"Coronary artery disease","C6orf226 - PTCRA",NA,0.055,5e-07,"intergenic_variant",6,0,515,141,11,97,94,TRUE,FALSE
+"PEX6","ENSG00000124587","rs1034246","chr6_43100632_G_T_b38",0.24,0.29,1e-19,3.6e-191,"Coronary artery disease","PTK7","PTK7",0.04,6e-08,"intron_variant",6,0,515,141,11,97,94,TRUE,FALSE
+"PEX6","ENSG00000124587","rs1034246","chr6_43100632_G_T_b38",0.24,0.29,1e-19,3.6e-191,"Coronary artery disease","PTK7",NA,0.97,6e-10,"intron_variant",6,0,515,141,11,97,94,TRUE,FALSE
+"PEX6","ENSG00000124587","rs9471959","chr6_42916779_A_G_b38",0.28,0.28,2e-20,3.6e-191,"Coronary artery disease","PTCRA",NA,0.056,3e-07,"intron_variant",6,0,515,141,11,97,94,TRUE,FALSE
+"PEX6","ENSG00000124587","rs2395938","chr6_42882921_C_A_b38",0.28,0.26,2.4e-18,3.6e-191,"Coronary artery disease","RPL7L1",NA,0.058,1e-07,"non_coding_transcript_exon_variant",6,0,515,141,11,97,94,TRUE,FALSE
+"TMEM106B","ENSG00000106460","rs6460942","chr7_12381363_T_C_b38",0.11,-0.12,9.4e-05,1.4e-31,"Coronary artery disease","VWDE","VWDE",0.047,2e-06,"intron_variant",2,5,762,68,26,21,75,FALSE,TRUE
+"TMEM106B","ENSG00000106460","rs11509880","chr7_12222285_G_A_b38",0.38,0.26,2.8e-38,1.4e-31,"Coronary artery disease","TMEM106B",NA,NA,4e-08,"intron_variant",2,5,762,68,26,21,75,FALSE,TRUE
+"TMEM106B","ENSG00000106460","rs11509880","chr7_12222285_G_A_b38",0.38,0.26,2.8e-38,1.4e-31,"Coronary artery disease","TMEM106B","TMEM106B",0.037,3e-08,"intron_variant",2,5,762,68,26,21,75,FALSE,TRUE
+"TMEM106B","ENSG00000106460","rs11509880","chr7_12222285_G_A_b38",0.38,0.26,2.8e-38,1.4e-31,"Coronary artery disease","TMEM106B","TMEM106B",0.033,3e-08,"intron_variant",2,5,762,68,26,21,75,FALSE,TRUE
+"TMEM106B","ENSG00000106460","rs11509880","chr7_12222285_G_A_b38",0.38,0.26,2.8e-38,1.4e-31,"Coronary artery disease","TMEM106B","TMEM106B",0.028,3e-08,"intron_variant",2,5,762,68,26,21,75,FALSE,TRUE
+"DAGLB","ENSG00000164535","rs10951983","chr7_6406396_A_G_b38",0.19,0.58,1.3e-80,1.4e-108,"Coronary artery disease","RAC1 - DAGLB","DAGLB, RAC1",0.038,1e-07,"intergenic_variant",3,1,308,77,42,67,23,FALSE,FALSE
+"DAGLB","ENSG00000164535","rs7797644","chr7_6446436_T_C_b38",0.8,-0.58,2.5e-89,1.4e-108,"Coronary artery disease","KDELR2, DAGLB","DAGLB",0.039,2e-08,"intron_variant",3,1,308,77,42,67,23,FALSE,FALSE
+"DAGLB","ENSG00000164535","rs7797644","chr7_6446436_T_C_b38",0.8,-0.58,2.5e-89,1.4e-108,"Coronary artery disease","KDELR2, DAGLB",NA,NA,3e-10,"intron_variant",3,1,308,77,42,67,23,FALSE,FALSE
+"DAGLB","ENSG00000164535","rs10951983","chr7_6406396_A_G_b38",0.19,0.58,1.3e-80,1.4e-108,"Coronary artery disease","RAC1 - DAGLB",NA,1,1e-10,"intergenic_variant",3,1,308,77,42,67,23,FALSE,FALSE
+"PBX2","ENSG00000204304","rs204993","chr6_32187804_A_G_b38",0.26,-0.086,9.6e-08,3.7e-12,"Coronary artery disease","PBX2","PBX2",0.06,6e-09,"intron_variant",2,3,1750,393,68,43,32,FALSE,FALSE
+"UFL1","ENSG00000014123","rs9486719","chr6_96612248_G_A_b38",0.23,0.069,4.9e-06,2.1e-06,"Coronary artery disease","FHL5",NA,NA,3e-09,"intron_variant",2,4,319,50,15,2.6,71,FALSE,TRUE
+"UFL1","ENSG00000014123","rs11152953","chr6_96446429_C_T_b38",0.18,0.078,3.4e-06,2.1e-06,"Coronary artery disease","UFL1-AS1",NA,0.97,9e-10,"intron_variant",2,4,319,50,15,2.6,71,FALSE,TRUE
+"UFL1","ENSG00000014123","rs2983896","chr6_96581995_G_A_b38",0.23,0.066,1.3e-05,2.1e-06,"Coronary artery disease","FHL5",NA,0.96,1e-09,"intron_variant",2,4,319,50,15,2.6,71,FALSE,TRUE
+"UFL1","ENSG00000014123","rs9486719","chr6_96612248_G_A_b38",0.23,0.069,4.9e-06,2.1e-06,"Coronary artery disease","FHL5","FHL5",0.041,2e-07,"intron_variant",2,4,319,50,15,2.6,71,FALSE,TRUE
+"MTAP","ENSG00000099810","rs11523031","chr9_21843843_A_G_b38",0.42,-0.081,3.3e-05,9.7e-06,"Coronary artery disease","MTAP",NA,1,4e-19,"intron_variant",3,2,383,14,6.8,5.9,7.8,FALSE,FALSE
+"MTAP","ENSG00000099810","rs896655","chr9_21706572_A_G_b38",0.39,-0.1,2.7e-07,9.7e-06,"Coronary artery disease","RN7SL151P - MTAP","intergenic",0.04,2e-12,"intergenic_variant",3,2,383,14,6.8,5.9,7.8,FALSE,FALSE
+"DOCK5","ENSG00000147459","rs9693598","chr8_25207468_G_A_b38",0.16,0.12,5.6e-09,3.8e-12,"Coronary artery disease","DOCK5",NA,NA,2e-07,"intron_variant",4,4,135,2,54,79,84,FALSE,FALSE
+"DOCK5","ENSG00000147459","rs9693598","chr8_25207468_G_A_b38",0.16,0.12,5.6e-09,3.8e-12,"Coronary artery disease","DOCK5","DOCK5",0.044,2e-08,"intron_variant",4,4,135,2,54,79,84,FALSE,FALSE
+"TRAF1","ENSG00000056558","rs41311933","chr9_120977282_C_T_b38",0.076,0.15,1.1e-05,2.3e-08,"Coronary artery disease","C5","C5",0.057,6e-07,"intron_variant",0,1,225,12,8.7,7.7,11,FALSE,FALSE
+"TRAF1","ENSG00000056558","rs62578408","chr9_120950167_C_T_b38",0.056,0.17,1.6e-05,2.3e-08,"Coronary artery disease","C5",NA,0.047,8e-09,"intron_variant",0,1,225,12,8.7,7.7,11,FALSE,FALSE
+"MED22","ENSG00000148297","rs507666","chr9_133273983_A_G_b38",0.81,-0.092,5.2e-06,1.2e-65,"Coronary artery disease","ABO","ABO",1.1,7e-10,"intron_variant",3,3,412,841,36,66,12,FALSE,FALSE
+"MED22","ENSG00000148297","rs507666","chr9_133273983_A_G_b38",0.81,-0.092,5.2e-06,1.2e-65,"Coronary artery disease","ABO","ABO",0.055,2e-20,"intron_variant",3,3,412,841,36,66,12,FALSE,FALSE
+"MED22","ENSG00000148297","rs2519093","chr9_133266456_T_C_b38",0.81,-0.092,5.8e-06,1.2e-65,"Coronary artery disease","ABO","ABO",0.055,2e-14,"intron_variant",3,3,412,841,36,66,12,FALSE,FALSE
+"MED22","ENSG00000148297","rs507666","chr9_133273983_A_G_b38",0.81,-0.092,5.2e-06,1.2e-65,"Coronary artery disease","ABO","ABO",0.073,5e-20,"intron_variant",3,3,412,841,36,66,12,FALSE,FALSE
+"MED22","ENSG00000148297","rs2519093","chr9_133266456_T_C_b38",0.81,-0.092,5.8e-06,1.2e-65,"Coronary artery disease","ABO","ABO",1.1,1e-11,"intron_variant",3,3,412,841,36,66,12,FALSE,FALSE
+"RAC1","ENSG00000136238","rs7797644","chr7_6446436_T_C_b38",0.8,-0.096,1.8e-09,9.7e-39,"Coronary artery disease","KDELR2, DAGLB","DAGLB",0.039,2e-08,"intron_variant",4,4,395,51,76,62,52,FALSE,TRUE
+"RAC1","ENSG00000136238","rs10951983","chr7_6406396_A_G_b38",0.19,0.1,8.7e-10,9.7e-39,"Coronary artery disease","RAC1 - DAGLB","DAGLB, RAC1",0.038,1e-07,"intergenic_variant",4,4,395,51,76,62,52,FALSE,TRUE
+"RAC1","ENSG00000136238","rs10951983","chr7_6406396_A_G_b38",0.19,0.1,8.7e-10,9.7e-39,"Coronary artery disease","RAC1 - DAGLB",NA,1,1e-10,"intergenic_variant",4,4,395,51,76,62,52,FALSE,TRUE
+"RAC1","ENSG00000136238","rs7797644","chr7_6446436_T_C_b38",0.8,-0.096,1.8e-09,9.7e-39,"Coronary artery disease","KDELR2, DAGLB",NA,NA,3e-10,"intron_variant",4,4,395,51,76,62,52,FALSE,TRUE
+"SUMF2","ENSG00000129103","rs6593297","chr7_56054365_A_T_b38",0.69,0.083,8.5e-07,4.8e-41,"Coronary artery disease","CCT6A","CCT6A",0.031,4e-09,"splice_region_variant",5,2,885,29,62,75,43,TRUE,FALSE
+"FLNA","ENSG00000196924","rs147967693","chrX_154410919_C_T_b38",0.087,-0.072,5.3e-05,7.2e-06,"Coronary artery disease","DNASE1L1",NA,0.037,2e-08,"intron_variant",1,4,125,16,74,9.3,40,FALSE,TRUE
+"RPL10","ENSG00000147403","rs147967693","chrX_154410919_C_T_b38",0.087,0.041,8.1e-05,6.7e-34,"Coronary artery disease","DNASE1L1",NA,0.037,2e-08,"intron_variant",3,3,365,24,97,49,61,FALSE,FALSE
+"IKBKG","ENSG00000269335","rs147967693","chrX_154410919_C_T_b38",0.087,-0.12,6.5e-07,2.1e-08,"Coronary artery disease","DNASE1L1",NA,0.037,2e-08,"intron_variant",2,3,127,7,74,27,7.8,FALSE,FALSE
+"PARP1","ENSG00000143799","rs6426551","chr1_226354348_A_G_b38",0.76,0.069,3e-08,1.6e-07,"Coronary artery disease","YBX1P9 - PARP1","PARP1",0.033,7e-06,"regulatory_region_variant",3,2,129,14,77,58,40,FALSE,FALSE
+"UBASH3B","ENSG00000154127","rs57812455","chr11_122654259_A_G_b38",0.12,-0.21,2.2e-07,2.5e-19,"Coronary artery disease","GLULP3 - UBASH3B",NA,0.97,4e-08,"regulatory_region_variant",5,2,252,58,32,75,51,TRUE,FALSE
+"TNS1","ENSG00000079308","rs2571445","chr2_217818431_A_G_b38",0.64,-0.068,9.1e-06,4.3e-10,"Coronary artery disease","TNS1","TNS1",0.037,2e-12,"missense_variant",7,4,121,40,75,97,99,FALSE,FALSE
+"TNS1","ENSG00000079308","rs2571445","chr2_217818431_A_G_b38",0.64,-0.068,9.1e-06,4.3e-10,"Coronary artery disease","TNS1","TNS1",0.041,1e-12,"missense_variant",7,4,121,40,75,97,99,FALSE,FALSE
+"TNS1","ENSG00000079308","rs2571445","chr2_217818431_A_G_b38",0.64,-0.068,9.1e-06,4.3e-10,"Coronary artery disease","TNS1",NA,NA,4e-11,"missense_variant",7,4,121,40,75,97,99,FALSE,FALSE
+"TNS1","ENSG00000079308","rs2161967","chr2_217815806_T_G_b38",0.53,-0.081,5.5e-08,4.3e-10,"Coronary artery disease","TNS1",NA,1,7e-11,"intron_variant",7,4,121,40,75,97,99,FALSE,FALSE
+"TNS1","ENSG00000079308","rs2161967","chr2_217815806_T_G_b38",0.53,-0.081,5.5e-08,4.3e-10,"Coronary artery disease","TNS1","TNS1",0.033,7e-11,"intron_variant",7,4,121,40,75,97,99,FALSE,FALSE
+"DHDDS","ENSG00000117682","rs12046497","chr1_26521149_C_T_b38",0.24,-0.18,2.1e-15,3.1e-12,"Coronary artery disease","DPPA2P2 - RPS6KA1",NA,0.025,9e-09,"regulatory_region_variant",0,1,173,17,23,0.67,0.066,FALSE,FALSE
+"HMBS","ENSG00000256269","rs1185460","chr11_119072723_A_G_b38",0.44,0.08,6.9e-09,1.2e-05,"Coronary artery disease","VPS11","VPS11",0.032,8e-07,"non_coding_transcript_exon_variant",6,2,79,30,50,93,95,TRUE,FALSE
+"HMBS","ENSG00000256269","rs1177562","chr11_119078621_C_T_b38",0.4,0.071,3.2e-07,1.2e-05,"Coronary artery disease","VPS11",NA,1,8e-11,"synonymous_variant",6,2,79,30,50,93,95,TRUE,FALSE
+"HMBS","ENSG00000256269","rs1307145","chr11_119079507_C_G_b38",0.42,0.076,4e-08,1.2e-05,"Coronary artery disease","VPS11","VPS11",0.031,7e-09,"intron_variant",6,2,79,30,50,93,95,TRUE,FALSE
+"HMBS","ENSG00000256269","rs1307145","chr11_119079507_C_G_b38",0.42,0.076,4e-08,1.2e-05,"Coronary artery disease","VPS11",NA,NA,2e-10,"intron_variant",6,2,79,30,50,93,95,TRUE,FALSE
+"CABIN1","ENSG00000099991","rs8141797","chr22_24186073_A_G_b38",0.086,0.19,3.3e-12,1.5e-12,"Coronary artery disease","SUSD2","CABIN1, SUSD2",0.066,1e-07,"missense_variant",2,1,142,11,69,28,28,FALSE,FALSE
+"CABIN1","ENSG00000099991","rs12484557","chr22_24159893_A_G_b38",0.067,0.25,1.7e-16,1.5e-12,"Coronary artery disease","CABIN1",NA,1.1,4e-09,"intron_variant",2,1,142,11,69,28,28,FALSE,FALSE
+"IL6R","ENSG00000160712","rs12133641","chr1_154455807_A_G_b38",0.43,-0.097,1.8e-12,6.2e-15,"Coronary artery disease","IL6R","IL6R",0.043,3e-11,"intron_variant",4,3,157,71,90,74,75,FALSE,FALSE
+"IL6R","ENSG00000160712","rs6689306","chr1_154423470_A_G_b38",0.59,-0.11,5e-16,6.2e-15,"Coronary artery disease","IL6R","IL6R",1.1,3e-09,"intron_variant",4,3,157,71,90,74,75,FALSE,FALSE
+"IL6R","ENSG00000160712","rs4845625","chr1_154449591_T_C_b38",0.59,-0.11,9.2e-18,6.2e-15,"Coronary artery disease","IL6R","IL6R",0.041,6e-17,"intron_variant",4,3,157,71,90,74,75,FALSE,FALSE
+"IL6R","ENSG00000160712","rs12129500","chr1_154451288_T_C_b38",0.59,-0.11,2.5e-17,6.2e-15,"Coronary artery disease","IL6R","IL6R",1,3e-09,"intron_variant",4,3,157,71,90,74,75,FALSE,FALSE
+"IL6R","ENSG00000160712","rs6686750","chr1_154447367_A_G_b38",0.59,-0.11,1.3e-17,6.2e-15,"Coronary artery disease","IL6R",NA,1,2e-15,"intron_variant",4,3,157,71,90,74,75,FALSE,FALSE
+"IL6R","ENSG00000160712","rs4845625","chr1_154449591_T_C_b38",0.59,-0.11,9.2e-18,6.2e-15,"Coronary artery disease","IL6R","IL6R",0.04,7e-15,"intron_variant",4,3,157,71,90,74,75,FALSE,FALSE
+"IL6R","ENSG00000160712","rs4845625","chr1_154449591_T_C_b38",0.59,-0.11,9.2e-18,6.2e-15,"Coronary artery disease","IL6R",NA,NA,4e-15,"intron_variant",4,3,157,71,90,74,75,FALSE,FALSE
+"IL6R","ENSG00000160712","rs4845625","chr1_154449591_T_C_b38",0.59,-0.11,9.2e-18,6.2e-15,"Coronary artery disease","IL6R","IL6R",0.045,6e-16,"intron_variant",4,3,157,71,90,74,75,FALSE,FALSE
+"PLEKHA1","ENSG00000107679","rs2672592","chr10_122471234_G_T_b38",0.35,-0.056,5.2e-05,1.3e-13,"Coronary artery disease","HTRA1",NA,0.97,2e-10,"intron_variant",2,4,108,37,57,71,73,FALSE,TRUE
+"THOC5","ENSG00000100296","rs877549","chr22_30276431_G_A_b38",0.11,-0.072,0.00026,1.7e-29,"Coronary artery disease","OSM - CASTOR1","GATSL3, OSM",0.047,1e-07,"non_coding_transcript_exon_variant",3,2,390,15,54,68,42,FALSE,FALSE
+"PECAM1","ENSG00000261371","rs1050382","chr17_64322640_G_A_b38",0.51,0.19,7.3e-33,1.3e-34,"Coronary artery disease","PECAM1","PECAM1",0.038,1e-14,"3_prime_UTR_variant",7,2,302,16,94,90,74,TRUE,FALSE
+"PECAM1","ENSG00000261371","rs9892152","chr17_64324605_T_C_b38",0.5,0.19,6e-35,1.3e-34,"Coronary artery disease","PECAM1","PECAM1",0.033,6e-11,"intron_variant",7,2,302,16,94,90,74,TRUE,FALSE
+"PECAM1","ENSG00000261371","rs1867624","chr17_64309731_C_T_b38",0.61,0.13,1.8e-14,1.3e-34,"Coronary artery disease","RPL31P57 - PECAM1","PECAM1",0.037,8e-11,"regulatory_region_variant",7,2,302,16,94,90,74,TRUE,FALSE
+"PECAM1","ENSG00000261371","rs9902260","chr17_64322512_C_T_b38",0.51,0.19,8.1e-33,1.3e-34,"Coronary artery disease","PECAM1","PECAM1",0.065,3e-09,"3_prime_UTR_variant",7,2,302,16,94,90,74,TRUE,FALSE
+"PECAM1","ENSG00000261371","rs11079536","chr17_64315043_G_T_b38",0.5,0.19,1.4e-32,1.3e-34,"Coronary artery disease","RPL31P57 - PECAM1",NA,1,1e-12,"intergenic_variant",7,2,302,16,94,90,74,TRUE,FALSE
+"PECAM1","ENSG00000261371","rs1867624","chr17_64309731_C_T_b38",0.61,0.13,1.8e-14,1.3e-34,"Coronary artery disease","RPL31P57 - PECAM1",NA,NA,6e-12,"regulatory_region_variant",7,2,302,16,94,90,74,TRUE,FALSE
+"PECAM1","ENSG00000261371","rs2812","chr17_64323758_T_C_b38",0.5,0.19,6e-35,1.3e-34,"Coronary artery disease","PECAM1","PECAM1",1,1e-08,"3_prime_UTR_variant",7,2,302,16,94,90,74,TRUE,FALSE
+"BAG5","ENSG00000166170","rs35224956","chr14_103434144_A_G_b38",0.33,0.085,1.5e-05,1.6e-08,"Coronary artery disease","MARK3","MARK3",0.031,3e-09,"intron_variant",3,2,269,65,30,50,36,FALSE,FALSE
+"BAG5","ENSG00000166170","rs35224956","chr14_103434144_A_G_b38",0.33,0.085,1.5e-05,1.6e-08,"Coronary artery disease","MARK3",NA,NA,1e-06,"intron_variant",3,2,269,65,30,50,36,FALSE,FALSE
+"BAG5","ENSG00000166170","rs4906332","chr14_103513797_A_T_b38",0.33,0.084,1.7e-05,1.6e-08,"Coronary artery disease","MARK3 - CKB","CKB, MARK3",0.032,2e-06,"regulatory_region_variant",3,2,269,65,30,50,36,FALSE,FALSE
+"PML","ENSG00000140464","rs2507","chr15_73983335_A_G_b38",0.3,-0.13,1.3e-18,6.8e-14,"Coronary artery disease","STOML1","STOML1",0.03,7e-07,"3_prime_UTR_variant",4,2,138,25,12,46,71,TRUE,FALSE
+"HBP1","ENSG00000105856","rs7809950","chr7_107597362_T_C_b38",0.73,0.065,7.5e-05,0.074,"Coronary artery disease","DUS4L-BCAP29, BCAP29","BCAP29",0.039,4e-08,"intron_variant",2,4,26,4,63,28,48,FALSE,TRUE
+"HBP1","ENSG00000105856","rs2189839","chr7_107589581_A_G_b38",0.71,0.064,5.4e-05,0.074,"Coronary artery disease","DUS4L-BCAP29, BCAP29","BCAP29",0.034,5e-08,"intron_variant",2,4,26,4,63,28,48,FALSE,TRUE
+"HBP1","ENSG00000105856","rs2107713","chr7_107591924_T_C_b38",0.7,0.065,4.3e-05,0.074,"Coronary artery disease","DUS4L-BCAP29, BCAP29","BCAP29",1,5e-08,"intron_variant",2,4,26,4,63,28,48,FALSE,TRUE
+"CNPY4","ENSG00000166997","rs6953441","chr7_100019444_G_A_b38",0.26,0.11,4.9e-05,3.7e-05,"Coronary artery disease","ZKSCAN1",NA,1,7e-09,"intron_variant",2,2,219,52,15,49,26,FALSE,FALSE
+"TBXAS1","ENSG00000059377","rs2286200","chr7_140015542_A_G_b38",0.37,-0.063,8.3e-08,9.1e-14,"Coronary artery disease","TBXAS1","TBXAS1",0.03,1e-08,"intron_variant",5,3,113,14,83,92,77,TRUE,FALSE
+"TBXAS1","ENSG00000059377","rs10237377","chr7_140057336_G_T_b38",0.42,-0.085,5.1e-14,9.1e-14,"Coronary artery disease","PARP12","PARP12",0.042,9e-11,"intron_variant",5,3,113,14,83,92,77,TRUE,FALSE
+"TBXAS1","ENSG00000059377","rs2286200","chr7_140015542_A_G_b38",0.37,-0.063,8.3e-08,9.1e-14,"Coronary artery disease","TBXAS1",NA,NA,4e-06,"intron_variant",5,3,113,14,83,92,77,TRUE,FALSE
+"TBXAS1","ENSG00000059377","rs10237377","chr7_140057336_G_T_b38",0.42,-0.085,5.1e-14,9.1e-14,"Coronary artery disease","PARP12","PARP12",0.034,7e-09,"intron_variant",5,3,113,14,83,92,77,TRUE,FALSE
+"TBXAS1","ENSG00000059377","rs2269997","chr7_140023600_G_A_b38",0.27,-0.083,1.6e-10,9.1e-14,"Coronary artery disease","TBXAS1 - PARP12","PARP12",1,1e-08,"intergenic_variant",5,3,113,14,83,92,77,TRUE,FALSE
+"GFPT1","ENSG00000198380","rs12468870","chr2_69452405_G_C_b38",0.63,-0.17,2.7e-23,1.2e-19,"Coronary artery disease","NFU1 - AAK1",NA,0.97,5e-10,"regulatory_region_variant",3,4,422,21,4.1,16,56,FALSE,TRUE
+"GFPT1","ENSG00000198380","rs4346430","chr2_69441670_A_G_b38",0.63,-0.17,1.5e-23,1.2e-19,"Coronary artery disease","NFU1 - AAK1",NA,0.022,2e-08,"intergenic_variant",3,4,422,21,4.1,16,56,FALSE,TRUE
+"NFU1","ENSG00000169599","rs4346430","chr2_69441670_A_G_b38",0.63,-0.086,0.00019,0.0058,"Coronary artery disease","NFU1 - AAK1",NA,0.022,2e-08,"intergenic_variant",0,4,90,8,24,7.2,49,FALSE,FALSE
+"NFU1","ENSG00000169599","rs12468870","chr2_69452405_G_C_b38",0.63,-0.085,2e-04,0.0058,"Coronary artery disease","NFU1 - AAK1",NA,0.97,5e-10,"regulatory_region_variant",0,4,90,8,24,7.2,49,FALSE,FALSE
+"PRKAR1A","ENSG00000108946","rs2952286","chr17_68473259_T_G_b38",0.8,0.047,6.7e-05,5.4e-08,"Coronary artery disease","WIPI1 - PRKAR1A",NA,NA,2e-09,"intron_variant",4,5,98,44,90,60,99,FALSE,TRUE
+"PRKAR1A","ENSG00000108946","rs2909217","chr17_68467844_C_T_b38",0.78,0.049,2.6e-05,5.4e-08,"Coronary artery disease","WIPI1 - PRKAR1A",NA,1,4e-09,"intron_variant",4,5,98,44,90,60,99,FALSE,TRUE
+"PRKAR1A","ENSG00000108946","rs2952286","chr17_68473259_T_G_b38",0.8,0.047,6.7e-05,5.4e-08,"Coronary artery disease","WIPI1 - PRKAR1A","PRKAR1A",0.035,5e-10,"intron_variant",4,5,98,44,90,60,99,FALSE,TRUE
+"PCCB","ENSG00000114054","rs667920","chr3_136350630_G_T_b38",0.78,0.12,6.2e-06,6.3e-12,"Coronary artery disease","STAG1","STAG1",0.049,6e-15,"intron_variant",3,2,583,210,34,59,21,FALSE,FALSE
+"PCCB","ENSG00000114054","rs655720","chr3_136384425_C_T_b38",0.74,0.1,2.7e-05,6.3e-12,"Coronary artery disease","STAG1","STAG1",0.049,8e-12,"intron_variant",3,2,583,210,34,59,21,FALSE,FALSE
+"PCCB","ENSG00000114054","rs73222236","chr3_136169800_A_G_b38",0.34,-0.087,8e-05,6.3e-12,"Coronary artery disease","MSL2","MSL2",0.038,1e-08,"intron_variant",3,2,583,210,34,59,21,FALSE,FALSE
+"APEH","ENSG00000164062","rs11718165","chr3_49659364_A_G_b38",0.29,0.06,0.00055,0.0018,"Coronary artery disease","BSN","BSN",0.033,6e-08,"intron_variant",2,2,77,63,64,22,6.5,FALSE,FALSE
+"TAF1A","ENSG00000143498","rs35158675","chr1_222656208_G_A_b38",0.65,0.15,4.1e-06,1.3e-15,"Coronary artery disease","MIA3","MIA3",0.078,5e-48,"intron_variant",0,4,153,30,0.38,2.6,29,FALSE,TRUE
+"TAF1A","ENSG00000143498","rs17465982","chr1_222664597_G_A_b38",0.65,0.16,2.2e-06,1.3e-15,"Coronary artery disease","MIA3","AIDA, MIA3",0.079,9e-28,"intron_variant",0,4,153,30,0.38,2.6,29,FALSE,TRUE
+"TAF1A","ENSG00000143498","rs28709375","chr1_222649657_A_G_b38",0.65,0.16,1.3e-06,1.3e-15,"Coronary artery disease","MIA3","MIA3",0.097,1e-22,"non_coding_transcript_exon_variant",0,4,153,30,0.38,2.6,29,FALSE,TRUE
+"TAF1A","ENSG00000143498","rs17163363","chr1_222655362_C_T_b38",0.65,0.16,1.3e-06,1.3e-15,"Coronary artery disease","MIA3",NA,1.1,5e-36,"intron_variant",0,4,153,30,0.38,2.6,29,FALSE,TRUE
+"TAF1A","ENSG00000143498","rs35158675","chr1_222656208_G_A_b38",0.65,0.15,4.1e-06,1.3e-15,"Coronary artery disease","MIA3",NA,NA,5e-36,"intron_variant",0,4,153,30,0.38,2.6,29,FALSE,TRUE
+"TAF1A","ENSG00000143498","rs35158675","chr1_222656208_G_A_b38",0.65,0.15,4.1e-06,1.3e-15,"Coronary artery disease","MIA3","MIA3",0.07,6e-28,"intron_variant",0,4,153,30,0.38,2.6,29,FALSE,TRUE
+"TAF1A","ENSG00000143498","rs17465637","chr1_222650187_A_C_b38",0.65,0.16,1.3e-06,1.3e-15,"Coronary artery disease","MIA3","MIA3",0.082,8e-31,"intron_variant",0,4,153,30,0.38,2.6,29,FALSE,TRUE
+"CD300LF","ENSG00000186074","rs35489971","chr17_74704804_A_G_b38",0.75,0.086,3.7e-05,9.3e-08,"Coronary artery disease","CD300LF, RAB37","CD300LF, RAB37",0.044,1e-07,"missense_variant",7,2,42,18,85,94,76,TRUE,FALSE
+"MYO9B","ENSG00000099331","rs7246865","chr19_17108295_G_A_b38",0.31,-0.07,1.4e-06,0.00084,"Coronary artery disease","MYO9B",NA,1,4e-08,"intron_variant",2,4,97,35,73,3.9,5.9,FALSE,TRUE
+"MYO9B","ENSG00000099331","rs3745348","chr19_17101600_C_T_b38",0.34,-0.068,1.3e-06,0.00084,"Coronary artery disease","MYO9B","MYO9B",0.032,7e-08,"intron_variant",2,4,97,35,73,3.9,5.9,FALSE,TRUE
+"MYO9B","ENSG00000099331","rs75585236","chr19_17108653_A_G_b38",0.11,0.092,2.5e-05,0.00084,"Coronary artery disease","MYO9B","MYO9B",0.099,7e-08,"intron_variant",2,4,97,35,73,3.9,5.9,FALSE,TRUE
+"MYO9B","ENSG00000099331","rs7246865","chr19_17108295_G_A_b38",0.31,-0.07,1.4e-06,0.00084,"Coronary artery disease","MYO9B",NA,1,2e-08,"intron_variant",2,4,97,35,73,3.9,5.9,FALSE,TRUE
+"MAP1S","ENSG00000130479","rs7251815","chr19_17734133_G_T_b38",0.24,-0.092,2.4e-07,1.3e-11,"Coronary artery disease","MAP1S","MAP1S",0.053,4e-15,"intron_variant",1,2,88,21,40,34,39,FALSE,FALSE
+"MAP1S","ENSG00000130479","rs10410487","chr19_17718799_T_C_b38",0.54,-0.12,2.8e-15,1.3e-11,"Coronary artery disease","UNC13A - MAP1S",NA,0.96,3e-15,"regulatory_region_variant",1,2,88,21,40,34,39,FALSE,FALSE
+"MAP1S","ENSG00000130479","rs73015714","chr19_17744954_C_G_b38",0.24,-0.084,4.1e-06,1.3e-11,"Coronary artery disease","MAP1S - FCHO1","FCHO1",0.059,8e-14,"regulatory_region_variant",1,2,88,21,40,34,39,FALSE,FALSE
+"MAP1S","ENSG00000130479","rs112009435","chr19_17736035_G_A_b38",0.17,-0.097,1.4e-06,1.3e-11,"Coronary artery disease","MAP1S - FCHO1","MAP1S",0.06,6e-13,"intergenic_variant",1,2,88,21,40,34,39,FALSE,FALSE
+"MAP1S","ENSG00000130479","rs7251815","chr19_17734133_G_T_b38",0.24,-0.092,2.4e-07,1.3e-11,"Coronary artery disease","MAP1S","MAP1S",0.051,1e-13,"intron_variant",1,2,88,21,40,34,39,FALSE,FALSE
+"HNRNPUL1","ENSG00000105323","rs11466359","chr19_41331710_G_A_b38",0.15,0.11,1.1e-08,1.4e-05,"Coronary artery disease","TGFB1",NA,0.95,5e-16,"intron_variant",2,2,98,10,86,6.7,5.4,FALSE,FALSE
+"HNRNPUL1","ENSG00000105323","rs12980942","chr19_41326326_G_A_b38",0.14,0.096,7.8e-07,1.4e-05,"Coronary artery disease","TGFB1","CCDC97, TGFB1",0.061,7e-15,"intron_variant",2,2,98,10,86,6.7,5.4,FALSE,FALSE
+"CCDC97","ENSG00000142039","rs12980942","chr19_41326326_G_A_b38",0.14,0.077,5.6e-05,0.018,"Coronary artery disease","TGFB1","CCDC97, TGFB1",0.061,7e-15,"intron_variant",3,2,70,4,55,40,5.3,FALSE,FALSE
+"LIPA","ENSG00000107798","rs1412444","chr10_89243170_C_T_b38",0.34,0.49,1.8e-71,7.6e-63,"Coronary artery disease","LIPA","NR",1.1,7e-06,"intron_variant",5,1,67,29,86,98,89,TRUE,FALSE
+"LIPA","ENSG00000107798","rs2246942","chr10_89245129_A_G_b38",0.34,0.47,3.6e-66,7.6e-63,"Coronary artery disease","LIPA","LIPA",0.071,2e-24,"intron_variant",5,1,67,29,86,98,89,TRUE,FALSE
+"LIPA","ENSG00000107798","rs1412444","chr10_89243170_C_T_b38",0.34,0.49,1.8e-71,7.6e-63,"Coronary artery disease","LIPA","LIPA",0.058,4e-29,"intron_variant",5,1,67,29,86,98,89,TRUE,FALSE
+"LIPA","ENSG00000107798","rs1412444","chr10_89243170_C_T_b38",0.34,0.49,1.8e-71,7.6e-63,"Coronary artery disease","LIPA","LIPA",1.1,5e-12,"intron_variant",5,1,67,29,86,98,89,TRUE,FALSE
+"LIPA","ENSG00000107798","rs1412444","chr10_89243170_C_T_b38",0.34,0.49,1.8e-71,7.6e-63,"Coronary artery disease","LIPA","LIPA",0.056,2e-21,"intron_variant",5,1,67,29,86,98,89,TRUE,FALSE
+"LIPA","ENSG00000107798","rs1412444","chr10_89243170_C_T_b38",0.34,0.49,1.8e-71,7.6e-63,"Coronary artery disease","LIPA","LIPA",0.064,3e-22,"intron_variant",5,1,67,29,86,98,89,TRUE,FALSE
+"LIPA","ENSG00000107798","rs1412445","chr10_89243047_C_T_b38",0.34,0.48,7.9e-71,7.6e-63,"Coronary artery disease","LIPA","LIPA",0.071,1e-09,"intron_variant",5,1,67,29,86,98,89,TRUE,FALSE
+"LIPA","ENSG00000107798","rs1051338","chr10_89247603_T_G_b38",0.26,0.53,5.5e-71,7.6e-63,"Coronary artery disease","LIPA",NA,0.94,1e-28,"missense_variant",5,1,67,29,86,98,89,TRUE,FALSE
+"LIPA","ENSG00000107798","rs2250644","chr10_89249122_C_T_b38",0.34,0.47,1.1e-66,7.6e-63,"Coronary artery disease","LIPA","LIPA",1.1,3e-16,"intron_variant",5,1,67,29,86,98,89,TRUE,FALSE
+"LIPA","ENSG00000107798","rs1412444","chr10_89243170_C_T_b38",0.34,0.49,1.8e-71,7.6e-63,"Coronary artery disease","LIPA",NA,NA,3e-28,"intron_variant",5,1,67,29,86,98,89,TRUE,FALSE
+"ZCRB1","ENSG00000139168","rs12820154","chr12_42389305_G_A_b38",0.35,-0.095,1.5e-05,0.0017,"Coronary artery disease","PPHLN1",NA,0.021,3e-08,"intron_variant",3,4,149,22,24,35,35,FALSE,TRUE
+"DDAH2","ENSG00000213722","rs3130342","chr6_32112369_A_C_b38",0.87,-0.1,1.1e-06,0.00028,"Coronary artery disease","TNXB","TNXB, ATF6B",1.1,3e-09,"non_coding_transcript_exon_variant",1,3,260,161,26,35,29,FALSE,FALSE
+"DHX36","ENSG00000174953","rs1727949","chr3_154157924_T_C_b38",0.84,-0.079,0.00019,0.00093,"Coronary artery disease","ARHGEF26","ARHGEF26",0.04,2e-08,"intron_variant",2,3,226,24,43,14,36,FALSE,FALSE
+"DHX36","ENSG00000174953","rs789294","chr3_154339952_C_G_b38",0.87,-0.11,1.1e-06,0.00093,"Coronary artery disease","GPR149","GPR149",0.064,3e-15,"intron_variant",2,3,226,24,43,14,36,FALSE,FALSE
+"DHX36","ENSG00000174953","rs12493885","chr3_154122077_G_C_b38",0.88,-0.095,6.6e-05,0.00093,"Coronary artery disease","ARHGEF26","ARHGEF26, ARHGEF26-AS1",0.074,1e-14,"missense_variant",2,3,226,24,43,14,36,FALSE,FALSE
+"DHX36","ENSG00000174953","rs12493885","chr3_154122077_G_C_b38",0.88,-0.095,6.6e-05,0.00093,"Coronary artery disease","ARHGEF26","ARHGEF26",1.1,1e-09,"missense_variant",2,3,226,24,43,14,36,FALSE,FALSE
+"DHX36","ENSG00000174953","rs12493885","chr3_154122077_G_C_b38",0.88,-0.095,6.6e-05,0.00093,"Coronary artery disease","ARHGEF26",NA,NA,1e-12,"missense_variant",2,3,226,24,43,14,36,FALSE,FALSE
+"DHX36","ENSG00000174953","rs701145","chr3_154337010_T_C_b38",0.87,-0.11,1.2e-06,0.00093,"Coronary artery disease","GPR149","GPR149",0.072,4e-14,"3_prime_UTR_variant",2,3,226,24,43,14,36,FALSE,FALSE
+"DHX36","ENSG00000174953","rs357494","chr3_154219964_G_A_b38",0.88,-0.095,9.4e-05,0.00093,"Coronary artery disease","ARHGEF26",NA,1.1,5e-14,"intron_variant",2,3,226,24,43,14,36,FALSE,FALSE
+"ZNF664","ENSG00000179195","rs7133378","chr12_123924955_G_A_b38",0.37,-0.1,5.3e-10,1.8e-07,"Coronary artery disease","DNAH10, CCDC92",NA,0.97,4e-09,"intron_variant",1,3,157,203,19,24,17,FALSE,FALSE
+"ZNF664","ENSG00000179195","rs11057401","chr12_123942759_T_A_b38",0.33,-0.076,2.5e-06,1.8e-07,"Coronary artery disease","CCDC92","CCDC92",1.1,4e-09,"missense_variant",1,3,157,203,19,24,17,FALSE,FALSE
+"ZNF664","ENSG00000179195","rs11057401","chr12_123942759_T_A_b38",0.33,-0.076,2.5e-06,1.8e-07,"Coronary artery disease","CCDC92","CCDC92, DNAH10",0.038,2e-08,"missense_variant",1,3,157,203,19,24,17,FALSE,FALSE
+"ZEB1-AS1","ENSG00000237036","rs161231","chr10_31466991_C_T_b38",0.13,0.21,2.9e-05,0.00038,"Coronary artery disease","ZEB1",NA,0.036,2e-08,"intron_variant",0,3,237,6,4.9,17,37,FALSE,FALSE
+"SIPA1","ENSG00000213445","rs12801636","chr11_65623846_G_A_b38",0.23,-0.11,1.1e-11,1.6e-08,"Coronary artery disease","PCNX3","MAP3K11, PCNXL3",0.044,3e-11,"intron_variant",1,3,42,120,84,1.9,14,FALSE,FALSE
+"SIPA1","ENSG00000213445","rs12801636","chr11_65623846_G_A_b38",0.23,-0.11,1.1e-11,1.6e-08,"Coronary artery disease","PCNX3","PCNXL3",1,2e-08,"intron_variant",1,3,42,120,84,1.9,14,FALSE,FALSE
+"SIPA1","ENSG00000213445","rs12801636","chr11_65623846_G_A_b38",0.23,-0.11,1.1e-11,1.6e-08,"Coronary artery disease","PCNX3","MAP3K11, PCNXL3",0.042,4e-08,"intron_variant",1,3,42,120,84,1.9,14,FALSE,FALSE
+"SIPA1","ENSG00000213445","rs12801636","chr11_65623846_G_A_b38",0.23,-0.11,1.1e-11,1.6e-08,"Coronary artery disease","PCNX3","MAP3K11, PCNXL3",0.04,2e-11,"intron_variant",1,3,42,120,84,1.9,14,FALSE,FALSE
+"SIPA1","ENSG00000213445","rs2306363","chr11_65638129_G_T_b38",0.17,-0.12,4.3e-11,1.6e-08,"Coronary artery disease","SIPA1","SIPA1",0.068,9e-10,"5_prime_UTR_variant",1,3,42,120,84,1.9,14,FALSE,FALSE
+"SIPA1","ENSG00000213445","rs2306363","chr11_65638129_G_T_b38",0.17,-0.12,4.3e-11,1.6e-08,"Coronary artery disease","SIPA1",NA,0.96,1e-11,"5_prime_UTR_variant",1,3,42,120,84,1.9,14,FALSE,FALSE
+"SAP130","ENSG00000136715","rs114192718","chr2_128028089_C_T_b38",0.081,-0.13,2.2e-06,0.0065,"Coronary artery disease","SAP130",NA,1.1,3e-08,"5_prime_UTR_variant",1,2,8,2,46,49,22,FALSE,FALSE
+"ARHGEF6","ENSG00000129675","rs5975828","chrX_136904390_T_C_b38",0.71,0.069,2.1e-08,3.1e-08,"Coronary artery disease","RBMX - RPL22P23",NA,0.96,9e-09,"intergenic_variant",3,1,64,3,92,81,12,FALSE,FALSE
+"NRIP1","ENSG00000180530","rs2064040","chr21_15212021_G_A_b38",0.43,0.076,2.1e-05,0.00016,"Coronary artery disease","LINC02920 - CYCSP42",NA,0.022,7e-09,"intron_variant",1,4,16,3,28,29,79,FALSE,FALSE
+"HSPA1B","ENSG00000204388","rs3130342","chr6_32112369_A_C_b38",0.87,-0.093,0.00014,0.00022,"Coronary artery disease","TNXB","TNXB, ATF6B",1.1,3e-09,"non_coding_transcript_exon_variant",6,3,41,117,38,96,97,TRUE,FALSE
