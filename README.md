@@ -1,4 +1,4 @@
-# Code and result repository for The Healthy Whole Blood Transcriptome Project
+# Code and result repository for the Blood RNA Stability Atlas
 
 Below is a description of what each directory contains.
 
@@ -14,7 +14,7 @@ These folders contain the raw data and code used to preprocess and perform analy
 
         -   These files all take the files as they are stored on GEO (which you must unzip first) for analysis. As long as your input directory has access to these files, the code runs correctly.
 
-    -   The variation R scripts perform the pre-processing steps as before and calculate all statistics needed for gene categorization.
+    -   The variation R scripts perform the pre-processing steps as before and calculates all statistics needed for state/trait classification.
 
 -   output folder
 
@@ -30,19 +30,31 @@ These folders contain the raw data and code used to preprocess and perform analy
 
         -   state genes (state_genes.R)
 
-    -   gene_categories_functional_enrich_in_silico_validation.R finds genes which meet their respective categories criteria in 4 or more studies (one microarray, one RNA-seq) and creates a list of those genes in the form of a TXT file. Creates sub-directories in output for storing the outputs of in silico validation analysis and functional enrichment analysis. Performs functional enrichment analysis using clusterProfiler and produces all figures.
+    -   gene_categories_functional_enrich_in_silico_validation.R finds genes which meet their respective categories criteria in 4 or more studies (one microarray, one RNA-seq) and creates a list of those genes in the form of a TXT file.
+
+        -   Creates sub-directories in output for storing the outputs of in silico validation analysis and functional enrichment analysis.
+
+        -   Performs functional enrichment analysis using clusterProfiler and produces all figures.
+
+    -   fig1_temporal_class_distr.R: Code for figure 1 of the original manuscript.
+
+    -   comparison_of_filters.R: shows which variables were important for the classification of trait genes and outputs a Venn diagram.
 
 -   output folder
 
     -   Contains all outputs from the R code. PDFs, CSVs, PNGs, and TXT files. Includes supplementary data files.
 
-### fig6_analysis
+### cad_biomarker_discovery
 
 -   code folder
 
-    -   cad_biomarkers_heatmap_and_scores.R calculates and organizes the parameters used for our prioritization of biomarker candidates for coronary artery disease (CAD) using outputs from the RShiny application.
+    -   cad_biomarkers_heatmap.R: calculates and organizes the parameters used for our prioritization of biomarker candidates for coronary artery disease (CAD) using outputs from the RShiny application.
 
-    -   gene_categories_functional_enrich_in_silico_validation.R finds genes which meet their respective categories criteria in 4 or more studies (one microarray, one RNA-seq) and creates a list of those genes in the form of a TXT file. Creates sub-directories in output for storing the outputs of in silico validation analysis and functional enrichment analysis. Performs functional enrichment analysis using clusterProfiler and produces all figures.
+    -   cad_geneset_test.R: performs the analysis seen in figure 4 of the paper.
+
+    -   figure_4.R: produces figure 4, bottom panel.
+
+    -   load_agilent_data.R: additional script referenced by cad_geneset_test.R to load in GSE20680 and GSE2081
 
 -   input folder
 
@@ -52,7 +64,7 @@ These folders contain the raw data and code used to preprocess and perform analy
 
 -   output folder
 
-    -   Contains all outputs from the R code. PNG and PDF for figure 6, plus the table used to generate these data in CSV format.
+    -   Contains output from the scripts. This includes supplementary_file_4.xlsx from the original manuscript and figure 4, bottom panel.
 
 ### RShiny-application
 
@@ -76,7 +88,7 @@ These folders contain the raw data and code used to preprocess and perform analy
 
     -   writing_parquet_files.R contains code that transforms files for the RShiny application into parquet files for faster loading.
 
--   As of February 18, 2025, this RShiny code is up to date.
+-   As of April 28, 2026, this RShiny code is up to date.
 
 ## Session Info
 

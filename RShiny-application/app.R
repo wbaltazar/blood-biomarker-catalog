@@ -33,10 +33,10 @@ info <- function(text) {
 # Build ui ----
 ui <- fluidPage(
   theme = bslib::bs_theme(bootswatch = "litera"),
-  titlePanel(title = "", windowTitle = "Blood Biomarker Catalog"),
+  titlePanel(title = "", windowTitle = "Blood RNA Stability Atlas"),
   # Define the main navigation tabs
   navbarPage(
-    title = "Blood Biomarker Catalog",
+    title = "Blood RNA Stability Atlas",
     
     ## Home page----
     tabPanel("Home",
@@ -207,7 +207,7 @@ Nucleic Acids Res. 2022 Nov 9:gkac1010. doi: 10.1093/nar/gkac1010. Epub ahead of
                                    tags$p("We see that ", tags$code("ERAP2"), " has many eQTL variants that are also associated with GWAS traits. At the top right, there are tools to explore the distribution of ", tags$code("ERAP2"), " among other genes in terms of GTEx variants as well as GWAS associations."),
                                    div(img(src = "tutorial7.png", height = "600px")),
                                    tags$p("We can explore ", tags$code("ERAP2"), "'s expression in whole blood over time using the ", tags$b("Investigate Blood RNA Temporal Expression tab.")),
-                                   
+
                                    
                                    tags$h4("Step 2: Analyzing your RNAs of interest in healthy blood"),
                                    tags$p("To explore the expression levels and summary statistics for your gene in our data, click the ", tags$b("Investigate Blood RNA Temporal Expression"), " tab in the navigation bar."),
@@ -830,14 +830,14 @@ server <- function(input, output, session) {
                                               tags$em('Hover over column names for more information.'))
       )
       )
-    } else if (input$gtexFilter == "rsID") {
-      result <- gtex %>% 
-        dplyr::filter(`rsID of eQTL` == input$eqtlChoiceId)
-      return(datatable(result, colnames = gtexColumnNames, escape = FALSE,
-                       caption = tags$caption(style = 'caption-side: top; text-align: left;',
-                                              tags$em('Hover over column names for more information.'))
-      )
-      )
+      } else if (input$gtexFilter == "rsID") {
+        result <- gtex %>% 
+          dplyr::filter(`rsID of eQTL` == input$eqtlChoiceId)
+        return(datatable(result, colnames = gtexColumnNames, escape = FALSE,
+                         caption = tags$caption(style = 'caption-side: top; text-align: left;',
+                                                tags$em('Hover over column names for more information.'))
+        )
+        )
     } else {
       if (input$stableInequality == "equal") {
         stableSliderOption <- if (input$stableTableSlider >= 0) {input$stableTableSlider} else {0:8}
