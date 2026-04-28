@@ -104,16 +104,16 @@ colnames(gtex) <- c("Symbol of blood RNA", "Ensembl ID", "rsID of eQTL", "GTEx v
                     "GWAS Trait", "GWAS Catalog Mapping", "Reported Mapping", "OR or BETA", "GWAS p_value",
                     "Genomic Context") # Re-names the columns
 
-## Attach stable_polymorphic, flexible, and housekeeping gene study statistics
-stable <- read.csv("~/Desktop/work_repo/github/cross_study_analysis/output/characteristic_scores.csv")
-dynamic <- read.csv("~/Desktop/work_repo/github/cross_study_analysis/output/flexible_gene_scores.csv")
-stable <- stable %>% dplyr::select(Symbol, Study_counts)
-colnames(stable) <- c("Symbol of blood RNA","Trait 4+ filter studies")
-dynamic <- dynamic %>% dplyr::select(Symbol, P_value_study_count)
-colnames(dynamic) <- c("Symbol of blood RNA","Studies below 0.05 p_value")
+## Attach trait and state genes
+trait <- read.csv("~/Desktop/work_repo/github/cross_study_analysis/output/trait_scores.csv")
+state <- read.csv("~/Desktop/work_repo/github/cross_study_analysis/output/state_gene_scores.csv")
+trait <- trait %>% dplyr::select(Symbol, Study_counts)
+colnames(trait) <- c("Symbol of blood RNA","Trait 4+ filter studies")
+state <- state %>% dplyr::select(Symbol, P_value_study_count)
+colnames(state) <- c("Symbol of blood RNA","Studies below 0.05 p_value")
 
-gtex <- merge(gtex, stable, all = T, by = "Symbol of blood RNA", sort = F)
-gtex <- merge(gtex, dynamic, all = T, by = "Symbol of blood RNA", sort = F)
+gtex <- merge(gtex, trait, all = T, by = "Symbol of blood RNA", sort = F)
+gtex <- merge(gtex, state, all = T, by = "Symbol of blood RNA", sort = F)
 dim(gtex)
 # [1] 3311615      16
 
@@ -131,33 +131,44 @@ for (gene in symbols) {
   num_traits_gene <- c(num_traits_gene, length(unique(gtex$`GWAS Trait`[gtex$`Symbol of blood RNA` == gene])))
 }
 
-median <- read.csv("~/Desktop/work_repo/github/cross_study_analysis/output/median_stability_statistics_all.csv")
-median <- median[median$Symbol %in% symbols, ]
-# Percentiles!
-expression <- median[order(median$Average.Expression),]
-expression$percentile <- (1:nrow(expression))/nrow(expression) * 100
-colnames(expression)[c(10,11)] <- c("Symbol of blood RNA", "Median Average Normalized Expression Percentile")
-expression <- expression[,c("Symbol of blood RNA", "Median Average Normalized Expression Percentile")]
-repeatable <- median[order(median$repeatability),]
-repeatable$percentile <- (1:nrow(repeatable))/nrow(repeatable) * 100
-colnames(repeatable)[c(10,11)] <- c("Symbol of blood RNA", "Median Repeatability Percentile")
-repeatable <- repeatable[,c("Symbol of blood RNA", "Median Repeatability Percentile")]
-genvar <- median[order(median$gen.variance),]
-genvar$percentile <- (1:nrow(genvar))/nrow(genvar) * 100
-colnames(genvar)[c(10,11)] <- c("Symbol of blood RNA", "Median Genetic Variance Percentile")
-genvar <- genvar[,c("Symbol of blood RNA","Median Genetic Variance Percentile")]
+# median <- read.csv("~/Desktop/work_repo/github/cross_study_analysis/output/median_stability_statistics_all.csv")
+# median <- median[median$Symbol %in% symbols, ]
+# # Percentiles!
+# expression <- median[order(median$Average.Expression),]
+# expression$percentile <- (1:nrow(expression))/nrow(expression) * 100
+# colnames(expression)[c(10,11)] <- c("Symbol of blood RNA", "Median Average Normalized Expression Percentile")
+# expression <- expression[,c("Symbol of blood RNA", "Median Average Normalized Expression Percentile")]
+# repeatable <- median[order(median$repeatability),]
+# repeatable$percentile <- (1:nrow(repeatable))/nrow(repeatable) * 100
+# colnames(repeatable)[c(10,11)] <- c("Symbol of blood RNA", "Median Repeatability Percentile")
+# repeatable <- repeatable[,c("Symbol of blood RNA", "Median Repeatability Percentile")]
+# genvar <- median[order(median$gen.variance),]
+# genvar$percentile <- (1:nrow(genvar))/nrow(genvar) * 100
+# colnames(genvar)[c(10,11)] <- c("Symbol of blood RNA", "Median Genetic Variance Percentile")
+# genvar <- genvar[,c("Symbol of blood RNA","Median Genetic Variance Percentile")]
+
+rank_prod_percentile <- read.csv("~/Desktop/work_repo/github/cross_study_analysis/output/rank_product_percentile.csv")
+colnames(rank_prod_percentile)
+# [1] "X"                     "Symbol"                "Within.Variation..SD." "Total.Variation..SD."  "Rs"                   
+# [6] "subject"               "time"                  "repeatability"         "gen.variance"          "Average.Expression"   
+# [11] "OVERALL_RP"            "OVERALL_RANK" 
+rank_prod_percentile <- rank_prod_percentile[rank_prod_percentile$Symbol %in% symbols,
+                                             c("Symbol","Within.Variation..SD.","Total.Variation..SD.",
+                                               "repeatability", "gen.variance",
+                                               "Average.Expression")]
+dim(rank_prod_percentile)
+# [1] 6099    9
+colnames(rank_prod_percentile)[1] <- "Symbol of blood RNA"
 
 append <- data.frame(`Symbol of blood RNA` = symbols, 
                      `Number of eQTL associations in GTEx` = num_eqtls_gene,
                      `Number of trait associations in GWAS` = num_traits_gene)
 colnames(append) <- c("Symbol of blood RNA", "Number of eQTL associations in GTEx", "Number of trait associations in GWAS")
-append <- merge(append, expression, by = "Symbol of blood RNA")
-append <- merge(append, repeatable, by = "Symbol of blood RNA")
-append <- merge(append, genvar, by = "Symbol of blood RNA")
+append <- merge(append, rank_prod_percentile, by = "Symbol of blood RNA")
 
 gtex <- merge(gtex, append, by = "Symbol of blood RNA", all.x = T, sort = F)
 dim(gtex)
-# [1] 1058955      21
+# [1] 1058955      26
 for (i in 1:ncol(gtex)) {
   if (class(gtex[,i]) == 'numeric') {
     gtex[,i] <- signif(gtex[,i], digits = 2)

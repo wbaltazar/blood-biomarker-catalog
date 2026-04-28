@@ -10,18 +10,24 @@
 # using the term "Coronary artery disease"
 # on the Discover RNA Biomarker Candidates page of the application
 
-df <- read.csv("~/Downloads/filtered_gtex_gwas_table.csv")
+input_dir <- "~/Desktop/work_repo/github/fig6_analysis/input/"
+output_dir <- "~/Desktop/work_repo/github/fig6_analysis/output/"
+setwd(input_dir)
+
+df <- read.csv("./filtered_gtex_gwas_table.csv")
 
 # Get statistics about the CAD search results
 
 # number of state genes
-state<-read.csv("state_gene_list.csv")
+state<-read.csv("./state_gene_list.csv")
 sum(unique(df$Symbol.of.blood.RNA) %in% state$x)
 # [1] 34
 # number of trait genes
 trait<-read.csv("trait_gene_list.csv")
 sum(unique(df$Symbol.of.blood.RNA) %in% trait$x)
 # [1] 48
+length(unique(df$Symbol.of.blood.RNA))
+# [1] 179
 # number of uncategorized genes
 length(unique(df$Symbol.of.blood.RNA)) - sum(unique(df$Symbol.of.blood.RNA) %in% trait$x) - sum(unique(df$Symbol.of.blood.RNA) %in% state$x)
 # [1] 97
@@ -60,18 +66,18 @@ df$`-log10.GWAS.p_value` <- -log(df$GWAS.p_value, 10)
 df2 <- df[,c("Symbol.of.blood.RNA", "rsID.of.eQTL",
              "-log10.eQTL.beta.p_value", "-log10.GWAS.p_value",
              "Studies.below.0.05.p_value", "Trait.4..filter.studies",
-             "Median.Average.Normalized.Expression.Percentile",
-             "Median.Repeatability.Percentile",
-             "Median.Genetic.Variance.Percentile",
+             "Average.Expression",
+             "repeatability",
+             "gen.variance",
              "Number.of.trait.associations.in.GWAS")]
 
 # rename columns with clearer titles for heatmap display 
 names(df2) <- c("Symbol of Blood RNA", "CAD eQTL",
                 "eQTL p_val", "GWAS p_val",
                 "#State Studies", "#Trait Studies",
-                "Expression Level",
-                "Repeatability",
-                "Genetic Var",
+                "Expression Level Percentile",
+                "Repeatability Percentile",
+                "Genetic Var Percentile",
                 "#Trait Assoc")
 
 # round numbers for heatmap display 
@@ -139,9 +145,9 @@ pheatmap::pheatmap(mat_trait_dedup,
 
 ranks <- list(eQTL = rank(mat_dedup[,"eQTL p_val"],ties.method= "average"),
               GWAS = rank(mat_dedup[,"GWAS p_val"],ties.method= "average"),
-              expression = rank(mat_dedup[,"Expression Level"],ties.method= "average"),
-              repeatability = rank(mat_dedup[,"Repeatability"],ties.method= "average"),
-              genetic = rank(mat_dedup[,"Genetic Var"],ties.method= "average"),
+              expression = rank(mat_dedup[,"Expression Level Percentile"],ties.method= "average"),
+              repeatability = rank(mat_dedup[,"Repeatability Percentile"],ties.method= "average"),
+              genetic = rank(mat_dedup[,"Genetic Var Percentile"],ties.method= "average"),
               trait = rank(mat_dedup[,"#Trait Studies"],ties.method= "average"),
               state = rank(-mat_dedup[,"#State Studies"],ties.method= "average"),
               spec = rank(-mat_dedup[,"#Trait Assoc"],ties.method= "average"))
@@ -153,20 +159,22 @@ head(mat_dedup_ranks)
 mat_dedup_ranks$rank_prod <- apply(mat_dedup_ranks, 1, function(x) prod(x)^(1/ncol(mat_dedup_ranks)))
 mat_dedup_ranks <- mat_dedup_ranks[order(mat_dedup_ranks$rank_prod, decreasing = T),]
 head(mat_dedup_ranks,20)
+tail(mat_dedup_ranks,20)
 
-write.csv(mat_dedup_ranks, row.names = T, "~/Downloads/CAD_biomarkers_scores.csv")
+write.csv(mat_dedup_ranks, row.names = T, paste(output_dir, "CAD_biomarkers_scores.csv", sep = ""))
 
-pdf("~/Downloads/CAD_biomarkers_scores.pdf", height = 6, width = 6)
+pdf(paste(output_dir, "CAD_biomarkers_scores.pdf", sep = ""), height = 6, width = 6)
 plot(mat_dedup_ranks$rank_prod, pch=1, col = "black", 
      cex = 0.5, 
      main = "CAD Biomarker Candidate Scores",
      xlab="RNA Biomarker Candidate", 
      ylab="Rank Product")
-text(x = 30, y = 133, 
+text(x = 65, y = 105, 
      labels = paste(row.names(mat_dedup_ranks)[1:10],collapse = "\n"),
        cex = 0.7)
+text(x = 100, y = 40, 
+     labels = paste(row.names(tail(mat_dedup_ranks, 10)),collapse = "\n"),
+     cex = 0.7)
 dev.off()
 
 paste(row.names(mat_dedup_ranks)[1:10], collapse = ", ")
-
-

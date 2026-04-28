@@ -176,21 +176,78 @@ length(unique(stable_results$Symbol))
 ### Save results -----
 write.csv(stable_results, file = paste(output_dir, "trait_scores.csv", sep = ""))
 
-## Median statistic function
+## Statistic rank-product function ----
+cols <- c("Within Variation (SD)", "Total Variation (SD)", "Rs",
+          "subject", "time", "repeatability", "gen.variance", "Average Expression")
+
+# 1) Precompute ranks for each dataset/metric
+rank_maps <- lapply(data, function(df) {
+  out <- vector("list", length(cols)); names(out) <- cols
+  for (m in cols) {
+    dsub <- df[, c("Symbol", m)]
+    dsub <- dsub[is.finite(dsub[[m]]), , drop=FALSE]
+    r <- rank(dsub[[m]], ties.method="average")  # all +1 direction version
+    names(r) <- dsub$Symbol
+    out[[m]] <- r
+  }
+  out
+})
+
+# 2) Universe of genes
+all_genes <- sort(unique(unlist(lapply(data, \(df) df$Symbol))))
+
+# 3) Compute rank product per gene (now just lookups)
+rp_df <- lapply(all_genes, function(g) {
+  rp_by_metric <- sapply(cols, function(m) {
+    ranks <- c()
+    for (rm in rank_maps) {
+      if (!is.null(rm[[m]][g]) && !is.na(rm[[m]][g])) ranks <- c(ranks, rm[[m]][g])
+    }
+    if (length(ranks) == 0) NA_real_ else exp(mean(log(ranks)))
+  })
+  overall <- if (all(is.na(rp_by_metric))) NA_real_ else exp(mean(log(rp_by_metric), na.rm=TRUE))
+  c(Symbol=g, rp_by_metric, OVERALL_RP=overall)
+})
+
+rp_df <- as.data.frame(do.call(rbind, rp_df), stringsAsFactors=FALSE)
+rp_df$OVERALL_RP <- as.numeric(rp_df$OVERALL_RP)
+rp_df$OVERALL_RANK <- rank(rp_df$OVERALL_RP, ties.method="average", na.last="keep")
+rp_df <- rp_df[order(rp_df$OVERALL_RANK), ]
+head(rp_df)
+
+# Symbol Within Variation (SD) Total Variation (SD)    Rs subject             time repeatability gen.variance Average Expression
+# 4525  CYP24A1                    64                   45 10723    1196            15547          1290         1077                  4
+# 6490     FMN2                   204                  118 11039  1200.5             4713          1513         1513                 33
+# 18981  RSU1P2                   233                   64 16561   480.5             5007          1304         1135                625
+# 15857  PLPPR4                    48                   38  8459    5341 6980.50000000001          4780         1493                143
+# 16635  PTPRZ1                  1103                  187 15632   534.5 6980.50000000001         509.5        509.5                426
+# 16944  RASSF9                   282                  150 11628    4104 6980.50000000001          3444         1551                 18
+# OVERALL_RP OVERALL_RANK
+# 4525    487.5218            1
+# 6490    761.9240            2
+# 18981   927.9100            3
+# 15857   935.5879            4
+# 16635  1036.3238            5
+# 16944  1038.6897            6
+
 summarize_statistics <- function(gene) {
-  stats <- vector(mode = "numeric", length = 8)
-  names(stats) <- c("Within Variation (SD)", "Total Variation (SD)", "Rs", "subject", "time", "repeatability", "gen.variance", "Average Expression")
-  n <- 11
+  stats <- vector(mode = "numeric", length = 8) 
+  names(stats) <- c("Within Variation (SD)", "Total Variation (SD)", "Rs", "subject", "time",
+                    "repeatability", "gen.variance", "Average Expression") 
+  n <- 11 
   for (i in data) {
     if (nrow(i[which(i$Symbol == gene),]) > 0) {
-      stats <- stats + colMeans(i[which(i$Symbol == gene), c("Within Variation (SD)", "Total Variation (SD)", "Rs", "subject", "time", "repeatability", "gen.variance", "Average Expression")])
-    } else {
+      stats <- stats + colMeans(i[which(i$Symbol == gene), c("Within Variation (SD)", "Total Variation (SD)",
+                                                             "Rs", "subject", "time", "repeatability",
+                                                             "gen.variance", "Average Expression")])
+    } 
+    else { 
       n <- n - 1
     }
-  }
-  return((unlist(stats / n)))
+  } 
+  return((unlist(stats / n))) 
 }
-# Test
+
 summarize_statistics("ERAP2")
 # Within Variation (SD)  Total Variation (SD)                    Rs               subject                  time 
 #           0.279485086           0.987803585           0.406376948           0.824516204           0.001276759 
@@ -215,6 +272,22 @@ gene_summaries$Symbol <- stable_results$Symbol
 
 ## Save results ----
 write.csv(gene_summaries, file = paste(output_dir, "median_stability_statistics_all.csv", sep = ""))
+write.csv(rp_df, file = paste(output_dir, "rank_product_all.csv", sep = ""))
+# columns to normalize (exclude Symbol if present)
+num_cols <- setdiff(colnames(rp_df), "Symbol")
+
+norm_rp_df <- rp_df
+norm_rp_df[num_cols] <- lapply(rp_df[num_cols], function(x){
+  x <- as.numeric(x)
+  n <- sum(!is.na(x))
+  if (n <= 1) return(rep(NA_real_, length(x)))
+  
+  # For rank products: smaller = better
+  r <- rank(x, ties.method = "average", na.last = "keep")  # 1 = smallest RP
+  pct <- 100 * (1 - (r - 1) / (n - 1))                     # smallest -> 100
+  round(pct, 2)
+})
+write.csv(norm_rp_df, file = paste(output_dir, "rank_product_percentile.csv", sep = ""))
 
 # COMMON SYMBOLS ----
 # Genes found in all datasets
