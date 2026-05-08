@@ -115,10 +115,10 @@ all_symbols <- unname(unlist(lapply(data, symbol_find)))
 # Use dash for notation instead of periods, EXCEPT when it denotes a version number. Then, remove all suspected version numbers.
 all_symbols <- all_symbols %>% str_replace_all("\\.(?!\\d$)", "-") 
 length(unlist(unique(all_symbols)))
-# [1] 24100
+# [1] 24153
 all_symbols <- all_symbols %>% str_remove_all(pattern = "\\..") %>% unique()
 length(unlist(all_symbols))
-# [1] 23883
+# [1] 23936
 
 ## Test run the counting algorithm
 stable_results <- data.frame(Symbol = all_symbols, Score = 0, Filters = 0)
@@ -169,9 +169,9 @@ for (i in 1:nrow(for_merge)) {
 }
 stable_results <- merge(stable_results, for_merge, by = "Symbol", sort = F)
 dim(stable_results)
-# [1] 23883    13
+# [1] 23936    13
 length(unique(stable_results$Symbol))
-# [1] 23883
+# [1] 23936
 
 ### Save results -----
 write.csv(stable_results, file = paste(output_dir, "trait_scores.csv", sep = ""))
@@ -284,7 +284,7 @@ norm_rp_df[num_cols] <- lapply(rp_df[num_cols], function(x){
   
   # For rank products: smaller = better
   r <- rank(x, ties.method = "average", na.last = "keep")  # 1 = smallest RP
-  pct <- 100 * (1 - (r - 1) / (n - 1))                     # smallest -> 100
+  pct <- 100 * ((r - 1) / (n - 1))                     # smallest -> 100
   round(pct, 2)
 })
 write.csv(norm_rp_df, file = paste(output_dir, "rank_product_percentile.csv", sep = ""))

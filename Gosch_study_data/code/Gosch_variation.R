@@ -138,7 +138,7 @@ data_var <- merge(data_var, vp, by = "temp", sort = F)
 head(data_var)
 
 ## heritability ----
-prepared_covariates <- pheno_data[,c(-1,-2,-4,-7)]
+prepared_covariates <- pheno_data[,c(-1,-2,-3,-5)]
 results <- vector("list", nrow(norm_expr))
 pheno_data$subject <- factor(pheno_data$subject)
 
